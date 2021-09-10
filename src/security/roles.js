@@ -1,8 +1,17 @@
-{
+deploy: {
   const dbs = DBs(db);
+  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) {
+    print(Error(`cannot deploy roles on server ${util.inspect(dbs._mongo)}, must be an L`));
+    break deploy;
+  }
+  if (!["active", "archive", "mixed"].includes(dbs._mongo?._identity?.stage)) {
+    print(Error(`cannot deploy roles on server ${util.inspect(dbs._mongo)}, must be a data server`));
+    break deploy;
+  }
+
   const roles = [
     $Role(dbs.admin, `public`, [], [
-      $Privilege(dbs.admin.env, $Privilege.actions.read),
+      $Privilege(dbs.admin.identity, $Privilege.actions.read),
     ]),
     $Role(dbs.admin, `monitorSystem`, [], [
       $Privilege(dbs.admin.system.keys        , $Privilege.actions.monitor),
