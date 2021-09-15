@@ -1,6 +1,6 @@
 deploy: {
   const dbs = DBs(db);
-  if (![1].includes(dbs._mongo?._identity?.L)) break deploy;
+  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   loadScript(`../../common/member/member_arc-indexes.js`);
