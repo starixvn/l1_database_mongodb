@@ -1,13 +1,7 @@
 deploy: {
   const dbs = DBs(db);
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) {
-    print(Error(`cannot deploy roles on server ${util.inspect(dbs._mongo)}, must be an L`));
-    break deploy;
-  }
-  if (!["archive"].includes(dbs._mongo?._identity?.stage)) {
-    print(Error(`cannot deploy roles on server ${util.inspect(dbs._mongo)}, must be an archive data server`));
-    break deploy;
-  }
+  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
+  if (!["archive"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   const users = [
     $User(dbs.admin, `billy.bui`, [

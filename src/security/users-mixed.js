@@ -1,13 +1,7 @@
 deploy: {
   const dbs = DBs(db);
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) {
-    print(Error(`cannot deploy roles on server ${util.inspect(dbs._mongo)}, must be an L`));
-    break deploy;
-  }
-  if (!["mixed"].includes(dbs._mongo?._identity?.stage)) {
-    print(Error(`cannot deploy roles on server ${util.inspect(dbs._mongo)}, must be a mixed data server`));
-    break deploy;
-  }
+  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
+  if (!["mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   const users = [
     $User(dbs.admin, `billy.bui`, [
@@ -26,6 +20,8 @@ deploy: {
       $Role(dbs.member_arc  , `readWrite`     ),
       $Role(dbs.minigame_arc, `readWrite`     ),
       $Role(dbs.minigame_rm , `readWrite`     ),
+
+      $Role(dbs.script      , `read`          ),
     ]),
     $User(dbs.admin, `lmn_backend`, [
       $Role(dbs.admin       , `public`        ),
