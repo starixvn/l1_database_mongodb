@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-09-minisedie-indexes.js

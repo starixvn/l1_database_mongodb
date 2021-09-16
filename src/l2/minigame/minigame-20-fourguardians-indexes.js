@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-20-fourguardians-indexes.js

@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-07-minidragontiger-indexes.js

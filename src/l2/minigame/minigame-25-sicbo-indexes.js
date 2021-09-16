@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-25-sicbo-indexes.js

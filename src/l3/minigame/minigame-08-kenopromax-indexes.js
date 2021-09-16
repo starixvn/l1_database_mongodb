@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-08-kenopromax-indexes.js
