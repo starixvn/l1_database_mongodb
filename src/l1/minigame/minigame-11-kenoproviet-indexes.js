@@ -11,7 +11,7 @@ deploy: {
   const idxs = [
     ...___idxs,
     $Indexes(dbs.minigame.kenoproviet_phiens    , [idx.TTL, idx.time, idx.id]),
-    $Indexes(dbs.minigame.kenoproviet_phien_logs, [idx.TTL]),
+    $Indexes(dbs.minigame.kenoproviet_phiens_log, [idx.TTL]),
     $Indexes(dbs.minigame.kenoproviet_cuocs     , [idx.TTL,           idx.phien__id, idx.uid__id]),
     $Indexes(dbs.minigame.kenoproviet_ones      , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.currency, idx.isCash]),
   ];
