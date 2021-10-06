@@ -3,7 +3,7 @@ deploy: {
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  global.__data = [
+  global.___data = [
     { _id     : 39001,
       from    : { db: `minigame`    , coll: `taixiu_phiens`     },
       to      : { db: `minigame_arc`, coll: `taixiu_phiens_bk`  },
