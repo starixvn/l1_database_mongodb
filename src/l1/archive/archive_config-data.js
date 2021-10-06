@@ -4,10 +4,11 @@ deploy: {
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   loadScript(`../../common/archive/archive_config-data.js`);
-  const data = {
+  const data = [
     ...___data,
-  };
+  ];
 
   dbs.archive.archive_config.deleteMany({});
-  dbs.archive.archive_config.insertMany(data, {ordered: false});
+  res = dbs.archive.archive_config.insertMany(data, {ordered: false});
+  $Log(`DATA`).info(`archive_config`, `${Object.keys(res.insertedIds).length} docs inserted`);
 }
