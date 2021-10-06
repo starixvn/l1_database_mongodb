@@ -9,7 +9,7 @@ deploy: {
     obCustId_gameRoundId_gameTypeId : $Index({'call.obCustId': 1, 'call.gameRoundId': 1, 'call.gameTypeId': 1}),
     gameTypeId_gameRoundId_obCustId : $Index({'call.gameTypeId': 1, 'call.gameRoundId': 1, 'call.obCustId': 1}),
     obTransId                       : $Index({'result.obTransId': 1}),
-    summarized                      : $Index({'__archive.summarized': 1, _id: 1}),
+    betlogs                         : $Index({'__archive.betlogs': 1, _id: 1}),
   };
 
   global.___idxs = [
@@ -19,7 +19,7 @@ deploy: {
       ___idx.obCustId_gameRoundId_gameTypeId,
       ___idx.gameTypeId_gameRoundId_obCustId,
       ___idx.obTransId,
-      ___idx.summarized,
+      ___idx.betlogs,
     ]),
     $Indexes(dbs.log.end_games, [
       ___idx.TTL,
