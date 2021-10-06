@@ -5,7 +5,7 @@ deploy: {
 
   const roles = [
     $Role(dbs.admin, `public`, [], [
-      $Privilege(dbs.admin.identity, $Privilege.actions.read),
+      $Privilege(dbs.admin.identity           , $Privilege.actions.read),
     ]),
     $Role(dbs.admin, `monitorSystem`, [], [
       $Privilege(dbs.admin.system.keys        , $Privilege.actions.monitor),

@@ -39,6 +39,7 @@ deploy: {
     ]),
     $User(dbs.admin, `lmn_summary`, [
       $Role(dbs.admin       , `public`        ),
+      $Role(dbs.log_arc     , `readWrite`     ),
       $Role(dbs.minigame_arc, `read`          ),
       $Role(dbs.summary_arc , `readWrite`     ),
     ]),

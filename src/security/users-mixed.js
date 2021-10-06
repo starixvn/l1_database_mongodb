@@ -58,6 +58,7 @@ deploy: {
       $Role(dbs.minigame    , `readWrite`     ),
       $Role(dbs.Proteus     , `readWrite`     ),
       $Role(dbs.summary     , `readWrite`     ),
+      $Role(dbs.log_arc     , `readWrite`     ),
       $Role(dbs.minigame_arc, `read`          ),
       $Role(dbs.summary_arc , `readWrite`     ),
     ]),
