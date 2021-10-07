@@ -17,6 +17,12 @@ deploy: {
       idx.obCustId_gameRoundId_gameTypeId,
       idx.gameTypeId_gameRoundId_obCustId,
     ]),
+    $Indexes(dbs.log.retrieve_requests, [
+      idx.TTL,
+      idx.requestTimeStamp,
+      idx.obCustId_gameRoundId_gameTypeId,
+      idx.gameTypeId_gameRoundId_obCustId,
+    ]),
     $Indexes(dbs.log.signin_requests, [
       idx.TTL,
       idx.requestTimeStamp,
@@ -38,6 +44,9 @@ deploy: {
   const idxs = [
     ...___idxs,
     $Indexes(dbs.log_arc.hit_jackpots_bk, [
+      idx.requestTimeStamp,
+    ]),
+    $Indexes(dbs.log_arc.retrieve_requests_bk, [
       idx.requestTimeStamp,
     ]),
     $Indexes(dbs.log_arc.signin_requests_bk, [
