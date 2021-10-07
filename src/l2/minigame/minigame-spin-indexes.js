@@ -1,4 +1,4 @@
-/** L1 L2 -- */
+/** -- L2 -- */
 deploy: {
   const dbs = DBs(db);
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
