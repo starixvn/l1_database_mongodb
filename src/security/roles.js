@@ -33,7 +33,10 @@ deploy: {
       $Privilege(dbs.config                   , $Privilege.actions.read, $Privilege.actions.list),
       $Privilege(dbs.config.system.profile    , $Privilege.actions.read),
       $Privilege(dbs.config.system.sessions   , $Privilege.actions.read),
-      $Privilege(dbs.admin                    , $Privilege.actions.read),
+      $Privilege(dbs.local                    , $Privilege.actions.read),
+      $Privilege(dbs.local.system.profile     , $Privilege.actions.read),
+      $Privilege(dbs.local.system.replset     , $Privilege.actions.read),
+      $Privilege(dbs.local.system.rollback.id , $Privilege.actions.read),
     ]),
   ];
   roles.forEach(_ => _.deploy());
