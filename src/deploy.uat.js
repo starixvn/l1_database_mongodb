@@ -1,5 +1,8 @@
 {
   uat.forEach(instance => {
+    /** Authenticate instance */
+    auth(instance);
+
     /** Switch to deploying db */
     const oldDB = global.db;
     global.db = instance.admin;
