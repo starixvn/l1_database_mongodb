@@ -41,6 +41,7 @@ deploy: {
       $Role(dbs.admin       , `public`        ),
       $Role(dbs.log_arc     , `readWrite`     ),
       $Role(dbs.minigame_arc, `read`          ),
+      $Role(dbs.Proteus     , `readWrite`     ),
       $Role(dbs.summary_arc , `readWrite`     ),
     ]),
     $User(dbs.admin, `mongodb_exporter`, [
