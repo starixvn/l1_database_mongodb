@@ -437,7 +437,7 @@ deploy: {
     },
     { gameId        : 31,
       owGameTypeId  : { [1]: 1642, [2]: 3830, [3]: 3830 }[L],
-      name          : { en: `Lottery`, vi: `Xổ Số`, grp: `Lottery` },
+      name          : { en: `RNG Lottery`, vi: `Xổ Số RNG`, grp: `Lottery` },
       coll          : { db: `minigame`, group: `lottery`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
