@@ -499,7 +499,7 @@ deploy: {
         stake : [ {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeSpin`}}]} ],
         payout: [ `$betwin` ],
       },
-      config        : { hasCurrency: false, jpCont: 0.025 },
+      config        : { hasCurrency: false, jpCont: 0 },
     },
     { gameId        : 39,
       owGameTypeId  : { [1]: null, [2]: null, [3]: 3836 }[L],
