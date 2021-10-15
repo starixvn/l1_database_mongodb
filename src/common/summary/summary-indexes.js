@@ -9,7 +9,7 @@ deploy: {
     time_currency_gameId_cash   : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1}, {unique: true}),
     gameId_system_time          : $Index({'gameId': 1, 'system': 1, 'time': 1}),
     gameId                      : $Index({'gameId': 1}, {unique: true}),
-    owGameTypeId                : $Index({'owGameTypeId': 1}, {unique: true}),
+    owGameTypeId                : $Index({'owGameTypeId': 1}, {unique: true, partialFilterExpression: {owGameTypeId: {$gt: 0}}}),
   };
 
   global.___idxs = [
