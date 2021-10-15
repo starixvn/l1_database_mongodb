@@ -10,5 +10,5 @@ deploy: {
 
   dbs.archive.archive_config.deleteMany({});
   res = dbs.archive.archive_config.insertMany(data, {ordered: false});
-  $Log(`DATA`).info(`archive_config`, `${Object.keys(res.insertedIds).length} docs inserted`);
+  $Log(`DATA`).info(`archive.archive_config`, `${Object.keys(res.insertedIds).length} docs inserted`);
 }

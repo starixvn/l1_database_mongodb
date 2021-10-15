@@ -10,7 +10,7 @@ deploy: {
 
   dbs.summary.game_summary_config.deleteMany({});
   res = dbs.summary.game_summary_config.insertMany(data, {ordered: false});
-  $Log(`DATA`).info(`game_summary_config`, `${Object.keys(res.insertedIds).length} docs inserted`);
+  $Log(`DATA`).info(`summary.game_summary_config`, `${Object.keys(res.insertedIds).length} docs inserted`);
 }
 
 deploy: {
@@ -25,5 +25,5 @@ deploy: {
 
   dbs.summary_arc.game_summary_config.deleteMany({});
   res = dbs.summary_arc.game_summary_config.insertMany(data, {ordered: false});
-  $Log(`DATA`).info(`game_summary_config`, `${Object.keys(res.insertedIds).length} docs inserted`);
+  $Log(`DATA`).info(`summary_arc.game_summary_config`, `${Object.keys(res.insertedIds).length} docs inserted`);
 }
