@@ -139,7 +139,7 @@ deploy: {
     { gameId        : 6,
       owGameTypeId  : { [1]: 1617, [2]: 3807, [3]: 3807 }[L],
       name          : { en: `Turbo Odd Even`, vi: `Chẵn Lẻ Siêu Tốc`, grp: `Odd Even` },
-      coll          : { db: `minigame_arc`, group: `chanle`, round: `_phiens_bk`, postfix: `_ones_bk` },
+      coll          : { db: `minigame_arc`, group: `chanleturbo`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
         stake : [
