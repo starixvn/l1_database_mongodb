@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-exchanges-indexes.js
