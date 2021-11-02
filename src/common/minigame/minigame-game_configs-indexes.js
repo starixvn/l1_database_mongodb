@@ -18,7 +18,7 @@ deploy: {
     partnerId_en      : $Index({'partnerId': 1}, {collation: {locale: 'en', strength: 2}}),
     partnerId_U_en    : $Index({'partnerId': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
     type_U            : $Index({'type': 1}, {unique: true}),
-    name_partnerId_U  : $Index({'partnerId': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
+    name_partnerId_U  : $Index({'name': 1, 'partnerId': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
     groupId_gameId_U  : $Index({'groupId': 1, 'gameId': 1}, {unique: true}),
     value_U           : $Index({'value': 1}, {unique: true}),
   };
