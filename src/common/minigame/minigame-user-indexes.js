@@ -3,6 +3,15 @@ deploy: {
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
+  global.___colls = [
+    $Collection(dbs.minigame.users, {
+      collation: {locale: 'en', strength: 2},
+    }),
+    $Collection(dbs.minigame.userinfos, {
+      collation: {locale: 'en', strength: 2},
+    }),
+  ];
+
   global.___idx = {
     username_U_en   : $Index({'local.username': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
     memberId        : $Index({'local.memberId': 1}),

@@ -5,6 +5,12 @@ deploy: {
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   loadScript(`../../common/minigame/minigame-game_configs-indexes.js`);
+
+  const colls = [
+    ...___colls,
+  ];
+  colls.forEach(_ => { _.create(); _.validate(); });
+
   const idx = {
     ...___idx,
   };
