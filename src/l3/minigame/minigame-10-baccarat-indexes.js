@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-10-baccarat-indexes.js

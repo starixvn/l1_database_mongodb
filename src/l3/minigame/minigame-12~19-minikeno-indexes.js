@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-12~19-minikeno-indexes.js

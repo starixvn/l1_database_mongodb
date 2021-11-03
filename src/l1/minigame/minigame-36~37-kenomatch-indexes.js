@@ -1,0 +1,44 @@
+/** L1 -- -- */
+deploy: {
+  const dbs = DBs(db);
+  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
+  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+
+  loadScript(`../../common/minigame/minigame-game-indexes.js`);
+  const idx = {
+    ...___idx,
+  };
+  const idxs = [
+    ...___idxs,
+    $Indexes(dbs.minigame.kenomatch1_phiens , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.kenomatch1_cuocs  , [idx.TTL,           idx.phien__id, idx.uid__id]),
+    $Indexes(dbs.minigame.kenomatch1_ones   , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.currency, idx.isCash]),
+
+    $Indexes(dbs.minigame.kenomatch2_phiens , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.kenomatch2_cuocs  , [idx.TTL,           idx.phien__id, idx.uid__id]),
+    $Indexes(dbs.minigame.kenomatch2_ones   , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.currency, idx.isCash]),
+  ];
+  idxs.forEach(_ => _.deploy());
+}
+
+deploy: {
+  const dbs = DBs(db);
+  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
+  if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+
+  loadScript(`../../common/minigame/minigame_arc-game-indexes.js`);
+  const idx = {
+    ...___idx,
+  };
+  const idxs = [
+    ...___idxs,
+    $Indexes(dbs.minigame_arc.kenomatch1_phiens_bk, [idx.time, idx.id]),
+    $Indexes(dbs.minigame_arc.kenomatch1_cuocs_bk , [          idx.phien, idx.uid_phien]),
+    $Indexes(dbs.minigame_arc.kenomatch1_ones_bk  , [idx.time, idx.phien, idx.uid_phien_U]),
+
+    $Indexes(dbs.minigame_arc.kenomatch2_phiens_bk, [idx.time, idx.id]),
+    $Indexes(dbs.minigame_arc.kenomatch2_cuocs_bk , [          idx.phien, idx.uid_phien]),
+    $Indexes(dbs.minigame_arc.kenomatch2_ones_bk  , [idx.time, idx.phien, idx.uid_phien_U]),
+  ];
+  idxs.forEach(_ => _.deploy());
+}

@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-31-lottery-indexes.js

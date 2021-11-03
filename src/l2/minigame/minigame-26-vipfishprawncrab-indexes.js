@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-26-vipfishprawncrab-indexes.js

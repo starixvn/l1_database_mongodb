@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-22-vipsedie-indexes.js
