@@ -17,5 +17,5 @@ deploy: {
     },
   }));
   const res = dbs.minigame.global_configs.bulkWrite(bulkPipe, {ordered: false});
-  $Log(`DATA`).info(`minigame.global_configs`, `D-${res.deletedCount ?? 0} • I-${res.insertedCount ?? 0 + res.upsertedCount ?? 0} • M-${res.matchedCount ?? 0} • U-${res.modifiedCount ?? 0}`);
+  $Log(`DATA`).info(`minigame.global_configs`, `D-${res.deletedCount ?? 0} • I-${(res.insertedCount ?? 0) + (res.upsertedCount ?? 0)} • M-${res.matchedCount ?? 0} • U-${res.modifiedCount ?? 0}`);
 }
