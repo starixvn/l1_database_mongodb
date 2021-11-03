@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-28-vipsediewar-indexes.js

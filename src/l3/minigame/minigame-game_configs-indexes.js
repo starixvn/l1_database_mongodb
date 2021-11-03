@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-game_configs-indexes.js

@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-05-chanle-indexes.js
