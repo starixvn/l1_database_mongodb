@@ -532,7 +532,7 @@ deploy: {
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
-        payout: [ `$betwin` ],
+        payout: [ `$betwin`, `$refund` ],
       },
       config        : { hasCurrency: true },
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
@@ -544,7 +544,7 @@ deploy: {
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
-        payout: [ `$betwin` ],
+        payout: [ `$betwin`, `$refund` ],
       },
       config        : { hasCurrency: true },
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
@@ -580,7 +580,7 @@ deploy: {
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
-        payout: [ `$betwin` ],
+        payout: [ `$betwin`, `$refund` ],
       },
       config        : { hasCurrency: true },
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
@@ -592,7 +592,7 @@ deploy: {
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
-        payout: [ `$betwin` ],
+        payout: [ `$betwin`, `$refund` ],
       },
       config        : { hasCurrency: true },
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
