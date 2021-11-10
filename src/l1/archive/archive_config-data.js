@@ -5,7 +5,7 @@ deploy: {
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  if (!global.___data[label]) loadScript(`../../common/archive/archive_config-data.js`);
+  if (!global.___data?.[label]) loadScript(`../../common/archive/archive_config-data.js`);
   const data = [
     ...global.___data[label],
   ];
