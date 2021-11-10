@@ -1,6 +1,6 @@
 deploy: {
-  const dbs = DBs(db);
   const label = `archive_config`;
+  const dbs = DBs(db);
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
