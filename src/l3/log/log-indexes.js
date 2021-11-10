@@ -1,16 +1,17 @@
 /** -- -- L3 */
 deploy: {
+  const label = `log`;
   const dbs = DBs(db);
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  loadScript(`../../common/log/log-indexes.js`);
+  if ((!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log-indexes.js`);
   const idx = {
-    ...___idx,
+    ...global.___idx[label],
     memberId: $Index({'memberAuth.memberId': 1}),
   };
   const idxs = [
-    ...___idxs,
+    ...global.___idxs[label],
     $Indexes(dbs.log.enter_portals, [
       idx.TTL,
       idx.requestTimeStamp,
@@ -25,16 +26,17 @@ deploy: {
 }
 
 deploy: {
+  const label = `log_arc`;
   const dbs = DBs(db);
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  loadScript(`../../common/log/log_arc-indexes.js`);
+  if ((!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log_arc-indexes.js`);
   const idx = {
-    ...___idx,
+    ...global.___idx[label],
   };
   const idxs = [
-    ...___idxs,
+    ...global.___idxs[label],
     $Indexes(dbs.log_arc.enter_portals_bk, [
       idx.requestTimeStamp,
     ]),
