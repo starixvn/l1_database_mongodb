@@ -1,9 +1,10 @@
 deploy: {
+  const label = `minigame-user`;
   const dbs = DBs(db);
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  global.___colls = [
+  (global.___colls = global.___colls ?? {})[label] = [
     $Collection(dbs.minigame.users, {
       collation: {locale: 'en', strength: 2},
     }),
@@ -12,7 +13,7 @@ deploy: {
     }),
   ];
 
-  global.___idx = {
+  (global.___idx = global.___idx ?? {})[label] = {
     username_U_en   : $Index({'local.username': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
     memberId        : $Index({'local.memberId': 1}),
     memberName      : $Index({'local.memberName': 1}),
@@ -28,25 +29,25 @@ deploy: {
     TTL             : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),
   };
 
-  global.___idxs = [
+  (global.___idxs = global.___idxs ?? {})[label] = [
     $Indexes(dbs.minigame.users, [
-      ___idx.username_U_en,
-      ___idx.memberId,
-      ___idx.memberName,
+      global.___idx[label].username_U_en,
+      global.___idx[label].memberId,
+      global.___idx[label].memberName,
     ]),
     $Indexes(dbs.minigame.userinfos, [
-      ___idx.id_U,
-      ___idx.id_U_en,
-      ___idx.UID_U,
-      ___idx.name_U_en,
-      ___idx.currency,
-      ___idx.type_inRoom_red,
+      global.___idx[label].id_U,
+      global.___idx[label].id_U_en,
+      global.___idx[label].UID_U,
+      global.___idx[label].name_U_en,
+      global.___idx[label].currency,
+      global.___idx[label].type_inRoom_red,
     ]),
     $Indexes(dbs.minigame.usersessions, [
-      ___idx.sessionId_U,
-      ___idx.ssoToken,
-      ___idx.recheckInTime,
-      ___idx.TTL,
+      global.___idx[label].sessionId_U,
+      global.___idx[label].ssoToken,
+      global.___idx[label].recheckInTime,
+      global.___idx[label].TTL,
     ]),
   ];
 }
