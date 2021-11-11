@@ -12,7 +12,7 @@
       const logger = $Log(util.inspect(dbs));
       logger.info(`Start `, `Deploying...`);
 
-      loadScript(`common/admin/identity.js`);
+      loadScript(`init/admin-identity.js`);
 
       loadScript(`security/roles.js`);
       loadScript(`security/users-${dbs._mongo._identity.stage}.js`);
