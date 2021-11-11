@@ -1,12 +1,13 @@
 /** L1 -- -- */
 deploy: {
+  const label = `minigame-global_configs`;
   const dbs = DBs(db);
   if (![1].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  loadScript(`../../common/minigame/minigame-global_configs-data.js`);
+  if (!global.___data?.[label]) loadScript(`../../common/minigame/minigame-global_configs-data.js`);
   const data = {
-    ...___data,
+    ...global.___data[label],
   };
 
   const bulkPipe = Object.keys(data).map(type => ({
