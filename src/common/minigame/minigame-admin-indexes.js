@@ -1,18 +1,19 @@
 deploy: {
+  const label = `minigame-admin`;
   const dbs = DBs(db);
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  global.___idx = {
+  (global.___idx = global.___idx ?? {})[label] = {
     username  : $Index({'username': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
   };
 
-  global.___idxs = [
+  (global.___idxs = global.___idxs ?? {})[label] = [
     $Indexes(dbs.minigame.admins, [
-      ___idx.username,
+      global.___idx[label].username,
     ]),
     $Indexes(dbs.minigame.admin_users, [
-      ___idx.username,
+      global.___idx[label].username,
     ]),
   ];
 }

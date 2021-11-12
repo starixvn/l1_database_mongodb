@@ -1,9 +1,10 @@
 deploy: {
+  const label = `minigame-game_configs`;
   const dbs = DBs(db);
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  global.___colls = [
+  (global.___colls = global.___colls ?? {})[label] = [
     $Collection(dbs.minigame.partners, {
       collation: {locale: 'en', strength: 2},
     }),
@@ -12,7 +13,7 @@ deploy: {
     }),
   ];
 
-  global.___idx = {
+  (global.___idx = global.___idx ?? {})[label] = {
     name_U            : $Index({'name': 1}, {unique: true}),
     name_U_en         : $Index({'name': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
     partnerId_en      : $Index({'partnerId': 1}, {collation: {locale: 'en', strength: 2}}),
@@ -23,32 +24,32 @@ deploy: {
     value_U           : $Index({'value': 1}, {unique: true}),
   };
 
-  global.___idxs = [
+  (global.___idxs = global.___idxs ?? {})[label] = [
     $Indexes(dbs.minigame.archive_statuses, [
-      ___idx.name_U,
-      ___idx.name_U_en,
+      global.___idx[label].name_U,
+      global.___idx[label].name_U_en,
     ]),
     $Indexes(dbs.minigame.game_configs, [
-      ___idx.name_U,
-      ___idx.name_U_en,
+      global.___idx[label].name_U,
+      global.___idx[label].name_U_en,
     ]),
     $Indexes(dbs.minigame.global_configs, [
-      ___idx.type_U,
+      global.___idx[label].type_U,
     ]),
     $Indexes(dbs.minigame.partners, [
-      ___idx.partnerId_U_en,
+      global.___idx[label].partnerId_U_en,
     ]),
     $Indexes(dbs.minigame.currency_groups, [
-      ___idx.partnerId_en,
+      global.___idx[label].partnerId_en,
     ]),
     $Indexes(dbs.minigame.currencies, [
-      ___idx.name_partnerId_U,
+      global.___idx[label].name_partnerId_U,
     ]),
     $Indexes(dbs.minigame.currency_group_games, [
-      ___idx.groupId_gameId_U,
+      global.___idx[label].groupId_gameId_U,
     ]),
     $Indexes(dbs.minigame.chips, [
-      ___idx.value_U,
+      global.___idx[label].value_U,
     ]),
   ];
 }
