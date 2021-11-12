@@ -2,7 +2,7 @@
 deploy: {
   const label = `minigame-global_configs`;
   const dbs = DBs(db);
-  if (![1].includes(dbs._mongo?._identity?.L)) break deploy;
+  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   if (!global.___data?.[label]) loadScript(`../../common/minigame/minigame-global_configs-data.js`);
