@@ -3,59 +3,110 @@ deploy: {
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["archive"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
+  const roles = {
+    admin       : {
+      clusterMonitor  : $Role(dbs.admin       , `clusterMonitor`),
+      owner           : $Role(dbs.admin       , `dbOwner`       ),
+      monitorSystem   : $Role(dbs.admin       , `monitorSystem` ),
+      public          : $Role(dbs.admin       , `public`        ),
+      readSystem      : $Role(dbs.admin       , `readSystem`    ),
+      root            : $Role(dbs.admin       , `root`          ),
+    },
+    config      : {
+      owner           : $Role(dbs.config      , `dbOwner`       ),
+    },
+    local       : {
+      owner           : $Role(dbs.local       , `dbOwner`       ),
+    },
+    log_arc     : {
+      read            : $Role(dbs.log_arc     , `read`          ),
+      readWrite       : $Role(dbs.log_arc     , `readWrite`     ),
+    },
+    member_arc  : {
+      read            : $Role(dbs.member_arc  , `read`          ),
+      readWrite       : $Role(dbs.member_arc  , `readWrite`     ),
+    },
+    minigame_arc: {
+      read            : $Role(dbs.minigame_arc, `read`          ),
+      readWrite       : $Role(dbs.minigame_arc, `readWrite`     ),
+    },
+    minigame_rm : {
+      read            : $Role(dbs.minigame_rm , `read`          ),
+      readWrite       : $Role(dbs.minigame_rm , `readWrite`     ),
+    },
+    Proteus     : {
+      read            : $Role(dbs.Proteus     , `read`          ),
+      readWrite       : $Role(dbs.Proteus     , `readWrite`     ),
+    },
+    schema      : {
+      read            : $Role(dbs.schema      , `read`          ),
+      readWrite       : $Role(dbs.schema      , `readWrite`     ),
+    },
+    summary_arc : {
+      read            : $Role(dbs.summary_arc , `read`          ),
+      readWrite       : $Role(dbs.summary_arc , `readWrite`     ),
+    },
+  };
+
   const users = [
     $User(dbs.admin, `billy.bui`, [
-      $Role(dbs.admin       , `root`          ),
-      $Role(dbs.admin       , `dbOwner`       ),
-      $Role(dbs.local       , `dbOwner`       ),
-      $Role(dbs.config      , `dbOwner`       ),
+      roles.admin         .root,
+      roles.admin         .owner,
+      roles.config        .owner,
+      roles.local         .owner,
     ]),
     $User(dbs.admin, `lmn_archive`, [
-      $Role(dbs.admin       , `public`        ),
-      $Role(dbs.log_arc     , `readWrite`     ),
-      $Role(dbs.member_arc  , `readWrite`     ),
-      $Role(dbs.minigame_arc, `readWrite`     ),
-      $Role(dbs.minigame_rm , `readWrite`     ),
+      roles.admin         .public,
+      /** archive */
+      roles.log_arc       .readWrite,
+      roles.member_arc    .readWrite,
+      roles.minigame_arc  .readWrite,
+      roles.minigame_rm   .readWrite,
     ]),
     $User(dbs.admin, `lmn_backend`, [
-      $Role(dbs.admin       , `public`        ),
-      $Role(dbs.log_arc     , `read`          ),
-      $Role(dbs.member_arc  , `read`          ),
-      $Role(dbs.minigame_arc, `read`          ),
-      $Role(dbs.minigame_rm , `read`          ),
-      $Role(dbs.summary_arc , `read`          ),
+      roles.admin         .public,
+      /** archive */
+      roles.log_arc       .read,
+      roles.member_arc    .read,
+      roles.minigame_arc  .read,
+      roles.minigame_rm   .read,
+      roles.summary_arc   .read,
     ]),
     $User(dbs.admin, `lmn_backup`, [
-      $Role(dbs.admin       , `public`        ),
-      $Role(dbs.admin       , `readSystem`    ),
+      roles.admin         .readSystem,
     ]),
     $User(dbs.admin, `lmn_readonly`, [
-      $Role(dbs.admin       , `public`        ),
-      $Role(dbs.log_arc     , `read`          ),
-      $Role(dbs.member_arc  , `read`          ),
-      $Role(dbs.minigame_arc, `read`          ),
-      $Role(dbs.minigame_rm , `read`          ),
-      $Role(dbs.summary_arc , `read`          ),
+      roles.admin         .public,
+      roles.Proteus       .read,
+      /** archive */
+      roles.log_arc       .read,
+      roles.member_arc    .read,
+      roles.minigame_arc  .read,
+      roles.minigame_rm   .read,
+      roles.summary_arc   .read,
     ]),
     $User(dbs.admin, `lmn_summary`, [
-      $Role(dbs.admin       , `public`        ),
-      $Role(dbs.log_arc     , `readWrite`     ),
-      $Role(dbs.minigame_arc, `read`          ),
-      $Role(dbs.Proteus     , `readWrite`     ),
-      $Role(dbs.summary_arc , `readWrite`     ),
+      roles.admin         .public,
+      roles.Proteus       .readWrite,
+      /** archive */
+      roles.log_arc       .readWrite,
+      roles.minigame_arc  .read,
+      roles.summary_arc   .readWrite,
     ]),
     $User(dbs.admin, `mongodb_exporter`, [
-      $Role(dbs.admin       , `clusterMonitor`),
-      $Role(dbs.admin       , `monitorSystem` ),
+      roles.admin         .clusterMonitor,
+      roles.admin         .monitorSystem,
     ]),
     $User(dbs.admin, `mongosqld`, [
-      $Role(dbs.admin       , `public`        ),
-      $Role(dbs.log_arc     , `read`          ),
-      $Role(dbs.member_arc  , `read`          ),
-      $Role(dbs.minigame_arc, `read`          ),
-      $Role(dbs.minigame_rm , `read`          ),
-      $Role(dbs.schema      , `readWrite`     ),
-      $Role(dbs.summary_arc , `read`          ),
+      roles.admin         .public,
+      roles.Proteus       .read,
+      roles.schema        .read,
+      /** archive */
+      roles.log_arc       .read,
+      roles.member_arc    .read,
+      roles.minigame_arc  .read,
+      roles.minigame_rm   .read,
+      roles.summary_arc   .read,
     ]),
   ];
   users.forEach(_ => _.deploy());
