@@ -17,6 +17,7 @@
       loadScript(`security/roles.js`);
       loadScript(`security/users-${dbs._mongo._identity.stage}.js`);
 
+      loadFolder(`common`);
       loadFolder(`l${dbs._mongo._identity.L}`);
 
       logger.info(`Finish`, `Deployed.\n`);
