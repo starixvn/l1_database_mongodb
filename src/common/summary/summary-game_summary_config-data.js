@@ -449,7 +449,7 @@ deploy: {
       fields        : {
         local : `id`, map: `id`, time: `$time`, memberId: `memberId`, settled: `$paid`,
         stake : [ {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeSpin`}}]} ],
-        payout: [ `$betWin` ],
+        payout: [ `$betwin` ],
       },
       config        : { hasCurrency: false, jpCont: 0.025 },
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
@@ -557,7 +557,7 @@ deploy: {
       fields        : {
         local : `id`, map: `id`, time: `$time`, memberId: `memberId`, settled: `$paid`,
         stake : [ {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeSpin`}}]} ],
-        payout: [ `$betWin` ],
+        payout: [ `$betwin` ],
       },
       config        : { hasCurrency: false, jpCont: 0 },
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
