@@ -1,9 +1,10 @@
 deploy: {
+  const label = `minigame-global_configs`;
   const dbs = DBs(db);
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  global.___data = {};
+  (global.___data = global.___data ?? {})[label] = {};
 
   { /** kenomatch_liveodds */
     const time      = ISODate('2021-10-04T00:00:00Z');
@@ -636,7 +637,7 @@ deploy: {
       blueRed   : 2,
       overUnder : 1.5,
     };
-    global.___data.kenomatch_liveodds = { time, blueRed, overUnder, adjRate };
+    global.___data[label].kenomatch_liveodds = { time, blueRed, overUnder, adjRate };
   }
 
   { /** exchange_codes */
@@ -644,6 +645,6 @@ deploy: {
     const configs = {
       codes: ['AUD', 'CAD', 'CNY', 'EUR', 'GBP', 'HKD', 'IDR', 'JPY', 'MYR', 'PHP', 'SGD', 'THB', 'TWD', 'USD', 'VND'],
     };
-    global.___data.exchange_codes = { time, configs };
+    global.___data[label].exchange_codes = { time, configs };
   }
 }

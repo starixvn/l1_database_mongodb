@@ -1,9 +1,10 @@
 deploy: {
+  const label = `summary`;
   const dbs = DBs(db);
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  global.___idx = {
+  (global.___idx = global.___idx ?? {})[label] = {
     TTL                         : $Index({'time': 1}, {expireAfterSeconds: 3600*24*8}),
     time_currency_gameId_system : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'system': 1}, {unique: true}),
     time_currency_gameId_cash   : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1}, {unique: true}),
@@ -12,23 +13,23 @@ deploy: {
     owGameTypeId                : $Index({'owGameTypeId': 1}, {unique: true, partialFilterExpression: {owGameTypeId: {$gt: 0}}}),
   };
 
-  global.___idxs = [
+  (global.___idxs = global.___idxs ?? {})[label] = [
     $Indexes(dbs.summary.betlog_summaries, [
-      ___idx.TTL,
-      ___idx.time_currency_gameId_system,
-      ___idx.gameId_system_time,
+      global.___idx[label].TTL,
+      global.___idx[label].time_currency_gameId_system,
+      global.___idx[label].gameId_system_time,
     ]),
     $Indexes(dbs.summary.daily_summaries, [
-      ___idx.TTL,
-      ___idx.time_currency_gameId_cash,
+      global.___idx[label].TTL,
+      global.___idx[label].time_currency_gameId_cash,
     ]),
     $Indexes(dbs.summary.hourly_summaries, [
-      ___idx.TTL,
-      ___idx.time_currency_gameId_cash,
+      global.___idx[label].TTL,
+      global.___idx[label].time_currency_gameId_cash,
     ]),
     $Indexes(dbs.summary.game_summary_config, [
-      ___idx.gameId,
-      ___idx.owGameTypeId,
+      global.___idx[label].gameId,
+      global.___idx[label].owGameTypeId,
     ]),
   ];
 }

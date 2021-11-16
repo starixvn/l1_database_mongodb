@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-global_configs-data.js

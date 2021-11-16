@@ -1,4 +1,5 @@
 deploy: {
+  const label = `archive_config`;
   const dbs = DBs(db);
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
@@ -795,6 +796,24 @@ deploy: {
         },
       ],
     },
+    { _id     : 39043,
+      from    : { db: `minigame`    , coll: `bitcoinmaster_rounds`    },
+      to      : { db: `minigame_arc`, coll: `bitcoinmaster_rounds_bk` },
+      config  : {
+        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        logField: `_rounds`, logValue: `id`,
+      },
+      childs  : [
+        { from: `bitcoinmaster_betlogs`, to: `bitcoinmaster_betlogs_bk`,
+          join: `phien`, updateOnly: false,
+          filter: { memberId: {$gt: 0} },
+        },
+        { from: `bitcoinmaster_bets`, to: `bitcoinmaster_bets_bk`,
+          join: `phien`, updateOnly: false,
+          filter: { memberId: {$gt: 0} },
+        },
+      ],
+    },
     { _id     : 39099,
       from    : { db: 'minigame'    , coll: 'jackpots'    },
       to      : { db: 'minigame_arc', coll: 'jackpots_bk' },
@@ -817,7 +836,7 @@ deploy: {
     },
   ];
 
-  global.___data = [
+  (global.___data = global.___data ?? {})[label] = [
     ...log,
     ...member,
     ...minigame,

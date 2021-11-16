@@ -1,21 +1,22 @@
 /** L1 L2 L3 */
 deploy: {
+  const label = `minigame-game_configs`;
   const dbs = DBs(db);
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  loadScript(`../../common/minigame/minigame-game_configs-indexes.js`);
+  if ((!global.___colls?.[label]) || (!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/minigame/minigame-game_configs-indexes.js`);
 
   const colls = [
-    ...___colls,
+    ...global.___colls[label],
   ];
   colls.forEach(_ => { _.create(); _.validate(); });
 
   const idx = {
-    ...___idx,
+    ...global.___idx[label],
   };
   const idxs = [
-    ...___idxs,
+    ...global.___idxs[label],
   ];
   idxs.forEach(_ => _.deploy());
 }

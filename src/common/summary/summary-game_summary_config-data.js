@@ -1,4 +1,5 @@
 deploy: {
+  const label = `summary-game_summary_config`;
   const dbs = DBs(db);
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
@@ -609,6 +610,18 @@ deploy: {
       config        : { hasCurrency: false },
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
     },
+    { gameId        : 43,
+      owGameTypeId  : { [1]: 1649, [2]: null, [3]: null }[L],
+      name          : { en: `Bitcoin Master`, vi: `Bitcoin Master`, grp: `Bitcoin` },
+      coll          : { db: `minigame`, group: `bitcoinmaster`, round: `_rounds`, postfix: `_bets` },
+      fields        : {
+        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        stake : [ `$totalAmount` ],
+        payout: [ `$betwin`, `$refund` ],
+      },
+      config        : { hasCurrency: false },
+      default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
+    },
     { gameId        : 99,
       owGameTypeId  : { [1]: 1699, [2]: 3899, [3]: 3899 }[L],
       name          : { en: `Jackpot Prize`, vi: `Giải Jackpot`, grp: `Slots` },
@@ -623,7 +636,7 @@ deploy: {
     },
   ];
 
-  global.___data = [
+  (global.___data = global.___data ?? {})[label] = [
     ...game_summary,
   ];
 }
