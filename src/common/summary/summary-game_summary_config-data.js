@@ -527,7 +527,7 @@ deploy: {
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
     },
     { gameId        : 36,
-      owGameTypeId  : { [1]: 1645, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1645, [2]: 3838, [3]: null }[L],
       name          : { en: `Keno Match`, vi: `Keno Match`, grp: `Keno` },
       coll          : { db: `minigame`, group: `kenomatch1`, round: `_phiens`, postfix: `_ones` },
       fields        : {
@@ -539,7 +539,7 @@ deploy: {
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
     },
     { gameId        : 37,
-      owGameTypeId  : { [1]: 1646, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1646, [2]: 3839, [3]: null }[L],
       name          : { en: `Keno Match MD5`, vi: `Keno Match MD5`, grp: `Keno` },
       coll          : { db: `minigame`, group: `kenomatch2`, round: `_phiens`, postfix: `_ones` },
       fields        : {
@@ -575,7 +575,7 @@ deploy: {
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
     },
     { gameId        : 40,
-      owGameTypeId  : { [1]: 1647, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1647, [2]: 3840, [3]: null }[L],
       name          : { en: `Keno Power`, vi: `Keno Power`, grp: `Keno` },
       coll          : { db: `minigame`, group: `kenopower1`, round: `_phiens`, postfix: `_ones` },
       fields        : {
@@ -587,7 +587,7 @@ deploy: {
       default       : { isCash: {[1]: false, [2]: true, [3]: null}[L] },
     },
     { gameId        : 41,
-      owGameTypeId  : { [1]: 1648, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1648, [2]: 3841, [3]: null }[L],
       name          : { en: `Keno Power MD5`, vi: `Keno Power MD5`, grp: `Keno` },
       coll          : { db: `minigame`, group: `kenopower2`, round: `_phiens`, postfix: `_ones` },
       fields        : {
