@@ -13,6 +13,8 @@ deploy: {
     $Indexes(dbs.minigame.bitcoinmaster_rounds  , [idx.TTL, idx.time, idx.id]),
     $Indexes(dbs.minigame.bitcoinmaster_betlogs , [idx.TTL,           idx.phien__id, idx.uid_thanhtoan__id]),
     $Indexes(dbs.minigame.bitcoinmaster_bets    , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.currency, idx.isCash]),
+
+    $Indexes(dbs.minigame.crypto_candlesticks   , [         idx.time]),
   ];
   idxs.forEach(_ => _.deploy());
 }
