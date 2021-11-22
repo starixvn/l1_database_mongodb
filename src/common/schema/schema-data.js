@@ -1155,6 +1155,23 @@ deploy: {
           $BICol(`_MONGOFILTER`       , `_MONGOFILTER`      , `filter`),
         ],
       ),
+      /** GLOBAL CONFIG (Gm) */
+      $BITbl(`global_configs`, `exchange_codes`,
+        [ {$match: {
+            type: `exchange_codes`,
+          }},
+          {$unwind: `$configs.codes`},
+          {$project : {
+            _id: 0, time: 1,
+            codes : `$configs.codes`,
+          }},
+        ],
+        [
+          $BICol(`time`         , `time`              , `date`   ),
+          $BICol(`codes`        , `name`              , `str`   ),
+          $BICol(`_MONGOFILTER` , `_MONGOFILTER`      , `filter`),
+        ],
+      ),
       /** HEROES SLOT (Gsl) */
       $BITbl(`heroesslot_rounds`, `heroesslot_rounds`,
         [ {$project : {
