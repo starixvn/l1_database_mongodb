@@ -1,4 +1,4 @@
-/** L1 -- -- */
+/** L1 L2 -- */
 deploy: {
   const label = `minigame-game`;
   const dbs = DBs(db);
