@@ -969,6 +969,30 @@ deploy: {
           $BICol(`even`         , `even`        , `float` ),
         ],
       ),
+      /** EXCHANGE RATES (Gm) */
+      $BITbl(`exchange_rates`, `exchange_rates`,
+        [ {$project : {
+            _id: 0, time: 1, exDate:1, exId: 1, source: 1,
+            code      : {$objectToArray: `$code`},
+            archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+          }},
+          {$unwind: `$code`},
+          {$project : {
+            time: 1, exDate:1, exId: 1, source: 1, archived: 1,
+            code: `$code.k`, rate: `$code.v`,
+          }},
+        ],
+        [
+          $BICol(`time`         , `time`        , `date`  ),
+          $BICol(`exDate`       , `exDate`      , `date`  ),
+          $BICol(`exId`         , `exId`        , `int64` ),
+          $BICol(`source`       , `source`      , `str`   ),
+          $BICol(`code`         , `code`        , `str`   ),
+          $BICol(`rate`         , `rate`        , `float` ),
+          $BICol(`archived`     , `archived`    , `bool`  ),
+          $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+        ],
+      ),
       /** FISH PRAWN CRAB PRO (G) */
       { [3]: $BITbl(`fishprawncrabpro_phiens`, `fishprawncrabpro_rounds`,
           [ {$project : {
