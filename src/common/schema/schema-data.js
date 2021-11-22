@@ -731,6 +731,54 @@ deploy: {
           $BICol(`total`        , `result`      , `int64` ),
         ],
       ),
+      /** CASINO HOLDEM' POKER (Gs) */
+      $BITbl(`casinoholdempoker_phiens`, `casinoholdempoker_rounds`,
+        [ {$project : {
+            _id: 0, time: 1, id: 1, ended: 1, roundStartTime: 1,
+            archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+          }},
+        ],
+        [
+          $BICol(`_MONGOFILTER`   , `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`id`             , `id`          , `int64` ),
+          $BICol(`time`           , `time`        , `date`  ),
+          $BICol(`roundStartTime` , `startTime`   , `date`  ),
+          $BICol(`ended`          , `ended`       , `bool`  ),
+          $BICol(`archived`       , `archived`    , `bool`  ),
+        ],
+      ),
+      $BITbl(`casinoholdempoker_cuocs`, `casinoholdempoker_tickets`,
+        [ {$match: {memberId: {$gt: 0}}},
+          {$project : {
+            _id: 0, freeBet: 1, phien: 1, uid: 1, memberId: 1, name: 1, time: 1,
+            betwin: 1, thanhtoan: 1,
+            totalAmount : `$bet`,
+            currency    : `$__archive.currency`,
+            isCash      : `$__archive.isCash`,
+            archived    : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+          }},
+        ],
+        [
+          $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`         , `time`        , `date`  ),
+          $BICol(`phien`        , `roundId`     , `int64` ),
+          /* Member */
+          $BICol(`uid`          , `uid`         , `str`   ),
+          $BICol(`memberId`     , `memberId`    , `int64` ),
+          $BICol(`name`         , `nickname`    , `str`   ),
+          $BICol(`currency`     , `currency`    , `str`   ),
+          /* Summary */
+          $BICol(`totalAmount`  , `stake`       , `float` ),
+          $BICol(`betwin`       , `payout`      , `float` ),
+          /* Attributes */
+          $BICol(`thanhtoan`    , `settled`     , `bool`  ),
+          $BICol(`freeBet`      , `freeBet`     , `bool`  ),
+          $BICol(`isCash`       , `isCash`      , `bool`  ),
+          $BICol(`archived`     , `archived`    , `bool`  ),
+        ],
+      ),
       /** CHANLE (Gb) */
       $BITbl(`chanle_phiens`, `chanle_rounds`,
         [ {$project : {
