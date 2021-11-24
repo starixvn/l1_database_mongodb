@@ -2710,6 +2710,8 @@ deploy: {
             $BICol(`time`         , `time`        , `date`  ),
             $BICol(`archived`     , `archived`    , `bool`  ),
             /* Result */
+            $BICol(`odd`          , `odd`         , `bool`  ),
+            $BICol(`even`         , `even`        , `bool`  ),
             $BICol(`r0`           , `r0`          , `bool`  ),
             $BICol(`r1`           , `r1`          , `bool`  ),
             $BICol(`r2`           , `r2`          , `bool`  ),
