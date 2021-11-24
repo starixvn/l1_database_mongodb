@@ -3068,6 +3068,11 @@ deploy: {
               _id: 0, time: 1, id: 1,
               odd       : `$settlementResult.odd`,
               even      : `$settlementResult.even`,
+              r0        : {$eq: [0, {$sum: [{$toInt: `$result.red1`}, {$toInt: `$result.red2`}, {$toInt: `$result.red3`}, {$toInt: `$result.red4`}]}]},
+              r1        : {$eq: [1, {$sum: [{$toInt: `$result.red1`}, {$toInt: `$result.red2`}, {$toInt: `$result.red3`}, {$toInt: `$result.red4`}]}]},
+              r2        : {$eq: [2, {$sum: [{$toInt: `$result.red1`}, {$toInt: `$result.red2`}, {$toInt: `$result.red3`}, {$toInt: `$result.red4`}]}]},
+              r3        : {$eq: [3, {$sum: [{$toInt: `$result.red1`}, {$toInt: `$result.red2`}, {$toInt: `$result.red3`}, {$toInt: `$result.red4`}]}]},
+              r4        : {$eq: [4, {$sum: [{$toInt: `$result.red1`}, {$toInt: `$result.red2`}, {$toInt: `$result.red3`}, {$toInt: `$result.red4`}]}]},
               red1      : `$result.red1`,
               red2      : `$result.red2`,
               red3      : `$result.red3`,
@@ -3084,6 +3089,11 @@ deploy: {
             /* Result */
             $BICol(`odd`          , `odd`         , `bool`  ),
             $BICol(`even`         , `even`        , `bool`  ),
+            $BICol(`r0`           , `r0`          , `bool`  ),
+            $BICol(`r1`           , `r1`          , `bool`  ),
+            $BICol(`r2`           , `r2`          , `bool`  ),
+            $BICol(`r3`           , `r3`          , `bool`  ),
+            $BICol(`r4`           , `r4`          , `bool`  ),
             /* Details */
             $BICol(`red1`         , `red1`        , `bool`  ),
             $BICol(`red2`         , `red2`        , `bool`  ),
