@@ -2,7 +2,7 @@
 deploy: {
   const label = `summary-game_summary_config`;
   const dbs = DBs(db);
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
+  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   if (!global.___data?.[label]) loadScript(`../../common/summary/summary-game_summary_config-data.js`);
@@ -18,7 +18,7 @@ deploy: {
 deploy: {
   const label = `summary_arc-game_summary_config`;
   const dbs = DBs(db);
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
+  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   if (!global.___data?.[label]) loadScript(`../../common/summary/summary_arc-game_summary_config-data.js`);
