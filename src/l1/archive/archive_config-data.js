@@ -10,7 +10,7 @@ deploy: {
     ...global.___data[label],
   ];
 
-  dbs.archive.archive_config.deleteMany({});
-  res = dbs.archive.archive_config.insertMany(data, {ordered: false});
-  $Log(`DATA`).info(`archive.archive_config`, `${Object.keys(res.insertedIds).length} docs inserted`);
+  const del = dbs.archive.archive_config.deleteMany({});
+  const res = dbs.archive.archive_config.insertMany(data, {ordered: false});
+  $Log(`DATA`).info(`archive.archive_config`, `D-${del.deletedCount} • I-${Object.keys(res.insertedIds).length} • M-0 • U-0`);
 }

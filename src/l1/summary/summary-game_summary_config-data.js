@@ -10,9 +10,9 @@ deploy: {
     ...global.___data[label],
   ];
 
-  dbs.summary.game_summary_config.deleteMany({});
-  res = dbs.summary.game_summary_config.insertMany(data, {ordered: false});
-  $Log(`DATA`).info(`summary.game_summary_config`, `${Object.keys(res.insertedIds).length} docs inserted`);
+  const del = dbs.summary.game_summary_config.deleteMany({});
+  const res = dbs.summary.game_summary_config.insertMany(data, {ordered: false});
+  $Log(`DATA`).info(`summary.game_summary_config`, `D-${del.deletedCount} • I-${Object.keys(res.insertedIds).length} • M-0 • U-0`);
 }
 
 deploy: {
@@ -26,7 +26,7 @@ deploy: {
     ...global.___data[label],
   ];
 
-  dbs.summary_arc.game_summary_config.deleteMany({});
-  res = dbs.summary_arc.game_summary_config.insertMany(data, {ordered: false});
-  $Log(`DATA`).info(`summary_arc.game_summary_config`, `${Object.keys(res.insertedIds).length} docs inserted`);
+  const del = dbs.summary_arc.game_summary_config.deleteMany({});
+  const res = dbs.summary_arc.game_summary_config.insertMany(data, {ordered: false});
+  $Log(`DATA`).info(`summary_arc.game_summary_config`, `D-${del.deletedCount} • I-${Object.keys(res.insertedIds).length} • M-0 • U-0`);
 }
