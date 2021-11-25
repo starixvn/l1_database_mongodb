@@ -8,11 +8,13 @@ deploy: {
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame-game-indexes.js`);
   const idx = {
     ...global.___idx[label],
+    BL_phien      : $Index({phien: 1}, {partialFilterExpression: {_id: {$lt: 0}}}),
+    BL_uid_phien  : $Index({uid: 1, phien: 1}, {partialFilterExpression: {_id: {$lt: 0}}}),
   };
   const idxs = [
     $Indexes(dbs.minigame.specialsedie_phiens , [idx.TTL, idx.time, idx.id]),
-    $Indexes(dbs.minigame.specialsedie_cuocs  , [idx.TTL,           idx.phien__id, idx.uid_thanhtoan__id]),
-    $Indexes(dbs.minigame.specialsedie_ones   , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.specialsedie_cuocs  , [idx.TTL,           idx.phien__id, idx.uid_thanhtoan__id, idx.BL_phien, idx.BL_uid_phien]),
+    $Indexes(dbs.minigame.specialsedie_ones   , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.currency, idx.isCash, idx.BL_phien]),
   ];
   idxs.forEach(_ => _.deploy());
 }
