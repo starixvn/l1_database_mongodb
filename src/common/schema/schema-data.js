@@ -643,11 +643,12 @@ deploy: {
           {$project : {
             _id: 0, phien: 1, uid: 1, memberId: 1, name: 1, time: 1,
             odd: 1, even: 1, up: 1, down: 1,
-            betwin: 1, thanhtoan: 1, totalAmount : 1,
-            currency    : `$__archive.currency`,
-            isCash      : `$__archive.isCash`,
-            archived    : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
-            freeBet     : {$literal: false},
+            thanhtoan: 1, totalAmount : 1, refund: 1,
+            betwin    : {$sum: [`$betwin`, `$refund`]},
+            currency  : `$__archive.currency`,
+            isCash    : `$__archive.isCash`,
+            archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+            freeBet   : {$literal: false},
           }},
         ],
         [
@@ -663,6 +664,7 @@ deploy: {
           /* Summary */
           $BICol(`totalAmount`  , `stake`       , `float` ),
           $BICol(`betwin`       , `payout`      , `float` ),
+          $BICol(`refund`       , `refund`      , `float` ),
           /* Attributes */
           $BICol(`thanhtoan`    , `settled`     , `bool`  ),
           $BICol(`freeBet`      , `freeBet`     , `bool`  ),
