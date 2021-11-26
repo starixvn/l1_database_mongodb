@@ -5,8 +5,8 @@ deploy: {
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   (global.___idx = global.___idx ?? {})[label] = {
-    time_currency_gameId_cash_partner_U   : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1}, {unique: true}),
-    time_currency_gameId_system_partner_U : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'system': 1}, {unique: true}),
+    time_currency_gameId_cash_partner_U   : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'partnerId': 1}, {unique: true}),
+    time_currency_gameId_system_partner_U : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'system': 1, 'partnerId': 1}, {unique: true}),
     gameId_currency                       : $Index({'gameId': 1, 'currency': 1}),
     gameId_U                              : $Index({'gameId': 1}, {unique: true}),
     owGameTypeId_FU                       : $Index({'owGameTypeId': 1}, {unique: true, partialFilterExpression: {owGameTypeId: {$gt: 0}}}),
