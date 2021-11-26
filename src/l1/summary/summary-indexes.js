@@ -21,7 +21,7 @@ deploy: {
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  if ((!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/summary/summary_arc-indexes.js`);
+  if ((!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/summary/summary-indexes.js`);
   const idx = {
     ...global.___idx[label],
   };
