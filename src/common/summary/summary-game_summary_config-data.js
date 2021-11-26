@@ -623,7 +623,11 @@ deploy: {
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
-        payout: [ `$betwin`, `$refund` ],
+        payout: [
+          {$divide: [`$betwin`, {$subtract: [{$avg: [`$odds.up`, `$odds.down`, `$odds.odd`, `$odds.even`]}, 1]}]},
+          `$betwin`,
+          `$refund`,
+        ],
       },
       config        : commonConfig,
       default       : commonDefault,
