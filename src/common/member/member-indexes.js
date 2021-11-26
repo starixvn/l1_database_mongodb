@@ -2,7 +2,7 @@ deploy: {
   const label = `member`;
   const dbs = DBs(db);
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
-  if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   (global.___idx = global.___idx ?? {})[label] = {
     TTL         : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),

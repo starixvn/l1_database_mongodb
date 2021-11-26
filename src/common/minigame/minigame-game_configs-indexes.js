@@ -5,10 +5,13 @@ deploy: {
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   (global.___colls = global.___colls ?? {})[label] = [
-    $Collection(dbs.minigame.partners, {
+    $Collection(dbs.minigame.currencies, {
       collation: {locale: 'en', strength: 2},
     }),
     $Collection(dbs.minigame.currency_groups, {
+      collation: {locale: 'en', strength: 2},
+    }),
+    $Collection(dbs.minigame.partners, {
       collation: {locale: 'en', strength: 2},
     }),
   ];

@@ -8,11 +8,26 @@ deploy: {
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame-game-indexes.js`);
   const idx = {
     ...global.___idx[label],
+    BL_phien                : $Index({phien: 1}, {partialFilterExpression: {_id: {$lt: 0}}}),
+    BL_phien_taixiu_red     : $Index({phien: 1, taixiu: 1, red: 1}, {partialFilterExpression: {_id: {$lt: 0}}}),
+    BL_uid                  : $Index({uid: 1}, {partialFilterExpression: {_id: {$lt: 0}}}),
+    BL_uid_phien_taixiu_red : $Index({uid: 1, phien: 1, taixiu: 1, red: 1}, {partialFilterExpression: {_id: {$lt: 0}}}),
+    BL_uid_thanhtoan        : $Index({uid: 1, thanhtoan: 1}, {partialFilterExpression: {_id: {$lt: 0}}}),
+  };
+  const BL = {
+    cuocs : {
+      [1]: [], [2]: [],
+      [3]: [idx.BL_phien, idx.BL_uid_thanhtoan, idx.BL_phien_taixiu_red],
+    }[dbs._mongo._identity.L],
+    ones  : {
+      [1]: [], [2]: [],
+      [3]: [idx.BL_uid, idx.BL_phien, idx.BL_uid_phien_taixiu_red],
+    }[dbs._mongo._identity.L],
   };
   const idxs = [
     $Indexes(dbs.minigame.taixiu_phiens , [idx.TTL, idx.time, idx.id]),
-    $Indexes(dbs.minigame.taixiu_cuocs  , [idx.TTL,           idx.phien__id, idx.uid_thanhtoan__id]),
-    $Indexes(dbs.minigame.taixiu_ones   , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.taixiu_cuocs  , [idx.TTL,           idx.phien__id, idx.uid_thanhtoan__id, ...BL.cuocs]),
+    $Indexes(dbs.minigame.taixiu_ones   , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.currency, idx.isCash, , ...BL.ones]),
   ];
   idxs.forEach(_ => _.deploy());
 }
