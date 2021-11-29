@@ -1205,9 +1205,53 @@ deploy: {
           }},
         ],
         [
-          $BICol(`time`         , `time`              , `date`   ),
-          $BICol(`codes`        , `name`              , `str`   ),
-          $BICol(`_MONGOFILTER` , `_MONGOFILTER`      , `filter`),
+          $BICol(`time`         , `time`        , `date`  ),
+          $BICol(`codes`        , `name`        , `str`   ),
+          $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+        ],
+      ),
+      $BITbl(`global_configs`, `kenomatch_liveodds_bluered`,
+        [ {$match: {
+            type: `kenomatch_liveodds`,
+          }},
+          {$project : {
+            _id: 0,
+            blueRed : {$objectToArray: `$blueRed`},
+          }},
+          {$unwind: `$blueRed`},
+          {$project: {
+            val         : {$toInt: `$blueRed.k`},
+            liveFTBlue  : `$blueRed.v.liveFTBlue`,
+            liveFTRed   : `$blueRed.v.liveFTRed`,
+          }},
+        ],
+        [
+          $BICol(`val`          , `val`           , `int64` ),
+          $BICol(`liveFTBlue`   , `liveFTBlue`    , `float` ),
+          $BICol(`liveFTRed`    , `liveFTRed`     , `float` ),
+          $BICol(`_MONGOFILTER` , `_MONGOFILTER`  , `filter`),
+        ],
+      ),
+      $BITbl(`global_configs`, `kenomatch_liveodds_overunder`,
+        [ {$match: {
+            type: `kenomatch_liveodds`,
+          }},
+          {$project : {
+            _id: 0,
+            overUnder : {$objectToArray: `$overUnder`},
+          }},
+          {$unwind: `$overUnder`},
+          {$project: {
+            val         : {$toInt: `$overUnder.k`},
+            liveFTOver  : `$overUnder.v.liveFTOver`,
+            liveFTUnder : `$overUnder.v.liveFTUnder`,
+          }},
+        ],
+        [
+          $BICol(`val`          , `val`           , `int64` ),
+          $BICol(`liveFTOver`   , `liveFTOver`    , `float` ),
+          $BICol(`liveFTUnder`  , `liveFTUnder`   , `float` ),
+          $BICol(`_MONGOFILTER` , `_MONGOFILTER`  , `filter`),
         ],
       ),
       /** HEROES SLOT (Gsl) */
