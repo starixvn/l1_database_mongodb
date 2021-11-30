@@ -643,7 +643,7 @@ deploy: {
   { /** exchange_codes */
     const time    = ISODate('2021-10-26T00:00:00Z');
     const configs = {
-      codes: ['AUD', 'CAD', 'CNY', 'EUR', 'GBP', 'HKD', 'IDR', 'JPY', 'MYR', 'PHP', 'SGD', 'THB', 'TWD', 'USD', 'VND'],
+      codes: ['AUD', 'CAD', 'CNY', 'EUR', 'GBP', 'HKD', 'IDR', 'JPY', 'MYR', 'PHP', 'SGD', 'THB', 'TWD', 'USD', 'VND', 'YNG'],
     };
     global.___data[label].exchange_codes = { time, configs };
   }
