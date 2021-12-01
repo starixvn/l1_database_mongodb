@@ -18,7 +18,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.baccarat_phiens   , [idx.TTL, idx.time, idx.id]),
-    $Indexes(dbs.minigame.baccarat_cuocs    , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.uid_thanhtoan__id, idx.currency, idx.isCash, ...BL.cuocs]),
+    $Indexes(dbs.minigame.baccarat_cuocs    , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.uid_thanhtoan__id, idx.currency, idx.isCash, ...BL.cuocs]),
     $Indexes(dbs.minigame.baccarat_tmpcuocs , [idx.timeTTL,       idx.phien__id, idx.uid_phien]),
   ];
   idxs.forEach(_ => _.deploy());
@@ -36,7 +36,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame_arc.baccarat_phiens_bk, [idx.TTL, idx.time, idx.id]),
-    $Indexes(dbs.minigame_arc.baccarat_cuocs_bk , [idx.TTL, idx.time, idx.phien, idx.uid_phien_U]),
+    $Indexes(dbs.minigame_arc.baccarat_cuocs_bk , [idx.TTL, idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
   ];
   idxs.forEach(_ => _.deploy());
 }

@@ -13,8 +13,8 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.specialsedie_phiens , [idx.TTL, idx.time, idx.id]),
-    $Indexes(dbs.minigame.specialsedie_cuocs  , [idx.TTL,           idx.phien__id, idx.uid_thanhtoan__id, idx.BL_phien, idx.BL_uid_phien]),
-    $Indexes(dbs.minigame.specialsedie_ones   , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.currency, idx.isCash, idx.BL_phien]),
+    $Indexes(dbs.minigame.specialsedie_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, idx.BL_phien, idx.BL_uid_phien]),
+    $Indexes(dbs.minigame.specialsedie_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, idx.BL_phien]),
   ];
   idxs.forEach(_ => _.deploy());
 }
@@ -31,8 +31,8 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame_arc.specialsedie_phiens_bk, [idx.time, idx.id]),
-    $Indexes(dbs.minigame_arc.specialsedie_cuocs_bk , [          idx.phien, idx.uid_phien]),
-    $Indexes(dbs.minigame_arc.specialsedie_ones_bk  , [idx.time, idx.phien, idx.uid_phien_U]),
+    $Indexes(dbs.minigame_arc.specialsedie_cuocs_bk , [          idx.phien, idx.memberId_phien_F, idx.uid_phien]),
+    $Indexes(dbs.minigame_arc.specialsedie_ones_bk  , [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
   ];
   idxs.forEach(_ => _.deploy());
 }

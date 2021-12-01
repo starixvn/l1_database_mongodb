@@ -10,7 +10,7 @@ deploy: {
     ...global.___idx[label],
   };
   const idxs = [
-    $Indexes(dbs.minigame.fourguardians_rounds    , [idx.TTL, idx.time, idx.id, idx.paid_uid, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.fourguardians_rounds    , [idx.TTL, idx.time, idx.id, idx.memberId_id_F, idx.paid_uid, idx.currency, idx.isCash]),
     $Indexes(dbs.minigame.fourguardians_freespins , [idx.TTL,           idx.id, idx.expiryTime]),
     $Indexes(dbs.minigame.fourguardians_fames     , [idx.TTL, idx.time, idx.uid_roundId]),
   ];
@@ -28,7 +28,7 @@ deploy: {
     ...global.___idx[label],
   };
   const idxs = [
-    $Indexes(dbs.minigame_arc.fourguardians_rounds_bk   , [idx.time, idx.id, idx.uid_id]),
+    $Indexes(dbs.minigame_arc.fourguardians_rounds_bk   , [idx.time, idx.id, idx.memberId_id_F, idx.uid_id]),
     $Indexes(dbs.minigame_arc.fourguardians_freespins_bk, [          idx.id, idx.expiryTime]),
     $Indexes(dbs.minigame_arc.fourguardians_fames_bk    , [idx.time, idx.uid_roundId]),
   ];
