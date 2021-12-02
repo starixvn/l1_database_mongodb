@@ -20,8 +20,8 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.chanleturbo_phiens, [idx.TTL, idx.time, idx.id]),
-    $Indexes(dbs.minigame.chanleturbo_cuocs , [idx.TTL,           idx.phien__id, idx.uid_thanhtoan__id]),
-    $Indexes(dbs.minigame.chanleturbo_ones  , [idx.TTL, idx.time, idx.phien__id, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.chanleturbo_cuocs , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id]),
+    $Indexes(dbs.minigame.chanleturbo_ones  , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
   ];
   idxs.forEach(_ => _.deploy());
 }
@@ -38,8 +38,8 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame_arc.chanleturbo_phiens_bk , [idx.time, idx.id]),
-    $Indexes(dbs.minigame_arc.chanleturbo_cuocs_bk  , [          idx.phien, idx.uid_phien]),
-    $Indexes(dbs.minigame_arc.chanleturbo_ones_bk   , [idx.time, idx.phien, idx.uid_phien_U]),
+    $Indexes(dbs.minigame_arc.chanleturbo_cuocs_bk  , [          idx.phien, idx.memberId_phien_F, idx.uid_phien]),
+    $Indexes(dbs.minigame_arc.chanleturbo_ones_bk   , [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
   ];
   idxs.forEach(_ => _.deploy());
 }
