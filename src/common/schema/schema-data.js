@@ -25,7 +25,7 @@ deploy: {
     $BIDb(`archive`, []),
     $BIDb(`log`, [
       $BITbl(`bets`, `bets`,
-        [ {$Project: {_id: 0, __archive: 0}} ],
+        [ {$project: {_id: 0, __archive: 0}} ],
         [
           $BICol(`requestTimeStamp` , `requestTS`   , `str`   ),
           $BICol(`responseTimeStamp`, `responseTS`  , `str`   ),
@@ -47,7 +47,7 @@ deploy: {
         ],
       ),
       $BITbl(`end_games`, `end_games`,
-        [ {$Project: {_id: 0, __archive: 0}} ],
+        [ {$project: {_id: 0, __archive: 0}} ],
         [
           $BICol(`requestTimeStamp`   , `requestTS`     , `str`   ),
           $BICol(`responseTimeStamp`  , `responseTS`    , `str`   ),
