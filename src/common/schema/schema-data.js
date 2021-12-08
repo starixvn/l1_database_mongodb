@@ -720,7 +720,7 @@ deploy: {
           }},
         ],
         [
-          $BICol(`_MONGOFILTER`   , `_MONGOFILTER`  ,`filter`),
+          $BICol(`_MONGOFILTER`   , `_MONGOFILTER`  , `filter`),
           /* Metadata */
           $BICol(`id`             , `id`            , `int64` ),
           $BICol(`exchangeRateId` , `exchangeRateId`, `int64` ),
