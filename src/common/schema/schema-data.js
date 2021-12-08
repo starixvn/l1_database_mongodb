@@ -203,6 +203,7 @@ deploy: {
           $BICol(`memberId`         , `memberId`        , `int64` ),
           $BICol(`memberName`       , `memberName`      , `str`   ),
           $BICol(`currency`         , `currency`        , `str`   ),
+          $BICol(`currencyCode`     , `currencyCode`    , `str`   ),
           $BICol(`language`         , `language`        , `str`   ),
           $BICol(`clientId`         , `clientId`        , `str`   ),
           $BICol(`seq`              , `seq`             , `str`   ),
@@ -210,6 +211,8 @@ deploy: {
           $BICol(`iP`               , `ip`              , `str`   ),
           $BICol(`domain`           , `domain`          , `str`   ),
           $BICol(`browserUserAgent` , `browserUserAgent`, `str`   ),
+          $BICol(`partnerId`        , `partnerId`       , `str`   ),
+          $BICol(`appType`          , `appType`         , `int64` ),
           $BICol(`_MONGOFILTER`     , `_MONGOFILTER`    , `filter`),
         ],
       ),
@@ -1150,6 +1153,7 @@ deploy: {
               id: 1, roundId: 1,
               bet: 1, total: 1, available: 1,
               time: 1, expiryTime: 1,
+              partnerId : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
               archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
             }},
           ],
@@ -1162,6 +1166,7 @@ deploy: {
             $BICol(`uid`          , `uid`         , `str`   ),
             $BICol(`memberId`     , `memberId`    , `int64` ),
             $BICol(`name`         , `nickname`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
             /* Additional Info */
             $BICol(`id`           , `id`          , `int64` ),
             $BICol(`total`        , `total`       , `int64` ),
@@ -1178,6 +1183,7 @@ deploy: {
             {$project : {
               _id: 0, freeSpin: 1, uid: 1, name: 1, memberId: 1, roundId: 1, time: 1,
               bet: 1, totalAmount: 1, winningAmount: 1,
+              partnerId : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
             }},
           ],
           [
@@ -1189,6 +1195,7 @@ deploy: {
             $BICol(`uid`          , `uid`         , `str`   ),
             $BICol(`memberId`     , `memberId`    , `int64` ),
             $BICol(`name`         , `nickname`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
             /* Summary */
             $BICol(`totalAmount`  , `stake`       , `float` ),
             $BICol(`winningAmount`, `payout`      , `float` ),
@@ -1359,6 +1366,7 @@ deploy: {
               id: 1, roundId: 1,
               bet: 1, total: 1, available: 1,
               time: 1, expiryTime: 1,
+              partnerId : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
               archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
             }},
           ],
@@ -1371,6 +1379,7 @@ deploy: {
             $BICol(`uid`          , `uid`         , `str`   ),
             $BICol(`memberId`     , `memberId`    , `int64` ),
             $BICol(`name`         , `nickname`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
             /* Additional Info */
             $BICol(`id`           , `id`          , `int64` ),
             $BICol(`total`        , `total`       , `int64` ),
@@ -1387,6 +1396,7 @@ deploy: {
             {$project : {
               _id: 0, freeSpin: 1, uid: 1, name: 1, memberId: 1, roundId: 1, time: 1,
               bet: 1, totalAmount: 1, winningAmount: 1,
+              partnerId : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
             }},
           ],
           [
@@ -1398,6 +1408,7 @@ deploy: {
             $BICol(`uid`          , `uid`         , `str`   ),
             $BICol(`memberId`     , `memberId`    , `int64` ),
             $BICol(`name`         , `nickname`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
             /* Summary */
             $BICol(`totalAmount`  , `stake`       , `float` ),
             $BICol(`winningAmount`, `payout`      , `float` ),
@@ -3451,6 +3462,7 @@ deploy: {
             $BICol(`memberId`     , `memberId`    , `int64` ),
             $BICol(`name`         , `nickname`    , `str`   ),
             $BICol(`currency`     , `currency`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
             /* Summary */
             $BICol(`totalAmount`  , `stake`       , `float` ),
             $BICol(`betwin`       , `payout`      , `float` ),
@@ -3653,7 +3665,10 @@ deploy: {
         ],
       ),
       $BITbl(`users`, `users`,
-        [ {$project : {'_id': 1, 'local.username': 1, 'local.regDate': 1, 'local.memberId': 1, 'local.memberName': 1, 'local.clientId': 1, 'local.currency': 1}} ],
+        [ {$project : {
+            '_id': 1, 'local.username': 1, 'local.regDate': 1, 'local.memberId': 1, 'local.memberName': 1, 'local.clientId': 1, 'local.currency': 1,
+            partnerId : {$ifNull: [`$local.partnerId`, {$literal: `ONEworks1`}]},
+          }} ],
         [
           $BICol(`_id`              , `uid`         , `oid`   ),
           $BICol(`local.username`   , `username`    , `str`   ),
@@ -3662,6 +3677,7 @@ deploy: {
           $BICol(`local.memberName` , `memberName`  , `str`   ),
           $BICol(`local.clientId`   , `clientId`    , `str`   ),
           $BICol(`local.currency`   , `currency`    , `str`   ),
+          $BICol(`partnerId`        , `partnerId`   , `str`   ),
           $BICol(`_MONGOFILTER`     , `_MONGOFILTER`, `filter`),
         ],
       ),
@@ -3670,7 +3686,7 @@ deploy: {
             _id: 0, username: 1, memberId: 1, memberName: 1, userId: 1,
             ssoTime: 1, recheckInTime: 1,
             ip: 1, browserUserAgent: 1, language: 1, currency: 1,
-            owSeq: 1, clientId: 1, siteName: 1, system: 1,
+            owSeq: 1, clientId: 1, siteName: 1, system: 1, partnerId: 1,
             archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
           }},
         ],
@@ -3689,6 +3705,7 @@ deploy: {
           $BICol(`clientId`         , `clientId`        , `str`   ),
           $BICol(`siteName`         , `siteName`        , `str`   ),
           $BICol(`system`           , `system`          , `int64` ),
+          $BICol(`partnerId`        , `partnerId`       , `str`   ),
           $BICol(`archived`         , `archived`        , `bool`  ),
           $BICol(`_MONGOFILTER`     , `_MONGOFILTER`    , `filter`),
         ],
@@ -4160,6 +4177,7 @@ deploy: {
           $BICol(`memberId`     , `memberId`    , `int64` ),
           $BICol(`name`         , `nickname`    , `str`   ),
           $BICol(`currency`     , `currency`    , `str`   ),
+          $BICol(`partnerId`    , `partnerId`   , `str`   ),
           /* Summary */
           $BICol(`totalAmount`  , `stake`       , `float` ),
           $BICol(`betwin`       , `payout`      , `float` ),
