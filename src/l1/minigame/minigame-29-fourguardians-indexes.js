@@ -23,6 +23,12 @@ deploy: {
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
+  [ $Collection(dbs.minigame_arc.fourguardians_rounds_bk   , {storageEngine}),
+    $Collection(dbs.minigame_arc.fourguardians_freespins_bk, {storageEngine}),
+    $Collection(dbs.minigame_arc.fourguardians_fames_bk    , {storageEngine}),
+  ].forEach(_ => { _.create(); _.validate(); });
+
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame_arc-slot-indexes.js`);
   const idx = {
     ...global.___idx[label],

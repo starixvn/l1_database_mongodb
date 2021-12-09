@@ -23,6 +23,11 @@ deploy: {
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
+  [ $Collection(dbs.minigame_arc.sicbo_phiens_bk, {storageEngine}),
+    $Collection(dbs.minigame_arc.sicbo_cuocs_bk , {storageEngine}),
+  ].forEach(_ => { _.create(); _.validate(); });
+
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame_arc-game-indexes.js`);
   const idx = {
     ...global.___idx[label],
