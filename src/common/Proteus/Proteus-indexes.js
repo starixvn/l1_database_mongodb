@@ -4,6 +4,12 @@ deploy: {
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
+  (global.___colls = global.___colls ?? {})[label] = [
+    $Collection(dbs.Proteus.betlogs, {
+      storageEngine : {wiredTiger: {configString: 'block_compressor=zstd'}},
+    }),
+  ];
+
   (global.___idx = global.___idx ?? {})[label] = {
     ts_TTL  : $Index({'ts': 1}, {expireAfterSeconds: 3600*24*8}),
   };
@@ -20,6 +26,12 @@ deploy: {
   const dbs = DBs(db);
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+
+  (global.___colls = global.___colls ?? {})[label] = [
+    $Collection(dbs.Proteus.betlogs_bk, {
+      storageEngine : {wiredTiger: {configString: 'block_compressor=zstd'}},
+    }),
+  ];
 
   (global.___idx = global.___idx ?? {})[label] = {
     ts  : $Index({'ts': 1}),
