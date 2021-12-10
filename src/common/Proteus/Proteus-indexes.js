@@ -4,10 +4,9 @@ deploy: {
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
   (global.___colls = global.___colls ?? {})[label] = [
-    $Collection(dbs.Proteus.betlogs, {
-      storageEngine : {wiredTiger: {configString: 'block_compressor=zstd'}},
-    }),
+    $Collection(dbs.Proteus.betlogs, {storageEngine}),
   ];
 
   (global.___idx = global.___idx ?? {})[label] = {
@@ -27,10 +26,9 @@ deploy: {
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
   (global.___colls = global.___colls ?? {})[label] = [
-    $Collection(dbs.Proteus.betlogs_bk, {
-      storageEngine : {wiredTiger: {configString: 'block_compressor=zstd'}},
-    }),
+    $Collection(dbs.Proteus.betlogs_bk, {storageEngine}),
   ];
 
   (global.___idx = global.___idx ?? {})[label] = {
