@@ -1,6 +1,6 @@
 deploy: {
-  const label = `member_arc`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `member_arc@${dbs.toString()}`;
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
