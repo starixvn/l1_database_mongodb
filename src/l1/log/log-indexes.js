@@ -1,7 +1,7 @@
 /** L1 -- -- */
 deploy: {
-  const label = `log`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `log@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
@@ -47,8 +47,8 @@ deploy: {
 }
 
 deploy: {
-  const label = `log_arc`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `log_arc@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
