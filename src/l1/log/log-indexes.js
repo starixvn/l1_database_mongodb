@@ -5,7 +5,16 @@ deploy: {
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  if ((!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log-indexes.js`);
+  if ((!global.___colls?.[label]) || (!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log-indexes.js`);
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
+  const colls = [
+    ...global.___colls[label],
+    $Collection(dbs.log.retrieve_requests     , {storageEngine}),
+    $Collection(dbs.log.signin_requests       , {storageEngine}),
+    $Collection(dbs.log.ticket_detail_requests, {storageEngine}),
+    $Collection(dbs.log.void_games            , {storageEngine}),
+  ];
+  colls.forEach(_ => { _.create(); _.validate(); });
   const idx = {
     ...global.___idx[label],
     memberId: $Index({'request.memberId': 1}),
@@ -43,7 +52,16 @@ deploy: {
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  if ((!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log_arc-indexes.js`);
+  if ((!global.___colls?.[label]) || (!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log_arc-indexes.js`);
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
+  const colls = [
+    ...global.___colls[label],
+    $Collection(dbs.log_arc.retrieve_requests_bk     , {storageEngine}),
+    $Collection(dbs.log_arc.signin_requests_bk       , {storageEngine}),
+    $Collection(dbs.log_arc.ticket_detail_requests_bk, {storageEngine}),
+    $Collection(dbs.log_arc.void_games_bk            , {storageEngine}),
+  ];
+  colls.forEach(_ => { _.create(); _.validate(); });
   const idx = {
     ...global.___idx[label],
   };
