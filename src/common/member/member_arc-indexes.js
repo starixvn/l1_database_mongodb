@@ -4,6 +4,11 @@ deploy: {
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
+  (global.___colls = global.___colls ?? {})[label] = [
+    $Collection(dbs.member_arc.member_auths_bk, {storageEngine}),
+  ];
+
   (global.___idx = global.___idx ?? {})[label] = {
     memberId_iP : $Index({'memberId': 1, 'iP': 1}),
   };
