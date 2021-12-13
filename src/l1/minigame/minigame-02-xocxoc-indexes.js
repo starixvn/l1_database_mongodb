@@ -1,7 +1,7 @@
 /** L1 -- L3 */
 deploy: {
-  const label = `minigame-game`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `minigame-game@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
@@ -25,8 +25,8 @@ deploy: {
 }
 
 deploy: {
-  const label = `minigame_arc-game`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `minigame_arc-game@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 

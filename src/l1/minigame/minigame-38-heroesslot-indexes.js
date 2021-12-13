@@ -1,7 +1,7 @@
 /** L1 L2 -- */
 deploy: {
-  const label = `minigame-slot`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `minigame-slot@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
@@ -18,8 +18,8 @@ deploy: {
 }
 
 deploy: {
-  const label = `minigame_arc-slot`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `minigame_arc-slot@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 

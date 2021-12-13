@@ -1,7 +1,7 @@
 /** L1 L2 L3 */
 deploy: {
-  const label = `minigame-user`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `minigame-user@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 

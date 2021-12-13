@@ -1,6 +1,6 @@
 deploy: {
-  const label = `minigame_arc-slot`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `minigame_arc-slot@${dbs.toString()}`;
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
