@@ -1,6 +1,6 @@
 deploy: {
-  const label = `summary_arc-game_summary_config`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `summary_arc-game_summary_config@${dbs.toString()}`;
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
