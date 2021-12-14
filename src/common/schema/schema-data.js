@@ -1264,12 +1264,13 @@ deploy: {
           }},
           {$unwind: `$configs.codes`},
           {$project : {
-            _id: 0, time: 1,
+            _id: 0, time: 1, base: 1,
             codes : `$configs.codes`,
           }},
         ],
         [
           $BICol(`time`         , `time`        , `date`  ),
+          $BICol(`base`         , `base`        , `str`   ),
           $BICol(`codes`        , `name`        , `str`   ),
           $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
         ],
