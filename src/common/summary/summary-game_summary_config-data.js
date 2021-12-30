@@ -9,7 +9,7 @@ deploy: {
   const commonConfig  = { hasCurrency: false };
   const commonDefault = {
     isCash    : {[1]: false, [2]: true, [3]: null}[L],
-    partnerId : {[1]: `ONEworks1`, [2]: `ONEworksVGCash`, [3]: `ONEworks1`},
+    partnerId : {[1]: `ONEworks1`, [2]: `ONEworksVGCash`, [3]: `ONEworks1`}[L],
   };
 
   const game_summary = [
