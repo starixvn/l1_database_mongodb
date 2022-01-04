@@ -1,11 +1,18 @@
 /** -- -- L3 */
 deploy: {
-  const label = `log`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `log@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  if ((!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log-indexes.js`);
+  if ((!global.___colls?.[label]) || (!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log-indexes.js`);
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
+  const colls = [
+    ...global.___colls[label],
+    $Collection(dbs.log.enter_portals , {storageEngine}),
+    $Collection(dbs.log.signins       , {storageEngine}),
+  ];
+  colls.forEach(_ => { _.create(); _.validate(); });
   const idx = {
     ...global.___idx[label],
     memberId: $Index({'memberAuth.memberId': 1}),
@@ -26,12 +33,19 @@ deploy: {
 }
 
 deploy: {
-  const label = `log_arc`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `log_arc@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  if ((!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log_arc-indexes.js`);
+  if ((!global.___colls?.[label]) || (!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log_arc-indexes.js`);
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
+  const colls = [
+    ...global.___colls[label],
+    $Collection(dbs.log_arc.enter_portals_bk, {storageEngine}),
+    $Collection(dbs.log_arc.signins_bk      , {storageEngine}),
+  ];
+  colls.forEach(_ => { _.create(); _.validate(); });
   const idx = {
     ...global.___idx[label],
   };

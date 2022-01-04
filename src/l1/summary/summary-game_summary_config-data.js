@@ -1,7 +1,7 @@
 /** L1 L2 L3 */
 deploy: {
-  const label = `summary-game_summary_config`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `summary-game_summary_config@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
@@ -16,8 +16,8 @@ deploy: {
 }
 
 deploy: {
-  const label = `summary_arc-game_summary_config`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `summary_arc-game_summary_config@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 

@@ -1,6 +1,6 @@
 deploy: {
-  const label = `minigame-global_configs`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `minigame-global_configs@${dbs.toString()}`;
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
@@ -641,10 +641,12 @@ deploy: {
   }
 
   { /** exchange_codes */
-    const time    = ISODate('2021-10-26T00:00:00Z');
+    const L       = dbs._mongo._identity.L;
+    const time    = ISODate('2021-12-14T00:00:00Z');
+    const base    = {[1]: 'USD', [2]: 'VND', [3]: 'USD'}[L];
     const configs = {
-      codes: ['AUD', 'CAD', 'CNY', 'EUR', 'GBP', 'HKD', 'IDR', 'JPY', 'MYR', 'PHP', 'SGD', 'THB', 'TWD', 'USD', 'VND', 'YNG'],
+      codes : ['AUD', 'CAD', 'CNY', 'EUR', 'GBP', 'HKD', 'IDR', 'JPY', 'MYR', 'PHP', 'SGD', 'THB', 'TWD', 'USD', 'VND', 'YNG'],
     };
-    global.___data[label].exchange_codes = { time, configs };
+    global.___data[label].exchange_codes = { time, base, configs };
   }
 }

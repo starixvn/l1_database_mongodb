@@ -1,6 +1,6 @@
 deploy: {
-  const label = `summary_arc-game_summary_config`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `summary_arc-game_summary_config@${dbs.toString()}`;
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
@@ -9,7 +9,7 @@ deploy: {
   const commonConfig  = { hasCurrency: true };
   const commonDefault = {
     isCash    : {[1]: false, [2]: true, [3]: null}[L],
-    partnerId : `ONEworks1`,
+    partnerId : {[1]: `ONEworks1`, [2]: `ONEworksVGCash`, [3]: `ONEworks_VG`}[L],
   };
 
   const game_summary = [
