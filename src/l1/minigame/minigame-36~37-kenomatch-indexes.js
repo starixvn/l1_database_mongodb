@@ -1,7 +1,7 @@
 /** L1 -- -- */
 deploy: {
-  const label = `minigame-game`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `minigame-game@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
@@ -22,10 +22,20 @@ deploy: {
 }
 
 deploy: {
-  const label = `minigame_arc-game`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `minigame_arc-game@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
+  [ $Collection(dbs.minigame_arc.kenomatch1_phiens_bk, {storageEngine}),
+    $Collection(dbs.minigame_arc.kenomatch1_cuocs_bk , {storageEngine}),
+    $Collection(dbs.minigame_arc.kenomatch1_ones_bk  , {storageEngine}),
+
+    $Collection(dbs.minigame_arc.kenomatch2_phiens_bk, {storageEngine}),
+    $Collection(dbs.minigame_arc.kenomatch2_cuocs_bk , {storageEngine}),
+    $Collection(dbs.minigame_arc.kenomatch2_ones_bk  , {storageEngine}),
+  ].forEach(_ => { _.create(); _.validate(); });
 
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame_arc-game-indexes.js`);
   const idx = {

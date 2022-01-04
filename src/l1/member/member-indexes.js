@@ -1,11 +1,15 @@
 /** L1 L2 L3 */
 deploy: {
-  const label = `member`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `member@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  if ((!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/member/member-indexes.js`);
+  if ((!global.___colls?.[label]) || (!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/member/member-indexes.js`);
+  const colls = [
+    ...global.___colls[label],
+  ];
+  colls.forEach(_ => { _.create(); _.validate(); });
   const idx = {
     ...global.___idx[label],
   };
@@ -16,12 +20,16 @@ deploy: {
 }
 
 deploy: {
-  const label = `member_arc`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `member_arc@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  if ((!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/member/member_arc-indexes.js`);
+  if ((!global.___colls?.[label]) || (!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/member/member_arc-indexes.js`);
+  const colls = [
+    ...global.___colls[label],
+  ];
+  colls.forEach(_ => { _.create(); _.validate(); });
   const idx = {
     ...global.___idx[label],
   };

@@ -1,8 +1,15 @@
 deploy: {
-  const label = `log`;
-  const dbs = DBs(db);
+  const dbs   = DBs(db);
+  const label = `log@${dbs.toString()}`;
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+
+  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
+  (global.___colls = global.___colls ?? {})[label] = [
+    $Collection(dbs.log.bets            , {storageEngine}),
+    $Collection(dbs.log.end_games       , {storageEngine}),
+    $Collection(dbs.log.failed_requests , {storageEngine}),
+  ];
 
   (global.___idx = global.___idx ?? {})[label] = {
     TTL                             : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),
