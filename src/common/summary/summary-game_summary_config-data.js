@@ -607,7 +607,7 @@ deploy: {
       default       : commonDefault,
     },
     { gameId        : 39,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: 3836 }[L],
+      owGameTypeId  : { [1]: 1650, [2]: null, [3]: 3836 }[L],
       name          : { en: `Casino Hold'em Poker`, vi: `Casino Hold'em Poker`, grp: `Card Games` },
       coll          : { db: `minigame`, group: `casinoholdempoker`, round: `_phiens`, postfix: `_cuocs` },
       fields        : {
