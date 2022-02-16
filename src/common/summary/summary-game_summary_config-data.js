@@ -15,7 +15,7 @@ deploy: {
   const game_summary = [
     { gameId        : 1,
       owGameTypeId  : { [1]: 1612, [2]: 3802, [3]: 3802 }[L],
-      name          : { en: `Big Small`, vi: `Tài Xỉu`, grp: `Big Small` },
+      name          : { en: `Big Small`, vi: `Tài Xỉu`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame`, group: `taixiu`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -89,7 +89,7 @@ deploy: {
     },
     { gameId        : 4,
       owGameTypeId  : { [1]: 1615, [2]: 3805, [3]: 3805 }[L],
-      name          : { en: `Turbo Big Small`, vi: `Tài Xỉu Siêu Tốc`, grp: `Big Small` },
+      name          : { en: `Turbo Big Small`, vi: `Tài Xỉu Siêu Tốc`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame`, group: `txturbo`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -122,7 +122,7 @@ deploy: {
     },
     { gameId        : 5,
       owGameTypeId  : { [1]: 1616, [2]: 3806, [3]: 3806 }[L],
-      name          : { en: `Odd Even`, vi: `Chẵn Lẻ`, grp: `Odd Even` },
+      name          : { en: `Odd Even`, vi: `Chẵn Lẻ`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame`, group: `chanle`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -155,7 +155,7 @@ deploy: {
     },
     { gameId        : 6,
       owGameTypeId  : { [1]: 1617, [2]: 3807, [3]: 3807 }[L],
-      name          : { en: `Turbo Odd Even`, vi: `Chẵn Lẻ Siêu Tốc`, grp: `Odd Even` },
+      name          : { en: `Turbo Odd Even`, vi: `Chẵn Lẻ Siêu Tốc`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame`, group: `chanleturbo`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -188,7 +188,7 @@ deploy: {
     },
     { gameId        : 7,
       owGameTypeId  : { [1]: 1618, [2]: 3808, [3]: 3808 }[L],
-      name          : { en: `Dragon Tiger`, vi: `Rồng Hổ`, grp: `Dragon Tiger` },
+      name          : { en: `Dragon Tiger`, vi: `Rồng Hổ`, grp: `Card Games` },
       coll          : { db: `minigame`, group: `minidragontiger`, round: `_phiens`, postfix: `_cuocs` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -357,7 +357,7 @@ deploy: {
     },
     { gameId        : 20,
       owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
-      name          : { en: `Bola Tangkas`, vi: `Bola Tangkas`, grp: `Bola Tangkas` },
+      name          : { en: `Bola Tangkas`, vi: `Bola Tangkas`, grp: `Card Games` },
       coll          : { db: `minigame`, group: `bolatangkas`, round: `_rounds`, postfix: `_rounds` },
       fields        : {
         local : `id`, map: `id`, time: `$startTime`, memberId: `memberId`, settled: `$settled`,
@@ -370,7 +370,7 @@ deploy: {
     },
     { gameId        : 21,
       owGameTypeId  : { [1]: 1632, [2]: 3819, [3]: 3819 }[L],
-      name          : { en: `Roulette`, vi: `Roulette`, grp: `Roulette` },
+      name          : { en: `Roulette`, vi: `Roulette`, grp: `Casino` },
       coll          : { db: `minigame`, group: `roulette`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -396,7 +396,7 @@ deploy: {
     },
     { gameId        : 23,
       owGameTypeId  : { [1]: 1634, [2]: 3820, [3]: 3820 }[L],
-      name          : { en: `Blackjack`, vi: `Blackjack`, grp: `Blackjack` },
+      name          : { en: `Blackjack`, vi: `Blackjack`, grp: `Card Games` },
       coll          : { db: `minigame`, group: `blackjack`, round: `_phiens`, postfix: `_cuocs` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -426,7 +426,7 @@ deploy: {
     },
     { gameId        : 25,
       owGameTypeId  : { [1]: 1636, [2]: 3821, [3]: 3821 }[L],
-      name          : { en: `Sic Bo`, vi: `Sic Bo`, grp: `Sic Bo` },
+      name          : { en: `Sic Bo`, vi: `Sic Bo`, grp: `Casino` },
       coll          : { db: `minigame`, group: `sicbo`, round: `_phiens`, postfix: {[1]: `_ones`, [2]: `_ones`, [3]: `_cuocs`}[L] },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -660,7 +660,7 @@ deploy: {
     },
     { gameId        : 43,
       owGameTypeId  : { [1]: 1649, [2]: null, [3]: null }[L],
-      name          : { en: `Bitcoin Master`, vi: `Bitcoin Master`, grp: `Bitcoin` },
+      name          : { en: `Bitcoin Master`, vi: `Bitcoin Master`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame`, group: `bitcoinmaster`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,

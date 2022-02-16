@@ -6,11 +6,11 @@ deploy: {
 
   (global.___idx = global.___idx ?? {})[label] = {
     TTL               : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),
-    currency          : $Index({'__archive.currency': 1, 'memberId': 1, 'uid': 1}),
+    currency          : $Index({'__archive.currency': 1, 'currency': 1, 'memberId': 1, 'uid': 1}),
     ended             : $Index({'ended': 1}),
     endTime           : $Index({'endTime': 1}),
     id                : $Index({'id': 1}, {unique: true}),
-    isCash            : $Index({'__archive.isCash': 1, 'memberId': 1, 'uid': 1}),
+    isCash            : $Index({'__archive.isCash': 1, 'isCash': 1, 'memberId': 1, 'uid': 1}),
     memberId_phien_F  : $Index({'memberId': 1, 'phien': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
     phien__id         : $Index({'phien': 1, '_id': 1}),
     time              : $Index({'time': 1}),
