@@ -2956,6 +2956,60 @@ deploy: {
         )),
         [2]: $_,
       }[L],
+      /** PAI GOW POKER (Gs) */
+      { [3]: $BITbl(`paigowpoker_phiens`, `paigowpoker_rounds`,
+          [ {$project : {
+              _id: 0, time: 1, id: 1, ended: 1, roundStartTime: 1, exchangeRateId: 1,
+              archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+            }},
+          ],
+          [
+            $BICol(`_MONGOFILTER`   , `_MONGOFILTER`  , `filter`),
+            /* Metadata */
+            $BICol(`id`             , `id`            , `int64` ),
+            $BICol(`exchangeRateId` , `exchangeRateId`, `int64` ),
+            $BICol(`time`           , `time`          , `date`  ),
+            $BICol(`roundStartTime` , `startTime`     , `date`  ),
+            $BICol(`ended`          , `ended`         , `bool`  ),
+            $BICol(`archived`       , `archived`      , `bool`  ),
+          ],
+        ),
+      }[L],
+      { [3]: $BITbl(`paigowpoker_cuocs`, `paigowpoker_tickets`,
+          [ {$match: {memberId: {$gt: 0}}},
+            {$project : {
+              _id: 0, freeBet: 1, phien: 1, uid: 1, memberId: 1, name: 1, time: 1,
+              betwin: 1, thanhtoan: 1, rate: 1,
+              totalAmount : `$bet`,
+              partnerId   : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
+              currency    : {$ifNull: [`$currency`, `$__archive.currency`]},
+              isCash      : `$__archive.isCash`,
+              archived    : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+            }},
+          ],
+          [
+            $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+            /* Metadata */
+            $BICol(`time`         , `time`        , `date`  ),
+            $BICol(`phien`        , `roundId`     , `int64` ),
+            /* Member */
+            $BICol(`uid`          , `uid`         , `str`   ),
+            $BICol(`memberId`     , `memberId`    , `int64` ),
+            $BICol(`name`         , `nickname`    , `str`   ),
+            $BICol(`currency`     , `currency`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
+            /* Summary */
+            $BICol(`totalAmount`  , `stake`       , `float` ),
+            $BICol(`betwin`       , `payout`      , `float` ),
+            /* Attributes */
+            $BICol(`rate`         , `rate`        , `float` ),
+            $BICol(`thanhtoan`    , `settled`     , `bool`  ),
+            $BICol(`freeBet`      , `freeBet`     , `bool`  ),
+            $BICol(`isCash`       , `isCash`      , `bool`  ),
+            $BICol(`archived`     , `archived`    , `bool`  ),
+          ],
+        ),
+      }[L],
       /** ROULETTE (G) */
       $BITbl(`roulette_phiens`, `roulette_rounds`,
         [ {$project : {
