@@ -4405,6 +4405,7 @@ deploy: {
       $BITbl(`game_summary_config`, `game_summary_config`,
         [ {$project: {_id: 0}} ],
         [
+          $BICol(`vendorId`       , `vendorId`    , `int64` ),
           $BICol(`gameId`         , `gameId`      , `int64` ),
           $BICol(`owGameTypeId`   , `gameTypeId`  , `int64` ),
           $BICol(`name.en`        , `nameEN`      , `str`   ),
