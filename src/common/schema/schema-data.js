@@ -1448,6 +1448,64 @@ deploy: {
         )),
         [2]: $_,
       }[L],
+      /** HI/LO (Gr) */
+      { [1]: ($_ = $BITbl(`hilo_rounds`, `hilo_rounds`,
+          [ {$project : {
+              _id: 0, time: 1, id: 1, exchangeRateId: 1, totalTurns: 1,
+              archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+            }},
+          ],
+          [
+            $BICol(`_MONGOFILTER`   , `_MONGOFILTER`  , `filter`),
+            /* Metadata */
+            $BICol(`id`             , `id`            , `int64` ),
+            $BICol(`exchangeRateId` , `exchangeRateId`, `int64` ),
+            $BICol(`time`           , `time`          , `date`  ),
+            $BICol(`archived`       , `archived`      , `bool`  ),
+            /* Additional Info */
+            $BICol(`totalTurns`     , `totalTurns`    , `int64` ),
+          ],
+        )),
+        [2]: $_,
+      }[L],
+      { [1]: ($_ = $BITbl(`hilo_rounds`, `hilo_tickets`,
+          [ {$match: {memberId: {$gt: 0}}},
+            {$project : {
+              _id: 0, id: 1, uid: 1, name: 1, time: 1, memberId: 1, endTime: 1,
+              amount: 1, paid: 1, rate: 1, betwin: 1,
+              partnerId   : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
+              currency    : {$ifNull: [`$currency`, `$__archive.currency`]},
+              isCash      : `$__archive.isCash`,
+              archived    : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+              freeBet     : {$literal: false},
+            }},
+          ],
+          [
+            $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+            /* Metadata */
+            $BICol(`time`         , `time`        , `date`  ),
+            $BICol(`id`           , `roundId`     , `int64` ),
+            /* Member */
+            $BICol(`uid`          , `uid`         , `str`   ),
+            $BICol(`memberId`     , `memberId`    , `int64` ),
+            $BICol(`name`         , `nickname`    , `str`   ),
+            $BICol(`currency`     , `currency`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
+            /* Summary */
+            $BICol(`amount`       , `stake`       , `float` ),
+            $BICol(`betwin`       , `payout`      , `float` ),
+            /* Attributes */
+            $BICol(`rate`         , `rate`        , `float` ),
+            $BICol(`paid`         , `settled`     , `bool`  ),
+            $BICol(`freeBet`      , `freeBet`     , `bool`  ),
+            $BICol(`isCash`       , `isCash`      , `bool`  ),
+            $BICol(`archived`     , `archived`    , `bool`  ),
+            /* Additional Info */
+            $BICol(`endTime`      , `endTime`     , `date`  ),
+          ],
+        )),
+        [2]: $_,
+      }[L],
       /** ID COUNTERS (M) */
       $BITbl(`idcounters`, `idcounters`,
         [ {$match: {memberId: {$gt: 0}}},
@@ -4405,6 +4463,7 @@ deploy: {
       $BITbl(`game_summary_config`, `game_summary_config`,
         [ {$project: {_id: 0}} ],
         [
+          $BICol(`vendorId`       , `vendorId`    , `int64` ),
           $BICol(`gameId`         , `gameId`      , `int64` ),
           $BICol(`owGameTypeId`   , `gameTypeId`  , `int64` ),
           $BICol(`name.en`        , `nameEN`      , `str`   ),
