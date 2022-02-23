@@ -647,7 +647,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 39,
-      owGameTypeId  : { [1]: 1650, [2]: null, [3]: 3836 }[L],
+      owGameTypeId  : { [1]: 1650, [2]: 3836, [3]: 3836 }[L],
       name          : { en: `Casino Hold'em Poker`, vi: `Casino Hold'em Poker`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `casinoholdempoker`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
