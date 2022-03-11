@@ -739,7 +739,7 @@ deploy: {
       name          : { en: `Hi/Lo`, vi: `Cao Thấp`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `hilo`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {
-        local : `id`, map: `id`, time: `$time`, memberId: `memberId`, settled: `$paid`,
+        local : `id`, map: `id`, time: `$endTime`, memberId: `memberId`, settled: `$paid`,
         stake : [ `$amount` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
