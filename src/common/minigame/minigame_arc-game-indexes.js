@@ -5,6 +5,7 @@ deploy: {
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   (global.___idx = global.___idx ?? {})[label] = {
+    endTime             : $Index({'endTime': 1}),
     id                  : $Index({'id': 1}, {unique: true}),
     memberId_phien_F    : $Index({'memberId': 1, 'phien': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
     phien               : $Index({'phien': 1}),
