@@ -703,7 +703,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 43,
-      owGameTypeId  : { [1]: 1649, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1649, [2]: 3843, [3]: null }[L],
       name          : { en: `Bitcoin Master`, vi: `Bitcoin Master`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame`, group: `bitcoinmaster`, round: `_rounds`, postfix: `_bets` },
       fields        : {
