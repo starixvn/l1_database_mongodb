@@ -3010,6 +3010,133 @@ deploy: {
         )),
         [2]: $_,
       }[L],
+      /** NIGHT CLUB (Gsl) */
+      { [1]: ($_ = $BITbl(`nightclub_rounds`, `nightclub_rounds`,
+          [ {$project : {
+              _id: 0, time: 1, id: 1, exchangeRateId: 1,
+              freeSpins : `$settlementResult.freeSpins.count`,
+              bonus     : `$settlementResult.bonus.count`,
+              jackpot   : {$not: {$not: `$settlementResult.jackpot`}},
+              archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+            }},
+          ],
+          [
+            $BICol(`_MONGOFILTER`   , `_MONGOFILTER`  , `filter`),
+            /* Metadata */
+            $BICol(`id`             , `id`            , `int64` ),
+            $BICol(`exchangeRateId` , `exchangeRateId`, `int64` ),
+            $BICol(`time`           , `time`          , `date`  ),
+            $BICol(`archived`       , `archived`      , `bool`  ),
+            /* Result */
+            $BICol(`freeSpins`      , `freeSpins`     , `int`   ),
+            $BICol(`bonus`          , `bonus`         , `int`   ),
+            $BICol(`jackpot`        , `jackpot`       , `bool`  ),
+          ],
+        )),
+        [2]: $_,
+      }[L],
+      { [1]: ($_ = $BITbl(`nightclub_rounds`, `nightclub_tickets`,
+          [ {$match: {memberId: {$gt: 0}}},
+            {$project : {
+              _id: 0, freeSpin: 1, id: 1, uid: 1, name: 1, time: 1, memberId: 1, endTime: 1,
+              bet: 1, paid: 1, rate: 1,
+              betwin      : `$betWin`,
+              totalAmount : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeSpin`}}]},
+              partnerId   : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
+              currency    : {$ifNull: [`$currency`, `$__archive.currency`]},
+              isCash      : `$__archive.isCash`,
+              archived    : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+              freeBet     : {$literal: false},
+            }},
+          ],
+          [
+            $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+            /* Metadata */
+            $BICol(`time`         , `time`        , `date`  ),
+            $BICol(`id`           , `roundId`     , `int64` ),
+            /* Member */
+            $BICol(`uid`          , `uid`         , `str`   ),
+            $BICol(`memberId`     , `memberId`    , `int64` ),
+            $BICol(`name`         , `nickname`    , `str`   ),
+            $BICol(`currency`     , `currency`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
+            /* Summary */
+            $BICol(`totalAmount`  , `stake`       , `float` ),
+            $BICol(`betwin`       , `payout`      , `float` ),
+            /* Attributes */
+            $BICol(`rate`         , `rate`        , `float` ),
+            $BICol(`bet`          , `pool`        , `float` ),
+            $BICol(`paid`         , `settled`     , `bool`  ),
+            $BICol(`freeBet`      , `freeBet`     , `bool`  ),
+            $BICol(`freeSpin`     , `freeSpin`    , `bool`  ),
+            $BICol(`isCash`       , `isCash`      , `bool`  ),
+            $BICol(`archived`     , `archived`    , `bool`  ),
+            /* Additional Info */
+            $BICol(`endTime`      , `endTime`     , `date`  ),
+          ],
+        )),
+        [2]: $_,
+      }[L],
+      { [1]: ($_ = $BITbl(`nightclub_freespins`, `nightclub_freespins`,
+          [ {$match: {memberId: {$gt: 0}}},
+            {$project : {
+              _id: 0, uid: 1, memberId: 1, name: 1,
+              id: 1, roundId: 1,
+              bet: 1, total: 1, available: 1,
+              time: 1, expiryTime: 1,
+              partnerId : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
+              archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+            }},
+          ],
+          [
+            $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+            /* Metadata */
+            $BICol(`time`         , `time`        , `date`  ),
+            $BICol(`roundId`      , `roundId`     , `int64` ),
+            /* Member */
+            $BICol(`uid`          , `uid`         , `str`   ),
+            $BICol(`memberId`     , `memberId`    , `int64` ),
+            $BICol(`name`         , `nickname`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
+            /* Additional Info */
+            $BICol(`id`           , `id`          , `int64` ),
+            $BICol(`total`        , `total`       , `int64` ),
+            $BICol(`available`    , `available`   , `int64` ),
+            $BICol(`bet`          , `pool`        , `float` ),
+            $BICol(`expiryTime`   , `expiryTime`  , `date`  ),
+            $BICol(`archived`     , `archived`    , `bool`  ),
+          ],
+        )),
+        [2]: $_,
+      }[L],
+      { [1]: ($_ = $BITbl(`nightclub_fames`, `nightclub_fames`,
+          [ {$match: {memberId: {$gt: 0}}},
+            {$project : {
+              _id: 0, freeSpin: 1, uid: 1, name: 1, memberId: 1, roundId: 1, time: 1,
+              bet: 1, totalAmount: 1, winningAmount: 1,
+              partnerId : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
+            }},
+          ],
+          [
+            $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+            /* Metadata */
+            $BICol(`time`         , `time`        , `date`  ),
+            $BICol(`roundId`      , `roundId`     , `int64` ),
+            /* Member */
+            $BICol(`uid`          , `uid`         , `str`   ),
+            $BICol(`memberId`     , `memberId`    , `int64` ),
+            $BICol(`name`         , `nickname`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
+            /* Summary */
+            $BICol(`totalAmount`  , `stake`       , `float` ),
+            $BICol(`winningAmount`, `payout`      , `float` ),
+            /* Additional Info */
+            $BICol(`bet`          , `pool`        , `float` ),
+            $BICol(`freeSpin`     , `freeSpin`    , `bool`  ),
+          ],
+        )),
+        [2]: $_,
+      }[L],
       /** PAI GOW POKER (Gs) */
       { [3]: $BITbl(`paigowpoker_phiens`, `paigowpoker_rounds`,
           [ {$project : {
