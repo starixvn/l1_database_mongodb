@@ -1,6 +1,6 @@
 #!/bin/bash
 CURRENT_DIR=$(pwd)
-cd ../Dockerfile.d
+cd Dockerfile.d
 REGISTRY_PATH=git3.nexdev.net:5050/l1/database/mongodb
 REGISTRY_IMAGE=mongo
 REGISTRY_TAG=$REGISTRY_PATH/$REGISTRY_IMAGE
