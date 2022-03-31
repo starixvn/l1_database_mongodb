@@ -15,6 +15,7 @@ deploy: {
     memberId_phien_F    : $Index({'memberId': 1, 'phien': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
     memberId_roundId_F  : $Index({'memberId': 1, 'roundId': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
     phien__id           : $Index({'phien': 1, '_id': 1}),
+    roundId             : $Index({'roundId': 1}),
     roundId_uid         : $Index({'roundId': 1, 'uid': 1}),
     time                : $Index({'time': 1}),
     timeTTL             : $Index({'time': 1}, {expireAfterSeconds: 120}),
