@@ -25,9 +25,10 @@ deploy: {
     }[dbs._mongo._identity.L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.txturbo_phiens, [idx.TTL, idx.time, idx.id]),
-    $Indexes(dbs.minigame.txturbo_cuocs , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, ...BL.cuocs]),
-    $Indexes(dbs.minigame.txturbo_ones  , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.txturbo_phiens  , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.txturbo_cuocs   , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, ...BL.cuocs]),
+    $Indexes(dbs.minigame.txturbo_ones    , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.txturbo_results , [idx.TTL,           idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }
@@ -39,9 +40,10 @@ deploy: {
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
-  [ $Collection(dbs.minigame_arc.txturbo_phiens_bk, {storageEngine}),
-    $Collection(dbs.minigame_arc.txturbo_cuocs_bk , {storageEngine}),
-    $Collection(dbs.minigame_arc.txturbo_ones_bk  , {storageEngine}),
+  [ $Collection(dbs.minigame_arc.txturbo_phiens_bk  , {storageEngine}),
+    $Collection(dbs.minigame_arc.txturbo_cuocs_bk   , {storageEngine}),
+    $Collection(dbs.minigame_arc.txturbo_ones_bk    , {storageEngine}),
+    $Collection(dbs.minigame_arc.txturbo_results_bk , {storageEngine}),
   ].forEach(_ => { _.create(); _.validate(); });
 
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame_arc-game-indexes.js`);
@@ -52,6 +54,7 @@ deploy: {
     $Indexes(dbs.minigame_arc.txturbo_phiens_bk , [idx.time, idx.id]),
     $Indexes(dbs.minigame_arc.txturbo_cuocs_bk  , [          idx.phien, idx.memberId_phien_F, idx.uid_phien]),
     $Indexes(dbs.minigame_arc.txturbo_ones_bk   , [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
+    $Indexes(dbs.minigame_arc.txturbo_results_bk, [          idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }
