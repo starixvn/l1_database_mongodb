@@ -689,7 +689,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 42,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: 3837 }[L],
+      owGameTypeId  : { [1]: 1652, [2]: null, [3]: 3837 }[L],
       name          : { en: `Texas Hold'em Poker`, vi: `Texas Hold'em Poker`, grp: `Card Games` },
       coll          : { db: `minigame`, group: `texasholdempoker`, round: `_phiens`, postfix: `_cuocs` },
       fields        : {
@@ -749,7 +749,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 46,
-      owGameTypeId  : { [1]: 1652, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1653, [2]: null, [3]: null }[L],
       name          : { en: `Night Club`, vi: `Night Club`, grp: `Slots` },
       coll          : { db: `minigame`, group: `nightclub`, round: `_rounds`, postfix: `_rounds` },
       fields        : {
