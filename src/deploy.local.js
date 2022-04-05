@@ -1,7 +1,7 @@
 {
   local.forEach(instance => {
     /** Authenticate instance */
-    auth(instance);
+    while (!auth(instance)) {};
 
     /** Switch to deploying db */
     const oldDB = global.db;
