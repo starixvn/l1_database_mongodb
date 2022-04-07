@@ -1,10 +1,11 @@
-REGISTRY=git3.nexdev.net:5000/l1/database
+REGISTRY=git3.nexdev.net:5050/l1/database
 for FILE in $(ls Dockerfile_*)
 do
   SERVICE=$(echo $FILE | sed 's/^Dockerfile_\(.*\)$/\1/')
   VERSION=$(cat version_$SERVICE)
   echo $SERVICE:$VERSION
 
+  echo "ZPffaRzjxMpGs2X8bQ_E" | docker login -u billy.bui --password-stdin git3.nexdev.net:5050
   docker pull $REGISTRY/$SERVICE:latest || true
   docker build \
     --tag $REGISTRY/$SERVICE:$VERSION \
