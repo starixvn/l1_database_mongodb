@@ -1,4 +1,4 @@
-REGISTRY=git3.nexdev.net:5050/l1/database
+REGISTRY=git3.nexdev.net:5050/l1/database/images
 for FILE in $(ls Dockerfile_*)
 do
   SERVICE=$(echo $FILE | sed 's/^Dockerfile_\(.*\)$/\1/')
