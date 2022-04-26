@@ -735,7 +735,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 45,
-      owGameTypeId  : { [1]: 1651, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1651, [2]: 3844, [3]: null }[L],
       name          : { en: `Hi/Lo`, vi: `Cao Thấp`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `hilo`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {
