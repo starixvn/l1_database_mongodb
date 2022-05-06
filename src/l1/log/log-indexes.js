@@ -17,7 +17,7 @@ deploy: {
   colls.forEach(_ => { _.create(); _.validate(); });
   const idx = {
     ...global.___idx[label],
-    memberId: $Index({'request.memberId': 1}),
+    obCustId_requestTS: $Index({'request.obCustId': 1, requestTimeStamp: 1}),
   };
   const idxs = [
     ...global.___idxs[label],
@@ -30,7 +30,7 @@ deploy: {
     $Indexes(dbs.log.signin_requests, [
       idx.TTL,
       idx.requestTimeStamp,
-      idx.memberId,
+      idx.obCustId_requestTS,
     ]),
     $Indexes(dbs.log.ticket_detail_requests, [
       idx.TTL,
