@@ -3729,7 +3729,7 @@ deploy: {
         ],
       ),
       /** TEXAS HOLDEM' POKER (Gs) */
-      { [3]: $BITbl(`texasholdempoker_phiens`, `texasholdempoker_rounds`,
+      { [1]: ($_ = $BITbl(`texasholdempoker_phiens`, `texasholdempoker_rounds`,
           [ {$project : {
               _id: 0, time: 1, id: 1, ended: 1, roundStartTime: 1, exchangeRateId: 1,
               archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
@@ -3745,9 +3745,10 @@ deploy: {
             $BICol(`ended`          , `ended`         , `bool`  ),
             $BICol(`archived`       , `archived`      , `bool`  ),
           ],
-        ),
+        )),
+        [3]: $_,
       }[L],
-      { [3]: $BITbl(`texasholdempoker_cuocs`, `texasholdempoker_tickets`,
+      { [1]: ($_ = $BITbl(`texasholdempoker_cuocs`, `texasholdempoker_tickets`,
           [ {$match: {memberId: {$gt: 0}}},
             {$project : {
               _id: 0, freeBet: 1, phien: 1, uid: 1, memberId: 1, name: 1, time: 1,
@@ -3780,7 +3781,8 @@ deploy: {
             $BICol(`isCash`       , `isCash`      , `bool`  ),
             $BICol(`archived`     , `archived`    , `bool`  ),
           ],
-        ),
+        )),
+        [3]: $_,
       }[L],
       /** THREE CARDS (G) */
       { [1]: ($_ = $BITbl(`threecards_phiens`, `threecards_rounds`,
