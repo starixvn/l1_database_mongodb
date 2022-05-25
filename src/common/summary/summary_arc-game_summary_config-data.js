@@ -251,7 +251,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 11,
-      owGameTypeId  : { [1]: 1622, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
       name          : { en: `Keno Pro Viet`, vi: `Keno Pro Viet`, grp: `Mini Keno` },
       coll          : { db: `minigame_arc`, group: `kenoproviet`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
@@ -689,7 +689,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 42,
-      owGameTypeId  : { [1]: 1652, [2]: null, [3]: 3837 }[L],
+      owGameTypeId  : { [1]: 1652, [2]: 3837, [3]: 3837 }[L],
       name          : { en: `Texas Hold'em Poker`, vi: `Texas Hold'em Poker`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `texasholdempoker`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
@@ -749,7 +749,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 46,
-      owGameTypeId  : { [1]: 1653, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1653, [2]: 3845, [3]: null }[L],
       name          : { en: `Night Club`, vi: `Night Club`, grp: `Slots` },
       coll          : { db: `minigame_arc`, group: `nightclub`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {

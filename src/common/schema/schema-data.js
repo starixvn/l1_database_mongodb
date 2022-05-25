@@ -3746,6 +3746,7 @@ deploy: {
             $BICol(`archived`       , `archived`      , `bool`  ),
           ],
         )),
+        [2]: $_,
         [3]: $_,
       }[L],
       { [1]: ($_ = $BITbl(`texasholdempoker_cuocs`, `texasholdempoker_tickets`,
@@ -3782,6 +3783,7 @@ deploy: {
             $BICol(`archived`     , `archived`    , `bool`  ),
           ],
         )),
+        [2]: $_,
         [3]: $_,
       }[L],
       /** THREE CARDS (G) */
