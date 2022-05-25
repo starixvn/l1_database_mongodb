@@ -251,7 +251,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 11,
-      owGameTypeId  : { [1]: 1622, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
       name          : { en: `Keno Pro Viet`, vi: `Keno Pro Viet`, grp: `Mini Keno` },
       coll          : { db: `minigame`, group: `kenoproviet`, round: `_phiens`, postfix: `_ones` },
       fields        : {
@@ -749,7 +749,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 46,
-      owGameTypeId  : { [1]: 1653, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1653, [2]: 3845, [3]: null }[L],
       name          : { en: `Night Club`, vi: `Night Club`, grp: `Slots` },
       coll          : { db: `minigame`, group: `nightclub`, round: `_rounds`, postfix: `_rounds` },
       fields        : {
