@@ -9,7 +9,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'bets'    },
       to      : { db: 'log_arc' , coll: 'bets_bk' },
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -17,7 +17,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'end_games'   },
       to      : { db: 'log_arc' , coll: 'end_games_bk'},
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -25,7 +25,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'failed_requests'   },
       to      : { db: 'log_arc' , coll: 'failed_requests_bk'},
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -33,7 +33,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'signin_requests'   },
       to      : { db: 'log_arc' , coll: 'signin_requests_bk'},
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -41,7 +41,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'signins'   },
       to      : { db: 'log_arc' , coll: 'signins_bk'},
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -49,7 +49,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'enter_portals'   },
       to      : { db: 'log_arc' , coll: 'enter_portals_bk'},
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -57,7 +57,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'void_games'    },
       to      : { db: 'log_arc' , coll: 'void_games_bk' },
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -65,7 +65,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'hit_jackpots'    },
       to      : { db: 'log_arc' , coll: 'hit_jackpots_bk' },
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -73,7 +73,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'ticket_detail_requests'    },
       to      : { db: 'log_arc' , coll: 'ticket_detail_requests_bk' },
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -81,7 +81,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'retrieve_requests'   },
       to      : { db: 'log_arc' , coll: 'retrieve_requests_bk'},
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -89,7 +89,7 @@ deploy: {
       from    : { db: 'log'     , coll: 'audit_events'    },
       to      : { db: 'log_arc' , coll: 'audit_events_bk' },
       config  : {
-        timeField: '', cutOffsetHours: 0, join: '',
+        timeField: '', cutOffsetHours: 0,
       },
       childs  : [],
     },
@@ -100,7 +100,7 @@ deploy: {
       from    : { db: 'member'    , coll: 'member_auths'    },
       to      : { db: 'member_arc', coll: 'member_auths_bk' },
       config  : {
-        timeField: 'time', cutOffsetHours: -24, join: '',
+        timeField: 'time', cutOffsetHours: -24,
       },
       childs  : [],
     }
@@ -1618,7 +1618,7 @@ deploy: {
       from    : { db: 'minigame'    , coll: 'usersessions'    },
       to      : { db: 'minigame_arc', coll: 'usersessions_bk' },
       config  : {
-        timeField: 'recheckInTime', cutOffsetHours: -24, join: '',
+        timeField: 'recheckInTime', cutOffsetHours: -24,
       },
       childs: [],
     },
