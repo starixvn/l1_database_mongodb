@@ -8,8 +8,10 @@ deploy: {
     expiryTime    : $Index({'expiryTime': 1}),
     id            : $Index({'id': 1}, {unique: true}),
     memberId_id_F : $Index({'memberId': 1, 'id': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
+    playerId_id_F : $Index({'playerId': 1, 'id': 1}, {partialFilterExpression: {playerId: {$gt: 0}}}),
     time          : $Index({'time': 1}),
     uid_id        : $Index({'uid': 1, 'id': 1}),
+    uid_end       : $Index({'uid': 1, 'end': 1}, {unique: true}),
     uid_roundId   : $Index({'uid': 1, 'roundId': 1}, {unique: true}),
   };
 }
