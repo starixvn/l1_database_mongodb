@@ -1588,7 +1588,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `nightclub_fames`     },
       to      : { db: `minigame_arc`, coll: `nightclub_fames_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24*8, join: `roundId`,
+        timeField: `time`, cutOffsetHours: -24*8,
         updateOnly: true,
       },
       childs  : [],
@@ -1596,6 +1596,39 @@ deploy: {
     { _id     : 39046.101,
       from    : { db: `minigame`    , coll: `nightclub_freespins`    },
       to      : { db: `minigame_arc`, coll: `nightclub_freespins_bk` },
+      config  : {
+        timeField: `time`, cutOffsetHours: -24*8,
+      },
+      childs  : [],
+    },
+
+    { _id     : 39047,
+      from    : { db: `minigame`    , coll: `treasureisland_rounds`     },
+      to      : { db: `minigame_arc`, coll: `treasureisland_rounds_bk`  },
+      config  : {
+        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        logField: `_rounds`, logValue: `id`,
+      },
+      childs  : [
+        { from: `treasureisland_freespins`, to: `treasureisland_freespins_bk`,
+          join: `roundId`, updateOnly: false,
+          filter: { memberId: {$gt: 0} },
+          logField: `_freespins`, logValue: `id`,
+        },
+      ],
+    },
+    { _id     : 39047.1,
+      from    : { db: `minigame`    , coll: `treasureisland_multipliers`    },
+      to      : { db: `minigame_arc`, coll: `treasureisland_multipliers_bk` },
+      config  : {
+        timeField: `time`, cutOffsetHours: -24,
+        filter: { end: true },
+      },
+      childs  : [],
+    },
+    { _id     : 39047.101,
+      from    : { db: `minigame`    , coll: `treasureisland_freespins`    },
+      to      : { db: `minigame_arc`, coll: `treasureisland_freespins_bk` },
       config  : {
         timeField: `time`, cutOffsetHours: -24*8,
       },
