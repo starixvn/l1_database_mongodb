@@ -689,7 +689,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 42,
-      owGameTypeId  : { [1]: 1652, [2]: null, [3]: 3837 }[L],
+      owGameTypeId  : { [1]: 1652, [2]: 3837, [3]: 3837 }[L],
       name          : { en: `Texas Hold'em Poker`, vi: `Texas Hold'em Poker`, grp: `Card Games` },
       coll          : { db: `minigame`, group: `texasholdempoker`, round: `_phiens`, postfix: `_cuocs` },
       fields        : {
