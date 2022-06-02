@@ -1622,7 +1622,7 @@ deploy: {
       to      : { db: `minigame_arc`, coll: `treasureisland_multipliers_bk` },
       config  : {
         timeField: `time`, cutOffsetHours: -24,
-        filter: { end: true },
+        filter: { ended: true },
       },
       childs  : [],
     },

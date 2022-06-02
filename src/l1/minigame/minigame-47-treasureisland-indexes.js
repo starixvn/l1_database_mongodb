@@ -12,7 +12,7 @@ deploy: {
   const idxs = [
     $Indexes(dbs.minigame.treasureisland_rounds     , [idx.TTL, idx.time, idx.id, idx.playerId_id_F, idx.paid_uid, idx.currency, idx.isCash]),
     $Indexes(dbs.minigame.treasureisland_freespins  , [idx.TTL,           idx.id, idx.expiryTime]),
-    $Indexes(dbs.minigame.treasureisland_multipliers, [idx.TTL, idx.time, idx.uid_end]),
+    $Indexes(dbs.minigame.treasureisland_multipliers, [idx.TTL, idx.time, idx.uid_ended]),
   ];
   idxs.forEach(_ => _.deploy());
 }
@@ -36,7 +36,7 @@ deploy: {
   const idxs = [
     $Indexes(dbs.minigame_arc.treasureisland_rounds_bk     , [idx.time, idx.id, idx.playerId_id_F, idx.uid_id]),
     $Indexes(dbs.minigame_arc.treasureisland_freespins_bk  , [          idx.id, idx.expiryTime]),
-    $Indexes(dbs.minigame_arc.treasureisland_multipliers_bk, [idx.time, idx.uid_end]),
+    $Indexes(dbs.minigame_arc.treasureisland_multipliers_bk, [idx.time, idx.uid_ended]),
   ];
   idxs.forEach(_ => _.deploy());
 }

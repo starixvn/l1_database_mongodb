@@ -15,7 +15,7 @@ deploy: {
     playerId_id_F : $Index({'playerId': 1, 'id': 1}, {partialFilterExpression: {playerId: {$gt: 0}}}),
     phien__id     : $Index({'phien': 1, '_id': 1}),
     time          : $Index({'time': 1}),
-    uid_end       : $Index({'uid': 1, 'end': 1}, {unique: true}),
+    uid_ended     : $Index({'uid': 1, 'ended': 1}, {unique: true}),
     uid_roundId   : $Index({'uid': 1, 'roundId': 1}, {unique: true}),
   };
 }
