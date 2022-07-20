@@ -763,7 +763,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 47,
-      owGameTypeId  : { [1]: 1654, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1654, [2]: 3846, [3]: null }[L],
       name          : { en: `Treasure Island`, vi: `Đảo Châu Báu`, grp: `Slots` },
       coll          : { db: `minigame`, group: `treasureisland`, round: `_rounds`, postfix: `_rounds` },
       fields        : {
