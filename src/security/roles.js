@@ -3,6 +3,13 @@ deploy: {
   if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
+  const backupActions = [
+    `fsync`,
+    `getCmdLineOpts`,
+    `replSetGetStatus`,
+    `unlock`,
+  ];
+
   const roles = [
     $Role(dbs.admin, `public`, [], [
       $Privilege(dbs.admin.identity           , $Privilege.actions.read),
@@ -23,6 +30,7 @@ deploy: {
     $Role(dbs.admin, `readSystem`, [
       $Role(dbs.admin, `readAnyDatabase`),
     ], [
+      $Privilege({cluster: true}              , backupActions          ),
       $Privilege(dbs.admin                    , $Privilege.actions.read),
       $Privilege(dbs.admin.system.keys        , $Privilege.actions.read),
       $Privilege(dbs.admin.system.profile     , $Privilege.actions.read),
@@ -33,7 +41,7 @@ deploy: {
       $Privilege(dbs.config                   , $Privilege.actions.read, $Privilege.actions.list),
       $Privilege(dbs.config.system.profile    , $Privilege.actions.read),
       $Privilege(dbs.config.system.sessions   , $Privilege.actions.read),
-      $Privilege(dbs.local                    , $Privilege.actions.read),
+      $Privilege(dbs.local                    , $Privilege.actions.read, $Privilege.actions.list, $Privilege.actions.monitor),
       $Privilege(dbs.local.system.profile     , $Privilege.actions.read),
       $Privilege(dbs.local.system.replset     , $Privilege.actions.read),
       $Privilege(dbs.local.system.rollback.id , $Privilege.actions.read),
