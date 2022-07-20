@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-47-treasureisland-indexes.js
