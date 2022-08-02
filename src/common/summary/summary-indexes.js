@@ -31,6 +31,9 @@ deploy: {
       global.___idx[label].gameId_U,
       global.___idx[label].owGameTypeId_FU,
     ]),
+    $Indexes(dbs.summary.metadata_configs, [
+      global.___idx[label].gameId_U,
+    ]),
   ];
 }
 
