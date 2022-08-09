@@ -11,6 +11,7 @@ deploy: {
     gameId_system_time                    : $Index({'gameId': 1, 'system': 1, 'time': 1}),
     gameId_U                              : $Index({'gameId': 1}, {unique: true}),
     owGameTypeId_FU                       : $Index({'owGameTypeId': 1}, {unique: true, partialFilterExpression: {owGameTypeId: {$gt: 0}}}),
+    db_coll__id_U                         : $Index({'target.db': 1, 'target.coll': 1, 'data._id': 1}, {unique: true}),
   };
 
   (global.___idxs = global.___idxs ?? {})[label] = [
@@ -30,6 +31,12 @@ deploy: {
     $Indexes(dbs.summary.game_summary_config, [
       global.___idx[label].gameId_U,
       global.___idx[label].owGameTypeId_FU,
+    ]),
+    $Indexes(dbs.summary.metadata_configs, [
+      global.___idx[label].gameId_U,
+    ]),
+    $Indexes(dbs.summary.metadata_queue, [
+      global.___idx[label].db_coll__id_U,
     ]),
   ];
 }

@@ -1,16 +1,26 @@
 deploy: {
   const dbs   = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
+  const L = dbs._mongo._identity.L;
+
+  if (![1, 2, 3].includes(L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+
+  const mapping = {
+    playerId: {
+      [1]: `playerId`,
+      [2]: `playerId`,
+      [3]: `memberId`,
+    }[L],
+  };
 
   (global.___idx = global.___idx ?? {})[label] = {
     TTL                 : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),
-    currency            : $Index({'__archive.currency': 1, 'currency': 1, 'memberId': 1, 'uid': 1}),
+    currency            : $Index({'__archive.currency': 1, 'currency': 1, [mapping.playerId]: 1, 'uid': 1}),
     ended               : $Index({'ended': 1}),
     endTime             : $Index({'endTime': 1}),
     id                  : $Index({'id': 1}, {unique: true}),
-    isCash              : $Index({'__archive.isCash': 1, 'isCash': 1, 'memberId': 1, 'uid': 1}),
+    isCash              : $Index({'__archive.isCash': 1, 'isCash': 1, [mapping.playerId]: 1, 'uid': 1}),
     memberId_id_F       : $Index({'memberId': 1, 'id': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
     memberId_phien_F    : $Index({'memberId': 1, 'phien': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
     memberId_roundId_F  : $Index({'memberId': 1, 'roundId': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
