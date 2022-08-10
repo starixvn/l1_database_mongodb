@@ -427,6 +427,22 @@ deploy: {
       ],
     },
     { ...commonFields,
+      gameId  : 52,
+      target  : { db: `minigame`, coll: `megakeno_ones` },
+      fields  : [
+        Object.assign({}, gameSource, lookupFields.currency),
+        Object.assign({}, gameSource, lookupFields.isCash),
+      ],
+    },
+    { ...commonFields,
+      gameId  : 53,
+      target  : { db: `minigame`, coll: `megakeno2_ones` },
+      fields  : [
+        Object.assign({}, gameSource, lookupFields.currency),
+        Object.assign({}, gameSource, lookupFields.isCash),
+      ],
+    },
+    { ...commonFields,
       gameId  : 99,
       target  : { db: `minigame`, coll: `jackpots` },
       fields  : [
