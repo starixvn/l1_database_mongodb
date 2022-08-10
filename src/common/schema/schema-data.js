@@ -4321,6 +4321,275 @@ deploy: {
           $BICol(`small`        , `small`       , `float` ),
         ],
       ),
+      /** UNBALANCED BIG SMALL (G) */
+      $BITbl(`unbalancedbigsmall1_rounds`, `unbalancedbigsmall1_rounds`,
+        [ {$project : {
+            _id: 0, time: 1, id: 1, exchangeRateId: 1,
+            big       : `$settlementResult.big`,
+            small     : `$settlementResult.small`,
+            dice1     : `$result.dice1`,
+            dice2     : `$result.dice2`,
+            dice3     : `$result.dice3`,
+            archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+          }},
+        ],
+        [
+          $BICol(`_MONGOFILTER`   , `_MONGOFILTER`  , `filter`),
+          /* Metadata */
+          $BICol(`id`             , `id`            , `int64` ),
+          $BICol(`exchangeRateId` , `exchangeRateId`, `int64` ),
+          $BICol(`time`           , `time`          , `date`  ),
+          $BICol(`archived`       , `archived`      , `bool`  ),
+          /* Result */
+          $BICol(`big`            , `big`           , `bool`  ),
+          $BICol(`small`          , `small`         , `bool`  ),
+          /* Details */
+          $BICol(`dice1`          , `dice1`         , `int64` ),
+          $BICol(`dice2`          , `dice2`         , `int64` ),
+          $BICol(`dice3`          , `dice3`         , `int64` ),
+        ],
+      ),
+      $BITbl(`unbalancedbigsmall1_bets`, `unbalancedbigsmall1_tickets`,
+        { [1]: ($_ = [
+            {$match: {memberId: {$gt: 0}}},
+            {$project : {
+              _id: 0, phien: 1, uid: 1, memberId: 1, name: 1, time: 1,
+              big: 1, small: 1, totalAmount: 1, betwin: 1, thanhtoan: 1, rate: 1,
+              partnerId   : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
+              currency    : {$ifNull: [`$currency`, `$__archive.currency`]},
+              isCash      : `$__archive.isCash`,
+              archived    : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+              freeBet     : {$literal: false},
+            }},
+          ]),
+          [2]: $_,
+        }[L],
+        [
+          $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`         , `time`        , `date`  ),
+          $BICol(`phien`        , `roundId`     , `int64` ),
+          /* Member */
+          $BICol(`uid`          , `uid`         , `str`   ),
+          $BICol(`memberId`     , `memberId`    , `int64` ),
+          $BICol(`name`         , `nickname`    , `str`   ),
+          $BICol(`currency`     , `currency`    , `str`   ),
+          $BICol(`partnerId`    , `partnerId`   , `str`   ),
+          /* Summary */
+          $BICol(`totalAmount`  , `stake`       , `float` ),
+          $BICol(`betwin`       , `payout`      , `float` ),
+          /* Attributes */
+          $BICol(`rate`         , `rate`        , `float` ),
+          $BICol(`thanhtoan`    , `settled`     , `bool`  ),
+          $BICol(`freeBet`      , `freeBet`     , `bool`  ),
+          $BICol(`isCash`       , `isCash`      , `bool`  ),
+          $BICol(`archived`     , `archived`    , `bool`  ),
+          /* Bet Choices */
+          $BICol(`big`          , `big`         , `float` ),
+          $BICol(`small`        , `small`       , `float` ),
+        ],
+      ),
+      $BITbl(`unbalancedbigsmall2_rounds`, `unbalancedbigsmall2_rounds`,
+        [ {$project : {
+            _id: 0, time: 1, id: 1, exchangeRateId: 1,
+            big       : `$settlementResult.big`,
+            small     : `$settlementResult.small`,
+            dice1     : `$result.dice1`,
+            dice2     : `$result.dice2`,
+            dice3     : `$result.dice3`,
+            archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+          }},
+        ],
+        [
+          $BICol(`_MONGOFILTER`   , `_MONGOFILTER`  , `filter`),
+          /* Metadata */
+          $BICol(`id`             , `id`            , `int64` ),
+          $BICol(`exchangeRateId` , `exchangeRateId`, `int64` ),
+          $BICol(`time`           , `time`          , `date`  ),
+          $BICol(`archived`       , `archived`      , `bool`  ),
+          /* Result */
+          $BICol(`big`            , `big`           , `bool`  ),
+          $BICol(`small`          , `small`         , `bool`  ),
+          /* Details */
+          $BICol(`dice1`          , `dice1`         , `int64` ),
+          $BICol(`dice2`          , `dice2`         , `int64` ),
+          $BICol(`dice3`          , `dice3`         , `int64` ),
+        ],
+      ),
+      $BITbl(`unbalancedbigsmall2_bets`, `unbalancedbigsmall2_tickets`,
+        { [1]: ($_ = [
+            {$match: {memberId: {$gt: 0}}},
+            {$project : {
+              _id: 0, phien: 1, uid: 1, memberId: 1, name: 1, time: 1,
+              big: 1, small: 1, totalAmount: 1, betwin: 1, thanhtoan: 1, rate: 1,
+              partnerId   : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
+              currency    : {$ifNull: [`$currency`, `$__archive.currency`]},
+              isCash      : `$__archive.isCash`,
+              archived    : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+              freeBet     : {$literal: false},
+            }},
+          ]),
+          [2]: $_,
+        }[L],
+        [
+          $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`         , `time`        , `date`  ),
+          $BICol(`phien`        , `roundId`     , `int64` ),
+          /* Member */
+          $BICol(`uid`          , `uid`         , `str`   ),
+          $BICol(`memberId`     , `memberId`    , `int64` ),
+          $BICol(`name`         , `nickname`    , `str`   ),
+          $BICol(`currency`     , `currency`    , `str`   ),
+          $BICol(`partnerId`    , `partnerId`   , `str`   ),
+          /* Summary */
+          $BICol(`totalAmount`  , `stake`       , `float` ),
+          $BICol(`betwin`       , `payout`      , `float` ),
+          /* Attributes */
+          $BICol(`rate`         , `rate`        , `float` ),
+          $BICol(`thanhtoan`    , `settled`     , `bool`  ),
+          $BICol(`freeBet`      , `freeBet`     , `bool`  ),
+          $BICol(`isCash`       , `isCash`      , `bool`  ),
+          $BICol(`archived`     , `archived`    , `bool`  ),
+          /* Bet Choices */
+          $BICol(`big`          , `big`         , `float` ),
+          $BICol(`small`        , `small`       , `float` ),
+        ],
+      ),
+      $BITbl(`unbalancedbigsmall3_rounds`, `unbalancedbigsmall3_rounds`,
+        [ {$project : {
+            _id: 0, time: 1, id: 1, exchangeRateId: 1,
+            big       : `$settlementResult.big`,
+            small     : `$settlementResult.small`,
+            dice1     : `$result.dice1`,
+            dice2     : `$result.dice2`,
+            dice3     : `$result.dice3`,
+            archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+          }},
+        ],
+        [
+          $BICol(`_MONGOFILTER`   , `_MONGOFILTER`  , `filter`),
+          /* Metadata */
+          $BICol(`id`             , `id`            , `int64` ),
+          $BICol(`exchangeRateId` , `exchangeRateId`, `int64` ),
+          $BICol(`time`           , `time`          , `date`  ),
+          $BICol(`archived`       , `archived`      , `bool`  ),
+          /* Result */
+          $BICol(`big`            , `big`           , `bool`  ),
+          $BICol(`small`          , `small`         , `bool`  ),
+          /* Details */
+          $BICol(`dice1`          , `dice1`         , `int64` ),
+          $BICol(`dice2`          , `dice2`         , `int64` ),
+          $BICol(`dice3`          , `dice3`         , `int64` ),
+        ],
+      ),
+      $BITbl(`unbalancedbigsmall3_bets`, `unbalancedbigsmall3_tickets`,
+        { [1]: ($_ = [
+            {$match: {memberId: {$gt: 0}}},
+            {$project : {
+              _id: 0, phien: 1, uid: 1, memberId: 1, name: 1, time: 1,
+              big: 1, small: 1, totalAmount: 1, betwin: 1, thanhtoan: 1, rate: 1,
+              partnerId   : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
+              currency    : {$ifNull: [`$currency`, `$__archive.currency`]},
+              isCash      : `$__archive.isCash`,
+              archived    : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+              freeBet     : {$literal: false},
+            }},
+          ]),
+          [2]: $_,
+        }[L],
+        [
+          $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`         , `time`        , `date`  ),
+          $BICol(`phien`        , `roundId`     , `int64` ),
+          /* Member */
+          $BICol(`uid`          , `uid`         , `str`   ),
+          $BICol(`memberId`     , `memberId`    , `int64` ),
+          $BICol(`name`         , `nickname`    , `str`   ),
+          $BICol(`currency`     , `currency`    , `str`   ),
+          $BICol(`partnerId`    , `partnerId`   , `str`   ),
+          /* Summary */
+          $BICol(`totalAmount`  , `stake`       , `float` ),
+          $BICol(`betwin`       , `payout`      , `float` ),
+          /* Attributes */
+          $BICol(`rate`         , `rate`        , `float` ),
+          $BICol(`thanhtoan`    , `settled`     , `bool`  ),
+          $BICol(`freeBet`      , `freeBet`     , `bool`  ),
+          $BICol(`isCash`       , `isCash`      , `bool`  ),
+          $BICol(`archived`     , `archived`    , `bool`  ),
+          /* Bet Choices */
+          $BICol(`big`          , `big`         , `float` ),
+          $BICol(`small`        , `small`       , `float` ),
+        ],
+      ),
+      $BITbl(`unbalancedbigsmall4_rounds`, `unbalancedbigsmall4_rounds`,
+        [ {$project : {
+            _id: 0, time: 1, id: 1, exchangeRateId: 1,
+            big       : `$settlementResult.big`,
+            small     : `$settlementResult.small`,
+            dice1     : `$result.dice1`,
+            dice2     : `$result.dice2`,
+            dice3     : `$result.dice3`,
+            archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+          }},
+        ],
+        [
+          $BICol(`_MONGOFILTER`   , `_MONGOFILTER`  , `filter`),
+          /* Metadata */
+          $BICol(`id`             , `id`            , `int64` ),
+          $BICol(`exchangeRateId` , `exchangeRateId`, `int64` ),
+          $BICol(`time`           , `time`          , `date`  ),
+          $BICol(`archived`       , `archived`      , `bool`  ),
+          /* Result */
+          $BICol(`big`            , `big`           , `bool`  ),
+          $BICol(`small`          , `small`         , `bool`  ),
+          /* Details */
+          $BICol(`dice1`          , `dice1`         , `int64` ),
+          $BICol(`dice2`          , `dice2`         , `int64` ),
+          $BICol(`dice3`          , `dice3`         , `int64` ),
+        ],
+      ),
+      $BITbl(`unbalancedbigsmall4_bets`, `unbalancedbigsmall4_tickets`,
+        { [1]: ($_ = [
+            {$match: {memberId: {$gt: 0}}},
+            {$project : {
+              _id: 0, phien: 1, uid: 1, memberId: 1, name: 1, time: 1,
+              big: 1, small: 1, totalAmount: 1, betwin: 1, thanhtoan: 1, rate: 1,
+              partnerId   : {$ifNull: [`$partnerId`, {$literal: `ONEworks1`}]},
+              currency    : {$ifNull: [`$currency`, `$__archive.currency`]},
+              isCash      : `$__archive.isCash`,
+              archived    : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+              freeBet     : {$literal: false},
+            }},
+          ]),
+          [2]: $_,
+        }[L],
+        [
+          $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`         , `time`        , `date`  ),
+          $BICol(`phien`        , `roundId`     , `int64` ),
+          /* Member */
+          $BICol(`uid`          , `uid`         , `str`   ),
+          $BICol(`memberId`     , `memberId`    , `int64` ),
+          $BICol(`name`         , `nickname`    , `str`   ),
+          $BICol(`currency`     , `currency`    , `str`   ),
+          $BICol(`partnerId`    , `partnerId`   , `str`   ),
+          /* Summary */
+          $BICol(`totalAmount`  , `stake`       , `float` ),
+          $BICol(`betwin`       , `payout`      , `float` ),
+          /* Attributes */
+          $BICol(`rate`         , `rate`        , `float` ),
+          $BICol(`thanhtoan`    , `settled`     , `bool`  ),
+          $BICol(`freeBet`      , `freeBet`     , `bool`  ),
+          $BICol(`isCash`       , `isCash`      , `bool`  ),
+          $BICol(`archived`     , `archived`    , `bool`  ),
+          /* Bet Choices */
+          $BICol(`big`          , `big`         , `float` ),
+          $BICol(`small`        , `small`       , `float` ),
+        ],
+      ),
       /** USERINFOS (U) */
       $BITbl(`userinfos`, `userinfos`,
         { [1]: ($_ = [ {$project: {_id: 0, id: 1, joinedOn: 1, type: 1, currency: 1, UID: 1, name: 1}} ]),
