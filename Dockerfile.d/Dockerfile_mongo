@@ -1,1 +1,2 @@
-FROM mongo:4.2.19
+ARG VERSION=4.2
+FROM mongo:${VERSION}
