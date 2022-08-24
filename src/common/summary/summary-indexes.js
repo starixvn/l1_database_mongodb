@@ -35,6 +35,9 @@ deploy: {
     $Indexes(dbs.summary.metadata_configs, [
       global.___idx[label].gameId_U,
     ]),
+    $Indexes(dbs.summary.summary_configs, [
+      global.___idx[label].gameId_U,
+    ]),
     $Indexes(dbs.summary.metadata_queue, [
       global.___idx[label].db_coll__id_U,
     ]),
