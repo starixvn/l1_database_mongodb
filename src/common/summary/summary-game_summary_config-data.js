@@ -781,7 +781,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 48,
-      owGameTypeId  : { [1]: 1655, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1655, [2]: 3847, [3]: null }[L],
       name          : { en: `Blockchain Baccarat`, vi: `Blockchain Baccarat`, grp: `Baccarat` },
       coll          : { db: `minigame`, group: `blockchainbaccarat`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -809,7 +809,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 50,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1659, [2]: null, [3]: null }[L],
       name          : { en: `Las Vegas`, vi: `Las Vegas`, grp: `Casino` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall1`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -823,7 +823,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 51,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1660, [2]: null, [3]: null }[L],
       name          : { en: `Marina Bay`, vi: `Marina Bay`, grp: `Casino` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall2`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -837,7 +837,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 52,
-      owGameTypeId  : { [1]: 1657, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1657, [2]: 3848, [3]: null }[L],
       name          : { en: `Mega Keno`, vi: `Mega Keno`, grp: `Mega Keno` },
       coll          : { db: `minigame`, group: `megakeno`, round: `_rounds`, postfix: `_ones` },
       fields        : {
@@ -851,7 +851,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 53,
-      owGameTypeId  : { [1]: 1658, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1658, [2]: 3849, [3]: null }[L],
       name          : { en: `Mega Keno 2`, vi: `Mega Keno 2`, grp: `Mega Keno` },
       coll          : { db: `minigame`, group: `megakeno2`, round: `_rounds`, postfix: `_ones` },
       fields        : {
@@ -865,7 +865,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 54,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1661, [2]: null, [3]: null }[L],
       name          : { en: `Macau`, vi: `Macau`, grp: `Casino` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall3`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -879,7 +879,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 55,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1662, [2]: null, [3]: null }[L],
       name          : { en: `Monte Carlo`, vi: `Monte Carlo`, grp: `Casino` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall4`, round: `_rounds`, postfix: `_bets` },
       fields        : {
