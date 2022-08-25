@@ -514,7 +514,7 @@ deploy: {
       coll    : { base: `vipsediewar`, round: `phiens`, bet: `ones` },
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
-        stake   : {$nultiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
+        stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betWin`,
         refund  : expr.noRefund,
         isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
@@ -546,7 +546,7 @@ deploy: {
       coll    : { base: `fishprawncrabpro`, round: `phiens`, bet: `cuocs` },
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
-        stake   : {$nultiply: [`$totalBet`, {$toInt: {$not: `$freeBet`}}]},
+        stake   : {$multiply: [`$totalBet`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
         isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
@@ -562,7 +562,7 @@ deploy: {
       coll    : { base: `lottery`, round: `phiens`, bet: `ones` },
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
-        stake   : {$nultiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
+        stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
         isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
