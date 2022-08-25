@@ -2,8 +2,9 @@
 deploy: {
   const dbs   = DBs(db);
   const label = `minigame-slot@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+  const { L, stage } = dbs._mongo._identity;
+  if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
+  if (!["active", "mixed"].includes(stage)) break deploy;
 
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame-slot-indexes.js`);
   const idx = {

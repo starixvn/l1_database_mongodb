@@ -2,8 +2,9 @@
 deploy: {
   const dbs   = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+  const { L, stage } = dbs._mongo._identity;
+  if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
+  if (!["active", "mixed"].includes(stage)) break deploy;
 
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame-game-indexes.js`);
   const idx = {
@@ -16,13 +17,11 @@ deploy: {
   };
   const BL = {
     cuocs : {
-      [1]: [], [2]: [],
-      [3]: [idx.BL_phien, idx.BL_uid_thanhtoan, idx.BL_phien_taixiu_red],
-    }[dbs._mongo._identity.L],
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id]), [2]: $_, [3]: [idx.BL_phien, idx.BL_uid_thanhtoan, idx.BL_phien_taixiu_red],
+    }[L],
     ones  : {
-      [1]: [], [2]: [],
-      [3]: [idx.BL_uid, idx.BL_phien, idx.BL_uid_phien_taixiu_red],
-    }[dbs._mongo._identity.L],
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]), [2]: $_, [3]: [idx.BL_uid, idx.BL_phien, idx.BL_uid_phien_taixiu_red],
+    }[L],
   };
   const idxs = [
     $Indexes(dbs.minigame.taixiu_phiens , [idx.TTL, idx.time, idx.id]),
