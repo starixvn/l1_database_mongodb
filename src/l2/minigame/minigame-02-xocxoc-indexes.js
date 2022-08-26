@@ -12,7 +12,7 @@ deploy: {
   };
   const BL = {
     cuocs : {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id]), [2]: $_,
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_freeBet, idx.uid_paid__id]), [2]: $_,
       [3]: [idx.BL_phien],
     }[L],
   };
