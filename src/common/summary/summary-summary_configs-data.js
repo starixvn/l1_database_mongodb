@@ -54,7 +54,7 @@ deploy: {
 
     { gameId  : 2,
       db      : `minigame`,
-      coll    : { base: `baucua`, round: `phiens`, bet: `cuocs` },
+      coll    : { base: `xocxoc`, round: `phiens`, bet: `cuocs` },
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {
@@ -74,7 +74,7 @@ deploy: {
 
     { gameId  : 3,
       db      : `minigame`,
-      coll    : { base: `xocxoc`, round: `phiens`, bet: `cuocs` },
+      coll    : { base: `baucua`, round: `phiens`, bet: `cuocs` },
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [{$add: [`$stag`, `$gourd`, `$rooster`, `$fish`, `$crab`, `$prawn`]}, {$toInt: {$not: `$freeBet`}}]},
