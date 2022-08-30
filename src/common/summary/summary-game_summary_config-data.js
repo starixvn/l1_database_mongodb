@@ -810,7 +810,7 @@ deploy: {
     { ...commonFields,
       gameId        : 50,
       owGameTypeId  : { [1]: 1659, [2]: null, [3]: null }[L],
-      name          : { en: `Las Vegas`, vi: `Las Vegas`, grp: `Casino` },
+      name          : { en: `Las Vegas`, vi: `Las Vegas`, grp: `Mega Big Small` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall1`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -824,7 +824,7 @@ deploy: {
     { ...commonFields,
       gameId        : 51,
       owGameTypeId  : { [1]: 1660, [2]: null, [3]: null }[L],
-      name          : { en: `Marina Bay`, vi: `Marina Bay`, grp: `Casino` },
+      name          : { en: `Marina Bay`, vi: `Marina Bay`, grp: `Mega Big Small` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall2`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -866,7 +866,7 @@ deploy: {
     { ...commonFields,
       gameId        : 54,
       owGameTypeId  : { [1]: 1661, [2]: null, [3]: null }[L],
-      name          : { en: `Macau`, vi: `Macau`, grp: `Casino` },
+      name          : { en: `Macau`, vi: `Macau`, grp: `Mega Big Small` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall3`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -880,7 +880,7 @@ deploy: {
     { ...commonFields,
       gameId        : 55,
       owGameTypeId  : { [1]: 1662, [2]: null, [3]: null }[L],
-      name          : { en: `Monte Carlo`, vi: `Monte Carlo`, grp: `Casino` },
+      name          : { en: `Monte Carlo`, vi: `Monte Carlo`, grp: `Mega Big Small` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall4`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
