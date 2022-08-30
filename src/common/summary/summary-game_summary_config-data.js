@@ -214,7 +214,7 @@ deploy: {
     { ...commonFields,
       gameId        : 8,
       owGameTypeId  : { [1]: 1619, [2]: 3809, [3]: 3809 }[L],
-      name          : { en: `Keno Pro Max`, vi: `Keno Pro Max`, grp: `Mega Keno` },
+      name          : { en: `Keno Pro Max`, vi: `Keno Pro Max`, grp: `Keno` },
       coll          : { db: `minigame`, group: `kenopromax`, round: `_phiens`, postfix: `_cuocs` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -256,7 +256,7 @@ deploy: {
     { ...commonFields,
       gameId        : 11,
       owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
-      name          : { en: `Keno Pro Viet`, vi: `Keno Pro Viet`, grp: `Mega Keno` },
+      name          : { en: `Keno Pro Viet`, vi: `Keno Pro Viet`, grp: `Keno` },
       coll          : { db: `minigame`, group: `kenoproviet`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,

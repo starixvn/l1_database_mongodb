@@ -210,7 +210,7 @@ deploy: {
     { ...commonFields,
       gameId        : 8,
       owGameTypeId  : { [1]: 1619, [2]: 3809, [3]: 3809 }[L],
-      name          : { en: `Keno Pro Max`, vi: `Keno Pro Max`, grp: `Mega Keno` },
+      name          : { en: `Keno Pro Max`, vi: `Keno Pro Max`, grp: `Keno` },
       coll          : { db: `minigame_arc`, group: `kenopromax`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -252,7 +252,7 @@ deploy: {
     { ...commonFields,
       gameId        : 11,
       owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
-      name          : { en: `Keno Pro Viet`, vi: `Keno Pro Viet`, grp: `Mega Keno` },
+      name          : { en: `Keno Pro Viet`, vi: `Keno Pro Viet`, grp: `Keno` },
       coll          : { db: `minigame_arc`, group: `kenoproviet`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -805,8 +805,8 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 50,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
-      name          : { en: `Las Vegas`, vi: `Las Vegas`, grp: `Casino` },
+      owGameTypeId  : { [1]: 1659, [2]: null, [3]: null }[L],
+      name          : { en: `Las Vegas`, vi: `Las Vegas`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall1`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -819,8 +819,8 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 51,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
-      name          : { en: `Marina Bay`, vi: `Marina Bay`, grp: `Casino` },
+      owGameTypeId  : { [1]: 1660, [2]: null, [3]: null }[L],
+      name          : { en: `Marina Bay`, vi: `Marina Bay`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall2`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -833,7 +833,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 52,
-      owGameTypeId  : { [1]: 1657, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1657, [2]: 3848, [3]: null }[L],
       name          : { en: `Mega Keno`, vi: `Mega Keno`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `megakeno`, round: `_rounds_bk`, postfix: `_ones_bk` },
       fields        : {
@@ -847,7 +847,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 53,
-      owGameTypeId  : { [1]: 1658, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1658, [2]: 3849, [3]: null }[L],
       name          : { en: `Mega Keno 2`, vi: `Mega Keno 2`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `megakeno2`, round: `_rounds_bk`, postfix: `_ones_bk` },
       fields        : {
@@ -861,8 +861,8 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 54,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
-      name          : { en: `Macau`, vi: `Macau`, grp: `Casino` },
+      owGameTypeId  : { [1]: 1661, [2]: null, [3]: null }[L],
+      name          : { en: `Macau`, vi: `Macau`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall3`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
@@ -875,8 +875,8 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 55,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
-      name          : { en: `Monte Carlo`, vi: `Monte Carlo`, grp: `Casino` },
+      owGameTypeId  : { [1]: 1662, [2]: null, [3]: null }[L],
+      name          : { en: `Monte Carlo`, vi: `Monte Carlo`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall4`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
