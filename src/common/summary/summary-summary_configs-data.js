@@ -515,7 +515,7 @@ deploy: {
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
-        payout  : `$betWin`,
+        payout  : `$betwin`,
         refund  : expr.noRefund,
         isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
       },
