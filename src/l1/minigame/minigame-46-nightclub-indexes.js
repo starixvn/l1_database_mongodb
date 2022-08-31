@@ -16,7 +16,7 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.nightclub_rounds    , [idx.TTL, idx.time, idx.id, idx.memberId_id_F, idx.paid_uid, idx.currency, idx.isCash, ...BL.rounds]),
+    $Indexes(dbs.minigame.nightclub_rounds    , [idx.TTL, idx.time, idx.id, idx.summarized_id, idx.memberId_id_F, idx.paid_uid, idx.currency, idx.isCash, ...BL.rounds]),
     $Indexes(dbs.minigame.nightclub_freespins , [idx.TTL,           idx.id, idx.expiryTime]),
     $Indexes(dbs.minigame.nightclub_fames     , [idx.TTL, idx.time, idx.uid_roundId]),
   ];

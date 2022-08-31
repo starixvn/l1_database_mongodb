@@ -19,7 +19,7 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.hilo_rounds  , [idx.TTL, idx.time, idx.endTime, idx.id, idx.memberId_id_F, idx.currency, idx.isCash, ...BL.rounds]),
+    $Indexes(dbs.minigame.hilo_rounds  , [idx.TTL, idx.time, idx.endTime, idx.id, idx.summarized_id, idx.memberId_id_F, idx.currency, idx.isCash, ...BL.rounds]),
     $Indexes(dbs.minigame.hilo_betlogs , [idx.TTL,           idx.roundId_uid, idx.memberId_roundId_F, ...BL.betlogs]),
   ];
   idxs.forEach(_ => _.deploy());

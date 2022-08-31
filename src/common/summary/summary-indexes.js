@@ -7,7 +7,7 @@ deploy: {
   (global.___idx = global.___idx ?? {})[label] = {
     TTL                                       : $Index({'time': 1}, {expireAfterSeconds: 3600*24*8}),
     time_currency_gameId_cash_partner_U       : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'partnerId': 1}, {unique: true, partialFilterExpression: {partnerId: {$gt: ''}}}),
-    time_currency_gameId_cash_operator_U      : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'operatorId': 1}, {unique: true, partialFilterExpression: {operatorId: {$gt: ''}}}),
+    time_currency_gameId_cash_operator_U      : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'operatorId': 1}, {unique: true}),
     time_currency_gameId_cash_operator_round_U: $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'operatorId': 1, 'roundId': 1}, {unique: true}),
     time_currency_gameId_system_partner_U     : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'system': 1, 'partnerId': 1}, {unique: true}),
     gameId_system_time                        : $Index({'gameId': 1, 'system': 1, 'time': 1}),

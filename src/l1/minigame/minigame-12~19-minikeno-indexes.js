@@ -19,35 +19,35 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.kenomax_phiens  , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.kenomax_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.kenomax_cuocs   , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.kenomax_ones    , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
 
-    $Indexes(dbs.minigame.kenomax2_phiens , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.kenomax2_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.kenomax2_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.kenomax2_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
 
-    $Indexes(dbs.minigame.kenomini_phiens , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.kenomini_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.kenomini_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.kenomini_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
 
-    $Indexes(dbs.minigame.kenomini2_phiens, [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.kenomini2_phiens, [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.kenomini2_cuocs , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.kenomini2_ones  , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
 
-    $Indexes(dbs.minigame.kenoeast_phiens , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.kenoeast_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.kenoeast_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.kenoeast_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
 
-    $Indexes(dbs.minigame.kenowest_phiens , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.kenowest_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.kenowest_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.kenowest_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
 
-    $Indexes(dbs.minigame.kenosouth_phiens, [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.kenosouth_phiens, [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.kenosouth_cuocs , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.kenosouth_ones  , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
 
-    $Indexes(dbs.minigame.kenonorth_phiens, [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.kenonorth_phiens, [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.kenonorth_cuocs , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.kenonorth_ones  , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
   ];

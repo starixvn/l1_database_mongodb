@@ -24,7 +24,7 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.txturbo_phiens  , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.txturbo_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.txturbo_cuocs   , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.txturbo_ones    , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
     $Indexes(dbs.minigame.txturbo_results , [idx.TTL,           idx.roundId]),

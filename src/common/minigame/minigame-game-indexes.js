@@ -30,6 +30,7 @@ deploy: {
     roundId             : $Index({'roundId': 1}),
     roundId__id         : $Index({'roundId': 1, '_id': 1}),
     roundId_uid         : $Index({'roundId': 1, 'uid': 1}),
+    summarized_id       : $Index({'__archive.summarized': 1, 'id': 1}),
     time                : $Index({'time': 1}),
     timeTTL             : $Index({'time': 1}, {expireAfterSeconds: 120}),
     uid__id             : $Index({'uid': 1, '_id': 1}),

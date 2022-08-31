@@ -16,7 +16,7 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.vipbaccarat_phiens  , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.vipbaccarat_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.vipbaccarat_cuocs   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.uid_thanhtoan__id, idx.currency, idx.isCash, ...BL.cuocs]),
     $Indexes(dbs.minigame.vipbaccarat_tmpcuocs, [idx.timeTTL,       idx.phien__id, idx.uid_phien]),
     $Indexes(dbs.minigame.vipbaccarat_results , [idx.TTL,           idx.roundId]),

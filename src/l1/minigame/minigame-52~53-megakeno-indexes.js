@@ -19,11 +19,11 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.megakeno_rounds , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.megakeno_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.megakeno_bets   , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.bets]),
     $Indexes(dbs.minigame.megakeno_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
 
-    $Indexes(dbs.minigame.megakeno2_rounds, [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.megakeno2_rounds, [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.megakeno2_bets  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.bets]),
     $Indexes(dbs.minigame.megakeno2_ones  , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
   ];

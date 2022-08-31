@@ -19,22 +19,22 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.unbalancedbigsmall1_rounds , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.unbalancedbigsmall1_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.unbalancedbigsmall1_betlogs, [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, ...BL.betlogs]),
     $Indexes(dbs.minigame.unbalancedbigsmall1_bets   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.bets]),
     $Indexes(dbs.minigame.unbalancedbigsmall1_results, [idx.TTL,           idx.roundId]),
 
-    $Indexes(dbs.minigame.unbalancedbigsmall2_rounds , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.unbalancedbigsmall2_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.unbalancedbigsmall2_betlogs, [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, ...BL.betlogs]),
     $Indexes(dbs.minigame.unbalancedbigsmall2_bets   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.bets]),
     $Indexes(dbs.minigame.unbalancedbigsmall2_results, [idx.TTL,           idx.roundId]),
 
-    $Indexes(dbs.minigame.unbalancedbigsmall3_rounds , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.unbalancedbigsmall3_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.unbalancedbigsmall3_betlogs, [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, ...BL.betlogs]),
     $Indexes(dbs.minigame.unbalancedbigsmall3_bets   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.bets]),
     $Indexes(dbs.minigame.unbalancedbigsmall3_results, [idx.TTL,           idx.roundId]),
 
-    $Indexes(dbs.minigame.unbalancedbigsmall4_rounds , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.unbalancedbigsmall4_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.unbalancedbigsmall4_betlogs, [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, ...BL.betlogs]),
     $Indexes(dbs.minigame.unbalancedbigsmall4_bets   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.bets]),
     $Indexes(dbs.minigame.unbalancedbigsmall4_results, [idx.TTL,           idx.roundId]),

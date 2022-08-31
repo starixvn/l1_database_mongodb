@@ -16,7 +16,7 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.minisedie_phiens  , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.minisedie_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.minisedie_cuocs   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.uid_thanhtoan__id, idx.currency, idx.isCash, ...BL.cuocs]),
     $Indexes(dbs.minigame.minisedie_results , [idx.TTL,           idx.roundId]),
   ];

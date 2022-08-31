@@ -19,7 +19,7 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.vipsediewar_phiens  , [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.vipsediewar_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.vipsediewar_cuocs   , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.vipsediewar_ones    , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
     $Indexes(dbs.minigame.vipsediewar_results , [idx.TTL,           idx.roundId]),
