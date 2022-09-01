@@ -804,6 +804,7 @@ deploy: {
             $BICol(`natural`        , `natural`       , `bool`  ),
           ],
         )),
+        [2]: $_,
       }[L],
       { [1]: ($_ = $BITbl(`blockchainbaccarat_bets`, `blockchainbaccarat_bets`,
           [ {$match: {memberId: {$gt: 0}}},
@@ -848,6 +849,7 @@ deploy: {
             $BICol(`bankerPair`   , `bankerPair`  , `float` ),
           ],
         )),
+        [2]: $_,
       }[L],
       /** CASINO HOLDEM' POKER (Gs) */
       $BITbl(`casinoholdempoker_phiens`, `casinoholdempoker_rounds`,

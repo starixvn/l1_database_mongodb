@@ -776,7 +776,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 48,
-      owGameTypeId  : { [1]: 1655, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1655, [2]: 3847, [3]: null }[L],
       name          : { en: `Blockchain Baccarat`, vi: `Blockchain Baccarat`, grp: `Baccarat` },
       coll          : { db: `minigame_arc`, group: `blockchainbaccarat`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
