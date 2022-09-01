@@ -1,10 +1,9 @@
 deploy: {
   const dbs   = DBs(db);
   const label = `summary-summary_configs@${dbs.toString()}`;
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
-
-  const L = dbs._mongo._identity.L;
+  const { L, stage } = dbs._mongo._identity;
+  if (![1, 2, 3].includes(L)) break deploy;
+  if (!["active", "mixed"].includes(stage)) break deploy;
 
   const alias = {
     roundRef    : { [1]: `roundId`   , [2]: `roundId`   , [3]: `phien`     }[L],

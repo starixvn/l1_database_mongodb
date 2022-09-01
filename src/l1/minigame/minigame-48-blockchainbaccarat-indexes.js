@@ -19,7 +19,7 @@ deploy: {
     $Indexes(dbs.minigame.blockchainbaccarat_rounds   , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
     $Indexes(dbs.minigame.blockchainbaccarat_bets     , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.uid_thanhtoan__id, idx.currency, idx.isCash, ...BL.bets]),
     $Indexes(dbs.minigame.blockchainbaccarat_tmpbets  , [idx.timeTTL,       idx.phien__id, idx.uid_phien]),
-    $Indexes(dbs.minigame.blockchainbaccarat_results  , [idx.TTL,           idx.roundId]),
+    $Indexes(dbs.minigame.blockchainbaccarat_results  , [idx.TTL,           idx.roundId, idx.isAvailable]),
   ];
   idxs.forEach(_ => _.deploy());
 }

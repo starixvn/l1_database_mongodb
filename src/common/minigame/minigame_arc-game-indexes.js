@@ -1,8 +1,9 @@
 deploy: {
   const dbs   = DBs(db);
   const label = `minigame_arc-game@${dbs.toString()}`;
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
-  if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+  const { L, stage } = dbs._mongo._identity;
+  if (![1, 2, 3].includes(L)) break deploy;
+  if (!["archive", "mixed"].includes(stage)) break deploy;
 
   (global.___idx = global.___idx ?? {})[label] = {
     endTime             : $Index({'endTime': 1}),

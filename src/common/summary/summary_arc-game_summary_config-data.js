@@ -1,10 +1,9 @@
 deploy: {
   const dbs   = DBs(db);
   const label = `summary_arc-game_summary_config@${dbs.toString()}`;
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
-  if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
-
-  const L = dbs._mongo._identity.L;
+  const { L, stage } = dbs._mongo._identity;
+  if (![1, 2, 3].includes(L)) break deploy;
+  if (!["archive", "mixed"].includes(stage)) break deploy;
 
   const commonFields  = { vendorId: { [1]: 42, [2]: 66, [3]: 66 }[L] };
   const commonConfig  = { hasCurrency: true };
