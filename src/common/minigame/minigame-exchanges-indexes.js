@@ -1,8 +1,9 @@
 deploy: {
   const dbs   = DBs(db);
   const label = `minigame-exchanges@${dbs.toString()}`;
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+  const { L, stage } = dbs._mongo._identity;
+  if (![1, 2, 3].includes(L)) break deploy;
+  if (!["active", "mixed"].includes(stage)) break deploy;
 
   (global.___colls = global.___colls ?? {})[label] = [
     $Collection(dbs.minigame.exchange_rates, {

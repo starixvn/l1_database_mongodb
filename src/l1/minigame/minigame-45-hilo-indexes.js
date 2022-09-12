@@ -2,16 +2,25 @@
 deploy: {
   const dbs   = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+  const { L, stage } = dbs._mongo._identity;
+  if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
+  if (!["active", "mixed"].includes(stage)) break deploy;
 
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame-game-indexes.js`);
   const idx = {
     ...global.___idx[label],
   };
+  const BL = {
+    rounds: {
+      [1]: ($_ = [idx.playerId_id_F]), [2]: $_, [3]: [],
+    }[L],
+    betlogs: {
+      [1]: ($_ = [idx.playerId_roundId_F]), [2]: $_, [3]: [],
+    }[L],
+  };
   const idxs = [
-    $Indexes(dbs.minigame.hilo_rounds  , [idx.TTL, idx.time, idx.endTime, idx.id, idx.memberId_id_F, idx.currency, idx.isCash]),
-    $Indexes(dbs.minigame.hilo_betlogs , [idx.TTL,           idx.roundId_uid, idx.memberId_roundId_F]),
+    $Indexes(dbs.minigame.hilo_rounds  , [idx.TTL, idx.time, idx.endTime, idx.id, idx.summarized_id, idx.memberId_id_F, idx.currency, idx.isCash, ...BL.rounds]),
+    $Indexes(dbs.minigame.hilo_betlogs , [idx.TTL,           idx.roundId_uid, idx.memberId_roundId_F, ...BL.betlogs]),
   ];
   idxs.forEach(_ => _.deploy());
 }

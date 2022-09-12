@@ -2,21 +2,30 @@
 deploy: {
   const dbs   = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+  const { L, stage } = dbs._mongo._identity;
+  if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
+  if (!["active", "mixed"].includes(stage)) break deploy;
 
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame-game-indexes.js`);
   const idx = {
     ...global.___idx[label],
   };
+  const BL = {
+    cuocs: {
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F]), [2]: $_, [3]: [],
+    }[L],
+    ones: {
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]), [2]: $_, [3]: [],
+    }[L],
+  };
   const idxs = [
-    $Indexes(dbs.minigame.kenopower1_phiens , [idx.TTL, idx.time, idx.id]),
-    $Indexes(dbs.minigame.kenopower1_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id]),
-    $Indexes(dbs.minigame.kenopower1_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.kenopower1_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
+    $Indexes(dbs.minigame.kenopower1_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
+    $Indexes(dbs.minigame.kenopower1_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
 
-    $Indexes(dbs.minigame.kenopower2_phiens , [idx.TTL, idx.time, idx.id]),
-    $Indexes(dbs.minigame.kenopower2_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id]),
-    $Indexes(dbs.minigame.kenopower2_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.kenopower2_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
+    $Indexes(dbs.minigame.kenopower2_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
+    $Indexes(dbs.minigame.kenopower2_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
   ];
   idxs.forEach(_ => _.deploy());
 }

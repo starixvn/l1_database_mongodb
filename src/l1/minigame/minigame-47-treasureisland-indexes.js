@@ -2,15 +2,16 @@
 deploy: {
   const dbs   = DBs(db);
   const label = `minigame-slot@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+  const { L, stage } = dbs._mongo._identity;
+  if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
+  if (!["active", "mixed"].includes(stage)) break deploy;
 
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame-slot-indexes.js`);
   const idx = {
     ...global.___idx[label],
   };
   const idxs = [
-    $Indexes(dbs.minigame.treasureisland_rounds     , [idx.TTL, idx.time, idx.id, idx.playerId_id_F, idx.paid_uid, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.treasureisland_rounds     , [idx.TTL, idx.time, idx.id, idx.summarized_id, idx.playerId_id_F, idx.paid_uid, idx.currency, idx.isCash]),
     $Indexes(dbs.minigame.treasureisland_freespins  , [idx.TTL,           idx.id, idx.expiryTime]),
     $Indexes(dbs.minigame.treasureisland_multipliers, [idx.TTL, idx.time, idx.playerId, idx.uid_ended_F]),
   ];
