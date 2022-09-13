@@ -14,7 +14,7 @@ deploy: {
       _id: 0, playerId: '$local.memberId',
     }},
     {$lookup: {
-      from: 'megakeno_bets',
+      from: 'megakeno_ones',
       let: { playerId: '$playerId' },
       pipeline: [
         {$match: {$expr: {$eq: ['$playerId', '$$playerId']}}},
@@ -23,7 +23,7 @@ deploy: {
       as: 'megakeno',
     }},
     {$lookup: {
-      from: 'megakeno2_bets',
+      from: 'megakeno2_ones',
       let: { playerId: '$playerId' },
       pipeline: [
         {$match: {$expr: {$eq: ['$playerId', '$$playerId']}}},
