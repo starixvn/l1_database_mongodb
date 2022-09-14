@@ -766,7 +766,7 @@ deploy: {
 
     { gameId  : 44,
       db      : `minigame`,
-      coll    : { base: `paigowpoker`, round: `rounds`, bet: `cuocs` },
+      coll    : { base: `paigowpoker`, round: `phiens`, bet: `cuocs` },
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [`$bet`, {$toInt: {$not: `$freeBet`}}]},
