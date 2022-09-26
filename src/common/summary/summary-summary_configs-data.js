@@ -969,6 +969,54 @@ deploy: {
       },
     },
 
+    { gameId  : 56,
+      db      : `minigame`,
+      coll    : { base: `minisedie2`, round: `rounds`, bet: `bets` },
+      alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
+      expr    : {
+        stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`]}, {$toInt: {$not: `$freeBet`}}]},
+        payout  : `$betwin`,
+        refund  : expr.noRefund,
+        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
+    { gameId  : 57,
+      db      : `minigame`,
+      coll    : { base: `minisedie3`, round: `rounds`, bet: `bets` },
+      alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
+      expr    : {
+        stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`]}, {$toInt: {$not: `$freeBet`}}]},
+        payout  : `$betwin`,
+        refund  : expr.noRefund,
+        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
+    { gameId  : 58,
+      db      : `minigame`,
+      coll    : { base: `minisedie4`, round: `rounds`, bet: `bets` },
+      alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
+      expr    : {
+        stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`]}, {$toInt: {$not: `$freeBet`}}]},
+        payout  : `$betwin`,
+        refund  : expr.noRefund,
+        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
     { gameId  : 99,
       db      : `minigame`,
       coll    : { base: `jackpot` },
