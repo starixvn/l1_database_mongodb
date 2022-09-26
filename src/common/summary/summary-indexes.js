@@ -14,8 +14,8 @@ deploy: {
     gameId_U                                  : $Index({'gameId': 1}, {unique: true}),
     owGameTypeId_FU                           : $Index({'owGameTypeId': 1}, {unique: true, partialFilterExpression: {owGameTypeId: {$gt: 0}}}),
     db_coll__id_U                             : $Index({'target.db': 1, 'target.coll': 1, 'data._id': 1}, {unique: true}),
-    __archive_daily                           : $Index({'__archive.daily': 1}),
-    __archive_hourly                          : $Index({'__archive.hourly': 1}),
+    __archive_daily                           : $Index({'__archive.daily': 1, time: 1, _id: 1}),
+    __archive_hourly                          : $Index({'__archive.hourly': 1, time: 1, _id: 1}),
   };
 
   (global.___idxs = global.___idxs ?? {})[label] = [
