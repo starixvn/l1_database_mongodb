@@ -13,8 +13,9 @@ deploy: {
     roundId             : $Index({'roundId': 1}),
     time                : $Index({'time': 1}),
     uid_phien           : $Index({'uid': 1, 'phien': 1}),
-    uid_roundId         : $Index({'uid': 1, 'roundId': 1}),
     uid_phien_freeBet_U : $Index({'uid': 1, 'phien': 1, 'freeBet': 1}, {unique: true}),
     uid_phien_U         : $Index({'uid': 1, 'phien': 1}, {unique: true}),
+    uid_roundId         : $Index({'uid': 1, 'roundId': 1}),
+    uid_roundId_U       : $Index({'uid': 1, 'roundId': 1}, {unique: true}),
   };
 }
