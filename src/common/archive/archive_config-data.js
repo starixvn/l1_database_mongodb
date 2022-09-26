@@ -1979,7 +1979,7 @@ deploy: {
       },
       childs  : [],
     },
-    { _id     : 39052.103,
+    { _id     : 39053.103,
       from    : { db: `minigame`    , coll: `megakeno2_results`    },
       to      : { db: `minigame_arc`, coll: `megakeno2_results_bk` },
       config  : {
