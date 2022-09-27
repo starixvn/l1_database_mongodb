@@ -17,12 +17,12 @@ deploy: {
       from    : 'megakeno_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'megakeno_bets',
           let     : { roundId: '$roundId', playerId: '$playerId' },
           pipeline: [
-            {$match: {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
@@ -41,12 +41,12 @@ deploy: {
       from    : 'megakeno2_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'megakeno2_bets',
           let     : { roundId: '$roundId', playerId: '$playerId' },
           pipeline: [
-            {$match: {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
@@ -65,12 +65,12 @@ deploy: {
       from    : 'kenomini_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match: {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenomini_cuocs',
           let     : { roundId: '$roundId', playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
@@ -89,12 +89,12 @@ deploy: {
       from    : 'kenomini2_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenomini2_cuocs',
           let     : { roundId: '$roundId' ,playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
@@ -113,12 +113,12 @@ deploy: {
       from    : 'kenoeast_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenoeast_cuocs',
           let     : { roundId: '$roundId' ,playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
@@ -137,12 +137,12 @@ deploy: {
       from    : 'kenowest_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenowest_cuocs',
           let     : { roundId: '$roundId' ,playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
@@ -161,12 +161,12 @@ deploy: {
       from    : 'kenosouth_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenosouth_cuocs',
           let     : { roundId: '$roundId' ,playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
@@ -185,12 +185,12 @@ deploy: {
       from    : 'kenonorth_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenonorth_cuocs',
           let     : { roundId: '$roundId' ,playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
