@@ -17,15 +17,22 @@ deploy: {
       from    : 'megakeno_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'megakeno_bets',
-          let     : { roundId: '$roundId' ,playerId: '$playerId' },
+          let     : { roundId: '$roundId', playerId: '$playerId' },
           pipeline: [
-            {$match: {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
+        {$lookup: {
+          from        : 'megakeno_rounds',
+          localField  : 'roundId',
+          foreignField: 'id',
+          as          : 'round',
+        }},
+        {$unwind: '$round'},
         {$set   : {gameId: {$literal: 52}}},
       ],
       as      : 'megakeno',
@@ -34,15 +41,22 @@ deploy: {
       from    : 'megakeno2_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'megakeno2_bets',
-          let     : { roundId: '$roundId' ,playerId: '$playerId' },
+          let     : { roundId: '$roundId', playerId: '$playerId' },
           pipeline: [
-            {$match: {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
+        {$lookup: {
+          from        : 'megakeno2_rounds',
+          localField  : 'roundId',
+          foreignField: 'id',
+          as          : 'round',
+        }},
+        {$unwind: '$round'},
         {$set: {gameId: {$literal: 53}}},
       ],
       as      : 'megakeno2',
@@ -51,15 +65,22 @@ deploy: {
       from    : 'kenomini_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match: {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenomini_cuocs',
-          let     : { roundId: '$roundId' ,playerId: '$playerId' },
+          let     : { roundId: '$roundId', playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
+        {$lookup: {
+          from        : 'kenomini_phiens',
+          localField  : 'roundId',
+          foreignField: 'id',
+          as          : 'round',
+        }},
+        {$unwind: '$round'},
         {$set: {gameId: {$literal: 14}}},
       ],
       as      : 'kenomini',
@@ -68,15 +89,22 @@ deploy: {
       from    : 'kenomini2_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenomini2_cuocs',
           let     : { roundId: '$roundId' ,playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
+        {$lookup: {
+          from        : 'kenomini2_phiens',
+          localField  : 'roundId',
+          foreignField: 'id',
+          as          : 'round',
+        }},
+        {$unwind: '$round'},
         {$set   : {gameId: {$literal: 15}}},
       ],
       as      : 'kenomini2',
@@ -85,15 +113,22 @@ deploy: {
       from    : 'kenoeast_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenoeast_cuocs',
           let     : { roundId: '$roundId' ,playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
+        {$lookup: {
+          from        : 'kenoeast_phiens',
+          localField  : 'roundId',
+          foreignField: 'id',
+          as          : 'round',
+        }},
+        {$unwind: '$round'},
         {$set   : {gameId: {$literal: 16}}},
       ],
       as      : 'kenoeast',
@@ -102,15 +137,22 @@ deploy: {
       from    : 'kenowest_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenowest_cuocs',
           let     : { roundId: '$roundId' ,playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
+        {$lookup: {
+          from        : 'kenowest_phiens',
+          localField  : 'roundId',
+          foreignField: 'id',
+          as          : 'round',
+        }},
+        {$unwind: '$round'},
         {$set   : {gameId: {$literal: 17}}},
       ],
       as      : 'kenowest',
@@ -119,15 +161,22 @@ deploy: {
       from    : 'kenosouth_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenosouth_cuocs',
           let     : { roundId: '$roundId' ,playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
+        {$lookup: {
+          from        : 'kenosouth_phiens',
+          localField  : 'roundId',
+          foreignField: 'id',
+          as          : 'round',
+        }},
+        {$unwind: '$round'},
         {$set   : {gameId: {$literal: 18}}},
       ],
       as      : 'kenosouth',
@@ -136,15 +185,22 @@ deploy: {
       from    : 'kenonorth_ones',
       let     : { playerId: '$playerId' },
       pipeline: [
-        {$match : {$expr: {$eq: ['$playerId', '$$playerId']}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
           from    : 'kenonorth_cuocs',
           let     : { roundId: '$roundId' ,playerId: '$playerId' },
           pipeline: [
-            {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match : {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
           ],
           as      : 'betLogs',
         }},
+        {$lookup: {
+          from        : 'kenonorth_phiens',
+          localField  : 'roundId',
+          foreignField: 'id',
+          as          : 'round',
+        }},
+        {$unwind: '$round'},
         {$set   : {gameId: {$literal: 19}}},
       ],
       as      : 'kenonorth',
@@ -175,5 +231,6 @@ deploy: {
     break deploy;
   }
 
-  dbs.minigame.runCommand({ collMod: view, viewOn: source, pipeline: agg });
+  const result = dbs.minigame.runCommand({ collMod: view, viewOn: source, pipeline: agg });
+  logger.info(label, JSON.stringify(result));
 }
