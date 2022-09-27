@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-view-minisedie-histories.js
