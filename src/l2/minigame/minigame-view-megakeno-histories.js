@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-view-megakeno-histories.js
