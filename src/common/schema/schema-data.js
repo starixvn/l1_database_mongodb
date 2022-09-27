@@ -1315,6 +1315,72 @@ deploy: {
         )),
         [2]: $_,
       }[L],
+      /** FRUIT SLOT (G) */
+      { [1]: ($_ = $BITbl(`fruitslot_rounds`, `fruitslot_rounds`,
+          [ {$project : {
+              _id: 0, time: 1, id: 1, exchangeRateId: 1,
+              archived  : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+            }},
+          ],
+          [
+            $BICol(`_MONGOFILTER`   , `_MONGOFILTER`  , `filter`),
+            /* Metadata */
+            $BICol(`id`             , `id`            , `int64` ),
+            $BICol(`exchangeRateId` , `exchangeRateId`, `int64` ),
+            $BICol(`time`           , `time`          , `date`  ),
+            $BICol(`archived`       , `archived`      , `bool`  ),
+          ],
+        )),
+        [2]: $_,
+      }[L],
+      { [1]: ($_ = $BITbl(`fruitslot_bets`, `fruitslot_tickets`,
+          [ {$match: {[mapping.playerId]: {$gt: 0}}},
+            {$project : {
+              _id: 0, phien: `$${mapping.roundId}`, uid: 1, memberId: `$${mapping.playerId}`, name: 1, time: 1,
+              big: 1, small: 1, bar: 1, tripleSeven: 1, star: 1, watermelon: 1, bell: 1, lemon: 1, orange: 1, cherry: 1,
+              totalAmount: 1, betwin: 1, thanhtoan: `$${mapping.paid}`, rate: 1,
+              partnerId   : {$ifNull: [{$ifNull: [`$operatorId`, `$partnerId`]}, {$literal: `ONEworks1`}]},
+              currency    : {$ifNull: [`$currency`, `$__archive.currency`]},
+              isCash      : `$__archive.isCash`,
+              archived    : {$ifNull: [{$toBool: `$__archive.eventtime`}, false]},
+              freeBet     : {$literal: false},
+            }}
+          ],
+          [
+            $BICol(`_MONGOFILTER` , `_MONGOFILTER`, `filter`),
+            /* Metadata */
+            $BICol(`time`         , `time`        , `date`  ),
+            $BICol(`phien`        , `roundId`     , `int64` ),
+            /* Member */
+            $BICol(`uid`          , `uid`         , `str`   ),
+            $BICol(`memberId`     , `memberId`    , `int64` ),
+            $BICol(`name`         , `nickname`    , `str`   ),
+            $BICol(`currency`     , `currency`    , `str`   ),
+            $BICol(`partnerId`    , `partnerId`   , `str`   ),
+            /* Summary */
+            $BICol(`totalAmount`  , `stake`       , `float` ),
+            $BICol(`betwin`       , `payout`      , `float` ),
+            /* Attributes */
+            $BICol(`rate`         , `rate`        , `float` ),
+            $BICol(`thanhtoan`    , `settled`     , `bool`  ),
+            $BICol(`freeBet`      , `freeBet`     , `bool`  ),
+            $BICol(`isCash`       , `isCash`      , `bool`  ),
+            $BICol(`archived`     , `archived`    , `bool`  ),
+            /* Bet Choices */
+            $BICol(`big`          , `big`         , `float` ),
+            $BICol(`small`        , `small`       , `float` ),
+            $BICol(`bar`          , `bar`         , `float` ),
+            $BICol(`tripleSeven`  , `tripleSeven` , `float` ),
+            $BICol(`star`         , `star`        , `float` ),
+            $BICol(`watermelon`   , `watermelon`  , `float` ),
+            $BICol(`bell`         , `bell`        , `float` ),
+            $BICol(`lemon`        , `lemon`       , `float` ),
+            $BICol(`orange`       , `orange`      , `float` ),
+            $BICol(`cherry`       , `cherry`      , `float` ),
+          ],
+        )),
+        [2]: $_,
+      }[L],
       /** GAME CONFIG (Gm) */
       $BITbl(`game_configs`, `game_configs`,
         [ {$project : {
