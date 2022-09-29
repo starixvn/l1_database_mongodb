@@ -232,5 +232,5 @@ deploy: {
   }
 
   const result = dbs.minigame.runCommand({ collMod: view, viewOn: source, pipeline: agg });
-  logger.info(label, JSON.stringify(result));
+  logger.info(label, `Successfully created view`);
 }
