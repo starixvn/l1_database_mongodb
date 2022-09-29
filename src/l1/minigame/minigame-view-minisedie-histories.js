@@ -35,7 +35,7 @@ deploy: {
       pipeline: [
         {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
-          from        : 'minisedie_rounds',
+          from        : 'minisedie2_rounds',
           localField  : 'roundId',
           foreignField: 'id',
           as          : 'round',
@@ -51,7 +51,7 @@ deploy: {
       pipeline: [
         {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
         {$lookup: {
-          from        : 'minisedie_rounds',
+          from        : 'minisedie3_rounds',
           localField  : 'roundId',
           foreignField: 'id',
           as          : 'round',
