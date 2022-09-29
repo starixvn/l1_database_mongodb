@@ -11,18 +11,18 @@ deploy: {
   const source = 'users';
   const agg = [
     {$project: {
-      _id: 0, playerId: '$local.memberId',
+      _id: 0, playerId: '$local.memberId', operatorId: '$local.partnerId',
     }},
     {$lookup: {
       from    : 'unbalancedbigsmall1_bets',
-      let     : { playerId: '$playerId' },
+      let     : { playerId: '$playerId', operatorId: '$operatorId' },
       pipeline: [
-        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
         {$lookup: {
           from    : 'unbalancedbigsmall1_betlogs',
-          let     : { roundId: '$roundId', playerId: '$playerId' },
+          let     : { roundId: '$roundId', playerId: '$playerId', operatorId: '$operatorId' },
           pipeline: [
-            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
           ],
           as      : 'betLogs',
         }},
@@ -39,14 +39,14 @@ deploy: {
     }},
     {$lookup: {
       from    : 'unbalancedbigsmall2_bets',
-      let     : { playerId: '$playerId' },
+      let     : { playerId: '$playerId', operatorId: '$operatorId' },
       pipeline: [
-        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
         {$lookup: {
           from    : 'unbalancedbigsmall2_betlogs',
-          let     : { roundId: '$roundId', playerId: '$playerId' },
+          let     : { roundId: '$roundId', playerId: '$playerId', operatorId: '$operatorId' },
           pipeline: [
-            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
           ],
           as      : 'betLogs',
         }},
@@ -63,14 +63,14 @@ deploy: {
     }},
     {$lookup: {
       from    : 'unbalancedbigsmall3_bets',
-      let     : { playerId: '$playerId' },
+      let     : { playerId: '$playerId', operatorId: '$operatorId' },
       pipeline: [
-        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
         {$lookup: {
           from    : 'unbalancedbigsmall3_betlogs',
-          let     : { roundId: '$roundId', playerId: '$playerId' },
+          let     : { roundId: '$roundId', playerId: '$playerId', operatorId: '$operatorId' },
           pipeline: [
-            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
           ],
           as      : 'betLogs',
         }},
@@ -87,14 +87,14 @@ deploy: {
     }},
     {$lookup: {
       from    : 'unbalancedbigsmall4_bets',
-      let     : { playerId: '$playerId' },
+      let     : { playerId: '$playerId', operatorId: '$operatorId' },
       pipeline: [
-        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
         {$lookup: {
           from    : 'unbalancedbigsmall4_betlogs',
-          let     : { roundId: '$roundId', playerId: '$playerId' },
+          let     : { roundId: '$roundId', playerId: '$playerId', operatorId: '$operatorId' },
           pipeline: [
-            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}]}}},
+            {$match: {$expr: {$and: [{$eq: ['$roundId', '$$roundId']}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
           ],
           as      : 'betLogs',
         }},

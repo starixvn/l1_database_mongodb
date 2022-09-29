@@ -11,13 +11,13 @@ deploy: {
   const source = 'users';
   const agg = [
     {$project: {
-      _id: 0, playerId: '$local.memberId',
+      _id: 0, playerId: '$local.memberId', operatorId: '$local.partnerId',
     }},
     {$lookup: {
       from    : 'minisedie_cuocs',
-      let     : { playerId: '$playerId' },
+      let     : { playerId: '$playerId', operatorId: '$operatorId' },
       pipeline: [
-        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
         {$lookup: {
           from        : 'minisedie_phiens',
           localField  : 'roundId',
@@ -31,9 +31,9 @@ deploy: {
     }},
     {$lookup: {
       from    : 'minisedie2_bets',
-      let     : { playerId: '$playerId' },
+      let     : { playerId: '$playerId', operatorId: '$operatorId' },
       pipeline: [
-        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
         {$lookup: {
           from        : 'minisedie2_rounds',
           localField  : 'roundId',
@@ -47,9 +47,9 @@ deploy: {
     }},
     {$lookup: {
       from    : 'minisedie3_bets',
-      let     : { playerId: '$playerId' },
+      let     : { playerId: '$playerId', operatorId: '$operatorId' },
       pipeline: [
-        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
         {$lookup: {
           from        : 'minisedie3_rounds',
           localField  : 'roundId',
@@ -63,9 +63,9 @@ deploy: {
     }},
     {$lookup: {
       from    : 'minisedie4_bets',
-      let     : { playerId: '$playerId' },
+      let     : { playerId: '$playerId', operatorId: '$operatorId' },
       pipeline: [
-        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}]}}},
+        {$match : {$expr: {$and: [{$eq: ['$paid', true]}, {$eq: ['$playerId', '$$playerId']}, {$eq: ['$operatorId', '$$operatorId']}]}}},
         {$lookup: {
           from        : 'minisedie4_rounds',
           localField  : 'roundId',
