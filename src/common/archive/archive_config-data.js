@@ -2248,6 +2248,33 @@ deploy: {
     },
   ];
 
+  const summary = [
+    { _id     : 53001,
+      from    : { db: 'summary'    , coll: 'round_summaries'},
+      to      : { db: 'summary_arc', coll: 'round_summaries'},
+      config  : {
+        timeField: 'time', cutOffsetHours: -24*4,
+      },
+      childs: [],
+    },
+    { _id     : 53002,
+      from    : { db: 'summary'    , coll: 'hourly_summaries'},
+      to      : { db: 'summary_arc', coll: 'hourly_summaries'},
+      config  : {
+        timeField: 'time', cutOffsetHours: -24*4,
+      },
+      childs: [],
+    },
+    { _id     : 53002,
+      from    : { db: 'summary'    , coll: 'daily_summaries'},
+      to      : { db: 'summary_arc', coll: 'daily_summaries'},
+      config  : {
+        timeField: 'time', cutOffsetHours: -24*4,
+      },
+      childs: [],
+    },
+  ];
+
   const user = [
     { _id     : 25001,
       from    : { db: 'minigame'    , coll: 'usersessions'    },
@@ -2263,6 +2290,7 @@ deploy: {
     ...log,
     ...member,
     ...minigame,
+    ...summary,
     ...user,
   ];
 }
