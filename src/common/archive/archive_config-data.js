@@ -2265,7 +2265,7 @@ deploy: {
       },
       childs: [],
     },
-    { _id     : 53002,
+    { _id     : 53003,
       from    : { db: 'summary'    , coll: 'daily_summaries'},
       to      : { db: 'summary_arc', coll: 'daily_summaries'},
       config  : {
