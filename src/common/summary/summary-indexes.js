@@ -6,6 +6,7 @@ deploy: {
 
   (global.___idx = global.___idx ?? {})[label] = {
     TTL                                       : $Index({'time': 1}, {expireAfterSeconds: 3600*24*8}),
+    TTL_arc                                   : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),
     time_currency_gameId_cash_partner_U       : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'partnerId': 1}, {unique: true, partialFilterExpression: {partnerId: {$gt: ''}}}),
     time_currency_gameId_cash_operator_U      : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'operatorId': 1}, {unique: true}),
     time_currency_gameId_cash_operator_round_U: $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'operatorId': 1, 'roundId': 1}, {unique: true}),
@@ -25,12 +26,12 @@ deploy: {
       global.___idx[label].gameId_system_time,
     ]),
     $Indexes(dbs.summary.daily_summaries, [
-      global.___idx[label].TTL,
+      global.___idx[label].TTL_arc,
       global.___idx[label].time_currency_gameId_cash_partner_U,
       global.___idx[label].time_currency_gameId_cash_operator_U,
     ]),
     $Indexes(dbs.summary.hourly_summaries, [
-      global.___idx[label].TTL,
+      global.___idx[label].TTL_arc,
       global.___idx[label].time_currency_gameId_cash_partner_U,
       global.___idx[label].time_currency_gameId_cash_operator_U,
     ]),
@@ -42,7 +43,7 @@ deploy: {
       global.___idx[label].gameId_U,
     ]),
     $Indexes(dbs.summary.round_summaries, [
-      global.___idx[label].TTL,
+      global.___idx[label].TTL_arc,
       global.___idx[label].time_currency_gameId_cash_operator_round_U,
       global.___idx[label].__archive_daily,
       global.___idx[label].__archive_hourly,
