@@ -10,17 +10,32 @@ deploy: {
     users_memberId  : { lookup: `users_memberId` },
     users_playerId  : { lookup: `users_playerId` },
     users_winnerId  : { lookup: `users_winnerId` },
+    users_self      : { lookup: `users_self` },
   };
   const lookupFields = {
     currency: {
       field       : `currency`,
       sourceField : `local.currency`,
       default     : null,
+      archive     : true,
     },
     isCash: {
       field       : `isCash`,
       sourceField : `local.isCash`,
       default     : {[1]: false, [2]: true, [3]: null}[L],
+      archive     : true,
+    },
+    playerId: {
+      field       : `playerId`,
+      sourceField : `local.memberId`,
+      default     : `$$REMOVE`,
+      archive     : false,
+    },
+    operatorId: {
+      field       : `operatorId`,
+      sourceField : `local.partnerId`,
+      default     : `$users_self.local.clientId`,
+      archive     : false,
     },
   };
   const commonFields  = {};
@@ -33,6 +48,14 @@ deploy: {
   const jackpotSource = lookupSources.users_winnerId;
 
   const metaConfigs = [
+    { ...commonFields,
+      gameId  : 0,
+      target  : { db: `minigame`, coll: `users` },
+      fields  : [
+        Object.assign({}, lookupSources.users_self, lookupFields.playerId),
+        Object.assign({}, lookupSources.users_self, lookupFields.operatorId),
+      ]
+    },
     { ...commonFields,
       gameId  : 1,
       target  : { db: `minigame`, coll: `taixiu_ones` },
