@@ -16,7 +16,7 @@ deploy: {
 
   (global.___idx = global.___idx ?? {})[label] = {
     username_U_en   : $Index({'local.username': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
-    memberId        : $Index({'local.memberId': 1}),
+    memberId        : $Index({'local.memberId': 1, 'local.operatorId': 1, 'local.partnerId': 1, 'local.clientId': 1}),
     memberName      : $Index({'local.memberName': 1}),
     id_U            : $Index({'id': 1}, {unique: true, collation: {locale: 'simple'}}),
     id_U_en         : $Index({'id': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
