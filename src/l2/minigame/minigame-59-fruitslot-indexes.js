@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-59-fruitslot-indexes.js

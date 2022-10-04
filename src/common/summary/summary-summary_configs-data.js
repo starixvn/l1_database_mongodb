@@ -424,6 +424,7 @@ deploy: {
     { gameId  : 23,
       db      : `minigame`,
       coll    : { base: `blackjack`, round: `phiens`, bet: `cuocs` },
+      filter  : [ { ended: true } ],
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [`$bet`, {$toInt: {$not: `$freeBet`}}]},
@@ -527,6 +528,7 @@ deploy: {
     { gameId  : 29,
       db      : `minigame`,
       coll    : { base: `fourguardians`, round: `rounds` },
+      filter  : [ { paid: true } ],
       alias   : { roundId: `id`, time: `time`, playerId: alias.playerId, settled: `paid` },
       expr    : {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
@@ -639,6 +641,7 @@ deploy: {
     { gameId  : 36,
       db      : `minigame`,
       coll    : { base: `kenomatch1`, round: `phiens`, bet: `ones` },
+      filter  : [ { settled: true } ],
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
@@ -655,6 +658,7 @@ deploy: {
     { gameId  : 37,
       db      : `minigame`,
       coll    : { base: `kenomatch2`, round: `phiens`, bet: `ones` },
+      filter  : [ { settled: true } ],
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
@@ -671,6 +675,7 @@ deploy: {
     { gameId  : 38,
       db      : `minigame`,
       coll    : { base: `heroesslot`, round: `rounds` },
+      filter  : [ { paid: true } ],
       alias   : { roundId: `id`, time: `time`, playerId: alias.playerId, settled: `paid` },
       expr    : {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
@@ -687,6 +692,7 @@ deploy: {
     { gameId  : 39,
       db      : `minigame`,
       coll    : { base: `casinoholdempoker`, round: `phiens`, bet: `cuocs` },
+      filter  : [ { ended: true } ],
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [`$bet`, {$toInt: {$not: `$freeBet`}}]},
@@ -703,6 +709,7 @@ deploy: {
     { gameId  : 40,
       db      : `minigame`,
       coll    : { base: `kenopower1`, round: `phiens`, bet: `ones` },
+      filter  : [ { settled: true } ],
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
@@ -719,6 +726,7 @@ deploy: {
     { gameId  : 41,
       db      : `minigame`,
       coll    : { base: `kenopower2`, round: `phiens`, bet: `ones` },
+      filter  : [ { settled: true } ],
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
@@ -735,6 +743,7 @@ deploy: {
     { gameId  : 42,
       db      : `minigame`,
       coll    : { base: `texasholdempoker`, round: `phiens`, bet: `cuocs` },
+      filter  : [ { ended: true } ],
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [`$bet`, {$toInt: {$not: `$freeBet`}}]},
@@ -766,7 +775,8 @@ deploy: {
 
     { gameId  : 44,
       db      : `minigame`,
-      coll    : { base: `paigowpoker`, round: `rounds`, bet: `cuocs` },
+      coll    : { base: `paigowpoker`, round: `phiens`, bet: `cuocs` },
+      filter  : [ { ended: true } ],
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : {$multiply: [`$bet`, {$toInt: {$not: `$freeBet`}}]},
@@ -783,6 +793,7 @@ deploy: {
     { gameId  : 45,
       db      : `minigame`,
       coll    : { base: `hilo`, round: `rounds` },
+      filter  : [ { paid: true } ],
       alias   : { roundId: `id`, time: `time`, playerId: alias.playerId, settled: `paid` },
       expr    : {
         stake   : `$amount`,
@@ -799,6 +810,7 @@ deploy: {
     { gameId  : 46,
       db      : `minigame`,
       coll    : { base: `nightclub`, round: `rounds` },
+      filter  : [ { paid: true } ],
       alias   : { roundId: `id`, time: `time`, playerId: alias.playerId, settled: `paid` },
       expr    : {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
@@ -815,6 +827,7 @@ deploy: {
     { gameId  : 47,
       db      : `minigame`,
       coll    : { base: `treasureisland`, round: `rounds` },
+      filter  : [ { paid: true } ],
       alias   : { roundId: `id`, time: `time`, playerId: alias.playerId, settled: `paid` },
       expr    : {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
@@ -943,6 +956,70 @@ deploy: {
     { gameId  : 55,
       db      : `minigame`,
       coll    : { base: `unbalancedbigsmall4`, round: `rounds`, bet: `bets` },
+      alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
+      expr    : {
+        stake   : `$totalAmount`,
+        payout  : `$betwin`,
+        refund  : expr.noRefund,
+        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
+    { gameId  : 56,
+      db      : `minigame`,
+      coll    : { base: `minisedie2`, round: `rounds`, bet: `bets` },
+      alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
+      expr    : {
+        stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`]}, {$toInt: {$not: `$freeBet`}}]},
+        payout  : `$betwin`,
+        refund  : expr.noRefund,
+        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
+    { gameId  : 57,
+      db      : `minigame`,
+      coll    : { base: `minisedie3`, round: `rounds`, bet: `bets` },
+      alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
+      expr    : {
+        stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`]}, {$toInt: {$not: `$freeBet`}}]},
+        payout  : `$betwin`,
+        refund  : expr.noRefund,
+        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
+    { gameId  : 58,
+      db      : `minigame`,
+      coll    : { base: `minisedie4`, round: `rounds`, bet: `bets` },
+      alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
+      expr    : {
+        stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`]}, {$toInt: {$not: `$freeBet`}}]},
+        payout  : `$betwin`,
+        refund  : expr.noRefund,
+        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
+    { gameId  : 59,
+      db      : `minigame`,
+      coll    : { base: `fruitslot`, round: `rounds`, bet: `bets` },
       alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
       expr    : {
         stake   : `$totalAmount`,

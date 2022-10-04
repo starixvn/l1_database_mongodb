@@ -6,6 +6,7 @@ deploy: {
 
   (global.___idx = global.___idx ?? {})[label] = {
     TTL                                       : $Index({'time': 1}, {expireAfterSeconds: 3600*24*8}),
+    TTL_arc                                   : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),
     time_currency_gameId_cash_partner_U       : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'partnerId': 1}, {unique: true, partialFilterExpression: {partnerId: {$gt: ''}}}),
     time_currency_gameId_cash_operator_U      : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'operatorId': 1}, {unique: true}),
     time_currency_gameId_cash_operator_round_U: $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'operatorId': 1, 'roundId': 1}, {unique: true}),
@@ -14,8 +15,9 @@ deploy: {
     gameId_U                                  : $Index({'gameId': 1}, {unique: true}),
     owGameTypeId_FU                           : $Index({'owGameTypeId': 1}, {unique: true, partialFilterExpression: {owGameTypeId: {$gt: 0}}}),
     db_coll__id_U                             : $Index({'target.db': 1, 'target.coll': 1, 'data._id': 1}, {unique: true}),
-    __archive_daily                           : $Index({'__archive.daily': 1}),
-    __archive_hourly                          : $Index({'__archive.hourly': 1}),
+    db_coll__id_U_en_2                        : $Index({'target.db': 1, 'target.coll': 1, 'data._id': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
+    __archive_daily                           : $Index({'__archive.daily': 1, time: 1, _id: 1}),
+    __archive_hourly                          : $Index({'__archive.hourly': 1, time: 1, _id: 1}),
   };
 
   (global.___idxs = global.___idxs ?? {})[label] = [
@@ -25,12 +27,12 @@ deploy: {
       global.___idx[label].gameId_system_time,
     ]),
     $Indexes(dbs.summary.daily_summaries, [
-      global.___idx[label].TTL,
+      global.___idx[label].TTL_arc,
       global.___idx[label].time_currency_gameId_cash_partner_U,
       global.___idx[label].time_currency_gameId_cash_operator_U,
     ]),
     $Indexes(dbs.summary.hourly_summaries, [
-      global.___idx[label].TTL,
+      global.___idx[label].TTL_arc,
       global.___idx[label].time_currency_gameId_cash_partner_U,
       global.___idx[label].time_currency_gameId_cash_operator_U,
     ]),
@@ -42,7 +44,7 @@ deploy: {
       global.___idx[label].gameId_U,
     ]),
     $Indexes(dbs.summary.round_summaries, [
-      global.___idx[label].TTL,
+      global.___idx[label].TTL_arc,
       global.___idx[label].time_currency_gameId_cash_operator_round_U,
       global.___idx[label].__archive_daily,
       global.___idx[label].__archive_hourly,
@@ -52,6 +54,7 @@ deploy: {
     ]),
     $Indexes(dbs.summary.metadata_queue, [
       global.___idx[label].db_coll__id_U,
+      global.___idx[label].db_coll__id_U_en_2,
     ]),
   ];
 }
