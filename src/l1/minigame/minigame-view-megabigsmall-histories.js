@@ -11,7 +11,7 @@ deploy: {
   const source = 'users';
   const agg = [
     {$project: {
-      _id: 0, playerId: '$local.memberId', operatorId: '$local.partnerId',
+      _id: 0, playerId: 1, operatorId: 1,
     }},
     {$lookup: {
       from    : 'unbalancedbigsmall1_bets',
