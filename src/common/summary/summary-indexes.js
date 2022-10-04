@@ -9,7 +9,7 @@ deploy: {
     TTL_arc                                   : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),
     time_currency_gameId_cash_partner_U       : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'partnerId': 1}, {unique: true, partialFilterExpression: {partnerId: {$gt: ''}}}),
     time_currency_gameId_cash_operator_U      : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'operatorId': 1}, {unique: true}),
-    time_currency_gameId_cash_operator_round_U: $Index({'time': 1, 'currency': 1, 'gameId': 1, 'isCash': 1, 'operatorId': 1, 'roundId': 1}, {unique: true}),
+    gameId_currency_cash_operator_time_round_U: $Index({'gameId': 1, 'currency': 1, 'isCash': 1, 'operatorId': 1, 'time': 1, 'roundId': 1}, {unique: true}),
     time_currency_gameId_system_partner_U     : $Index({'time': 1, 'currency': 1, 'gameId': 1, 'system': 1, 'partnerId': 1}, {unique: true}),
     gameId_system_time                        : $Index({'gameId': 1, 'system': 1, 'time': 1}),
     gameId_U                                  : $Index({'gameId': 1}, {unique: true}),
@@ -96,7 +96,7 @@ deploy: {
       global.___idx[label].owGameTypeId_FU,
     ]),
     $Indexes(dbs.summary_arc.round_summaries, [
-      global.___idx[label].time_currency_gameId_cash_operator_round_U,
+      global.___idx[label].gameId_currency_cash_operator_time_round_U,
       global.___idx[label].__archive_daily,
       global.___idx[label].__archive_hourly,
     ]),
