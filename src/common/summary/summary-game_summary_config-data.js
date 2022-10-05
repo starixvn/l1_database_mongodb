@@ -794,7 +794,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 49,
-      owGameTypeId  : { [1]: 1656, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1656, [2]: 3854, [3]: null }[L],
       name          : { en: `Way to Goal`, vi: `Đường Đến Khung Thành`, grp: `Slots` },
       coll          : { db: `minigame`, group: `waytogoal`, round: `_rounds`, postfix: `_rounds` },
       fields        : {
@@ -808,7 +808,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 50,
-      owGameTypeId  : { [1]: 1659, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1659, [2]: 3850, [3]: null }[L],
       name          : { en: `Las Vegas`, vi: `Las Vegas`, grp: `Mega Big Small` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall1`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -822,7 +822,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 51,
-      owGameTypeId  : { [1]: 1660, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1660, [2]: 3851, [3]: null }[L],
       name          : { en: `Marina Bay`, vi: `Marina Bay`, grp: `Mega Big Small` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall2`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -864,7 +864,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 54,
-      owGameTypeId  : { [1]: 1661, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1661, [2]: 3852, [3]: null }[L],
       name          : { en: `Macau`, vi: `Macau`, grp: `Mega Big Small` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall3`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -878,7 +878,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 55,
-      owGameTypeId  : { [1]: 1662, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1662, [2]: 3853, [3]: null }[L],
       name          : { en: `Monte Carlo`, vi: `Monte Carlo`, grp: `Mega Big Small` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall4`, round: `_rounds`, postfix: `_bets` },
       fields        : {

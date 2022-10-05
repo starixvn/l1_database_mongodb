@@ -762,7 +762,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 47,
-      owGameTypeId  : { [1]: 1654, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1654, [2]: 3846, [3]: null }[L],
       name          : { en: `Treasure Island`, vi: `Đảo Châu Báu`, grp: `Slots` },
       coll          : { db: `minigame_arc`, group: `treasureisland`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {
@@ -790,7 +790,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 49,
-      owGameTypeId  : { [1]: 1656, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1656, [2]: 3854, [3]: null }[L],
       name          : { en: `Way to Goal`, vi: `Đường Đến Khung Thành`, grp: `Slots` },
       coll          : { db: `minigame_arc`, group: `waytogoal`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {
@@ -804,7 +804,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 50,
-      owGameTypeId  : { [1]: 1659, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1659, [2]: 3850, [3]: null }[L],
       name          : { en: `Las Vegas`, vi: `Las Vegas`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall1`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
@@ -818,7 +818,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 51,
-      owGameTypeId  : { [1]: 1660, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1660, [2]: 3851, [3]: null }[L],
       name          : { en: `Marina Bay`, vi: `Marina Bay`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall2`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
@@ -860,7 +860,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 54,
-      owGameTypeId  : { [1]: 1661, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1661, [2]: 3852, [3]: null }[L],
       name          : { en: `Macau`, vi: `Macau`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall3`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
@@ -874,7 +874,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 55,
-      owGameTypeId  : { [1]: 1662, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1662, [2]: 3853, [3]: null }[L],
       name          : { en: `Monte Carlo`, vi: `Monte Carlo`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall4`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
