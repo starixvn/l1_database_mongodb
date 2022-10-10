@@ -227,7 +227,7 @@ deploy: {
     { ...commonFields,
       gameId        : 9,
       owGameTypeId  : { [1]: 1620, [2]: 3823, [3]: 3823 }[L],
-      name          : { en: `Mini Se Die`, vi: `Xóc Đĩa Mini`, grp: `Se Die`, game: `Mini Se Dies` },
+      name          : { en: `Mini Se Die`, vi: `Xóc Đĩa Mini`, grp: `Mini Se Dies`, game: `Mini Se Dies` },
       coll          : { db: `minigame`, group: `minisedie`, round: `_phiens`, postfix: `_cuocs` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -297,7 +297,7 @@ deploy: {
     { ...commonFields,
       gameId        : 14,
       owGameTypeId  : { [1]: 1625, [2]: 3813, [3]: 3813 }[L],
-      name          : { en: `Keno Mini`, vi: `Keno Mini`, grp: `Keno`, game: `Mega Keno` },
+      name          : { en: `Keno Mini`, vi: `Keno Mini`, grp: `Mega Keno`, game: `Mega Keno` },
       coll          : { db: `minigame`, group: `kenomini`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -311,7 +311,7 @@ deploy: {
     { ...commonFields,
       gameId        : 15,
       owGameTypeId  : { [1]: 1626, [2]: 3814, [3]: 3814 }[L],
-      name          : { en: `Keno Mini 2`, vi: `Keno Mini 2`, grp: `Keno`, game: `Mega Keno` },
+      name          : { en: `Keno Mini 2`, vi: `Keno Mini 2`, grp: `Mega Keno`, game: `Mega Keno` },
       coll          : { db: `minigame`, group: `kenomini2`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -325,7 +325,7 @@ deploy: {
     { ...commonFields,
       gameId        : 16,
       owGameTypeId  : { [1]: 1627, [2]: 3815, [3]: 3815 }[L],
-      name          : { en: `Keno East`, vi: `Keno Đông`, grp: `Keno`, game: `Mega Keno` },
+      name          : { en: `Keno East`, vi: `Keno Đông`, grp: `Mega Keno`, game: `Mega Keno` },
       coll          : { db: `minigame`, group: `kenoeast`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -339,7 +339,7 @@ deploy: {
     { ...commonFields,
       gameId        : 17,
       owGameTypeId  : { [1]: 1628, [2]: 3816, [3]: 3816 }[L],
-      name          : { en: `Keno West`, vi: `Keno Tây`, grp: `Keno`, game: `Mega Keno` },
+      name          : { en: `Keno West`, vi: `Keno Tây`, grp: `Mega Keno`, game: `Mega Keno` },
       coll          : { db: `minigame`, group: `kenowest`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -353,7 +353,7 @@ deploy: {
     { ...commonFields,
       gameId        : 18,
       owGameTypeId  : { [1]: 1629, [2]: 3817, [3]: 3817 }[L],
-      name          : { en: `Keno South`, vi: `Keno Nam`, grp: `Keno`, game: `Mega Keno` },
+      name          : { en: `Keno South`, vi: `Keno Nam`, grp: `Mega Keno`, game: `Mega Keno` },
       coll          : { db: `minigame`, group: `kenosouth`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -367,7 +367,7 @@ deploy: {
     { ...commonFields,
       gameId        : 19,
       owGameTypeId  : { [1]: 1630, [2]: 3818, [3]: 3818 }[L],
-      name          : { en: `Keno North`, vi: `Keno Bắc`, grp: `Keno`, game: `Mega Keno` },
+      name          : { en: `Keno North`, vi: `Keno Bắc`, grp: `Mega Keno`, game: `Mega Keno` },
       coll          : { db: `minigame`, group: `kenonorth`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -609,7 +609,7 @@ deploy: {
     { ...commonFields,
       gameId        : 36,
       owGameTypeId  : { [1]: 1645, [2]: 3838, [3]: null }[L],
-      name          : { en: `Keno Match`, vi: `Keno Match`, grp: `Keno`, game: `Power Keno` },
+      name          : { en: `Keno Match`, vi: `Keno Match`, grp: `Power Keno`, game: `Power Keno` },
       coll          : { db: `minigame`, group: `kenomatch1`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -623,7 +623,7 @@ deploy: {
     { ...commonFields,
       gameId        : 37,
       owGameTypeId  : { [1]: 1646, [2]: 3839, [3]: null }[L],
-      name          : { en: `Keno Match MD5`, vi: `Keno Match MD5`, grp: `Keno`, game: `Power Keno` },
+      name          : { en: `Keno Match MD5`, vi: `Keno Match MD5`, grp: `Power Keno`, game: `Power Keno` },
       coll          : { db: `minigame`, group: `kenomatch2`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -665,7 +665,7 @@ deploy: {
     { ...commonFields,
       gameId        : 40,
       owGameTypeId  : { [1]: 1647, [2]: 3840, [3]: null }[L],
-      name          : { en: `Keno Power`, vi: `Keno Power`, grp: `Keno`, game: `Power Keno` },
+      name          : { en: `Keno Power`, vi: `Keno Power`, grp: `Power Keno`, game: `Power Keno` },
       coll          : { db: `minigame`, group: `kenopower1`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -679,7 +679,7 @@ deploy: {
     { ...commonFields,
       gameId        : 41,
       owGameTypeId  : { [1]: 1648, [2]: 3841, [3]: null }[L],
-      name          : { en: `Keno Power MD5`, vi: `Keno Power MD5`, grp: `Keno`, game: `Power Keno` },
+      name          : { en: `Keno Power MD5`, vi: `Keno Power MD5`, grp: `Power Keno`, game: `Power Keno` },
       coll          : { db: `minigame`, group: `kenopower2`, round: `_phiens`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -809,7 +809,7 @@ deploy: {
     { ...commonFields,
       gameId        : 50,
       owGameTypeId  : { [1]: 1659, [2]: 3850, [3]: null }[L],
-      name          : { en: `Las Vegas`, vi: `Las Vegas`, grp: `Big Small`, game: `Big Small Cities` },
+      name          : { en: `Las Vegas`, vi: `Las Vegas`, grp: `Big Small Cities`, game: `Big Small Cities` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall1`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -823,7 +823,7 @@ deploy: {
     { ...commonFields,
       gameId        : 51,
       owGameTypeId  : { [1]: 1660, [2]: 3851, [3]: null }[L],
-      name          : { en: `Marina Bay`, vi: `Marina Bay`, grp: `Big Small`, game: `Big Small Cities` },
+      name          : { en: `Marina Bay`, vi: `Marina Bay`, grp: `Big Small Cities`, game: `Big Small Cities` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall2`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -837,7 +837,7 @@ deploy: {
     { ...commonFields,
       gameId        : 52,
       owGameTypeId  : { [1]: 1657, [2]: 3848, [3]: null }[L],
-      name          : { en: `Mega Keno`, vi: `Mega Keno`, grp: `Keno`, game: `Mega Keno` },
+      name          : { en: `Mega Keno`, vi: `Mega Keno`, grp: `Mega Keno`, game: `Mega Keno` },
       coll          : { db: `minigame`, group: `megakeno`, round: `_rounds`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -851,7 +851,7 @@ deploy: {
     { ...commonFields,
       gameId        : 53,
       owGameTypeId  : { [1]: 1658, [2]: 3849, [3]: null }[L],
-      name          : { en: `Mega Keno 2`, vi: `Mega Keno 2`, grp: `Keno`, game: `Mega Keno` },
+      name          : { en: `Mega Keno 2`, vi: `Mega Keno 2`, grp: `Mega Keno`, game: `Mega Keno` },
       coll          : { db: `minigame`, group: `megakeno2`, round: `_rounds`, postfix: `_ones` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -865,7 +865,7 @@ deploy: {
     { ...commonFields,
       gameId        : 54,
       owGameTypeId  : { [1]: 1661, [2]: 3852, [3]: null }[L],
-      name          : { en: `Macau`, vi: `Macau`, grp: `Big Small`, game: `Big Small Cities` },
+      name          : { en: `Macau`, vi: `Macau`, grp: `Big Small Cities`, game: `Big Small Cities` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall3`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -879,7 +879,7 @@ deploy: {
     { ...commonFields,
       gameId        : 55,
       owGameTypeId  : { [1]: 1662, [2]: 3853, [3]: null }[L],
-      name          : { en: `Monte Carlo`, vi: `Monte Carlo`, grp: `Big Small`, game: `Big Small Cities` },
+      name          : { en: `Monte Carlo`, vi: `Monte Carlo`, grp: `Big Small Cities`, game: `Big Small Cities` },
       coll          : { db: `minigame`, group: `unbalancedbigsmall4`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `phien`, time: `$time`, memberId: alias.playerId, settled: `$thanhtoan`,
@@ -893,7 +893,7 @@ deploy: {
     { ...commonFields,
       gameId        : 56,
       owGameTypeId  : { [1]: 1663, [2]: null, [3]: null }[L],
-      name          : { en: `Mini Se Die 2`, vi: `Xóc Đĩa Mini 2`, grp: `Se Die`, game: `Mini Se Dies` },
+      name          : { en: `Mini Se Die 2`, vi: `Xóc Đĩa Mini 2`, grp:`Mini Se Dies`, game: `Mini Se Dies` },
       coll          : { db: `minigame`, group: `minisedie2`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `roundId`, time: `$time`, memberId: `playerId`, settled: `$paid`,
@@ -907,7 +907,7 @@ deploy: {
     { ...commonFields,
       gameId        : 57,
       owGameTypeId  : { [1]: 1664, [2]: null, [3]: null }[L],
-      name          : { en: `Mini Se Die 3`, vi: `Xóc Đĩa Mini 3`, grp: `Se Die`, game: `Mini Se Dies` },
+      name          : { en: `Mini Se Die 3`, vi: `Xóc Đĩa Mini 3`, grp: `Mini Se Dies`, game: `Mini Se Dies` },
       coll          : { db: `minigame`, group: `minisedie3`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `roundId`, time: `$time`, memberId: `playerId`, settled: `$paid`,
@@ -921,7 +921,7 @@ deploy: {
     { ...commonFields,
       gameId        : 58,
       owGameTypeId  : { [1]: 1665, [2]: null, [3]: null }[L],
-      name          : { en: `Mini Se Die 4`, vi: `Xóc Đĩa Mini 4`, grp: `Se Die`, game: `Mini Se Dies` },
+      name          : { en: `Mini Se Die 4`, vi: `Xóc Đĩa Mini 4`, grp: `Mini Se Dies`, game: `Mini Se Dies` },
       coll          : { db: `minigame`, group: `minisedie4`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `roundId`, time: `$time`, memberId: `playerId`, settled: `$paid`,
