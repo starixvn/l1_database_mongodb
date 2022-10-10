@@ -5750,6 +5750,7 @@ deploy: {
           $BICol(`name.en`        , `nameEN`      , `str`   ),
           $BICol(`name.vi`        , `nameVI`      , `str`   ),
           $BICol(`name.grp`       , `groupName`   , `str`   ),
+          $BICol(`name.game`      , `gameName`    , `str`   ),
           $BICol(`coll.db`        , `db`          , `str`   ),
           $BICol(`coll.group`     , `coll`        , `str`   ),
           $BICol(`coll.round`     , `round`       , `str`   ),
