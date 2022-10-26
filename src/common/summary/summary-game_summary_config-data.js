@@ -892,7 +892,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 56,
-      owGameTypeId  : { [1]: 1663, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1663, [2]: 3855, [3]: null }[L],
       name          : { en: `Mini Se Die 2`, vi: `Xóc Đĩa Mini 2`, grp:`Mini Se Dies`, game: `Mini Se Dies` },
       coll          : { db: `minigame`, group: `minisedie2`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -906,7 +906,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 57,
-      owGameTypeId  : { [1]: 1664, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1664, [2]: 3856, [3]: null }[L],
       name          : { en: `Mini Se Die 3`, vi: `Xóc Đĩa Mini 3`, grp: `Mini Se Dies`, game: `Mini Se Dies` },
       coll          : { db: `minigame`, group: `minisedie3`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -920,7 +920,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 58,
-      owGameTypeId  : { [1]: 1665, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1665, [2]: 3857, [3]: null }[L],
       name          : { en: `Mini Se Die 4`, vi: `Xóc Đĩa Mini 4`, grp: `Mini Se Dies`, game: `Mini Se Dies` },
       coll          : { db: `minigame`, group: `minisedie4`, round: `_rounds`, postfix: `_bets` },
       fields        : {
