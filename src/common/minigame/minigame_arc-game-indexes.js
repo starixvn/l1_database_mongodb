@@ -9,6 +9,7 @@ deploy: {
     endTime             : $Index({'endTime': 1}),
     id                  : $Index({'id': 1}, {unique: true}),
     memberId_phien_F    : $Index({'memberId': 1, 'phien': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
+    playerId_roundId_F  : $Index({'playerId': 1, 'roundId': 1}, {partialFilterExpression: {playerId: {$gt: 0}}}),
     phien               : $Index({'phien': 1}),
     roundId             : $Index({'roundId': 1}),
     time                : $Index({'time': 1}),
