@@ -19,7 +19,7 @@ deploy: {
       name          : { en: `Big Small`, vi: `Tài Xỉu`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame_arc`, group: `taixiu`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [
           {$ifNull: [`$totalAmount`, `$bet`]},
         ],
@@ -53,7 +53,7 @@ deploy: {
       name          : { en: `Se Die`, vi: `Xóc Đĩa`, grp: `Se Die` },
       coll          : { db: `minigame_arc`, group: `xocxoc`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [
           { $multiply: [
             { $add: [
@@ -75,7 +75,7 @@ deploy: {
       name          : { en: `Fish Prawn Crab`, vi: `Bầu Cua`, grp: `Fish Prawn Crab` },
       coll          : { db: `minigame_arc`, group: `baucua`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [
           {$ifNull: [`$stag`    , `$0`]},
           {$ifNull: [`$gourd`   , `$1`]},
@@ -96,7 +96,7 @@ deploy: {
       name          : { en: `Turbo Big Small`, vi: `Tài Xỉu Siêu Tốc`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame_arc`, group: `txturbo`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [
           {$ifNull: [`$totalAmount`, `$bet`]},
         ],
@@ -130,7 +130,7 @@ deploy: {
       name          : { en: `Odd Even`, vi: `Chẵn Lẻ`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame_arc`, group: `chanle`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [
           {$ifNull: [`$totalAmount`, `$bet`]},
         ],
@@ -164,7 +164,7 @@ deploy: {
       name          : { en: `Turbo Odd Even`, vi: `Chẵn Lẻ Siêu Tốc`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame_arc`, group: `chanleturbo`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [
           {$ifNull: [`$totalAmount`, `$bet`]},
         ],
@@ -198,7 +198,7 @@ deploy: {
       name          : { en: `Dragon Tiger`, vi: `Rồng Hổ`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `minidragontiger`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$dragon`, `$tie`, `$tiger` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -212,7 +212,7 @@ deploy: {
       name          : { en: `Keno Pro Max`, vi: `Keno Pro Max`, grp: `Keno` },
       coll          : { db: `minigame_arc`, group: `kenopromax`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -226,7 +226,7 @@ deploy: {
       name          : { en: `Mini Se Die`, vi: `Xóc Đĩa Mini`, grp: `Se Die` },
       coll          : { db: `minigame_arc`, group: `minisedie`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -240,7 +240,7 @@ deploy: {
       name          : { en: `Baccarat`, vi: `Cào Baccarat`, grp: `Baccarat` },
       coll          : { db: `minigame_arc`, group: `baccarat`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -254,7 +254,7 @@ deploy: {
       name          : { en: `Keno Pro Viet`, vi: `Keno Pro Viet`, grp: `Keno` },
       coll          : { db: `minigame_arc`, group: `kenoproviet`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -268,7 +268,7 @@ deploy: {
       name          : { en: `Keno Max`, vi: `Keno Max`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `kenomax`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -282,7 +282,7 @@ deploy: {
       name          : { en: `Keno Max 2`, vi: `Keno Max 2`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `kenomax2`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -296,7 +296,7 @@ deploy: {
       name          : { en: `Keno Mini`, vi: `Keno Mini`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `kenomini`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -310,7 +310,7 @@ deploy: {
       name          : { en: `Keno Mini 2`, vi: `Keno Mini 2`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `kenomini2`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -324,7 +324,7 @@ deploy: {
       name          : { en: `Keno East`, vi: `Keno Đông`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `kenoeast`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -338,7 +338,7 @@ deploy: {
       name          : { en: `Keno West`, vi: `Keno Tây`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `kenowest`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -352,7 +352,7 @@ deploy: {
       name          : { en: `Keno South`, vi: `Keno Nam`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `kenosouth`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -366,7 +366,7 @@ deploy: {
       name          : { en: `Keno North`, vi: `Keno Bắc`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `kenonorth`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -380,7 +380,7 @@ deploy: {
       name          : { en: `Bola Tangkas`, vi: `Bola Tangkas`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `bolatangkas`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {
-        local : `id`, map: `id`, time: `$startTime`, memberId: `memberId`, settled: `$settled`,
+        local : `id`, map: `id`, time: `$startTime`, memberId: `playerId`, settled: `$settled`,
         stake : [ `$totalBet` ],
         payout: [ `$win` ],
         refund: [ 0 ],
@@ -394,7 +394,7 @@ deploy: {
       name          : { en: `Roulette`, vi: `Roulette`, grp: `Casino` },
       coll          : { db: `minigame_arc`, group: `roulette`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -408,7 +408,7 @@ deploy: {
       name          : { en: `VIP Se Die`, vi: `Xóc Đĩa VIP`, grp: `Se Die` },
       coll          : { db: `minigame_arc`, group: `vipsedie`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$odd`, `$even`, `$white4`, `$white3`, `$red2`, `$red3`, `$red4` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -422,7 +422,7 @@ deploy: {
       name          : { en: `Blackjack`, vi: `Blackjack`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `blackjack`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$bet` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -436,7 +436,7 @@ deploy: {
       name          : { en: `Special Se Die`, vi: `Xóc Đĩa Cân Cửa`, grp: `Se Die` },
       coll          : { db: `minigame_arc`, group: `specialsedie`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$amount` ],
         payout: [
           {$multiply: [`$betwin`, {$toInt: `$win`}]},
@@ -454,7 +454,7 @@ deploy: {
       name          : { en: `Sic Bo`, vi: `Sic Bo`, grp: `Casino` },
       coll          : { db: `minigame_arc`, group: `sicbo`, round: `_phiens_bk`, postfix: {[1]: `_ones_bk`, [2]: `_ones_bk`, [3]: `_cuocs_bk`}[L] },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ {[1]: `$totalAmount`, [2]: `$totalAmount`, [3]: `$totalBet`}[L] ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -468,7 +468,7 @@ deploy: {
       name          : { en: `VIP Fish Prawn Crab`, vi: `Bầu Cua VIP`, grp: `Fish Prawn Crab` },
       coll          : { db: `minigame_arc`, group: `vipfishprawncrab`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$stag`, `$gourd`, `$rooster`, `$fish`, `$crab`, `$prawn`, `$mountain`, `$ocean`, `$anyTriple` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -482,7 +482,7 @@ deploy: {
       name          : { en: `VIP Baccarat`, vi: `Cào Baccarat VIP`, grp: `Baccarat` },
       coll          : { db: `minigame_arc`, group: `vipbaccarat`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$player`, `$banker`, `$tie`, `$big`, `$small`, `$playerPair`, `$bankerPair` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -496,7 +496,7 @@ deploy: {
       name          : { en: `Se Die War`, vi: `Xóc Dĩa Đối Kháng`, grp: `Se Die` },
       coll          : { db: `minigame_arc`, group: `vipsediewar`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -510,7 +510,7 @@ deploy: {
       name          : { en: `Four Guardians`, vi: `Long Lân Quy Phụng`, grp: `Slots` },
       coll          : { db: `minigame_arc`, group: `fourguardians`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {
-        local : `id`, map: `id`, time: `$time`, memberId: `memberId`, settled: `$paid`,
+        local : `id`, map: `id`, time: `$time`, memberId: `playerId`, settled: `$paid`,
         stake : [ {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeSpin`}}]} ],
         payout: [ `$betWin` ],
         refund: [ 0 ],
@@ -524,7 +524,7 @@ deploy: {
       name          : { en: `Fish Prawn Crab Pro`, vi: `Bầu Cua Pro`, grp: `Fish Prawn Crab` },
       coll          : { db: `minigame_arc`, group: `fishprawncrabpro`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalBet` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -538,7 +538,7 @@ deploy: {
       name          : { en: `RNG Lottery`, vi: `Xổ Số RNG`, grp: `Lottery` },
       coll          : { db: `minigame_arc`, group: `lottery`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -552,7 +552,7 @@ deploy: {
       name          : { en: `Baccarat Diamond`, vi: `Cào Baccarat Diamond`, grp: `Baccarat` },
       coll          : { db: `minigame_arc`, group: `baccaratdiamond`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -566,7 +566,7 @@ deploy: {
       name          : { en: `Baccarat Sapphire`, vi: `Cào Baccarat Sapphire`, grp: `Baccarat` },
       coll          : { db: `minigame_arc`, group: `baccaratsapphire`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -580,7 +580,7 @@ deploy: {
       name          : { en: `Baccarat Ruby`, vi: `Cào Baccarat Ruby`, grp: `Baccarat` },
       coll          : { db: `minigame_arc`, group: `baccaratruby`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -594,7 +594,7 @@ deploy: {
       name          : { en: `Three Cards`, vi: `Ba Lá Đỏ Đen`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `threecards`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$red`, `$black`, `$diamonds`, `$hearts`, `$spades`, `$clubs` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -608,7 +608,7 @@ deploy: {
       name          : { en: `Keno Match`, vi: `Keno Match`, grp: `Power Keno` },
       coll          : { db: `minigame_arc`, group: `kenomatch1`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin`, `$refund` ],
         refund: [ `$refund` ],
@@ -622,7 +622,7 @@ deploy: {
       name          : { en: `Keno Match MD5`, vi: `Keno Match MD5`, grp: `Power Keno` },
       coll          : { db: `minigame_arc`, group: `kenomatch2`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin`, `$refund` ],
         refund: [ `$refund` ],
@@ -636,7 +636,7 @@ deploy: {
       name          : { en: `The Legend of Heroes`, vi: `Anh Hùng Chim Lạc`, grp: `Slots` },
       coll          : { db: `minigame_arc`, group: `heroesslot`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {
-        local : `id`, map: `id`, time: `$time`, memberId: `memberId`, settled: `$paid`,
+        local : `id`, map: `id`, time: `$time`, memberId: `playerId`, settled: `$paid`,
         stake : [ {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeSpin`}}]} ],
         payout: [ `$betWin` ],
         refund: [ 0 ],
@@ -650,7 +650,7 @@ deploy: {
       name          : { en: `Casino Hold'em Poker`, vi: `Casino Hold'em Poker`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `casinoholdempoker`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$bet` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -664,7 +664,7 @@ deploy: {
       name          : { en: `Keno Power`, vi: `Keno Power`, grp: `Power Keno` },
       coll          : { db: `minigame_arc`, group: `kenopower1`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin`, `$refund` ],
         refund: [ `$refund` ],
@@ -678,7 +678,7 @@ deploy: {
       name          : { en: `Keno Power MD5`, vi: `Keno Power MD5`, grp: `Power Keno` },
       coll          : { db: `minigame_arc`, group: `kenopower2`, round: `_phiens_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin`, `$refund` ],
         refund: [ `$refund` ],
@@ -692,7 +692,7 @@ deploy: {
       name          : { en: `Texas Hold'em Poker`, vi: `Texas Hold'em Poker`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `texasholdempoker`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$bet` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -706,7 +706,7 @@ deploy: {
       name          : { en: `Bitcoin Master`, vi: `Bitcoin Master`, grp: `Balanced-Pool Games` },
       coll          : { db: `minigame_arc`, group: `bitcoinmaster`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [
           {$divide: [`$betwin`, {$subtract: [{$avg: [`$odds.up`, `$odds.down`, `$odds.odd`, `$odds.even`]}, 1]}]},
@@ -724,7 +724,7 @@ deploy: {
       name          : { en: `Pai Gow Poker`, vi: `Pai Gow Poker`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `paigowpoker`, round: `_phiens_bk`, postfix: `_cuocs_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$bet` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -738,7 +738,7 @@ deploy: {
       name          : { en: `Hi/Lo`, vi: `Cao Thấp`, grp: `Card Games` },
       coll          : { db: `minigame_arc`, group: `hilo`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {
-        local : `id`, map: `id`, time: `$endTime`, memberId: `memberId`, settled: `$paid`,
+        local : `id`, map: `id`, time: `$endTime`, memberId: `playerId`, settled: `$paid`,
         stake : [ `$amount` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -752,7 +752,7 @@ deploy: {
       name          : { en: `Night Club`, vi: `Gái Nhảy`, grp: `Slots` },
       coll          : { db: `minigame_arc`, group: `nightclub`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {
-        local : `id`, map: `id`, time: `$time`, memberId: `memberId`, settled: `$paid`,
+        local : `id`, map: `id`, time: `$time`, memberId: `playerId`, settled: `$paid`,
         stake : [ {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeSpin`}}]} ],
         payout: [ `$betWin` ],
         refund: [ 0 ],
@@ -780,7 +780,7 @@ deploy: {
       name          : { en: `Blockchain Baccarat`, vi: `Blockchain Baccarat`, grp: `Baccarat` },
       coll          : { db: `minigame_arc`, group: `blockchainbaccarat`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -794,7 +794,7 @@ deploy: {
       name          : { en: `Way to Goal`, vi: `Đường Đến Khung Thành`, grp: `Slots` },
       coll          : { db: `minigame_arc`, group: `waytogoal`, round: `_rounds_bk`, postfix: `_rounds_bk` },
       fields        : {
-        local : `id`, map: `id`, time: `$time`, memberId: `memberId`, settled: `$paid`,
+        local : `id`, map: `id`, time: `$time`, memberId: `playerId`, settled: `$paid`,
         stake : [ {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeSpin`}}]} ],
         payout: [ `$betWin` ],
         refund: [ 0 ],
@@ -808,7 +808,7 @@ deploy: {
       name          : { en: `Las Vegas`, vi: `Las Vegas`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall1`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -822,7 +822,7 @@ deploy: {
       name          : { en: `Marina Bay`, vi: `Marina Bay`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall2`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -836,7 +836,7 @@ deploy: {
       name          : { en: `Mega Keno`, vi: `Mega Keno`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `megakeno`, round: `_rounds_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -850,7 +850,7 @@ deploy: {
       name          : { en: `Mega Keno 2`, vi: `Mega Keno 2`, grp: `Mega Keno` },
       coll          : { db: `minigame_arc`, group: `megakeno2`, round: `_rounds_bk`, postfix: `_ones_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -864,7 +864,7 @@ deploy: {
       name          : { en: `Macau`, vi: `Macau`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall3`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -878,7 +878,7 @@ deploy: {
       name          : { en: `Monte Carlo`, vi: `Monte Carlo`, grp: `Mega Big Small` },
       coll          : { db: `minigame_arc`, group: `unbalancedbigsmall4`, round: `_rounds_bk`, postfix: `_bets_bk` },
       fields        : {
-        local : `id`, map: `phien`, time: `$time`, memberId: `memberId`, settled: `$thanhtoan`,
+        local : `id`, map: `phien`, time: `$time`, memberId: `playerId`, settled: `$thanhtoan`,
         stake : [ `$totalAmount` ],
         payout: [ `$betwin` ],
         refund: [ 0 ],
@@ -954,6 +954,20 @@ deploy: {
         refund: [ 0 ],
       },
       config        : commonConfig,
+      default       : commonDefault,
+    },
+    { ...commonFields,
+      gameId        : 62,
+      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
+      name          : { en: `Fortune Cat`, vi: `Mèo Tài Lộc`, grp: `Slots` },
+      coll          : { db: `minigame_arc`, group: `fortunecat`, round: `_rounds_bk`, postfix: `_rounds_bk` },
+      fields        : {
+        local : `id`, map: `id`, time: `$time`, memberId: `playerId`, settled: `$paid`,
+        stake : [ {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeSpin`}}]} ],
+        payout: [ `$betWin` ],
+        refund: [ 0 ],
+      },
+      config        : { ...commonConfig, jpCont: {[1]: null, [2]: 0.025, [3]: null}[L] },
       default       : commonDefault,
     },
     { ...commonFields,
