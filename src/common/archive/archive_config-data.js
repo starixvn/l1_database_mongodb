@@ -19,6 +19,8 @@ deploy: {
     }[L],
   };
 
+  const offsetHours = global.env === 'local' ? -2 : -24
+
   const log = [
     { _id     : 19001,
       from    : { db: 'log'     , coll: 'bets'    },
@@ -115,7 +117,7 @@ deploy: {
       from    : { db: 'member'    , coll: 'member_auths'    },
       to      : { db: 'member_arc', coll: 'member_auths_bk' },
       config  : {
-        timeField: 'time', cutOffsetHours: -24,
+        timeField: 'time', cutOffsetHours: offsetHours,
       },
       childs  : [],
     }
@@ -126,7 +128,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `taixiu_phiens`     },
       to      : { db: `minigame_arc`, coll: `taixiu_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -173,7 +175,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `xocxoc_phiens`     },
       to      : { db: `minigame_arc`, coll: `xocxoc_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -208,7 +210,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `baucua_phiens`     },
       to      : { db: `minigame_arc`, coll: `baucua_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -243,7 +245,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `txturbo_phiens`     },
       to      : { db: `minigame_arc`, coll: `txturbo_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -290,7 +292,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `chanle_phiens`     },
       to      : { db: `minigame_arc`, coll: `chanle_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -325,7 +327,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `chanleturbo_phiens`     },
       to      : { db: `minigame_arc`, coll: `chanleturbo_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -360,7 +362,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `minidragontiger_phiens`     },
       to      : { db: `minigame_arc`, coll: `minidragontiger_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -383,7 +385,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenopromax_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenopromax_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -406,7 +408,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `minisedie_phiens`     },
       to      : { db: `minigame_arc`, coll: `minisedie_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -441,7 +443,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `baccarat_phiens`     },
       to      : { db: `minigame_arc`, coll: `baccarat_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -476,7 +478,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenoproviet_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenoproviet_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -523,7 +525,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenomax_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenomax_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -570,7 +572,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenomax2_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenomax2_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -617,7 +619,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenomini_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenomini_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -664,7 +666,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenomini2_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenomini2_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -711,7 +713,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenoeast_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenoeast_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -758,7 +760,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenowest_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenowest_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -805,7 +807,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenosouth_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenosouth_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -852,7 +854,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenonorth_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenonorth_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -899,7 +901,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `roulette_phiens`     },
       to      : { db: `minigame_arc`, coll: `roulette_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -934,7 +936,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `vipsedie_phiens`     },
       to      : { db: `minigame_arc`, coll: `vipsedie_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -969,7 +971,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `blackjack_phiens`     },
       to      : { db: `minigame_arc`, coll: `blackjack_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -993,7 +995,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `specialsedie_phiens`     },
       to      : { db: `minigame_arc`, coll: `specialsedie_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1028,7 +1030,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `sicbo_phiens`     },
       to      : { db: `minigame_arc`, coll: `sicbo_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1075,7 +1077,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `vipfishprawncrab_phiens`     },
       to      : { db: `minigame_arc`, coll: `vipfishprawncrab_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1098,7 +1100,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `vipbaccarat_phiens`     },
       to      : { db: `minigame_arc`, coll: `vipbaccarat_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1133,7 +1135,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `vipsediewar_phiens`     },
       to      : { db: `minigame_arc`, coll: `vipsediewar_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1180,7 +1182,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `fourguardians_rounds`     },
       to      : { db: `minigame_arc`, coll: `fourguardians_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -1217,7 +1219,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `fishprawncrabpro_phiens`     },
       to      : { db: `minigame_arc`, coll: `fishprawncrabpro_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1240,7 +1242,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `lottery_phiens`     },
       to      : { db: `minigame_arc`, coll: `lottery_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1275,7 +1277,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `baccaratdiamond_phiens`     },
       to      : { db: `minigame_arc`, coll: `baccaratdiamond_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1298,7 +1300,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `baccaratsapphire_phiens`     },
       to      : { db: `minigame_arc`, coll: `baccaratsapphire_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1321,7 +1323,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `baccaratruby_phiens`     },
       to      : { db: `minigame_arc`, coll: `baccaratruby_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1344,7 +1346,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `threecards_phiens`     },
       to      : { db: `minigame_arc`, coll: `threecards_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1367,7 +1369,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenomatch1_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenomatch1_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1402,7 +1404,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenomatch2_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenomatch2_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1437,7 +1439,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `heroesslot_rounds`     },
       to      : { db: `minigame_arc`, coll: `heroesslot_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -1474,7 +1476,7 @@ deploy: {
       from    : { db: 'minigame'    , coll: 'casinoholdempoker_phiens'    },
       to      : { db: 'minigame_arc', coll: 'casinoholdempoker_phiens_bk' },
       config  : {
-        timeField: 'time', cutOffsetHours: -24, join: 'id',
+        timeField: 'time', cutOffsetHours: offsetHours, join: 'id',
         logField: '_phiens', logValue: 'id',
       },
       childs  : [
@@ -1498,7 +1500,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenopower1_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenopower1_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1533,7 +1535,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `kenopower2_phiens`     },
       to      : { db: `minigame_arc`, coll: `kenopower2_phiens_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_phiens`, logValue: `id`,
       },
       childs  : [
@@ -1568,7 +1570,7 @@ deploy: {
       from    : { db: 'minigame'    , coll: 'texasholdempoker_phiens'    },
       to      : { db: 'minigame_arc', coll: 'texasholdempoker_phiens_bk' },
       config  : {
-        timeField: 'time', cutOffsetHours: -24, join: 'id',
+        timeField: 'time', cutOffsetHours: offsetHours, join: 'id',
         logField: '_phiens', logValue: 'id',
       },
       childs  : [
@@ -1591,7 +1593,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `bitcoinmaster_rounds`    },
       to      : { db: `minigame_arc`, coll: `bitcoinmaster_rounds_bk` },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -1634,7 +1636,7 @@ deploy: {
       from    : { db: 'minigame'    , coll: 'paigowpoker_phiens'    },
       to      : { db: 'minigame_arc', coll: 'paigowpoker_phiens_bk' },
       config  : {
-        timeField: 'time', cutOffsetHours: -24, join: 'id',
+        timeField: 'time', cutOffsetHours: offsetHours, join: 'id',
         logField: '_phiens', logValue: 'id',
       },
       childs  : [
@@ -1657,7 +1659,7 @@ deploy: {
       from    : { db: 'minigame'    , coll: 'hilo_rounds'    },
       to      : { db: 'minigame_arc', coll: 'hilo_rounds_bk' },
       config  : {
-        timeField: 'time', cutOffsetHours: -24, join: 'id',
+        timeField: 'time', cutOffsetHours: offsetHours, join: 'id',
         logField: '_rounds', logValue: 'id',
       },
       childs  : [
@@ -1680,7 +1682,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `nightclub_rounds`     },
       to      : { db: `minigame_arc`, coll: `nightclub_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -1717,7 +1719,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `treasureisland_rounds`     },
       to      : { db: `minigame_arc`, coll: `treasureisland_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -1732,7 +1734,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `treasureisland_multipliers`    },
       to      : { db: `minigame_arc`, coll: `treasureisland_multipliers_bk` },
       config  : {
-        timeField: `time`, cutOffsetHours: -24,
+        timeField: `time`, cutOffsetHours: offsetHours,
         filter: { ended: true },
       },
       childs  : [],
@@ -1750,7 +1752,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `blockchainbaccarat_rounds`     },
       to      : { db: `minigame_arc`, coll: `blockchainbaccarat_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -1782,7 +1784,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `waytogoal_rounds`     },
       to      : { db: `minigame_arc`, coll: `waytogoal_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -1819,7 +1821,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `unbalancedbigsmall1_rounds`     },
       to      : { db: `minigame_arc`, coll: `unbalancedbigsmall1_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -1866,7 +1868,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `unbalancedbigsmall2_rounds`     },
       to      : { db: `minigame_arc`, coll: `unbalancedbigsmall2_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -1913,7 +1915,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `megakeno_rounds`     },
       to      : { db: `minigame_arc`, coll: `megakeno_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -1960,7 +1962,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `megakeno2_rounds`     },
       to      : { db: `minigame_arc`, coll: `megakeno2_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -2007,7 +2009,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `unbalancedbigsmall3_rounds`     },
       to      : { db: `minigame_arc`, coll: `unbalancedbigsmall3_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -2054,7 +2056,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `unbalancedbigsmall4_rounds`     },
       to      : { db: `minigame_arc`, coll: `unbalancedbigsmall4_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -2101,7 +2103,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `minisedie2_rounds`     },
       to      : { db: `minigame_arc`, coll: `minisedie2_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -2116,8 +2118,8 @@ deploy: {
       ],
     },
     { _id     : 39056.101,
-      from    : { db: `minigame`    , coll: `minisedie2_cuocs`    },
-      to      : { db: `minigame_arc`, coll: `minisedie2_cuocs_bk` },
+      from    : { db: `minigame`    , coll: `minisedie2_bets`    },
+      to      : { db: `minigame_arc`, coll: `minisedie2_bets_bk` },
       config  : {
         timeField: `time`, cutOffsetHours: -24*8,
       },
@@ -2136,7 +2138,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `minisedie3_rounds`     },
       to      : { db: `minigame_arc`, coll: `minisedie3_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -2151,8 +2153,8 @@ deploy: {
       ],
     },
     { _id     : 39057.101,
-      from    : { db: `minigame`    , coll: `minisedie3_cuocs`    },
-      to      : { db: `minigame_arc`, coll: `minisedie3_cuocs_bk` },
+      from    : { db: `minigame`    , coll: `minisedie3_bets`    },
+      to      : { db: `minigame_arc`, coll: `minisedie3_bets_bk` },
       config  : {
         timeField: `time`, cutOffsetHours: -24*8,
       },
@@ -2171,7 +2173,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `minisedie4_rounds`     },
       to      : { db: `minigame_arc`, coll: `minisedie4_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -2186,8 +2188,8 @@ deploy: {
       ],
     },
     { _id     : 39058.101,
-      from    : { db: `minigame`    , coll: `minisedie4_cuocs`    },
-      to      : { db: `minigame_arc`, coll: `minisedie4_cuocs_bk` },
+      from    : { db: `minigame`    , coll: `minisedie4_bets`    },
+      to      : { db: `minigame_arc`, coll: `minisedie4_bets_bk` },
       config  : {
         timeField: `time`, cutOffsetHours: -24*8,
       },
@@ -2206,7 +2208,7 @@ deploy: {
       from    : { db: `minigame`    , coll: `fruitslot_rounds`     },
       to      : { db: `minigame_arc`, coll: `fruitslot_rounds_bk`  },
       config  : {
-        timeField: `time`, cutOffsetHours: -24, join: `id`,
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
       },
       childs  : [
@@ -2237,11 +2239,46 @@ deploy: {
       childs  : [],
     },
 
+    { _id     : 39060,
+      from    : { db: `minigame`    , coll: `fantan_rounds`     },
+      to      : { db: `minigame_arc`, coll: `fantan_rounds_bk`  },
+      config  : {
+        timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
+        logField: `_rounds`, logValue: `id`,
+      },
+      childs  : [
+        { from: `fantan_bets`, to: `fantan_bets_bk`,
+          join: `roundId`, updateOnly: false,
+          filter: { playerId: {$gt: 0} },
+        },
+        { from: `fantan_results`, to: `fantan_results_bk`,
+          join: `roundId`, updateOnly: false,
+          filter: {},
+        },
+      ],
+    },
+    { _id     : 39060.101,
+      from    : { db: `minigame`    , coll: `fantan_bets`    },
+      to      : { db: `minigame_arc`, coll: `fantan_bets_bk` },
+      config  : {
+        timeField: `time`, cutOffsetHours: -24*8,
+      },
+      childs  : [],
+    },
+    { _id     : 39060.102,
+      from    : { db: `minigame`    , coll: `fantan_results`    },
+      to      : { db: `minigame_arc`, coll: `fantan_results_bk` },
+      config  : {
+        timeField: `time`, cutOffsetHours: -24*8,
+      },
+      childs  : [],
+    },
+
     { _id     : 39099,
       from    : { db: 'minigame'    , coll: 'jackpots'    },
       to      : { db: 'minigame_arc', coll: 'jackpots_bk' },
       config  : {
-        timeField: 'hitTime', cutOffsetHours: -24, join: 'hitAt',
+        timeField: 'hitTime', cutOffsetHours: offsetHours, join: 'hitAt',
         logField: '', logValue: 'hitAt',
       },
       childs: [],
@@ -2280,7 +2317,7 @@ deploy: {
       from    : { db: 'minigame'    , coll: 'usersessions'    },
       to      : { db: 'minigame_arc', coll: 'usersessions_bk' },
       config  : {
-        timeField: 'recheckInTime', cutOffsetHours: -24,
+        timeField: 'recheckInTime', cutOffsetHours: offsetHours,
       },
       childs: [],
     },
