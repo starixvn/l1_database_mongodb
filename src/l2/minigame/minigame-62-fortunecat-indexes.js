@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-62-fortunecat-indexes.js
