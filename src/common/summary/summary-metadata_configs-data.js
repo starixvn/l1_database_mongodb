@@ -529,6 +529,14 @@ deploy: {
       ],
     },
     { ...commonFields,
+      gameId  : 60,
+      target  : { db: `minigame`, coll: `fantan_bets` },
+      fields  : [
+        Object.assign({}, gameSource, lookupFields.currency),
+        Object.assign({}, gameSource, lookupFields.isCash),
+      ],
+    },
+    { ...commonFields,
       gameId  : 99,
       target  : { db: `minigame`, coll: `jackpots` },
       fields  : [
