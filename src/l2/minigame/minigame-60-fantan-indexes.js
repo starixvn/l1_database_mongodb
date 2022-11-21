@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-60-fantan-indexes.js
