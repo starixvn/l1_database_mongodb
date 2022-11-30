@@ -22,10 +22,12 @@ deploy: {
     $Indexes(dbs.log.enter_portals, [
       idx.TTL,
       idx.requestTimeStamp,
+      idx.logTimeStamp,
     ]),
     $Indexes(dbs.log.signins, [
       idx.TTL,
       idx.requestTimeStamp,
+      idx.logTimeStamp,
       idx.memberId,
     ]),
   ];
