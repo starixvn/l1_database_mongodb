@@ -14,8 +14,10 @@ deploy: {
     }[L],
   };
 
+  const expireHours = 3600 * 24 * 8;
+
   (global.___idx = global.___idx ?? {})[label] = {
-    TTL                 : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),
+    TTL                 : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: expireHours}),
     currency            : $Index({'__archive.currency': 1, 'currency': 1, [mapping.playerId]: 1, 'uid': 1}),
     ended               : $Index({'ended': 1}),
     endTime             : $Index({'endTime': 1}),

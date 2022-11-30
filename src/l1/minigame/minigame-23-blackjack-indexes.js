@@ -12,12 +12,13 @@ deploy: {
   };
   const BL = {
     cuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id]), [2]: $_, [3]: [],
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id]), [2]: $_,
+      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id],
     }[L],
   };
   const idxs = [
     $Indexes(dbs.minigame.blackjack_phiens, [idx.TTL, idx.time, idx.id, idx.ended, idx.summarized_id]),
-    $Indexes(dbs.minigame.blackjack_cuocs , [idx.TTL, idx.time, idx.id, idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, idx.currency, idx.isCash, idx.endTime, ...BL.cuocs]),
+    $Indexes(dbs.minigame.blackjack_cuocs , [idx.TTL, idx.time, idx.id, idx.currency, idx.isCash, idx.endTime, ...BL.cuocs]),
   ];
   idxs.forEach(_ => _.deploy());
 }
