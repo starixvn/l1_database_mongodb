@@ -29,7 +29,7 @@ deploy: {
   const playerId = {
     [1]: ($_ = 'playerId'), [2]: $_,
     [3]: 'obCustId',
-  };
+  }[L];
 
   (global.___idxs = global.___idxs ?? {})[label] = [
     $Indexes(dbs.log.bets, [
