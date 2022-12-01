@@ -61,6 +61,7 @@ deploy: {
       roles.log           .readWrite,
       roles.member        .readWrite,
       roles.minigame      .readWrite,
+      roles.summary       .readWrite,
     ]),
     $User(dbs.admin, `lmn_backend`, [
       roles.admin         .public,
