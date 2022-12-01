@@ -17,6 +17,7 @@ deploy: {
     playerId      : $Index({'playerId': 1}),
     playerId_id_F : $Index({'playerId': 1, 'id': 1}, {partialFilterExpression: {playerId: {$gt: 0}}}),
     roundId__id   : $Index({'roundId': 1, '_id': 1}),
+    summarized_id : $Index({'__archive.summarized': 1, 'paid': 1, 'time': 1, 'id': 1}),
     time          : $Index({'time': 1}),
     uid_ended_F   : $Index({'uid': 1, 'ended': 1}, {unique: true, partialFilterExpression: {ended: false}}),
     uid_roundId   : $Index({'uid': 1, 'roundId': 1}, {unique: true}),
