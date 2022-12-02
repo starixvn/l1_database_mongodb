@@ -49,6 +49,7 @@ deploy: {
       global.___idx[label].UID_U,
     ]),
     $Indexes(dbs.minigame.usersessions, [
+      global.___idx[label].playerId,
       global.___idx[label].recheckInTime,
       global.___idx[label].sessionId_U,
       global.___idx[label].ssoToken,
