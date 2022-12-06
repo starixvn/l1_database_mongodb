@@ -934,7 +934,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 59,
-      owGameTypeId  : { [1]: 1666, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1666, [2]: 3858, [3]: null }[L],
       name          : { en: `Fruit Slot`, vi: `Xèng Hoa Quả`, grp: `Casino`, game: `Fruit Slot` },
       coll          : { db: `minigame`, group: `fruitslot`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -948,7 +948,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 60,
-      owGameTypeId  : { [1]: 1667, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1667, [2]: 3859, [3]: null }[L],
       name          : { en: `Fan Tan`, vi: `Fan Tan`, grp: `Fan Tan`, game: `Fan Tan` },
       coll          : { db: `minigame`, group: `fantan`, round: `_rounds`, postfix: `_bets` },
       fields        : {
@@ -962,7 +962,7 @@ deploy: {
     },
     { ...commonFields,
       gameId        : 62,
-      owGameTypeId  : { [1]: null, [2]: null, [3]: null }[L],
+      owGameTypeId  : { [1]: 1669, [2]: 3861, [3]: null }[L],
       name          : { en: `Fortune Cat`, vi: `Mèo Tài Lộc`, grp: `Slots`, game: `Fortune Cat` },
       coll          : { db: `minigame`, group: `fortunecat`, round: `_rounds`, postfix: `_rounds` },
       fields        : {
