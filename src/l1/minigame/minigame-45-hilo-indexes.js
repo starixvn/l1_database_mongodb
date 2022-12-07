@@ -22,7 +22,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.hilo_rounds  , [idx.TTL, idx.time, idx.endTime, idx.id, idx.summarized_id, idx.currency, idx.isCash, ...BL.rounds]),
-    $Indexes(dbs.minigame.hilo_betlogs , [idx.TTL,           idx.roundId_uid, ...BL.betlogs]),
+    $Indexes(dbs.minigame.hilo_betlogs , [idx.TTL,           idx.archive_time, idx.roundId_uid, ...BL.betlogs]),
   ];
   idxs.forEach(_ => _.deploy());
 }

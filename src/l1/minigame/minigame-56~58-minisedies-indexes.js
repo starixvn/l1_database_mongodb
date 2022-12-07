@@ -12,16 +12,16 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.minisedie2_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.minisedie2_bets   , [idx.TTL, idx.time, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency, idx.isCash]),
-    $Indexes(dbs.minigame.minisedie2_results, [idx.TTL,           idx.roundId]),
+    $Indexes(dbs.minigame.minisedie2_bets   , [idx.TTL, idx.time, idx.archive_time, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.minisedie2_results, [idx.TTL,           idx.archive_time, idx.roundId]),
 
     $Indexes(dbs.minigame.minisedie3_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.minisedie3_bets   , [idx.TTL, idx.time, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency, idx.isCash]),
-    $Indexes(dbs.minigame.minisedie3_results, [idx.TTL,           idx.roundId]),
+    $Indexes(dbs.minigame.minisedie3_bets   , [idx.TTL, idx.time, idx.archive_time, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.minisedie3_results, [idx.TTL,           idx.archive_time, idx.roundId]),
 
     $Indexes(dbs.minigame.minisedie4_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.minisedie4_bets   , [idx.TTL, idx.time, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency, idx.isCash]),
-    $Indexes(dbs.minigame.minisedie4_results, [idx.TTL,           idx.roundId]),
+    $Indexes(dbs.minigame.minisedie4_bets   , [idx.TTL, idx.time, idx.archive_time, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.minisedie4_results, [idx.TTL,           idx.archive_time, idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }

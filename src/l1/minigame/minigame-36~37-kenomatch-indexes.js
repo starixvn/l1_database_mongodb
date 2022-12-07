@@ -22,12 +22,12 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.kenomatch1_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.kenomatch1_cuocs  , [idx.TTL,           idx.uid__id, ...BL.cuocs]),
-    $Indexes(dbs.minigame.kenomatch1_ones   , [idx.TTL, idx.time, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.kenomatch1_cuocs  , [idx.TTL,           idx.archive_time, idx.uid__id, ...BL.cuocs]),
+    $Indexes(dbs.minigame.kenomatch1_ones   , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
 
     $Indexes(dbs.minigame.kenomatch2_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.kenomatch2_cuocs  , [idx.TTL,           idx.uid__id, ...BL.cuocs]),
-    $Indexes(dbs.minigame.kenomatch2_ones   , [idx.TTL, idx.time, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.kenomatch2_cuocs  , [idx.TTL,           idx.archive_time, idx.uid__id, ...BL.cuocs]),
+    $Indexes(dbs.minigame.kenomatch2_ones   , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
   ];
   idxs.forEach(_ => _.deploy());
 }

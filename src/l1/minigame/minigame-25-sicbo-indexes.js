@@ -22,9 +22,9 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.sicbo_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.sicbo_cuocs   , [idx.TTL,           ...BL.cuocs]),
-    $Indexes(dbs.minigame.sicbo_ones    , [idx.TTL, idx.time, idx.currency, idx.isCash, ...BL.ones]),
-    $Indexes(dbs.minigame.sicbo_results , [idx.TTL,           idx.roundId]),
+    $Indexes(dbs.minigame.sicbo_cuocs   , [idx.TTL,           idx.archive_time, ...BL.cuocs]),
+    $Indexes(dbs.minigame.sicbo_ones    , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.sicbo_results , [idx.TTL,           idx.archive_time, idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }

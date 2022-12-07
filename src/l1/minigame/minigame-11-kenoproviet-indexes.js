@@ -22,9 +22,9 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.kenoproviet_phiens    , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.kenoproviet_phiens_log, [idx.TTL]),
-    $Indexes(dbs.minigame.kenoproviet_cuocs     , [idx.TTL,           idx.uid__id, ...BL.cuocs]),
-    $Indexes(dbs.minigame.kenoproviet_ones      , [idx.TTL, idx.time, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.kenoproviet_phiens_log, [idx.TTL          , idx.archive_time]),
+    $Indexes(dbs.minigame.kenoproviet_cuocs     , [idx.TTL          , idx.archive_time, idx.uid__id, ...BL.cuocs]),
+    $Indexes(dbs.minigame.kenoproviet_ones      , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
   ];
   idxs.forEach(_ => _.deploy());
 }

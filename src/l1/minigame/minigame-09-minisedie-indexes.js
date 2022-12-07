@@ -18,8 +18,8 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.minisedie_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.minisedie_cuocs   , [idx.TTL, idx.time, idx.currency, idx.isCash, ...BL.cuocs]),
-    $Indexes(dbs.minigame.minisedie_results , [idx.TTL,           idx.roundId]),
+    $Indexes(dbs.minigame.minisedie_cuocs   , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.cuocs]),
+    $Indexes(dbs.minigame.minisedie_results , [idx.TTL,           idx.archive_time, idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }

@@ -23,9 +23,9 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.baccarat_phiens   , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.baccarat_cuocs    , [idx.TTL, idx.time, idx.currency, idx.isCash, ...BL.cuocs]),
+    $Indexes(dbs.minigame.baccarat_cuocs    , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.cuocs]),
     $Indexes(dbs.minigame.baccarat_tmpcuocs , [idx.timeTTL,       ...BL.tmpcuocs]),
-    $Indexes(dbs.minigame.baccarat_results  , [idx.TTL,           idx.roundId]),
+    $Indexes(dbs.minigame.baccarat_results  , [idx.TTL,           idx.archive_time, idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }

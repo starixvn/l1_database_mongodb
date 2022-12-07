@@ -25,8 +25,8 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.chanle_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.chanle_cuocs  , [idx.TTL,           ...BL.cuocs]),
-    $Indexes(dbs.minigame.chanle_ones   , [idx.TTL, idx.time, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.chanle_cuocs  , [idx.TTL,           idx.archive_time, ...BL.cuocs]),
+    $Indexes(dbs.minigame.chanle_ones   , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
   ];
   idxs.forEach(_ => _.deploy());
 }

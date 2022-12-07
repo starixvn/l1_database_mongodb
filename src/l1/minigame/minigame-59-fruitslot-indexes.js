@@ -12,8 +12,8 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.fruitslot_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.fruitslot_betlogs, [idx.TTL,           idx.roundId__id, idx.playerId_roundId_F, idx.uid__id]),
-    $Indexes(dbs.minigame.fruitslot_bets   , [idx.TTL, idx.time, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.fruitslot_betlogs, [idx.TTL,           idx.archive_time, idx.roundId__id, idx.playerId_roundId_F, idx.uid__id]),
+    $Indexes(dbs.minigame.fruitslot_bets   , [idx.TTL, idx.time, idx.archive_time, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.currency, idx.isCash]),
   ];
   idxs.forEach(_ => _.deploy());
 }

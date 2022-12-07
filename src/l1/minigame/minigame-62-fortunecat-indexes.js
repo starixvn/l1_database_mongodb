@@ -12,8 +12,8 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.fortunecat_rounds    , [idx.TTL, idx.time, idx.id, idx.summarized_id, idx.playerId_id_F, idx.paid_uid, idx.currency, idx.isCash]),
-    $Indexes(dbs.minigame.fortunecat_freespins , [idx.TTL,           idx.id, idx.expiryTime]),
-    $Indexes(dbs.minigame.fortunecat_fames     , [idx.TTL, idx.time, idx.uid_roundId]),
+    $Indexes(dbs.minigame.fortunecat_freespins , [idx.TTL,           idx.archive_time, idx.id, idx.expiryTime]),
+    $Indexes(dbs.minigame.fortunecat_fames     , [idx.TTL, idx.time, idx.archive_time, idx.uid_roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }
