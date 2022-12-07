@@ -81,11 +81,13 @@ deploy: {
       roles.log           .readWrite,
       roles.member        .readWrite,
       roles.minigame      .readWrite,
+      roles.summary       .readWrite,
       /** archive */
       roles.log_arc       .readWrite,
       roles.member_arc    .readWrite,
       roles.minigame_arc  .readWrite,
       roles.minigame_rm   .readWrite,
+      roles.summary_arc   .readWrite,
     ]),
     $User(dbs.admin, `lmn_backend`, [
       roles.admin         .public,

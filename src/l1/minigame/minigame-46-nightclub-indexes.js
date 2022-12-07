@@ -12,13 +12,14 @@ deploy: {
   };
   const BL = {
     rounds: {
-      [1]: ($_ = [idx.playerId_id_F]), [2]: $_, [3]: [],
+      [1]: ($_ = [idx.playerId_id_F]), [2]: $_,
+      [3]: [idx.memberId_id_F],
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.nightclub_rounds    , [idx.TTL, idx.time, idx.id, idx.summarized_id, idx.memberId_id_F, idx.paid_uid, idx.currency, idx.isCash, ...BL.rounds]),
-    $Indexes(dbs.minigame.nightclub_freespins , [idx.TTL,           idx.id, idx.expiryTime]),
-    $Indexes(dbs.minigame.nightclub_fames     , [idx.TTL, idx.time, idx.uid_roundId]),
+    $Indexes(dbs.minigame.nightclub_rounds    , [idx.TTL, idx.time, idx.id, idx.summarized_id, idx.paid_uid, idx.currency, idx.isCash, ...BL.rounds]),
+    $Indexes(dbs.minigame.nightclub_freespins , [idx.TTL,           idx.archive_time, idx.id, idx.expiryTime]),
+    $Indexes(dbs.minigame.nightclub_fames     , [idx.TTL, idx.time, idx.archive_time, idx.uid_roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }

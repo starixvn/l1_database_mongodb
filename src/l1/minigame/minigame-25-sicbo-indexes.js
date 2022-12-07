@@ -12,17 +12,19 @@ deploy: {
   };
   const BL = {
     cuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id]), [2]: $_, [3]: [],
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id]), [2]: $_,
+      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id],
     }[L],
     ones: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]), [2]: $_, [3]: [],
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]), [2]: $_,
+      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien],
     }[L],
   };
   const idxs = [
     $Indexes(dbs.minigame.sicbo_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.sicbo_cuocs   , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, ...BL.cuocs]),
-    $Indexes(dbs.minigame.sicbo_ones    , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
-    $Indexes(dbs.minigame.sicbo_results , [idx.TTL,           idx.roundId]),
+    $Indexes(dbs.minigame.sicbo_cuocs   , [idx.TTL,           idx.archive_time, ...BL.cuocs]),
+    $Indexes(dbs.minigame.sicbo_ones    , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.sicbo_results , [idx.TTL,           idx.archive_time, idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }

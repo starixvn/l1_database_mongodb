@@ -12,20 +12,22 @@ deploy: {
   };
   const BL = {
     cuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F]), [2]: $_, [3]: [],
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F]), [2]: $_,
+      [3]: [idx.phien__id, idx.memberId_phien_F],
     }[L],
     ones: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]), [2]: $_, [3]: [],
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]), [2]: $_,
+      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien],
     }[L],
   };
   const idxs = [
     $Indexes(dbs.minigame.kenomatch1_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.kenomatch1_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
-    $Indexes(dbs.minigame.kenomatch1_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.kenomatch1_cuocs  , [idx.TTL,           idx.archive_time, idx.uid__id, ...BL.cuocs]),
+    $Indexes(dbs.minigame.kenomatch1_ones   , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
 
     $Indexes(dbs.minigame.kenomatch2_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.kenomatch2_cuocs  , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.cuocs]),
-    $Indexes(dbs.minigame.kenomatch2_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.kenomatch2_cuocs  , [idx.TTL,           idx.archive_time, idx.uid__id, ...BL.cuocs]),
+    $Indexes(dbs.minigame.kenomatch2_ones   , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
   ];
   idxs.forEach(_ => _.deploy());
 }

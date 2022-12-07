@@ -14,8 +14,11 @@ deploy: {
     }[L],
   };
 
+  const expireHours = 3600 * 24 * 8;
+
   (global.___idx = global.___idx ?? {})[label] = {
-    TTL                 : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),
+    TTL                 : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: expireHours}),
+    archive_time        : $Index({'__archive.eventtime': 1, 'time': 1}),
     currency            : $Index({'__archive.currency': 1, 'currency': 1, [mapping.playerId]: 1, 'uid': 1}),
     ended               : $Index({'ended': 1}),
     endTime             : $Index({'endTime': 1}),
@@ -31,7 +34,7 @@ deploy: {
     roundId             : $Index({'roundId': 1}),
     roundId__id         : $Index({'roundId': 1, '_id': 1}),
     roundId_uid         : $Index({'roundId': 1, 'uid': 1}),
-    summarized_id       : $Index({'__archive.summarized': 1, 'time': 1, 'id': 1}),
+    summarized_id       : $Index({'__archive.summarized': 1, 'paid': 1, 'time': 1, 'id': 1}),
     time                : $Index({'time': 1}),
     timeTTL             : $Index({'time': 1}, {expireAfterSeconds: 120}),
     uid__id             : $Index({'uid': 1, '_id': 1}),
