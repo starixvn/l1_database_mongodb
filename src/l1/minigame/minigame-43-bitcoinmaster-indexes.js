@@ -25,7 +25,7 @@ deploy: {
     $Indexes(dbs.minigame.bitcoinmaster_betlogs , [idx.TTL, idx.time_archive, ...BL.betlogs]),
     $Indexes(dbs.minigame.bitcoinmaster_bets    , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.bets]),
 
-    $Indexes(dbs.minigame.crypto_candlesticks   , [idx.TTL, idx.time]),
+    $Indexes(dbs.minigame.crypto_candlesticks   , [idx.TTL, idx.time_archive]),
   ];
   idxs.forEach(_ => _.deploy());
 }
