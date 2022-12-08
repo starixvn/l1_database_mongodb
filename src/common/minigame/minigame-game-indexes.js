@@ -18,7 +18,6 @@ deploy: {
 
   (global.___idx = global.___idx ?? {})[label] = {
     TTL                 : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: expireHours}),
-    archive_time        : $Index({'__archive.eventtime': 1, 'time': 1}),
     currency            : $Index({'__archive.currency': 1, 'currency': 1, [mapping.playerId]: 1, 'uid': 1}),
     ended               : $Index({'ended': 1}),
     endTime             : $Index({'endTime': 1}),
@@ -36,6 +35,7 @@ deploy: {
     roundId_uid         : $Index({'roundId': 1, 'uid': 1}),
     summarized_id       : $Index({'__archive.summarized': 1, 'paid': 1, 'time': 1, 'id': 1}),
     time                : $Index({'time': 1}),
+    time_archive        : $Index({'time': 1, '__archive.eventtime': 1}),
     timeTTL             : $Index({'time': 1}, {expireAfterSeconds: 120}),
     uid__id             : $Index({'uid': 1, '_id': 1}),
     uid_phien           : $Index({'uid': 1, 'phien': 1}, {unique: true, partialFilterExpression: {phien: {$gt: 0}}}),

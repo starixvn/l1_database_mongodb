@@ -22,7 +22,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.vipfishprawncrab_phiens   , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.vipfishprawncrab_cuocs    , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.cuocs]),
+    $Indexes(dbs.minigame.vipfishprawncrab_cuocs    , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.cuocs]),
     $Indexes(dbs.minigame.vipfishprawncrab_tmpcuocs , [idx.timeTTL,       ...BL.tmpcuocs]),
   ];
   idxs.forEach(_ => _.deploy());

@@ -27,9 +27,9 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.taixiu_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.taixiu_cuocs  , [idx.TTL,           idx.archive_time, ...BL.cuocs]),
-    $Indexes(dbs.minigame.taixiu_ones   , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
-    $Indexes(dbs.minigame.taixiu_results, [idx.TTL,           idx.archive_time, idx.roundId]),
+    $Indexes(dbs.minigame.taixiu_cuocs  , [idx.TTL, idx.time_archive, ...BL.cuocs]),
+    $Indexes(dbs.minigame.taixiu_ones   , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.taixiu_results, [idx.TTL, idx.time_archive, idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }

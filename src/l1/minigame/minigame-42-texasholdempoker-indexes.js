@@ -18,7 +18,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.texasholdempoker_phiens, [idx.TTL, idx.time, idx.id, idx.ended, idx.summarized_id]),
-    $Indexes(dbs.minigame.texasholdempoker_cuocs , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, idx.endTime, ...BL.cuocs]),
+    $Indexes(dbs.minigame.texasholdempoker_cuocs , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, idx.endTime, ...BL.cuocs]),
   ];
   idxs.forEach(_ => _.deploy());
 }

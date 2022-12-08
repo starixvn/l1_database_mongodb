@@ -22,9 +22,9 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.vipsediewar_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.vipsediewar_cuocs   , [idx.TTL,           idx.archive_time, ...BL.cuocs]),
-    $Indexes(dbs.minigame.vipsediewar_ones    , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
-    $Indexes(dbs.minigame.vipsediewar_results , [idx.TTL,           idx.archive_time, idx.roundId]),
+    $Indexes(dbs.minigame.vipsediewar_cuocs   , [idx.TTL, idx.time_archive, ...BL.cuocs]),
+    $Indexes(dbs.minigame.vipsediewar_ones    , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.vipsediewar_results , [idx.TTL, idx.time_archive, idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }

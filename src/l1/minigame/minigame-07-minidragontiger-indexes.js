@@ -18,7 +18,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.minidragontiger_phiens, [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.minidragontiger_cuocs , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.cuocs]),
+    $Indexes(dbs.minigame.minidragontiger_cuocs , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.cuocs]),
   ];
   idxs.forEach(_ => _.deploy());
 }

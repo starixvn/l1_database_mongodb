@@ -22,9 +22,9 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.vipbaccarat_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.vipbaccarat_cuocs   , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.cuocs]),
+    $Indexes(dbs.minigame.vipbaccarat_cuocs   , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.cuocs]),
     $Indexes(dbs.minigame.vipbaccarat_tmpcuocs, [idx.timeTTL,       ...BL.tmpcuocs]),
-    $Indexes(dbs.minigame.vipbaccarat_results , [idx.TTL,           idx.archive_time, idx.roundId]),
+    $Indexes(dbs.minigame.vipbaccarat_results , [idx.TTL, idx.time_archive, idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }
