@@ -22,8 +22,8 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.lottery_phiens, [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.lottery_cuocs , [idx.TTL,           idx.archive_time, ...BL.cuocs]),
-    $Indexes(dbs.minigame.lottery_ones  , [idx.TTL, idx.time, idx.archive_time, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.lottery_cuocs , [idx.TTL, idx.time_archive, ...BL.cuocs]),
+    $Indexes(dbs.minigame.lottery_ones  , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
   ];
   idxs.forEach(_ => _.deploy());
 }

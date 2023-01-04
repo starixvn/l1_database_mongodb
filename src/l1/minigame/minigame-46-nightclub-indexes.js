@@ -18,8 +18,8 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.nightclub_rounds    , [idx.TTL, idx.time, idx.id, idx.summarized_id, idx.paid_uid, idx.currency, idx.isCash, ...BL.rounds]),
-    $Indexes(dbs.minigame.nightclub_freespins , [idx.TTL,           idx.archive_time, idx.id, idx.expiryTime]),
-    $Indexes(dbs.minigame.nightclub_fames     , [idx.TTL, idx.time, idx.archive_time, idx.uid_roundId]),
+    $Indexes(dbs.minigame.nightclub_freespins , [idx.TTL, idx.time_archive, idx.id, idx.expiryTime]),
+    $Indexes(dbs.minigame.nightclub_fames     , [idx.TTL, idx.time_archive, idx.uid_roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }

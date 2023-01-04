@@ -12,9 +12,9 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.fantan_rounds   , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.fantan_bets     , [idx.TTL, idx.time, idx.archive_time, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.fantan_bets     , [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id, idx.currency, idx.isCash]),
     $Indexes(dbs.minigame.fantan_tmpbets  , [idx.timeTTL,       idx.roundId__id, idx.uid_roundId]),
-    $Indexes(dbs.minigame.fantan_results  , [idx.TTL,           idx.archive_time, idx.roundId, idx.isAvailable]),
+    $Indexes(dbs.minigame.fantan_results  , [idx.TTL, idx.time_archive, idx.roundId, idx.isAvailable]),
   ];
   idxs.forEach(_ => _.deploy());
 }
