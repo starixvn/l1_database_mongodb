@@ -1,0 +1,1 @@
+../../l1/minigame/minigame-61-winthreecards-indexes.js
