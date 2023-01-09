@@ -981,7 +981,7 @@ deploy: {
         payout: [ `$betWin` ],
         refund: [ 0 ],
       },
-      config        : { ...commonConfig, jpCont: {[1]: null, [2]: 0.025, [3]: null}[L] },
+      config        : { ...commonConfig, jpCont: {[1]: null, [2]: 0, [3]: null}[L] },
       default       : commonDefault,
     },
     { ...commonFields,
