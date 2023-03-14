@@ -49,6 +49,10 @@ deploy: {
       read            : $Role(dbs.minigame_rm , `read`          ),
       readWrite       : $Role(dbs.minigame_rm , `readWrite`     ),
     },
+    ops_configs : {
+      read            : $Role(dbs.ops_configs , `read`          ),
+      readWrite       : $Role(dbs.ops_configs , `readWrite`     ),
+    },
     Proteus     : {
       read            : $Role(dbs.Proteus     , `read`          ),
       readWrite       : $Role(dbs.Proteus     , `readWrite`     ),
@@ -98,6 +102,7 @@ deploy: {
       roles.log           .readWrite,
       roles.member        .readWrite,
       roles.minigame      .readWrite,
+      roles.ops_configs   .readWrite,
       roles.summary       .read,
       /** archive */
       roles.log_arc       .read,
@@ -119,6 +124,7 @@ deploy: {
       roles.log           .read,
       roles.member        .read,
       roles.minigame      .read,
+      roles.ops_configs   .read,
       roles.summary       .read,
       /** archive */
       roles.log_arc       .read,
@@ -152,6 +158,7 @@ deploy: {
       roles.log           .read,
       roles.member        .read,
       roles.minigame      .read,
+      roles.ops_configs   .read,
       roles.summary       .read,
       /** archive */
       roles.log_arc       .read,
