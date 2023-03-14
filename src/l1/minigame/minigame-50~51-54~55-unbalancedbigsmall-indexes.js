@@ -78,23 +78,23 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame_arc.unbalancedbigsmall1_rounds_bk  , [idx.time, idx.id]),
-    $Indexes(dbs.minigame_arc.unbalancedbigsmall1_betlogs_bk , [          idx.phien, idx.memberId_phien_F, idx.uid_phien]),
-    $Indexes(dbs.minigame_arc.unbalancedbigsmall1_bets_bk    , [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
+    $Indexes(dbs.minigame_arc.unbalancedbigsmall1_betlogs_bk , [          idx.roundId, idx.playerId_roundId_F, idx.uid_roundId]),
+    $Indexes(dbs.minigame_arc.unbalancedbigsmall1_bets_bk    , [idx.time, idx.roundId, idx.playerId_roundId_F, idx.uid_roundId_U]),
     $Indexes(dbs.minigame_arc.unbalancedbigsmall1_results_bk , [          idx.roundId]),
 
     $Indexes(dbs.minigame_arc.unbalancedbigsmall2_rounds_bk  , [idx.time, idx.id]),
-    $Indexes(dbs.minigame_arc.unbalancedbigsmall2_betlogs_bk , [          idx.phien, idx.memberId_phien_F, idx.uid_phien]),
-    $Indexes(dbs.minigame_arc.unbalancedbigsmall2_bets_bk    , [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
+    $Indexes(dbs.minigame_arc.unbalancedbigsmall2_betlogs_bk , [          idx.roundId, idx.playerId_roundId_F, idx.uid_roundId]),
+    $Indexes(dbs.minigame_arc.unbalancedbigsmall2_bets_bk    , [idx.time, idx.roundId, idx.playerId_roundId_F, idx.uid_roundId_U]),
     $Indexes(dbs.minigame_arc.unbalancedbigsmall2_results_bk , [          idx.roundId]),
 
     $Indexes(dbs.minigame_arc.unbalancedbigsmall3_rounds_bk  , [idx.time, idx.id]),
-    $Indexes(dbs.minigame_arc.unbalancedbigsmall3_betlogs_bk , [          idx.phien, idx.memberId_phien_F, idx.uid_phien]),
-    $Indexes(dbs.minigame_arc.unbalancedbigsmall3_bets_bk    , [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
+    $Indexes(dbs.minigame_arc.unbalancedbigsmall3_betlogs_bk , [          idx.roundId, idx.playerId_roundId_F, idx.uid_roundId]),
+    $Indexes(dbs.minigame_arc.unbalancedbigsmall3_bets_bk    , [idx.time, idx.roundId, idx.playerId_roundId_F, idx.uid_roundId_U]),
     $Indexes(dbs.minigame_arc.unbalancedbigsmall3_results_bk , [          idx.roundId]),
 
     $Indexes(dbs.minigame_arc.unbalancedbigsmall4_rounds_bk  , [idx.time, idx.id]),
-    $Indexes(dbs.minigame_arc.unbalancedbigsmall4_betlogs_bk , [          idx.phien, idx.memberId_phien_F, idx.uid_phien]),
-    $Indexes(dbs.minigame_arc.unbalancedbigsmall4_bets_bk    , [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
+    $Indexes(dbs.minigame_arc.unbalancedbigsmall4_betlogs_bk , [          idx.roundId, idx.playerId_roundId_F, idx.uid_roundId]),
+    $Indexes(dbs.minigame_arc.unbalancedbigsmall4_bets_bk    , [idx.time, idx.roundId, idx.playerId_roundId_F, idx.uid_roundId_U]),
     $Indexes(dbs.minigame_arc.unbalancedbigsmall4_results_bk , [          idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());

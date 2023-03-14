@@ -41,7 +41,7 @@ deploy: {
     ...global.___idx[label],
   };
   const idxs = [
-    $Indexes(dbs.minigame_arc.waytogoal_rounds_bk    , [idx.time, idx.id, idx.memberId_id_F, idx.uid_id]),
+    $Indexes(dbs.minigame_arc.waytogoal_rounds_bk    , [idx.time, idx.id, idx.playerId_id_F, idx.uid_id]),
     $Indexes(dbs.minigame_arc.waytogoal_freespins_bk , [          idx.id, idx.expiryTime]),
     $Indexes(dbs.minigame_arc.waytogoal_fames_bk     , [idx.time, idx.uid_roundId]),
   ];

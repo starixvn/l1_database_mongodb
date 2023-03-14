@@ -65,6 +65,9 @@ deploy: {
       read            : $Role(dbs.summary_arc , `read`          ),
       readWrite       : $Role(dbs.summary_arc , `readWrite`     ),
     },
+    demo: {
+      readWrite       : $Role(dbs.demo        , `readWrite`     ),
+    }
   };
 
   const users = [
@@ -102,6 +105,8 @@ deploy: {
       roles.minigame_arc  .read,
       roles.minigame_rm   .read,
       roles.summary_arc   .read,
+
+      roles.demo          .readWrite,
     ]),
     $User(dbs.admin, `lmn_backup`, [
       roles.admin         .readSystem,

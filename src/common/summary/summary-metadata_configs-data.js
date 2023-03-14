@@ -537,6 +537,14 @@ deploy: {
       ],
     },
     { ...commonFields,
+      gameId  : 61,
+      target  : { db: `minigame`, coll: `winthreecards_bets` },
+      fields  : [
+        Object.assign({}, gameSource, lookupFields.currency),
+        Object.assign({}, gameSource, lookupFields.isCash),
+      ],
+    },
+    { ...commonFields,
       gameId  : 62,
       target  : { db: `minigame`, coll: `fortunecat_rounds` },
       fields  : [

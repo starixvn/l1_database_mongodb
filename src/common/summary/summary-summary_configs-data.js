@@ -1049,6 +1049,22 @@ deploy: {
       },
     },
 
+    { gameId  : 61,
+      db      : `minigame`,
+      coll    : { base: `winthreecards`, round: `rounds`, bet: `bets` },
+      alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
+      expr    : {
+        stake   : `$totalAmount`,
+        payout  : `$betwin`,
+        refund  : expr.noRefund,
+        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
     { gameId  : 62,
       db      : `minigame`,
       coll    : { base: `fortunecat`, round: `rounds` },
