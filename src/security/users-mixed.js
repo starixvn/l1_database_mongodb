@@ -95,6 +95,8 @@ deploy: {
       roles.minigame_arc  .readWrite,
       roles.minigame_rm   .readWrite,
       roles.summary_arc   .readWrite,
+
+      roles.demo          .readWrite,
     ]),
     $User(dbs.admin, `lmn_backend`, [
       roles.admin         .public,
@@ -132,6 +134,8 @@ deploy: {
       roles.minigame_arc  .read,
       roles.minigame_rm   .read,
       roles.summary_arc   .read,
+
+      roles.demo          .read,
     ]),
     $User(dbs.admin, `lmn_summary`, [
       roles.admin         .public,
@@ -139,11 +143,14 @@ deploy: {
       /** active */
       roles.log           .readWrite,
       roles.minigame      .readWrite,
+      roles.ops_configs   .read,
       roles.summary       .readWrite,
       /** archive */
       roles.log_arc       .readWrite,
       roles.minigame_arc  .read,
       roles.summary_arc   .readWrite,
+
+      roles.demo          .readWrite,
     ]),
     $User(dbs.admin, `mongodb_exporter`, [
       roles.admin         .clusterMonitor,

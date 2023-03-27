@@ -96,6 +96,7 @@ deploy: {
       /** active */
       roles.log           .readWrite,
       roles.minigame      .readWrite,
+      roles.ops_configs   .read,
       roles.summary       .readWrite,
     ]),
     $User(dbs.admin, `mongodb_exporter`, [
