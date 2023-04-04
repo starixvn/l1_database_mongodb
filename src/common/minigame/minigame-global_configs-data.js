@@ -646,7 +646,11 @@ deploy: {
     const time    = ISODate('2021-12-14T00:00:00Z');
     const base    = {[1]: 'USD', [2]: 'VND', [3]: 'USD'}[L];
     const configs = {
-      codes : ['AUD', 'CAD', 'CNY', 'EUR', 'GBP', 'HKD', 'IDR', 'JPY', 'KRW', 'MYR', 'PHP', 'SGD', 'THB', 'TWD', 'USD', 'VND', 'YNG'],
+      codes : [
+        'AUD', 'CAD', 'CNY', 'EUR', 'GBP', 'HKD', 'IDR', 'JPY', 'KRW', 'MYR', 'PHP', 'SGD', 'THB', 'TWD', 'USD', 'VND', 'YNG',
+        "ARS", "BDT", "BND", "BRL", "CHF", "CLP", "CZK", "DKK", "GHS", "INR", "KES", "KHR", "KZT", "LAK", "MMK", "MXN", "NOK",
+        "NPR", "PEN", "PKR", "PLN", "RON", "RUB", "SEK", "TRY",
+      ],
     };
     global.___data[label].exchange_codes = { time, base, configs };
   }
