@@ -33,6 +33,10 @@ deploy: {
       read            : $Role(dbs.minigame    , `read`          ),
       readWrite       : $Role(dbs.minigame    , `readWrite`     ),
     },
+    ops_configs : {
+      read            : $Role(dbs.ops_configs , `read`          ),
+      readWrite       : $Role(dbs.ops_configs , `readWrite`     ),
+    },
     Proteus     : {
       read            : $Role(dbs.Proteus     , `read`          ),
       readWrite       : $Role(dbs.Proteus     , `readWrite`     ),
@@ -61,6 +65,7 @@ deploy: {
       roles.log           .readWrite,
       roles.member        .readWrite,
       roles.minigame      .readWrite,
+      roles.ops_configs   .read,
       roles.summary       .readWrite,
     ]),
     $User(dbs.admin, `lmn_backend`, [
@@ -69,6 +74,7 @@ deploy: {
       roles.log           .readWrite,
       roles.member        .readWrite,
       roles.minigame      .readWrite,
+      roles.ops_configs   .readWrite,
       roles.summary       .read,
     ]),
     $User(dbs.admin, `lmn_backup`, [
@@ -82,6 +88,7 @@ deploy: {
       roles.log           .read,
       roles.member        .read,
       roles.minigame      .read,
+      roles.ops_configs   .read,
       roles.summary       .read,
     ]),
     $User(dbs.admin, `lmn_summary`, [
@@ -90,6 +97,7 @@ deploy: {
       /** active */
       roles.log           .readWrite,
       roles.minigame      .readWrite,
+      roles.ops_configs   .read,
       roles.summary       .readWrite,
     ]),
     $User(dbs.admin, `mongodb_exporter`, [
@@ -105,6 +113,7 @@ deploy: {
       roles.log           .read,
       roles.member        .read,
       roles.minigame      .read,
+      roles.ops_configs   .read,
       roles.summary       .read,
     ]),
   ];
