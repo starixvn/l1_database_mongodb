@@ -20,7 +20,6 @@ deploy: {
 
   const df = {
     currency  : `$__archive.currency`,
-    isCash    : { [1]: false      , [2]: true            , [3]: null          }[L],
     operatorId: { [1]: `ONEworks1`, [2]: `ONEworksVGCash`, [3]: `ONEworks_VG` }[L],
   };
 
@@ -43,7 +42,7 @@ deploy: {
           ]},
         }[L],
         refund  : `$refund`,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -63,7 +62,7 @@ deploy: {
         }[L],
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -79,7 +78,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$stag`, `$gourd`, `$rooster`, `$fish`, `$crab`, `$prawn`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -105,7 +104,7 @@ deploy: {
           ]},
         }[L],
         refund  : `$refund`,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -131,7 +130,7 @@ deploy: {
           ]},
         }[L],
         refund  : `$refund`,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -157,7 +156,7 @@ deploy: {
           ]},
         }[L],
         refund  : `$refund`,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -173,7 +172,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$dragon`, `$tie`, `$tiger`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -189,7 +188,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -205,7 +204,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -221,7 +220,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -237,7 +236,7 @@ deploy: {
         stake   : {$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -253,7 +252,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -269,7 +268,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -285,7 +284,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -301,7 +300,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -317,7 +316,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -333,7 +332,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -349,7 +348,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -365,7 +364,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -381,7 +380,7 @@ deploy: {
         stake   : `$totalBet`,
         payout  : `$win`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -397,7 +396,7 @@ deploy: {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -413,7 +412,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`, `$red2`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -430,7 +429,7 @@ deploy: {
         stake   : {$multiply: [`$bet`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -453,7 +452,7 @@ deploy: {
           ]},
         }[L],
         refund  : `$refund`,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -469,7 +468,7 @@ deploy: {
         stake   : { [1]: `$totalAmount`, [2]: `$totalAmount`, [3]: `$totalBet` }[L],
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -485,7 +484,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$stag`, `$gourd`, `$rooster`, `$fish`, `$crab`, `$prawn`, `$mountain`, `$ocean`, `$anyTriple`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -501,7 +500,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$player`, `$banker`, `$tie`, `$big`, `$small`, `$playerPair`, `$bankerPair`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -517,7 +516,7 @@ deploy: {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -534,7 +533,7 @@ deploy: {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
         payout  : `$betWin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -550,7 +549,7 @@ deploy: {
         stake   : {$multiply: [`$totalBet`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -566,7 +565,7 @@ deploy: {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -582,7 +581,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -598,7 +597,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -614,7 +613,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -630,7 +629,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$red`, `$black`, `$diamonds`, `$hearts`, `$spades`, `$clubs`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -647,7 +646,7 @@ deploy: {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
         payout  : {$sum: [`$betwin`, `$refund`]},
         refund  : `$refund`,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -664,7 +663,7 @@ deploy: {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
         payout  : {$sum: [`$betwin`, `$refund`]},
         refund  : `$refund`,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -681,7 +680,7 @@ deploy: {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
         payout  : `$betWin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -698,7 +697,7 @@ deploy: {
         stake   : {$multiply: [`$bet`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -715,7 +714,7 @@ deploy: {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
         payout  : {$sum: [`$betwin`, `$refund`]},
         refund  : `$refund`,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -732,7 +731,7 @@ deploy: {
         stake   : {$multiply: [`$totalAmount`, {$toInt: {$not: `$freeBet`}}]},
         payout  : {$sum: [`$betwin`, `$refund`]},
         refund  : `$refund`,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -749,7 +748,7 @@ deploy: {
         stake   : {$multiply: [`$bet`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -765,7 +764,7 @@ deploy: {
         stake   : `$totalAmount`,
         payout  : `$totalWin`,
         refund  : `$refund`,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -782,7 +781,7 @@ deploy: {
         stake   : {$multiply: [`$bet`, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -799,7 +798,7 @@ deploy: {
         stake   : `$amount`,
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -816,7 +815,7 @@ deploy: {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
         payout  : `$betWin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -833,7 +832,7 @@ deploy: {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -849,7 +848,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -865,7 +864,7 @@ deploy: {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
         payout  : `$betWin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -881,7 +880,7 @@ deploy: {
         stake   : `$totalAmount`,
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -897,7 +896,7 @@ deploy: {
         stake   : `$totalAmount`,
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -913,7 +912,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -929,7 +928,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$big`, `$small`, `$even`, `$odd`, `$gold`, `$wood`, `$fire`, `$water`, `$earth`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -945,7 +944,7 @@ deploy: {
         stake   : `$totalAmount`,
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -961,7 +960,7 @@ deploy: {
         stake   : `$totalAmount`,
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -977,7 +976,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -993,7 +992,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -1009,7 +1008,7 @@ deploy: {
         stake   : {$multiply: [{$add: [`$even`, `$odd`, `$red3`, `$red4`, `$white3`, `$white4`]}, {$toInt: {$not: `$freeBet`}}]},
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -1025,7 +1024,7 @@ deploy: {
         stake   : `$totalAmount`,
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -1041,7 +1040,7 @@ deploy: {
         stake   : `$totalAmount`,
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -1057,7 +1056,7 @@ deploy: {
         stake   : `$totalAmount`,
         payout  : `$betwin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -1074,7 +1073,7 @@ deploy: {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
         payout  : `$betWin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -1091,7 +1090,7 @@ deploy: {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
         payout  : `$betWin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -1108,7 +1107,7 @@ deploy: {
         stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
         payout  : `$betWin`,
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
@@ -1124,7 +1123,7 @@ deploy: {
         stake   : {$literal: 0},
         payout  : {$multiply: [`$amount`, `$winningRatio`]},
         refund  : expr.noRefund,
-        isCash  : {$ifNull: [expr.isCash, {$literal: df.isCash}],}
+        isCash  : expr.isCash,
       },
       default : {
         currency  : df.currency,
