@@ -1,1 +1,0 @@
-../../l1/minigame/minigame-02-xocxoc-indexes.js
