@@ -17,7 +17,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.paigowpoker_phiens, [idx.TTL, idx.time, idx.id, idx.summarized_id, idx.ended]),
-    $Indexes(dbs.minigame.paigowpoker_cuocs , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.paigowpoker_cuocs , [idx.TTL, idx.time_archive, idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id, idx.currency, idx.isCash]),
   ];
   idxs.forEach(_ => _.deploy());
 }

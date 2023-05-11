@@ -12,24 +12,26 @@ deploy: {
   };
   const BL = {
     bets: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F]), [2]: $_, [3]: [],
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F]), [2]: $_,
+      [3]: [idx.phien__id, idx.memberId_phien_F],
     }[L],
     ones: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]), [2]: $_, [3]: [],
+      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]), [2]: $_,
+      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien],
     }[L],
   };
   const idxs = [
     $Indexes(dbs.minigame.megakeno_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.megakeno_bets   , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.bets]),
-    $Indexes(dbs.minigame.megakeno_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.megakeno_bets   , [idx.TTL, idx.time_archive, idx.uid__id, ...BL.bets]),
+    $Indexes(dbs.minigame.megakeno_ones   , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
     $Indexes(dbs.minigame.megakeno_tmpbets, [idx.timeTTL,       idx.roundId__id, idx.uid_roundId]),
-    $Indexes(dbs.minigame.megakeno_results, [idx.TTL,           idx.roundId]),
+    $Indexes(dbs.minigame.megakeno_results, [idx.TTL, idx.time_archive, idx.roundId]),
 
     $Indexes(dbs.minigame.megakeno2_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.megakeno2_bets   , [idx.TTL,           idx.phien__id, idx.memberId_phien_F, idx.uid__id, ...BL.bets]),
-    $Indexes(dbs.minigame.megakeno2_ones   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.megakeno2_bets   , [idx.TTL, idx.time_archive, idx.uid__id, ...BL.bets]),
+    $Indexes(dbs.minigame.megakeno2_ones   , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
     $Indexes(dbs.minigame.megakeno2_tmpbets, [idx.timeTTL,       idx.roundId__id, idx.uid_roundId]),
-    $Indexes(dbs.minigame.megakeno2_results, [idx.TTL,           idx.roundId]),
+    $Indexes(dbs.minigame.megakeno2_results, [idx.TTL, idx.time_archive, idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());
 }
@@ -58,13 +60,13 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame_arc.megakeno_rounds_bk , [idx.time, idx.id]),
-    $Indexes(dbs.minigame_arc.megakeno_bets_bk   , [          idx.phien, idx.memberId_phien_F, idx.uid_phien]),
-    $Indexes(dbs.minigame_arc.megakeno_ones_bk   , [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
+    $Indexes(dbs.minigame_arc.megakeno_bets_bk   , [          idx.roundId, idx.playerId_roundId_F, idx.uid_roundId]),
+    $Indexes(dbs.minigame_arc.megakeno_ones_bk   , [idx.time, idx.roundId, idx.playerId_roundId_F, idx.uid_roundId_U]),
     $Indexes(dbs.minigame_arc.megakeno_results_bk, [          idx.roundId]),
 
     $Indexes(dbs.minigame_arc.megakeno2_rounds_bk , [idx.time, idx.id]),
-    $Indexes(dbs.minigame_arc.megakeno2_bets_bk   , [          idx.phien, idx.memberId_phien_F, idx.uid_phien]),
-    $Indexes(dbs.minigame_arc.megakeno2_ones_bk   , [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
+    $Indexes(dbs.minigame_arc.megakeno2_bets_bk   , [          idx.roundId, idx.playerId_roundId_F, idx.uid_roundId]),
+    $Indexes(dbs.minigame_arc.megakeno2_ones_bk   , [idx.time, idx.roundId, idx.playerId_roundId_F, idx.uid_roundId_U]),
     $Indexes(dbs.minigame_arc.megakeno2_results_bk, [          idx.roundId]),
   ];
   idxs.forEach(_ => _.deploy());

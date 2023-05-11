@@ -17,7 +17,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.sicbo_phiens  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
-    $Indexes(dbs.minigame.sicbo_cuocs   , [idx.TTL, idx.time, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.uid_thanhtoan__id, idx.currency, idx.isCash, ...BL.cuocs]),
+    $Indexes(dbs.minigame.sicbo_cuocs   , [idx.TTL, idx.time_archive, idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.uid_thanhtoan__id, idx.currency, idx.isCash, ...BL.cuocs]),
     $Indexes(dbs.minigame.sicbo_tmpcuocs, [idx.timeTTL,       idx.phien__id, idx.uid_phien]),
   ];
   idxs.forEach(_ => _.deploy());

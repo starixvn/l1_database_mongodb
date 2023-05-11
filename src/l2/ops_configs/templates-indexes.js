@@ -1,0 +1,1 @@
+../../l1/ops_configs/templates-indexes.js

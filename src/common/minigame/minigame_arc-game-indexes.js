@@ -7,16 +7,16 @@ deploy: {
 
   (global.___idx = global.___idx ?? {})[label] = {
     endTime             : $Index({'endTime': 1}),
-    id                  : $Index({'id': 1}, {unique: true}),
+    id                  : $Index({'id': 1}),
     memberId_phien_F    : $Index({'memberId': 1, 'phien': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
     playerId_roundId_F  : $Index({'playerId': 1, 'roundId': 1}, {partialFilterExpression: {playerId: {$gt: 0}}}),
     phien               : $Index({'phien': 1}),
     roundId             : $Index({'roundId': 1}),
     time                : $Index({'time': 1}),
     uid_phien           : $Index({'uid': 1, 'phien': 1}),
-    uid_phien_freeBet_U : $Index({'uid': 1, 'phien': 1, 'freeBet': 1}, {unique: true}),
-    uid_phien_U         : $Index({'uid': 1, 'phien': 1}, {unique: true}),
+    uid_phien_freeBet_U : $Index({'uid': 1, 'phien': 1, 'freeBet': 1}),
+    uid_phien_U         : $Index({'uid': 1, 'phien': 1}),
     uid_roundId         : $Index({'uid': 1, 'roundId': 1}),
-    uid_roundId_U       : $Index({'uid': 1, 'roundId': 1}, {unique: true}),
+    uid_roundId_U       : $Index({'uid': 1, 'roundId': 1}),
   };
 }

@@ -12,15 +12,17 @@ deploy: {
   };
   const BL = {
     rounds: {
-      [1]: ($_ = [idx.playerId_id_F]), [2]: $_, [3]: [],
+      [1]: ($_ = [idx.playerId_id_F]), [2]: $_,
+      [3]: [idx.memberId_id_F],
     }[L],
     betlogs: {
-      [1]: ($_ = [idx.playerId_roundId_F]), [2]: $_, [3]: [],
+      [1]: ($_ = [idx.playerId_roundId_F]), [2]: $_,
+      [3]: [idx.memberId_roundId_F],
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.hilo_rounds  , [idx.TTL, idx.time, idx.endTime, idx.id, idx.summarized_id, idx.memberId_id_F, idx.currency, idx.isCash, ...BL.rounds]),
-    $Indexes(dbs.minigame.hilo_betlogs , [idx.TTL,           idx.roundId_uid, idx.memberId_roundId_F, ...BL.betlogs]),
+    $Indexes(dbs.minigame.hilo_rounds  , [idx.TTL, idx.time, idx.endTime, idx.id, idx.summarized_id, idx.currency, idx.isCash, ...BL.rounds]),
+    $Indexes(dbs.minigame.hilo_betlogs , [idx.TTL, idx.time_archive, idx.roundId_uid, ...BL.betlogs]),
   ];
   idxs.forEach(_ => _.deploy());
 }

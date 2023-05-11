@@ -7,6 +7,7 @@
     const oldDB = global.db;
     global.db = instance.admin;
     global.dbs = DBs(global.db);
+    global.env = 'local';
 
     try {
       const logger = $Log(util.inspect(dbs));
@@ -28,5 +29,6 @@
     /** Switch back to old db */
     global.db = oldDB;
     global.dbs = DBs(global.db);
+    delete global.env;
   });
 }

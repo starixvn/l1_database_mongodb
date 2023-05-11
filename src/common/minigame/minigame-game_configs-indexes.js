@@ -26,6 +26,7 @@ deploy: {
     name_partnerId_U  : $Index({'name': 1, 'partnerId': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
     groupId_gameId_U  : $Index({'groupId': 1, 'gameId': 1}, {unique: true}),
     value_U           : $Index({'value': 1}, {unique: true}),
+    gameId_SU         : $Index({'gameId': 1}, {unique: true, sparse: true}),
   };
 
   (global.___idxs = global.___idxs ?? {})[label] = [
@@ -36,6 +37,7 @@ deploy: {
     $Indexes(dbs.minigame.game_configs, [
       global.___idx[label].name_U,
       global.___idx[label].name_U_en,
+      global.___idx[label].gameId_SU,
     ]),
     $Indexes(dbs.minigame.global_configs, [
       global.___idx[label].type_U,

@@ -28,7 +28,7 @@ deploy: {
     sessionId_U     : $Index({'sessionId': 1}, {unique: true}),
     ssoToken        : $Index({'ssoToken': 1}),
     type_inRoom_red : $Index({'type': 1, 'inRoom': 1, 'red': 1}),
-    UID_U           : $Index({'UID': 1}, {unique: true}),
+    UID_U           : $Index({'UID': 1}, {unique: true, sparse: true}),
     username_U_en   : $Index({'local.username': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
   };
 
@@ -49,6 +49,7 @@ deploy: {
       global.___idx[label].UID_U,
     ]),
     $Indexes(dbs.minigame.usersessions, [
+      global.___idx[label].playerId,
       global.___idx[label].recheckInTime,
       global.___idx[label].sessionId_U,
       global.___idx[label].ssoToken,

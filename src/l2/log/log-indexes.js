@@ -20,6 +20,7 @@ deploy: {
   const idx = {
     ...global.___idx[label],
     obCustId_requestTS: $Index({'request.obCustId': 1, requestTimeStamp: 1}),
+    playerId_requestTS: $Index({'request.playerId': 1, requestTimeStamp: 1}),
     StartDate         : $Index({StartDate: 1}),
   };
   const idxs = [
@@ -31,29 +32,34 @@ deploy: {
     $Indexes(dbs.log.hit_jackpots, [
       idx.TTL,
       idx.requestTimeStamp,
-      idx.obCustId_gameRoundId_gameTypeId,
-      idx.gameTypeId_gameRoundId_obCustId,
+      idx.logTimeStamp,
+      idx.playerId_gameRoundId_gameTypeId,
+      idx.gameTypeId_gameRoundId_playerId,
     ]),
     $Indexes(dbs.log.retrieve_requests, [
       idx.TTL,
       idx.requestTimeStamp,
-      idx.obCustId_gameRoundId_gameTypeId,
-      idx.gameTypeId_gameRoundId_obCustId,
+      idx.logTimeStamp,
+      idx.playerId_gameRoundId_gameTypeId,
+      idx.gameTypeId_gameRoundId_playerId,
     ]),
     $Indexes(dbs.log.signin_requests, [
       idx.TTL,
       idx.requestTimeStamp,
-      idx.obCustId_requestTS,
+      idx.logTimeStamp,
+      idx.playerId_requestTS,
     ]),
     $Indexes(dbs.log.ticket_detail_requests, [
       idx.TTL,
       idx.requestTimeStamp,
+      idx.logTimeStamp,
     ]),
     $Indexes(dbs.log.void_games, [
       idx.TTL,
       idx.requestTimeStamp,
-      idx.obCustId_gameRoundId_gameTypeId,
-      idx.gameTypeId_gameRoundId_obCustId,
+      idx.logTimeStamp,
+      idx.playerId_gameRoundId_gameTypeId,
+      idx.gameTypeId_gameRoundId_playerId,
     ]),
   ];
   idxs.forEach(_ => _.deploy());
