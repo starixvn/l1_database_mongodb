@@ -8,7 +8,6 @@ deploy: {
   const commonFields  = { vendorId: { [1]: 42, [2]: 66, [3]: 66 }[L] };
   const commonConfig  = { hasCurrency: false };
   const commonDefault = {
-    isCash    : {[1]: false, [2]: true, [3]: null}[L],
     partnerId : {[1]: `ONEworks1`, [2]: `ONEworksVGCash`, [3]: `ONEworks_VG`}[L],
   };
 
