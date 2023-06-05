@@ -1,1 +1,0 @@
-../../l1/summary/summary-summary_configs-data.js

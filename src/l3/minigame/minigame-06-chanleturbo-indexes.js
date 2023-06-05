@@ -1,1 +1,0 @@
-../../l1/minigame/minigame-06-chanleturbo-indexes.js

@@ -1,1 +1,0 @@
-../../l1/summary/summary-game_summary_config-data.js

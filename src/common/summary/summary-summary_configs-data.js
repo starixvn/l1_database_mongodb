@@ -15,7 +15,7 @@ deploy: {
 
   const expr = {
     noRefund    : {$literal: 0},
-    isCash      : {$ifNull: [`$isCash`, `$__archive.isCash`]},
+    isCash      : {$literal: false},
   };
 
   const df = {

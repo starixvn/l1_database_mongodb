@@ -1,1 +1,0 @@
-../../l1/schema/schema-data.js
