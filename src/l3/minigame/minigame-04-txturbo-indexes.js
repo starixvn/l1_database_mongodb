@@ -1,1 +1,0 @@
-../../l1/minigame/minigame-04-txturbo-indexes.js

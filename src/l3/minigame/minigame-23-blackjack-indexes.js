@@ -1,1 +1,0 @@
-../../l1/minigame/minigame-23-blackjack-indexes.js

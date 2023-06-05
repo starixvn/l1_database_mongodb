@@ -1,1 +1,0 @@
-../../l1/minigame/minigame-01-taixiu-indexes.js

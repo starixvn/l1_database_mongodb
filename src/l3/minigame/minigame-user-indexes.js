@@ -1,1 +1,0 @@
-../../l1/minigame/minigame-user-indexes.js
