@@ -649,7 +649,7 @@ deploy: {
       codes : [
         'AUD', 'CAD', 'CNY', 'EUR', 'GBP', 'HKD', 'IDR', 'JPY', 'KRW', 'MYR', 'PHP', 'SGD', 'THB', 'TWD', 'USD', 'VND', 'YNG',
         "ARS", "BDT", "BND", "BRL", "CHF", "CLP", "CZK", "DKK", "GHS", "INR", "KES", "KHR", "KZT", "LAK", "MMK", "MXN", "NOK",
-        "NPR", "PEN", "PKR", "PLN", "RON", "RUB", "SEK", "TRY",
+        "NPR", "PEN", "PKR", "PLN", "RON", "RUB", "SEK", "TRY", "COP"
       ],
     };
     global.___data[label].exchange_codes = { time, base, configs };
