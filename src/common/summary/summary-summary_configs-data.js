@@ -1115,6 +1115,57 @@ deploy: {
       },
     },
 
+    { gameId  : 65,
+      db      : `minigame`,
+      coll    : { base: `djclub`, round: `rounds` },
+      filter  : [ { paid: true } ],
+      alias   : { roundId: `id`, time: `time`, playerId: alias.playerId, settled: `paid` },
+      expr    : {
+        stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
+        payout  : `$betWin`,
+        refund  : expr.noRefund,
+        isCash  : expr.isCash,
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
+    { gameId  : 68,
+      db      : `minigame`,
+      coll    : { base: `missionimpossible`, round: `rounds` },
+      filter  : [ { paid: true } ],
+      alias   : { roundId: `id`, time: `time`, playerId: alias.playerId, settled: `paid` },
+      expr    : {
+        stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
+        payout  : `$betWin`,
+        refund  : expr.noRefund,
+        isCash  : expr.isCash,
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
+    { gameId  : 69,
+      db      : `minigame`,
+      coll    : { base: `blackpink`, round: `rounds` },
+      filter  : [ { paid: true } ],
+      alias   : { roundId: `id`, time: `time`, playerId: alias.playerId, settled: `paid` },
+      expr    : {
+        stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
+        payout  : `$betWin`,
+        refund  : expr.noRefund,
+        isCash  : expr.isCash,
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
     { gameId  : 99,
       db      : `minigame`,
       coll    : { base: `jackpot` },
