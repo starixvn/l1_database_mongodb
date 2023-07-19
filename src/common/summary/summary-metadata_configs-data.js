@@ -577,6 +577,22 @@ deploy: {
       ],
     },
     { ...commonFields,
+      gameId  : 68,
+      target  : { db: `minigame`, coll: `missionimpossible_rounds` },
+      fields  : [
+        Object.assign({}, gameSource, lookupFields.currency),
+        Object.assign({}, gameSource, lookupFields.isCash),
+      ],
+    },
+    { ...commonFields,
+      gameId  : 69,
+      target  : { db: `minigame`, coll: `blackpink_rounds` },
+      fields  : [
+        Object.assign({}, gameSource, lookupFields.currency),
+        Object.assign({}, gameSource, lookupFields.isCash),
+      ],
+    },
+    { ...commonFields,
       gameId  : 99,
       target  : { db: `minigame`, coll: `jackpots` },
       fields  : [
