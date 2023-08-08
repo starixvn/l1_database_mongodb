@@ -10,7 +10,13 @@ deploy: {
       ...global.___data[label],
     ];
 
-    const del = dbs.ops_configs.archive_templates.deleteMany({});
-    const res = dbs.ops_configs.archive_templates.insertMany(data, {ordered: false});
-    $Log(`DATA`).info(`ops_configs.archive_templates`, `D-${del.deletedCount} • I-${Object.keys(res.insertedIds).length} • M-0 • U-0`);
+    const bulkWrite = data.map(({ category, type, ...restData }) => ({
+      updateOne: {
+        filter: { category, type },
+        update: { $set: restData },
+        upsert: true,
+      }
+    }))
+    const res = dbs.ops_configs.archive_templates.bulkWrite(bulkWrite, {ordered: false});
+    $Log(`DATA`).info(`ops_configs.archive_templates`, `#-${res.matchedCount} • D-${res.deletedCount} • I-${res.insertedCount} • M-${res.modifiedCount} • U-${res.upsertedCount}`);
   }

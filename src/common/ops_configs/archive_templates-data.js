@@ -12,10 +12,11 @@ deploy: {
       type: 2,
       data: [
         {
+          id: 0,
           from: { db: "minigame", postfix: "_rounds" },
           to: { db: "minigame_arc", postfix: "_rounds_bk" },
           alias: { time: "endTime" },
-          config: { cutOffsetHpours: -2, localField: "id" },
+          config: { cutOffsetHours: -2, localField: "id" },
           filter: '{"playerId":{"$gt":0}}',
           childs: [
             {
@@ -34,8 +35,40 @@ deploy: {
           ],
           log: { field: "_rounds", value: "id" },
         },
+        {
+          id: 1,
+          from: { db: "minigame", postfix: "_freespins" },
+          to: { db: "minigame_arc", postfix: "_freespins_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -8 * 24 },
+          filter: '{"playerId":{"$gt":0}}',
+          log: { field: "_freespins", value: "id" },
+        },
+        {
+          id: 2,
+          from: { db: "minigame", postfix: "_freespins" },
+          to: { db: "minigame_arc", postfix: "_freespins_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -8 * 24, updateOnly: true },
+          filter: '{"playerId":null}',
+        },
+        {
+          id: 3,
+          from: { db: "minigame", postfix: "_fames" },
+          to: { db: "minigame_arc", postfix: "_fames_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -8 * 24 },
+          filter: '{"playerId":{"$gt":0}}',
+        },
+        {
+          id: 4,
+          from: { db: "minigame", postfix: "_fames" },
+          to: { db: "minigame_arc", postfix: "_fames_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -8 * 24, updateOnly: true },
+          filter: '{"playerId":null}',
+        },
       ],
-      id: 0,
       targets: [{ db: "ops_configs", coll: "archive_configs" }],
     },
   ];
