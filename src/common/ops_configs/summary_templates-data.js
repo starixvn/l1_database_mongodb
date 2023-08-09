@@ -15,6 +15,7 @@ deploy: {
         {
           db: "minigame",
           coll: { round: "_rounds" },
+          filter: '{"paid":true}',
           aliases: {
             local: "id",
             playerId: "playerId",
@@ -22,8 +23,30 @@ deploy: {
             time: "time",
           },
           calc: {
-            stake:
-              '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
+            stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
+            payout: '"$betWin"',
+            refund: '{"$literal":0}',
+          },
+        },
+      ],
+    },
+    {
+      category: "games",
+      type: 3,
+      targets: [{ db: "ops_configs", coll: "summary_configs" }],
+      data: [
+        {
+          db: "minigame",
+          coll: { round: "_rounds" },
+          filter: '{"paid":true}',
+          aliases: {
+            local: "id",
+            playerId: "playerId",
+            settled: "paid",
+            time: "time",
+          },
+          calc: {
+            stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
             payout: '"$betWin"',
             refund: '{"$literal":0}',
           },
