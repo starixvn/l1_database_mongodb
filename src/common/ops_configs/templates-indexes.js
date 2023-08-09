@@ -1,6 +1,6 @@
 deploy: {
     const dbs   = DBs(db);
-    const label = `ops_configs@${dbs.toString()}`;
+    const label = `ops_configs-templates@${dbs.toString()}`;
     if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
     if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
