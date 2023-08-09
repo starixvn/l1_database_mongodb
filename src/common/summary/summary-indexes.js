@@ -28,11 +28,11 @@ deploy: {
     ]),
     $Indexes(dbs.summary.daily_summaries, [
       global.___idx[label].TTL_arc,
-      global.___idx[label].time_currency_gameId_operator_cash_U,
+      global.___idx[label].time_currency_gameId_operator_U,
     ]),
     $Indexes(dbs.summary.hourly_summaries, [
       global.___idx[label].TTL_arc,
-      global.___idx[label].time_currency_gameId_operator_cash_U,
+      global.___idx[label].time_currency_gameId_operator_U,
     ]),
     $Indexes(dbs.summary.game_summary_config, [
       global.___idx[label].gameId_U,
