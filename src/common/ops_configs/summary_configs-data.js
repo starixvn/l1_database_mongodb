@@ -616,7 +616,7 @@ deploy: {
     // gameConfigs: { gameId: 69, name: "blackpink" }, // auto
     {
       ...commonConfig,
-      gameConfigs: { gameId: 99, name: "jackpot" },
+      gameConfigs: { gameId: 99, name: "jackpots" },
       db: "minigame",
       coll: { round: "" },
       aliases: { local: "hitAt", playerId: "winnerId", settled: "winnerId", time: "hitTime" },
