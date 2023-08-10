@@ -622,7 +622,7 @@ deploy: {
       aliases: { local: "hitAt", playerId: "winnerId", settled: "winnerId", time: "hitTime" },
       calc: {
         stake: '{"$literal":0}',
-        payout: '{"$multiply":["$amount","$winningRatio"]}',
+        payout: '{"$divide":[{"$multiply":["$amount","$winningRatio"]},{"$ifNull":["$rate",{"$literal":1}]}]}',
         refund: '{"$literal":0}',
       },
     },
