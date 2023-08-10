@@ -16,13 +16,9 @@ deploy: {
           db: "minigame",
           coll: { round: "_rounds" },
           filter: '{"paid":true}',
-          aliases: {
-            local: "id",
-            playerId: "playerId",
-            settled: "paid",
-            time: "time",
-          },
+          aliases: { playerId: "playerId", settled: "paid", time: "time" },
           calc: {
+            roundId: '"$id"',
             tickets: '{"$literal":1}',
             stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
             payout: '"$betWin"',
@@ -40,13 +36,9 @@ deploy: {
           db: "minigame",
           coll: { round: "_rounds" },
           filter: '{"paid":true}',
-          aliases: {
-            local: "id",
-            playerId: "playerId",
-            settled: "paid",
-            time: "time",
-          },
+          aliases: { playerId: "playerId", settled: "paid", time: "time" },
           calc: {
+            roundId: '"$id"',
             tickets: '{"$literal":1}',
             stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
             payout: '"$betWin"',
