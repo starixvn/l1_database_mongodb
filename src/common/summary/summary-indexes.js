@@ -16,8 +16,10 @@ deploy: {
     owGameTypeId_FU                           : $Index({'owGameTypeId': 1}, {unique: true, partialFilterExpression: {owGameTypeId: {$gt: 0}}}),
     db_coll__id_U                             : $Index({'target.db': 1, 'target.coll': 1, 'data._id': 1}, {unique: true}),
     db_coll__id_U_en_2                        : $Index({'target.db': 1, 'target.coll': 1, 'data._id': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
-    __archive_daily                           : $Index({'__archive.daily': 1, time: 1, _id: 1}),
-    __archive_hourly                          : $Index({'__archive.hourly': 1, time: 1, _id: 1}),
+    __archive_daily                           : $Index({'__archive.daily': 1, '__archive.inserted': 1}),
+    __archive_do_daily                        : $Index({'__archive.do_daily': 1}, {partialFilterExpression: {'__archive.do_daily': true}}),
+    __archive_hourly                          : $Index({'__archive.hourly': 1, '__archive.inserted': 1}),
+    __archive_do_hourly                       : $Index({'__archive.do_hourly': 1}, {partialFilterExpression: {'__archive.do_hourly': true}}),
   };
 
   (global.___idxs = global.___idxs ?? {})[label] = [
@@ -45,7 +47,9 @@ deploy: {
       global.___idx[label].TTL_arc,
       global.___idx[label].gameId_currency_operator_time_round_U,
       global.___idx[label].__archive_daily,
+      global.___idx[label].__archive_do_daily,
       global.___idx[label].__archive_hourly,
+      global.___idx[label].__archive_do_hourly,
     ]),
     $Indexes(dbs.summary.summary_configs, [
       global.___idx[label].gameId_U,

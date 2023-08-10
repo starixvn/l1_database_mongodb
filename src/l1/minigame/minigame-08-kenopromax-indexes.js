@@ -21,7 +21,7 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.kenopromax_phiens   , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
+    $Indexes(dbs.minigame.kenopromax_phiens   , [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
     $Indexes(dbs.minigame.kenopromax_cuocs    , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.cuocs]),
     $Indexes(dbs.minigame.kenopromax_tmpcuocs , [idx.timeTTL,       ...BL.tmpcuocs]),
   ];

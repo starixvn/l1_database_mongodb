@@ -15,7 +15,7 @@ deploy: {
     bets: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id],
   };
   const idxs = [
-    $Indexes(dbs.minigame.dragontigerfight_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
+    $Indexes(dbs.minigame.dragontigerfight_rounds , [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
     $Indexes(dbs.minigame.dragontigerfight_betlogs, [idx.TTL, idx.time_archive, ...BL.betlogs]),
     $Indexes(dbs.minigame.dragontigerfight_bets   , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.bets]),
     $Indexes(dbs.minigame.dragontigerfight_results, [idx.TTL, idx.time_archive, idx.roundId]),

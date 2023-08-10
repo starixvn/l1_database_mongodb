@@ -15,7 +15,7 @@ deploy: {
     bets: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId],
   };
   const idxs = [
-    $Indexes(dbs.minigame.winthreecards_rounds , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
+    $Indexes(dbs.minigame.winthreecards_rounds , [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
     $Indexes(dbs.minigame.winthreecards_betlogs, [idx.TTL, idx.time_archive, ...BL.betlogs]),
     $Indexes(dbs.minigame.winthreecards_bets   , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.bets]),
     $Indexes(dbs.minigame.winthreecards_results, [idx.TTL, idx.time_archive, idx.roundId]),
