@@ -23,6 +23,7 @@ deploy: {
             time: "time",
           },
           calc: {
+            tickets: '{"$literal":1}',
             stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
             payout: '"$betWin"',
             refund: '{"$literal":0}',
@@ -46,6 +47,7 @@ deploy: {
             time: "time",
           },
           calc: {
+            tickets: '{"$literal":1}',
             stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
             payout: '"$betWin"',
             refund: '{"$literal":0}',

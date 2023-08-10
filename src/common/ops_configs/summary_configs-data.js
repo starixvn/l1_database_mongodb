@@ -16,6 +16,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$totalWin"',
         refund: '"$refund"',
@@ -28,6 +29,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$even","$odd","$red3","$red4","$white3","$white4","$red2"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -40,6 +42,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$stag","$gourd","$rooster","$fish","$crab","$prawn"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -52,6 +55,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$totalWin"',
         refund: '"$refund"',
@@ -65,6 +69,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$totalWin"',
         refund: '"$refund"',
@@ -77,6 +82,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$dragon","$tie","$tiger"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -89,6 +95,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$big","$small","$even","$odd","$gold","$wood","$fire","$water","$earth"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -101,6 +108,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$even","$odd","$red3","$red4","$white3","$white4"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -113,6 +121,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$banker","$bankerPair","$player","$playerPair","$tie","$big","$small"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -128,6 +137,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$big","$small","$even","$odd","$gold","$wood","$fire","$water","$earth"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -140,6 +150,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$big","$small","$even","$odd","$gold","$wood","$fire","$water","$earth"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -152,6 +163,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$big","$small","$even","$odd","$gold","$wood","$fire","$water","$earth"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -164,6 +176,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$big","$small","$even","$odd","$gold","$wood","$fire","$water","$earth"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -176,6 +189,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$big","$small","$even","$odd","$gold","$wood","$fire","$water","$earth"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -188,6 +202,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$big","$small","$even","$odd","$gold","$wood","$fire","$water","$earth"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -201,6 +216,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -213,6 +229,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$even","$odd","$red3","$red4","$white3","$white4","$red2"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -226,6 +243,7 @@ deploy: {
       filter: '{"ended":true}',
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$bet",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -238,6 +256,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$totalWin"',
         refund: '"$refund"',
@@ -250,6 +269,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -262,6 +282,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$stag","$gourd","$rooster","$fish","$crab","$prawn","$mountain","$ocean","$anyTriple"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -274,6 +295,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$player","$banker","$tie","$big","$small","$playerPair","$bankerPair"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -286,6 +308,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -299,6 +322,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$totalBet",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -311,6 +335,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -326,6 +351,7 @@ deploy: {
       coll: { round: "_phiens", bet: "_cuocs" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$red","$black","$diamonds","$hearts","$spades","$clubs"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -339,6 +365,7 @@ deploy: {
       filter: '{"settled":true}',
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '{"$sum":["$betwin","$refund"]}',
         refund: '"$refund"',
@@ -352,6 +379,7 @@ deploy: {
       filter: '{"settled":true}',
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '{"$sum":["$betwin","$refund"]}',
         refund: '"$refund"',
@@ -366,6 +394,7 @@ deploy: {
       filter: '{"ended":true}',
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$bet",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -379,6 +408,7 @@ deploy: {
       filter: '{"settled":true}',
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '{"$sum":["$betwin","$refund"]}',
         refund: '"$refund"',
@@ -392,6 +422,7 @@ deploy: {
       filter: '{"settled":true}',
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '{"$sum":["$betwin","$refund"]}',
         refund: '"$refund"',
@@ -405,6 +436,7 @@ deploy: {
       filter: '{"ended":true}',
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":["$bet",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -417,6 +449,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$totalWin"',
         refund: '"$refund"',
@@ -431,6 +464,7 @@ deploy: {
       filter: '{"paid":true}',
       aliases: { local: "id", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$amount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -445,6 +479,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$banker","$bankerPair","$player","$playerPair","$tie","$big","$small"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -458,6 +493,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -470,6 +506,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -482,6 +519,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$big","$small","$even","$odd","$gold","$wood","$fire","$water","$earth"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -494,6 +532,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_ones" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$big","$small","$even","$odd","$gold","$wood","$fire","$water","$earth"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -506,6 +545,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -518,6 +558,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -530,6 +571,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$even","$odd","$red3","$red4","$white3","$white4"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -542,6 +584,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$even","$odd","$red3","$red4","$white3","$white4"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -554,6 +597,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '{"$multiply":[{"$add":["$even","$odd","$red3","$red4","$white3","$white4"]},{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -566,6 +610,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -578,6 +623,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -590,6 +636,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -607,6 +654,7 @@ deploy: {
       coll: { round: "_rounds", bet: "_bets" },
       aliases: { local: "id", foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
+        tickets: '{"$literal":1}',
         stake: '"$totalAmount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
@@ -621,6 +669,7 @@ deploy: {
       coll: { round: "" },
       aliases: { local: "hitAt", playerId: "winnerId", settled: "winnerId", time: "hitTime" },
       calc: {
+        tickets: '{"$literal":0}',
         stake: '{"$literal":0}',
         payout: '{"$divide":[{"$multiply":["$amount","$winningRatio"]},{"$ifNull":["$rate",{"$literal":1}]}]}',
         refund: '{"$literal":0}',
