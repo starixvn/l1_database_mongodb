@@ -8,6 +8,119 @@ deploy: {
 
   const archiveConfigData = [];
 
+  /** Logs */
+  {
+    const commonConfig = { category: "logs", type: 0 };
+
+    [
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "audit_events" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "StartDate" },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "bets" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "requestTimeStamp" },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "end_games" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "requestTimeStamp" },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "failed_requests" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "requestTimeStamp" },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "hit_jackpots" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "requestTimeStamp" },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "membersignin_requests" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "requestTimeStamp" },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "owsignin_requests" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "requestTimeStamp" },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "retrieve_requests" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "requestTimeStamp" },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "signin_requests" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "requestTimeStamp" },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "ticket_detail_requests" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "requestTimeStamp" },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "log", name: "void_games" },
+        from: { db: "log", postfix: "" },
+        to: { db: "log_arc", postfix: "_bk" },
+        alias: { time: "requestTimeStamp" },
+      },
+    ].forEach((config) => archiveConfigData.push(config));
+  }
+
+  /** Member */
+  {
+    const commonConfig = { category: "member", type: 0 };
+
+    [
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "member", name: "member_auths" },
+        from: { db: "member", postfix: "" },
+        to: { db: "member_arc", postfix: "_bk" },
+        alias: { time: "time" },
+      },
+    ].forEach((config) => archiveConfigData.push(config));
+  }
+
+  /** Games */
   {
     const commonConfig = { category: "games", type: 0 };
 
@@ -270,18 +383,8 @@ deploy: {
           childs: [
             { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
             { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
-        },
-        {
-          ...commonConfig,
-          id: 1,
-          gameConfigs,
-          from: { db: "minigame", postfix: "_results" },
-          to: { db: "minigame_arc", postfix: "_results_bk" },
-          alias: { time: "time" },
-          config: { cutOffsetHours: -24 * 8 },
         },
         {
           ...commonConfig,
@@ -338,20 +441,8 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_phiens_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
-          childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-          ],
+          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' }],
           log: { field: "_phiens", value: "id" },
-        },
-        {
-          ...commonConfig,
-          id: 1,
-          gameConfigs,
-          from: { db: "minigame", postfix: "_results" },
-          to: { db: "minigame_arc", postfix: "_results_bk" },
-          alias: { time: "time" },
-          config: { cutOffsetHours: -24 * 8 },
         },
         {
           ...commonConfig,
@@ -388,20 +479,8 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_phiens_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
-          childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-          ],
+          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' }],
           log: { field: "_phiens", value: "id" },
-        },
-        {
-          ...commonConfig,
-          id: 1,
-          gameConfigs,
-          from: { db: "minigame", postfix: "_results" },
-          to: { db: "minigame_arc", postfix: "_results_bk" },
-          alias: { time: "time" },
-          config: { cutOffsetHours: -24 * 8 },
         },
         {
           ...commonConfig,
@@ -1089,7 +1168,6 @@ deploy: {
               filter: '{"playerId":{"$gt":0}}',
               log: { field: "_cuocs", value: "id" },
             },
-            { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -1261,10 +1339,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_phiens_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
-          childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-          ],
+          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' }],
           log: { field: "_phiens", value: "id" },
         },
         {
@@ -1302,8 +1377,20 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_phiens_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
-          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' }],
+          childs: [
+            { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+          ],
           log: { field: "_phiens", value: "id" },
+        },
+        {
+          ...commonConfig,
+          id: 1,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_results" },
+          to: { db: "minigame_arc", postfix: "_results_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8 },
         },
         {
           ...commonConfig,
@@ -1650,7 +1737,6 @@ deploy: {
               to: { db: "minigame_arc", postfix: "_cuocs_bk" },
               config: { foreignField: "roundId" },
               filter: '{"playerId":{"$gt":0}}',
-              log: { field: "_cuocs", value: "id" },
             },
             { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
           ],
@@ -1665,7 +1751,6 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
           filter: '{"playerId":{"$gt":0}}',
-          log: { field: "_cuocs", value: "id" },
         },
         {
           ...commonConfig,
@@ -2883,6 +2968,58 @@ deploy: {
         },
       ].forEach((config) => archiveConfigData.push(config));
     }
+  }
+
+  /** Summaries */
+  {
+    const commonConfig = { category: "summaries", type: 0 };
+
+    [
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "sum", name: "round_summaries" },
+        from: { db: "summary", postfix: "" },
+        to: { db: "summary_arc", postfix: "_bk" },
+        alias: { time: "time" },
+        config: { cutOffsetHours: -24 * 8 },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "sum", name: "hourly_summaries" },
+        from: { db: "summary", postfix: "" },
+        to: { db: "summary_arc", postfix: "_bk" },
+        alias: { time: "time" },
+        config: { cutOffsetHours: -24 * 8 },
+      },
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "sum", name: "daily_summaries" },
+        from: { db: "summary", postfix: "" },
+        to: { db: "summary_arc", postfix: "_bk" },
+        alias: { time: "time" },
+        config: { cutOffsetHours: -24 * 8 },
+      },
+    ].forEach((config) => archiveConfigData.push(config));
+  }
+
+  /** Users */
+  {
+    const commonConfig = { category: "user", type: 0 };
+
+    [
+      {
+        ...commonConfig,
+        id: 0,
+        gameConfigs: { type: "user", name: "usersessions" },
+        from: { db: "minigame", postfix: "" },
+        to: { db: "minigame_arc", postfix: "_bk" },
+        alias: { time: "recheckInTime" },
+        config: { cutOffsetHours: -24 * 8 },
+      },
+    ].forEach((config) => archiveConfigData.push(config));
   }
 
   (global.___data = global.___data ?? {})[label] = archiveConfigData;
