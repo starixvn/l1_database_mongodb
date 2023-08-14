@@ -2503,8 +2503,8 @@ deploy: {
     },
 
     { _id     : 39067,
-      from    : { db: `minigame`    , coll: `candyland_rounds`     },
-      to      : { db: `minigame_arc`, coll: `candyland_rounds_bk`  },
+      from    : { db: `minigame`    , coll: `dragontigerfight_rounds`     },
+      to      : { db: `minigame_arc`, coll: `dragontigerfight_rounds_bk`  },
       config  : {
         timeField: `time`, cutOffsetHours: offsetHours, join: `id`,
         logField: `_rounds`, logValue: `id`,
