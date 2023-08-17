@@ -25,6 +25,7 @@ deploy: {
     $Indexes(dbs.minigame.vipsedie_cuocs    , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.cuocs]),
     $Indexes(dbs.minigame.vipsedie_tmpcuocs , [idx.timeTTL,       ...BL.tmpcuocs]),
     $Indexes(dbs.minigame.vipsedie_results  , [idx.TTL, idx.time_archive, idx.roundId]),
+    $Indexes(dbs.minigame.vipsedie_metrics  , [idx.metric_metadata_U]),
   ];
   idxs.forEach(_ => _.deploy());
 }

@@ -30,6 +30,7 @@ deploy: {
     $Indexes(dbs.minigame.txturbo_cuocs   , [idx.TTL, idx.time_archive, ...BL.cuocs]),
     $Indexes(dbs.minigame.txturbo_ones    , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
     $Indexes(dbs.minigame.txturbo_results , [idx.TTL, idx.time_archive, idx.roundId]),
+    $Indexes(dbs.minigame.txturbo_metrics , [idx.metric_metadata_U]),
   ];
   idxs.forEach(_ => _.deploy());
 }
