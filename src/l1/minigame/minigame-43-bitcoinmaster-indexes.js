@@ -21,7 +21,7 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.bitcoinmaster_rounds  , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
+    $Indexes(dbs.minigame.bitcoinmaster_rounds  , [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
     $Indexes(dbs.minigame.bitcoinmaster_betlogs , [idx.TTL, idx.time_archive, ...BL.betlogs]),
     $Indexes(dbs.minigame.bitcoinmaster_bets    , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.bets]),
 
