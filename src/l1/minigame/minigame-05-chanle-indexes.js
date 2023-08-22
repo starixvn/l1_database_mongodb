@@ -24,7 +24,7 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.chanle_phiens , [idx.TTL, idx.time, idx.id, idx.summarized_id]),
+    $Indexes(dbs.minigame.chanle_phiens , [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
     $Indexes(dbs.minigame.chanle_cuocs  , [idx.TTL, idx.time_archive, ...BL.cuocs]),
     $Indexes(dbs.minigame.chanle_ones   , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
   ];

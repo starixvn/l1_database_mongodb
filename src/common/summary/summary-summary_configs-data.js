@@ -1132,6 +1132,39 @@ deploy: {
       },
     },
 
+    { gameId  : 66,
+      db      : `minigame`,
+      coll    : { base: `candyland`, round: `rounds` },
+      filter  : [ { paid: true } ],
+      alias   : { roundId: `id`, time: `time`, playerId: alias.playerId, settled: `paid` },
+      expr    : {
+        stake   : {$sum: {$multiply: [ `$totalAmount`, {$toInt: {$not: `$freeSpin`}} ]}},
+        payout  : `$betwin`,
+        refund  : expr.noRefund,
+        isCash  : expr.isCash,
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
+    { gameId  : 67,
+      db      : `minigame`,
+      coll    : { base: `dragontigerfight`, round: `rounds`, bet: `bets` },
+      alias   : { roundId: `id`, roundRef: alias.roundRef, time: `time`, playerId: alias.playerId, settled: alias.settled, operatorId: alias.operatorId },
+      expr    : {
+        stake   : `$totalAmount`,
+        payout  : `$betwin`,
+        refund  : expr.noRefund,
+        isCash  : expr.isCash,
+      },
+      default : {
+        currency  : df.currency,
+        operatorId: df.operatorId,
+      },
+    },
+
     { gameId  : 68,
       db      : `minigame`,
       coll    : { base: `missionimpossible`, round: `rounds` },

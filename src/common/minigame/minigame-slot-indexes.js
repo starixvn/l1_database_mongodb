@@ -18,6 +18,8 @@ deploy: {
     playerId_id_F : $Index({'playerId': 1, 'id': 1}, {partialFilterExpression: {playerId: {$gt: 0}}}),
     roundId__id   : $Index({'roundId': 1, '_id': 1}),
     summarized_id : $Index({'__archive.summarized': 1, 'paid': 1, 'time': 1, 'id': 1}),
+    __archive_summarized : $Index({'__archive.summarized': 1}),
+    __archive_do_summary : $Index({'__archive.do_summary': 1 }, {partialFilterExpression: {'__archive.do_summary': true}}),
     time          : $Index({'time': 1}),
     time_archive  : $Index({'time': 1, '__archive.eventtime': 1}),
     uid_ended_F   : $Index({'uid': 1, 'ended': 1}, {unique: true, partialFilterExpression: {ended: false}}),

@@ -1,7 +1,7 @@
 /** L1 L2 L3 */
 deploy: {
   const dbs   = DBs(db);
-  const label = `ops_configs@${dbs.toString()}`;
+  const label = `ops_configs-templates@${dbs.toString()}`;
   if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 

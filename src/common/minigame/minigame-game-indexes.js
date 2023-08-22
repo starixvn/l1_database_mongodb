@@ -35,6 +35,8 @@ deploy: {
     roundId_archive_playerId : $Index({'roundId': 1, '__archive.eventtime': 1, 'playerId': 1}),
     roundId_uid              : $Index({'roundId': 1, 'uid': 1}),
     summarized_id            : $Index({'__archive.summarized': 1, 'paid': 1, 'time': 1, 'id': 1}),
+    __archive_summarized     : $Index({'__archive.summarized': 1}),
+    __archive_do_summary     : $Index({'__archive.do_summary': 1 }, {partialFilterExpression: {'__archive.do_summary': true}}),
     time                     : $Index({'time': 1}),
     time_archive             : $Index({'time': 1, '__archive.eventtime': 1}),
     timeTTL                  : $Index({'time': 1}, {expireAfterSeconds: 120}),
