@@ -16,7 +16,7 @@ deploy: {
           from: { db: "minigame", postfix: "_rounds" },
           to: { db: "minigame_arc", postfix: "_rounds_bk" },
           alias: { time: "endTime" },
-          config: { cutOffsetHours: -2, localField: "id" },
+          config: { cutOffsetHours: -24, localField: "id" },
           filter: '{"playerId":{"$gt":0}}',
           childs: [
             {
@@ -80,7 +80,7 @@ deploy: {
           from: { db: "minigame", postfix: "_rounds" },
           to: { db: "minigame_arc", postfix: "_rounds_bk" },
           alias: { time: "endTime" },
-          config: { cutOffsetHours: -2, localField: "id" },
+          config: { cutOffsetHours: -24, localField: "id" },
           filter: '{"playerId":{"$gt":0}}',
           childs: [
             {
