@@ -41,7 +41,7 @@ deploy: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
             stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
-            payout: '"$betWin"',
+            payout: '"$betwin"',
             refund: '{"$literal":0}',
           },
         },
