@@ -175,6 +175,11 @@ deploy: {
       roles.minigame_rm   .read,
       roles.summary_arc   .read,
     ]),
+    $User(dbs.admin, "svc_readonly", [
+      roles.admin         .public,
+      /** active */
+      roles.minigame      .read,
+    ]),
   ];
   users.forEach(_ => _.deploy());
 }
