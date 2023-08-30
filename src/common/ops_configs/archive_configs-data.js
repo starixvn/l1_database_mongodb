@@ -2982,7 +2982,7 @@ deploy: {
         from: { db: "summary", postfix: "" },
         to: { db: "summary_arc", postfix: "_bk" },
         alias: { time: "time" },
-        config: { cutOffsetHours: -24 * 8 },
+        config: { cutOffsetHours: -24 * 3 },
       },
       {
         ...commonConfig,
@@ -2991,7 +2991,7 @@ deploy: {
         from: { db: "summary", postfix: "" },
         to: { db: "summary_arc", postfix: "_bk" },
         alias: { time: "time" },
-        config: { cutOffsetHours: -24 * 8 },
+        config: { cutOffsetHours: -24 * 3 },
       },
       {
         ...commonConfig,
@@ -3000,7 +3000,7 @@ deploy: {
         from: { db: "summary", postfix: "" },
         to: { db: "summary_arc", postfix: "_bk" },
         alias: { time: "time" },
-        config: { cutOffsetHours: -24 * 8 },
+        config: { cutOffsetHours: -24 * 3 },
       },
     ].forEach((config) => archiveConfigData.push(config));
   }
@@ -3017,7 +3017,6 @@ deploy: {
         from: { db: "minigame", postfix: "" },
         to: { db: "minigame_arc", postfix: "_bk" },
         alias: { time: "recheckInTime" },
-        config: { cutOffsetHours: -24 * 8 },
       },
     ].forEach((config) => archiveConfigData.push(config));
   }
