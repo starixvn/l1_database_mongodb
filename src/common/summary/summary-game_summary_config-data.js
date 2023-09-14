@@ -1032,7 +1032,7 @@ deploy: {
     { ...commonFields,
       gameId        : 66,
       owGameTypeId  : { [1]: 1675, [2]: 3867, [3]: null }[L],
-      name          : { en: `Candy Land`, vi: `Vương Quốc Kẹo Ngọt`, grp: `Slots` },
+      name          : { en: `Candy Land`, vi: `Vương Quốc Kẹo Ngọt`, grp: `Slots`, game: "Candy Land" },
       coll          : { db: `minigame`, group: `candyland`, round: `_rounds`, postfix: `_rounds` },
       fields        : {
         local : `id`, map: `id`, time: `$time`, memberId: `playerId`, settled: `$paid`,
@@ -1046,7 +1046,7 @@ deploy: {
     { ...commonFields,
       gameId        : 67,
       owGameTypeId  : { [1]: 1676, [2]: 3868, [3]: null }[L],
-      name          : { en: `Dragon Tiger Fight`, vi: `Đại Chiến Rồng Hổ`, grp: `Card Games` },
+      name          : { en: `Dragon Tiger Fight`, vi: `Đại Chiến Rồng Hổ`, grp: `Card Games`, game: "Dragon Tiger Fight" },
       coll          : { db: `minigame`, group: `dragontigerfight`, round: `_rounds`, postfix: `_bets` },
       fields        : {
         local : `id`, map: `roundId`, time: `$time`, memberId: `playerId`, settled: `$paid`,
