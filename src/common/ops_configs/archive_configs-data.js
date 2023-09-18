@@ -2901,7 +2901,7 @@ deploy: {
         {
           ...commonConfig,
           id: 1,
-          gameConfigs: { gameId: 67, name: "dragontigerfight" },
+          gameConfigs,
           from: { db: "minigame", postfix: "_results" },
           to: { db: "minigame_arc", postfix: "_results_bk" },
           alias: { time: "time" },
@@ -2910,7 +2910,7 @@ deploy: {
         {
           ...commonConfig,
           id: 2,
-          gameConfigs: { gameId: 67, name: "dragontigerfight" },
+          gameConfigs,
           from: { db: "minigame", postfix: "_bets" },
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
@@ -2920,7 +2920,7 @@ deploy: {
         {
           ...commonConfig,
           id: 3,
-          gameConfigs: { gameId: 67, name: "dragontigerfight" },
+          gameConfigs,
           from: { db: "minigame", postfix: "_bets" },
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
@@ -2930,7 +2930,7 @@ deploy: {
         {
           ...commonConfig,
           id: 4,
-          gameConfigs: { gameId: 67, name: "dragontigerfight" },
+          gameConfigs,
           from: { db: "minigame", postfix: "_betlogs" },
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
@@ -2940,7 +2940,7 @@ deploy: {
         {
           ...commonConfig,
           id: 5,
-          gameConfigs: { gameId: 67, name: "dragontigerfight" },
+          gameConfigs,
           from: { db: "minigame", postfix: "_betlogs" },
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
@@ -2952,6 +2952,68 @@ deploy: {
 
     /** { gameId: 68, name: "missionimpossible" } // auto */
     /** { gameId: 69, name: "blackpink" } // auto */
+    /** { gameId: 70, name: "transformers" } // auto */
+
+    /** { gameId: 71, name: "colorgame" } */
+    {
+      const gameConfigs = { gameId: 71, name: "colorgame" };
+      [
+        {
+          ...commonConfig,
+          id: 0,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_rounds" },
+          to: { db: "minigame_arc", postfix: "_rounds_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24, localField: "id" },
+          childs: [
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+          ],
+          log: { field: "_rounds", value: "id" },
+        },
+        {
+          ...commonConfig,
+          id: 2,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_bets" },
+          to: { db: "minigame_arc", postfix: "_bets_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8 },
+          filter: '{"playerId":{"$gt":0}}',
+        },
+        {
+          ...commonConfig,
+          id: 3,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_bets" },
+          to: { db: "minigame_arc", postfix: "_bets_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8, updateOnly: true },
+          filter: '{"playerId":null}',
+        },
+        {
+          ...commonConfig,
+          id: 4,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_betlogs" },
+          to: { db: "minigame_arc", postfix: "_betlogs_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8 },
+          filter: '{"playerId":{"$gt":0}}',
+        },
+        {
+          ...commonConfig,
+          id: 5,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_betlogs" },
+          to: { db: "minigame_arc", postfix: "_betlogs_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8, updateOnly: true },
+          filter: '{"playerId":null}',
+        },
+      ].forEach((config) => archiveConfigData.push(config));
+    }
 
     /** { gameId: 99, name: "jackpots" } */
     {
