@@ -19,7 +19,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.blackjack_phiens, [idx.TTL, idx.time, idx.id, idx.ended, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.blackjack_cuocs, [idx.TTL, idx.time_archive, idx.id, idx.currency, idx.isCash, idx.endTime, ...BL.cuocs]),
+    $Indexes(dbs.minigame.blackjack_cuocs, [idx.TTL, idx.time_archive, idx.id, idx.currency, idx.endTime, ...BL.cuocs]),
   ];
   idxs.forEach((_) => _.deploy());
 }

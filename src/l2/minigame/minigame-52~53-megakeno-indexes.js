@@ -25,13 +25,13 @@ deploy: {
   const idxs = [
     $Indexes(dbs.minigame.megakeno_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
     $Indexes(dbs.minigame.megakeno_bets, [idx.TTL, idx.time_archive, idx.uid__id, ...BL.bets]),
-    $Indexes(dbs.minigame.megakeno_ones, [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.megakeno_ones, [idx.TTL, idx.time_archive, idx.currency, ...BL.ones]),
     $Indexes(dbs.minigame.megakeno_tmpbets, [idx.timeTTL, idx.roundId__id, idx.uid_roundId]),
     $Indexes(dbs.minigame.megakeno_results, [idx.TTL, idx.time_archive, idx.roundId]),
 
     $Indexes(dbs.minigame.megakeno2_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
     $Indexes(dbs.minigame.megakeno2_bets, [idx.TTL, idx.time_archive, idx.uid__id, ...BL.bets]),
-    $Indexes(dbs.minigame.megakeno2_ones, [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.megakeno2_ones, [idx.TTL, idx.time_archive, idx.currency, ...BL.ones]),
     $Indexes(dbs.minigame.megakeno2_tmpbets, [idx.timeTTL, idx.roundId__id, idx.uid_roundId]),
     $Indexes(dbs.minigame.megakeno2_results, [idx.TTL, idx.time_archive, idx.roundId]),
   ];

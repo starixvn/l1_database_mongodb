@@ -24,7 +24,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.blockchainbaccarat_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.blockchainbaccarat_bets, [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.bets]),
+    $Indexes(dbs.minigame.blockchainbaccarat_bets, [idx.TTL, idx.time_archive, idx.currency, ...BL.bets]),
     $Indexes(dbs.minigame.blockchainbaccarat_tmpbets, [idx.timeTTL, ...BL.tmpbets]),
     $Indexes(dbs.minigame.blockchainbaccarat_results, [idx.TTL, idx.time_archive, idx.roundId, idx.isAvailable]),
   ];

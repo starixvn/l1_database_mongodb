@@ -20,7 +20,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.baucua_phiens, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.baucua_cuocs, [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.cuocs]),
+    $Indexes(dbs.minigame.baucua_cuocs, [idx.TTL, idx.time_archive, idx.currency, ...BL.cuocs]),
     $Indexes(dbs.minigame.baucua_results, [idx.TTL, idx.time_archive, idx.roundId]),
     $Indexes(dbs.minigame.baucua_metrics, [idx.metric_metadata_U]),
   ];

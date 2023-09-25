@@ -24,7 +24,7 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.threecards_phiens, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.threecards_cuocs, [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.cuocs]),
+    $Indexes(dbs.minigame.threecards_cuocs, [idx.TTL, idx.time_archive, idx.currency, ...BL.cuocs]),
     $Indexes(dbs.minigame.threecards_tmpcuocs, [idx.timeTTL, ...BL.tmpcuocs]),
   ];
   idxs.forEach((_) => _.deploy());

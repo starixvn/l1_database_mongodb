@@ -11,7 +11,7 @@ deploy: {
       ...global.___idx[label],
     };
     const idxs = [
-      $Indexes(dbs.minigame.candyland_rounds     , [idx.TTL, idx.time, idx.id, idx.summarized_id, idx.playerId_id_F, idx.paid_uid, idx.currency, idx.isCash]),
+      $Indexes(dbs.minigame.candyland_rounds     , [idx.TTL, idx.time, idx.id, idx.summarized_id, idx.playerId_id_F, idx.paid_uid, idx.currency]),
       $Indexes(dbs.minigame.candyland_freespins  , [idx.TTL, idx.time_archive, idx.id, idx.expiryTime]),
       $Indexes(dbs.minigame.candyland_multipliers, [idx.TTL, idx.time_archive, idx.playerId, idx.uid_ended_F]),
     ];

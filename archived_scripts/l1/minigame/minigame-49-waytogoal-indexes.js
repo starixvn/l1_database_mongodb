@@ -18,7 +18,7 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.waytogoal_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary, idx.paid_uid, idx.currency, idx.isCash, ...BL.rounds]),
+    $Indexes(dbs.minigame.waytogoal_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary, idx.paid_uid, idx.currency, ...BL.rounds]),
     $Indexes(dbs.minigame.waytogoal_freespins, [idx.TTL, idx.time_archive, idx.id, idx.expiryTime]),
     $Indexes(dbs.minigame.waytogoal_fames, [idx.TTL, idx.time_archive, idx.uid_roundId]),
   ];

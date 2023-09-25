@@ -30,7 +30,7 @@ deploy: {
   const idxs = [
     $Indexes(dbs.minigame.roulette_phiens, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
     $Indexes(dbs.minigame.roulette_cuocs, [idx.TTL, idx.time_archive, idx.uid__id, ...BL.cuocs]),
-    $Indexes(dbs.minigame.roulette_ones, [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.roulette_ones, [idx.TTL, idx.time_archive, idx.currency, ...BL.ones]),
     $Indexes(dbs.minigame.roulette_tmpones, [idx.timeTTL, ...BL.tmpones]),
   ];
   idxs.forEach((_) => _.deploy());
