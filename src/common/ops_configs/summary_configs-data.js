@@ -727,6 +727,21 @@ deploy: {
     },
     {
       ...commonConfig,
+      gameConfigs: { gameId: 72, name: "pontoon" },
+      db: "minigame",
+      coll: { round: "_rounds", bet: "_bets" },
+      filter: '{"ended":true}',
+      aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+      calc: {
+        roundId: '"$id"',
+        tickets: '{"$literal":1}',
+        stake: '{"$multiply":["$bet",{"$toInt":{"$not":"$freeBet"}}]}',
+        payout: '"$betwin"',
+        refund: '{"$literal":0}',
+      },
+    },
+    {
+      ...commonConfig,
       gameConfigs: { gameId: 99, name: "jackpots" },
       db: "minigame",
       coll: { round: "" },
