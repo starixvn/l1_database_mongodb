@@ -455,6 +455,12 @@ deploy: {
       coll: { db: `minigame`, group: `spaceflight`, round: `_rounds`, postfix: `_bets` },
     },
     {
+      gameId: 75,
+      owGameTypeId: { [1]: null, [2]: null, [3]: null }[L],
+      name: { en: `Bandar Qiu Qiu`, vi: `Bandar Qiu Qiu`, grp: `Card Games`, game: `Bandar Qiu Qiu` },
+      coll: { db: `minigame`, group: `bandarqiuqiu`, round: `_rounds`, postfix: `_bets` },
+    },
+    {
       gameId: 99,
       owGameTypeId: { [1]: 1699, [2]: 3899, [3]: 3899 }[L],
       name: { en: `Jackpot Prize`, vi: `Giải Jackpot`, grp: `Slots`, game: `Jackpot` },
