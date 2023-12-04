@@ -28,8 +28,9 @@ deploy: {
   const idxs = [
     $Indexes(dbs.minigame.taixiu_phiens , [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
     $Indexes(dbs.minigame.taixiu_cuocs  , [idx.TTL, idx.time_archive, ...BL.cuocs]),
-    $Indexes(dbs.minigame.taixiu_ones   , [idx.TTL, idx.time_archive, idx.currency, idx.isCash, ...BL.ones]),
+    $Indexes(dbs.minigame.taixiu_ones   , [idx.TTL, idx.time_archive, idx.currency, ...BL.ones]),
     $Indexes(dbs.minigame.taixiu_results, [idx.TTL, idx.time_archive, idx.roundId]),
+    $Indexes(dbs.minigame.taixiu_metrics, [idx.metric_metadata_U]),
   ];
   idxs.forEach(_ => _.deploy());
 }

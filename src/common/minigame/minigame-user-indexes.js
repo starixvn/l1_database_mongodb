@@ -1,5 +1,5 @@
 deploy: {
-  const dbs   = DBs(db);
+  const dbs = DBs(db);
   const label = `minigame-user@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
   if (![1, 2, 3].includes(L)) break deploy;
@@ -7,39 +7,33 @@ deploy: {
 
   (global.___colls = global.___colls ?? {})[label] = [
     $Collection(dbs.minigame.users, {
-      collation: {locale: 'en', strength: 2},
+      collation: { locale: "en", strength: 2 },
     }),
     $Collection(dbs.minigame.userinfos, {
-      collation: {locale: 'en', strength: 2},
+      collation: { locale: "en", strength: 2 },
     }),
   ];
 
   (global.___idx = global.___idx ?? {})[label] = {
-    TTL             : $Index({'__archive.eventtime': 1}, {expireAfterSeconds: 3600*24*8}),
-    currency        : $Index({'currency': 1}, {collation: {locale: 'en', strength: 2}}),
-    id_U            : $Index({'id': 1}, {unique: true, collation: {locale: 'simple'}}),
-    id_U_en         : $Index({'id': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
-    memberId        : $Index({'local.memberId': 1}),
-    memberName      : $Index({'local.memberName': 1}),
-    name_U_en       : $Index({'name': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
-    operatorId      : $Index({'operatorId': 1}, {collation: {locale: 'simple'}}),
-    playerId        : $Index({'playerId': 1}, {collation: {locale: 'simple'}}),
-    recheckInTime   : $Index({'recheckInTime': 1}),
-    sessionId_U     : $Index({'sessionId': 1}, {unique: true}),
-    ssoToken        : $Index({'ssoToken': 1}),
-    type_inRoom_red : $Index({'type': 1, 'inRoom': 1, 'red': 1}),
-    UID_U           : $Index({'UID': 1}, {unique: true, sparse: true}),
-    username_U_en   : $Index({'local.username': 1}, {unique: true, collation: {locale: 'en', strength: 2}}),
+    TTL: $Index({ "__archive.eventtime": 1 }, { expireAfterSeconds: 3600 * 24 * 8 }),
+    currency: $Index({ currency: 1 }, { collation: { locale: "en", strength: 2 } }),
+    id_U: $Index({ id: 1 }, { unique: true, collation: { locale: "simple" } }),
+    id_U_en: $Index({ id: 1 }, { unique: true, collation: { locale: "en", strength: 2 } }),
+    memberId: $Index({ "local.memberId": 1 }),
+    memberName: $Index({ "local.memberName": 1 }),
+    name_U_en: $Index({ name: 1 }, { unique: true, collation: { locale: "en", strength: 2 } }),
+    operatorId: $Index({ operatorId: 1 }, { collation: { locale: "simple" } }),
+    playerId: $Index({ playerId: 1 }, { collation: { locale: "simple" } }),
+    recheckInTime: $Index({ recheckInTime: 1 }),
+    sessionId_U: $Index({ sessionId: 1 }, { unique: true }),
+    ssoToken: $Index({ ssoToken: 1 }),
+    type_inRoom_red: $Index({ type: 1, inRoom: 1, red: 1 }),
+    UID_U: $Index({ UID: 1 }, { unique: true, sparse: true, collation: { locale: "simple" } }),
+    username_U_en: $Index({ "local.username": 1 }, { unique: true, collation: { locale: "en", strength: 2 } }),
   };
 
   (global.___idxs = global.___idxs ?? {})[label] = [
-    $Indexes(dbs.minigame.users, [
-      global.___idx[label].memberId,
-      global.___idx[label].memberName,
-      global.___idx[label].operatorId,
-      global.___idx[label].playerId,
-      global.___idx[label].username_U_en,
-    ]),
+    $Indexes(dbs.minigame.users, [global.___idx[label].memberId, global.___idx[label].memberName, global.___idx[label].operatorId, global.___idx[label].playerId, global.___idx[label].username_U_en]),
     $Indexes(dbs.minigame.userinfos, [
       global.___idx[label].currency,
       global.___idx[label].id_U,
@@ -48,12 +42,6 @@ deploy: {
       global.___idx[label].type_inRoom_red,
       global.___idx[label].UID_U,
     ]),
-    $Indexes(dbs.minigame.usersessions, [
-      global.___idx[label].playerId,
-      global.___idx[label].recheckInTime,
-      global.___idx[label].sessionId_U,
-      global.___idx[label].ssoToken,
-      global.___idx[label].TTL,
-    ]),
+    $Indexes(dbs.minigame.usersessions, [global.___idx[label].playerId, global.___idx[label].recheckInTime, global.___idx[label].sessionId_U, global.___idx[label].ssoToken, global.___idx[label].TTL]),
   ];
 }

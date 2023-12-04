@@ -710,6 +710,51 @@ deploy: {
     },
     // gameConfigs: { gameId: 68, name: "missionimpossible" }, // auto
     // gameConfigs: { gameId: 69, name: "blackpink" }, // auto
+    // gameConfigs: { gameId: 70, name: "transformers" }, // auto
+    {
+      ...commonConfig,
+      gameConfigs: { gameId: 71, name: "colorgame" },
+      db: "minigame",
+      coll: { round: "_rounds", bet: "_bets" },
+      aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+      calc: {
+        roundId: '"$id"',
+        tickets: '{"$literal":1}',
+        stake: '"$totalAmount"',
+        payout: '"$betwin"',
+        refund: '{"$literal":0}',
+      },
+    },
+    {
+      ...commonConfig,
+      gameConfigs: { gameId: 72, name: "pontoon" },
+      db: "minigame",
+      coll: { round: "_rounds", bet: "_bets" },
+      filter: '{"ended":true}',
+      aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+      calc: {
+        roundId: '"$id"',
+        tickets: '{"$literal":1}',
+        stake: '{"$multiply":["$bet",{"$toInt":{"$not":"$freeBet"}}]}',
+        payout: '"$betwin"',
+        refund: '{"$literal":0}',
+      },
+    },
+    // gameConfigs: { gameId: 73, name: "spaceflight" }, // auto
+    {
+      ...commonConfig,
+      gameConfigs: { gameId: 75, name: "bandarqiuqiu" },
+      db: "minigame",
+      coll: { round: "_rounds", bet: "_bets" },
+      aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+      calc: {
+        roundId: '"$id"',
+        tickets: '{"$literal":1}',
+        stake: '"$totalAmount"',
+        payout: '"$betwin"',
+        refund: '{"$literal":0}',
+      },
+    },
     {
       ...commonConfig,
       gameConfigs: { gameId: 99, name: "jackpots" },

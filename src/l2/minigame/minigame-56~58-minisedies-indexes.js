@@ -12,15 +12,15 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.minisedie2_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.minisedie2_bets, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.minisedie2_bets, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency]),
     $Indexes(dbs.minigame.minisedie2_results, [idx.TTL, idx.time_archive, idx.roundId]),
 
     $Indexes(dbs.minigame.minisedie3_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.minisedie3_bets, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.minisedie3_bets, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency]),
     $Indexes(dbs.minigame.minisedie3_results, [idx.TTL, idx.time_archive, idx.roundId]),
 
     $Indexes(dbs.minigame.minisedie4_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.minisedie4_bets, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency, idx.isCash]),
+    $Indexes(dbs.minigame.minisedie4_bets, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId_U, idx.uid_paid__id, idx.currency]),
     $Indexes(dbs.minigame.minisedie4_results, [idx.TTL, idx.time_archive, idx.roundId]),
   ];
   idxs.forEach((_) => _.deploy());

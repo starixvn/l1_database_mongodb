@@ -116,6 +116,11 @@ deploy: {
       roles.ops_configs   .read,
       roles.summary       .read,
     ]),
+    $User(dbs.admin, "svc_readonly", [
+      roles.admin         .public,
+      /** active */
+      roles.minigame      .read,
+    ]),
   ];
   users.forEach(_ => _.deploy());
 }
