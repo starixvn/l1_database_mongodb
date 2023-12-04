@@ -450,13 +450,13 @@ deploy: {
     },
     {
       gameId: 73,
-      owGameTypeId: { [1]: null, [2]: null, [3]: null }[L],
+      owGameTypeId: { [1]: 1681, [2]: 3873, [3]: null }[L],
       name: { en: `Spaceflight`, vi: `Spaceflight`, grp: `Crash Games`, game: `Spaceflight` },
       coll: { db: `minigame`, group: `spaceflight`, round: `_rounds`, postfix: `_bets` },
     },
     {
       gameId: 75,
-      owGameTypeId: { [1]: null, [2]: null, [3]: null }[L],
+      owGameTypeId: { [1]: 1680, [2]: 3872, [3]: null }[L],
       name: { en: `Bandar Qiu Qiu`, vi: `Bandar Qiu Qiu`, grp: `Card Games`, game: `Bandar Qiu Qiu` },
       coll: { db: `minigame`, group: `bandarqiuqiu`, round: `_rounds`, postfix: `_bets` },
     },
