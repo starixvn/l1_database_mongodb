@@ -189,6 +189,7 @@ deploy: {
       owGameTypeId: { [1]: 1640, [2]: 3829, [3]: 3829 }[L],
       name: { en: `Four Guardians`, vi: `Long Lân Quy Phụng`, grp: `Slots`, game: `Four Guardians` },
       coll: { db: `minigame`, group: `fourguardians`, round: `_rounds`, postfix: `_rounds` },
+      config: { jpCont: 0.025 },
     },
     {
       gameId: 30,
@@ -435,6 +436,7 @@ deploy: {
       owGameTypeId: { [1]: 1677, [2]: 3869, [3]: null }[L],
       name: { en: `Transformers`, vi: `Đại Chiến Robot`, grp: `Slots`, game: `Transformers` },
       coll: { db: `minigame`, group: `transformers`, round: `_rounds`, postfix: `_rounds` },
+      config: { jpCont: 0.025 },
     },
     {
       gameId: 71,
