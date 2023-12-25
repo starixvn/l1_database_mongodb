@@ -33,6 +33,10 @@ deploy: {
       read            : $Role(dbs.minigame    , `read`          ),
       readWrite       : $Role(dbs.minigame    , `readWrite`     ),
     },
+    minigame_rm : {
+      read            : $Role(dbs.minigame    , `read`          ),
+      readWrite       : $Role(dbs.minigame    , `readWrite`     ),
+    },
     ops_configs : {
       read            : $Role(dbs.ops_configs , `read`          ),
       readWrite       : $Role(dbs.ops_configs , `readWrite`     ),
@@ -74,6 +78,7 @@ deploy: {
       roles.log           .readWrite,
       roles.member        .readWrite,
       roles.minigame      .readWrite,
+      roles.minigame_rm   .readWrite,
       roles.ops_configs   .readWrite,
       roles.summary       .read,
     ]),

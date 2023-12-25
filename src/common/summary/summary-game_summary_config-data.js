@@ -189,6 +189,7 @@ deploy: {
       owGameTypeId: { [1]: 1640, [2]: 3829, [3]: 3829 }[L],
       name: { en: `Four Guardians`, vi: `Long Lân Quy Phụng`, grp: `Slots`, game: `Four Guardians` },
       coll: { db: `minigame`, group: `fourguardians`, round: `_rounds`, postfix: `_rounds` },
+      config: { jpCont: { [2]: 0.025 }[L] },
     },
     {
       gameId: 30,
@@ -435,6 +436,7 @@ deploy: {
       owGameTypeId: { [1]: 1677, [2]: 3869, [3]: null }[L],
       name: { en: `Transformers`, vi: `Đại Chiến Robot`, grp: `Slots`, game: `Transformers` },
       coll: { db: `minigame`, group: `transformers`, round: `_rounds`, postfix: `_rounds` },
+      config: { jpCont: { [2]: 0.025 }[L] },
     },
     {
       gameId: 71,
@@ -453,6 +455,12 @@ deploy: {
       owGameTypeId: { [1]: 1681, [2]: 3873, [3]: null }[L],
       name: { en: `Spaceflight`, vi: `Spaceflight`, grp: `Crash Games`, game: `Spaceflight` },
       coll: { db: `minigame`, group: `spaceflight`, round: `_rounds`, postfix: `_bets` },
+    },
+    {
+      gameId: 74,
+      owGameTypeId: { [1]: 1682, [2]: 3874, [3]: null }[L],
+      name: { en: `One Piece`, vi: `Đảo Hải Tặc`, grp: `Slots`, game: `One Piece` },
+      coll: { db: `minigame`, group: `onepiece`, round: `_rounds`, postfix: `_rounds` },
     },
     {
       gameId: 75,

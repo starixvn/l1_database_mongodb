@@ -445,6 +445,12 @@ deploy: {
       coll: { db: `minigame_arc`, group: `spaceflight`, round: `_rounds_bk`, postfix: `_bets_bk` },
     },
     {
+      gameId: 74,
+      owGameTypeId: { [1]: 1682, [2]: 3874, [3]: null }[L],
+      name: { en: `One Piece`, vi: `Đảo Hải Tặc`, grp: `Slots`, game: `One Piece` },
+      coll: { db: `minigame_arc`, group: `onepiece`, round: `_rounds_bk`, postfix: `_rounds_bk` },
+    },
+    {
       gameId: 75,
       owGameTypeId: { [1]: 1680, [2]: 3872, [3]: null }[L],
       name: { en: `Bandar Qiu Qiu`, vi: `Bandar Qiu Qiu`, grp: `Card Games`, game: `Bandar Qiu Qiu` },
