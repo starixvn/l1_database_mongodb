@@ -34,8 +34,8 @@ deploy: {
       readWrite       : $Role(dbs.minigame    , `readWrite`     ),
     },
     minigame_rm : {
-      read            : $Role(dbs.minigame    , `read`          ),
-      readWrite       : $Role(dbs.minigame    , `readWrite`     ),
+      read            : $Role(dbs.minigame_rm , `read`          ),
+      readWrite       : $Role(dbs.minigame_rm , `readWrite`     ),
     },
     ops_configs : {
       read            : $Role(dbs.ops_configs , `read`          ),
