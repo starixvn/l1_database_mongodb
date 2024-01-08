@@ -38,7 +38,6 @@ deploy: {
       global.___idx[label].__archive_hourly,
       global.___idx[label].__archive_do_hourly,
     ]),
-    $Indexes(dbs.summary.ticket_summaries, [global.___idx[label].TTL_arc, global.___idx[label].gameId_round_operator_player_U, ___idx[label].__archive_summarized, ___idx[label].__archive_do_summary]),
     $Indexes(dbs.summary.summary_configs, [global.___idx[label].gameId_U]),
     $Indexes(dbs.summary.metadata_queue, [global.___idx[label].db_coll__id_U, global.___idx[label].db_coll__id_U_en_2]),
   ];
