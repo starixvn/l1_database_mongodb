@@ -23,8 +23,8 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.hilo_rounds, [idx.TTL, idx.time, idx.endTime, idx.id, idx.__archive_summarized, idx.__archive_do_summary, idx.currency, ...BL.rounds]),
-    $Indexes(dbs.minigame.hilo_betlogs, [idx.TTL, idx.time_archive, idx.roundId_uid, ...BL.betlogs]),
+    $Indexes(dbs.minigame.hilo_rounds, [idx.TTL, idx.time, idx.endTime, idx.id, idx.currency, ...BL.rounds]),
+    $Indexes(dbs.minigame.hilo_betlogs, [idx.TTL, idx.time_archive, idx.roundId_uid, idx.__archive_summarized, idx.__archive_do_summary, ...BL.betlogs]),
   ];
   idxs.forEach((_) => _.deploy());
 }

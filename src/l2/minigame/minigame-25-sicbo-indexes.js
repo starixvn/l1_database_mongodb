@@ -23,9 +23,9 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.sicbo_phiens, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
+    $Indexes(dbs.minigame.sicbo_phiens, [idx.TTL, idx.time, idx.id]),
     $Indexes(dbs.minigame.sicbo_cuocs, [idx.TTL, idx.time_archive, ...BL.cuocs]),
-    $Indexes(dbs.minigame.sicbo_ones, [idx.TTL, idx.time_archive, idx.currency, ...BL.ones]),
+    $Indexes(dbs.minigame.sicbo_ones, [idx.TTL, idx.time_archive, idx.currency, idx.__archive_summarized, idx.__archive_do_summary, ...BL.ones]),
     $Indexes(dbs.minigame.sicbo_results, [idx.TTL, idx.time_archive, idx.roundId]),
   ];
   idxs.forEach((_) => _.deploy());

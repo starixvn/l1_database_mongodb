@@ -23,8 +23,8 @@ deploy: {
     }[L],
   };
   const idxs = [
-    $Indexes(dbs.minigame.xocxoc_phiens, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.xocxoc_cuocs, [idx.TTL, idx.time_archive, idx.currency, ...BL.cuocs]),
+    $Indexes(dbs.minigame.xocxoc_phiens, [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.xocxoc_cuocs, [idx.TTL, idx.time_archive, idx.currency, idx.__archive_summarized, idx.__archive_do_summary, ...BL.cuocs]),
     $Indexes(dbs.minigame.xocxoc_tmpcuocs, [idx.timeTTL, ...BL.tmpcuocs]),
     $Indexes(dbs.minigame.xocxoc_results, [idx.TTL, idx.time_archive, idx.roundId]),
     $Indexes(dbs.minigame.xocxoc_metrics, [idx.metric_metadata_U]),
