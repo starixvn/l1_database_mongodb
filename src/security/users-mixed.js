@@ -45,6 +45,10 @@ deploy: {
       read            : $Role(dbs.minigame_arc, `read`          ),
       readWrite       : $Role(dbs.minigame_arc, `readWrite`     ),
     },
+    minigame_kbt : {
+      read            : $Role(dbs.minigame_kbt, `read`          ),
+      readWrite       : $Role(dbs.minigame_kbt, `readWrite`     ),
+    },
     minigame_rm : {
       read            : $Role(dbs.minigame_rm , `read`          ),
       readWrite       : $Role(dbs.minigame_rm , `readWrite`     ),
@@ -68,6 +72,10 @@ deploy: {
     summary_arc : {
       read            : $Role(dbs.summary_arc , `read`          ),
       readWrite       : $Role(dbs.summary_arc , `readWrite`     ),
+    },
+    summary_kbt : {
+      read            : $Role(dbs.summary_kbt , `read`          ),
+      readWrite       : $Role(dbs.summary_kbt , `readWrite`     ),
     },
     demo: {
       readWrite       : $Role(dbs.demo        , `readWrite`     ),
@@ -144,12 +152,14 @@ deploy: {
       /** active */
       roles.log           .readWrite,
       roles.minigame      .readWrite,
+      roles.minigame_kbt  .readWrite,
       roles.ops_configs   .read,
       roles.summary       .readWrite,
       /** archive */
       roles.log_arc       .readWrite,
       roles.minigame_arc  .read,
       roles.summary_arc   .readWrite,
+      roles.summary_kbt   .readWrite,
 
       roles.demo          .readWrite,
     ]),
