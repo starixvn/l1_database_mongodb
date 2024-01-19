@@ -257,7 +257,6 @@ deploy: {
       gameConfigs: { gameId: 23, name: "blackjack" },
       db: "minigame",
       coll: { round: "_phiens", bet: "_cuocs" },
-      filter: '{"ended":true}',
       aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
         roundId: '"$id"',
@@ -388,7 +387,6 @@ deploy: {
       gameConfigs: { gameId: 36, name: "kenomatch1" },
       db: "minigame",
       coll: { round: "_phiens", bet: "_ones" },
-      filter: '{"settled":true}',
       aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
         roundId: '"$id"',
@@ -403,7 +401,6 @@ deploy: {
       gameConfigs: { gameId: 37, name: "kenomatch2" },
       db: "minigame",
       coll: { round: "_phiens", bet: "_ones" },
-      filter: '{"settled":true}',
       aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
         roundId: '"$id"',
@@ -419,7 +416,6 @@ deploy: {
       gameConfigs: { gameId: 39, name: "casinoholdempoker" },
       db: "minigame",
       coll: { round: "_phiens", bet: "_cuocs" },
-      filter: '{"ended":true}',
       aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
         roundId: '"$id"',
@@ -434,7 +430,6 @@ deploy: {
       gameConfigs: { gameId: 40, name: "kenopower1" },
       db: "minigame",
       coll: { round: "_phiens", bet: "_ones" },
-      filter: '{"settled":true}',
       aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
         roundId: '"$id"',
@@ -449,7 +444,6 @@ deploy: {
       gameConfigs: { gameId: 41, name: "kenopower2" },
       db: "minigame",
       coll: { round: "_phiens", bet: "_ones" },
-      filter: '{"settled":true}',
       aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
         roundId: '"$id"',
@@ -464,7 +458,6 @@ deploy: {
       gameConfigs: { gameId: 42, name: "texasholdempoker" },
       db: "minigame",
       coll: { round: "_phiens", bet: "_cuocs" },
-      filter: '{"ended":true}',
       aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
         roundId: '"$id"',
@@ -730,7 +723,6 @@ deploy: {
       gameConfigs: { gameId: 72, name: "pontoon" },
       db: "minigame",
       coll: { round: "_rounds", bet: "_bets" },
-      filter: '{"ended":true}',
       aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
       calc: {
         roundId: '"$id"',
