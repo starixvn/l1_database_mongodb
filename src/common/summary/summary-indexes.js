@@ -1,7 +1,7 @@
 deploy: {
   const dbs = DBs(db);
   const label = `summary@${dbs.toString()}`;
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
+  if (![1, 2].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   (global.___idx = global.___idx ?? {})[label] = {
@@ -46,7 +46,7 @@ deploy: {
 deploy: {
   const dbs = DBs(db);
   const label = `summary_arc@${dbs.toString()}`;
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
+  if (![1, 2].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   (global.___idx = global.___idx ?? {})[label] = {

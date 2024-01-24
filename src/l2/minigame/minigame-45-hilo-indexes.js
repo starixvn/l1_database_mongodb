@@ -11,16 +11,8 @@ deploy: {
     ...global.___idx[label],
   };
   const BL = {
-    rounds: {
-      [1]: ($_ = [idx.playerId_id_F]),
-      [2]: $_,
-      [3]: [idx.memberId_id_F],
-    }[L],
-    betlogs: {
-      [1]: ($_ = [idx.playerId_roundId_F]),
-      [2]: $_,
-      [3]: [idx.memberId_roundId_F],
-    }[L],
+    rounds: [idx.playerId_id_F],
+    betlogs: [idx.playerId_roundId_F],
   };
   const idxs = [
     $Indexes(dbs.minigame.hilo_rounds, [idx.TTL, idx.time, idx.endTime, idx.id, idx.currency, ...BL.rounds]),

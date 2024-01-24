@@ -11,16 +11,8 @@ deploy: {
     ...global.___idx[label],
   };
   const BL = {
-    bets: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F],
-    }[L],
-    ones: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien],
-    }[L],
+    bets: [idx.roundId__id, idx.playerId_roundId_F],
+    ones: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId],
   };
   const idxs = [
     $Indexes(dbs.minigame.megakeno_rounds, [idx.TTL, idx.time, idx.id]),

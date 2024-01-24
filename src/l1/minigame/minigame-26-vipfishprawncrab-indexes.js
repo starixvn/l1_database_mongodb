@@ -1,4 +1,4 @@
-/** L1 L2 -- */
+/** L1 L2 */
 deploy: {
   const dbs = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;
@@ -11,16 +11,8 @@ deploy: {
     ...global.___idx[label],
   };
   const BL = {
-    cuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.uid_thanhtoan__id],
-    }[L],
-    tmpcuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.uid_roundId]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.uid_phien],
-    }[L],
+    cuocs: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id],
+    tmpcuocs: [idx.roundId__id, idx.uid_roundId],
   };
   const idxs = [
     $Indexes(dbs.minigame.vipfishprawncrab_phiens, [idx.TTL, idx.time, idx.id]),

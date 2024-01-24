@@ -1,4 +1,4 @@
-/** L1 -- L3 */
+/** L1 -- */
 deploy: {
   const dbs = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;

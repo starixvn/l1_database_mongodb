@@ -2,7 +2,7 @@ deploy: {
   const dbs   = DBs(db);
   const label = `log@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
-  if (![1, 2, 3].includes(L)) break deploy;
+  if (![1, 2].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
@@ -26,10 +26,7 @@ deploy: {
     betlogs                                : $Index({'__archive.betlogs': 1, _id: 1}),
   };
 
-  const playerId = {
-    [1]: ($_ = 'playerId'), [2]: $_,
-    [3]: 'obCustId',
-  }[L];
+  const playerId = 'playerId';
 
   (global.___idxs = global.___idxs ?? {})[label] = [
     $Indexes(dbs.log.bets, [

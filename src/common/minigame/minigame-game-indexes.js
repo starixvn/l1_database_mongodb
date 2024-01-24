@@ -3,15 +3,11 @@ deploy: {
   const label = `minigame-game@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
 
-  if (![1, 2, 3].includes(L)) break deploy;
+  if (![1, 2].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   const mapping = {
-    playerId: {
-      [1]: `playerId`,
-      [2]: `playerId`,
-      [3]: `memberId`,
-    }[L],
+    playerId: `playerId`,
   };
 
   const expireHours = 3600 * 24 * 8;
