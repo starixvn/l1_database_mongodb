@@ -33,9 +33,13 @@ deploy: {
       read            : $Role(dbs.minigame    , `read`          ),
       readWrite       : $Role(dbs.minigame    , `readWrite`     ),
     },
+    minigame_kbt : {
+      read            : $Role(dbs.minigame_kbt, `read`          ),
+      readWrite       : $Role(dbs.minigame_kbt, `readWrite`     ),
+    },
     minigame_rm : {
-      read            : $Role(dbs.minigame    , `read`          ),
-      readWrite       : $Role(dbs.minigame    , `readWrite`     ),
+      read            : $Role(dbs.minigame_rm , `read`          ),
+      readWrite       : $Role(dbs.minigame_rm , `readWrite`     ),
     },
     ops_configs : {
       read            : $Role(dbs.ops_configs , `read`          ),
@@ -52,6 +56,10 @@ deploy: {
     summary     : {
       read            : $Role(dbs.summary     , `read`          ),
       readWrite       : $Role(dbs.summary     , `readWrite`     ),
+    },
+    summary_kbt : {
+      read            : $Role(dbs.summary_kbt , `read`          ),
+      readWrite       : $Role(dbs.summary_kbt , `readWrite`     ),
     },
   };
 
@@ -102,8 +110,10 @@ deploy: {
       /** active */
       roles.log           .readWrite,
       roles.minigame      .readWrite,
+      roles.minigame_kbt  .readWrite,
       roles.ops_configs   .read,
       roles.summary       .readWrite,
+      roles.summary_kbt   .readWrite,
     ]),
     $User(dbs.admin, `mongodb_exporter`, [
       roles.admin         .clusterMonitor,

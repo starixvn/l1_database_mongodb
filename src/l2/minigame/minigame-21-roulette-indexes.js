@@ -1,4 +1,4 @@
-/** L1 L2 L3 */
+/** L1 L2 */
 deploy: {
   const dbs = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;
@@ -11,26 +11,14 @@ deploy: {
     ...global.___idx[label],
   };
   const BL = {
-    cuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F],
-    }[L],
-    ones: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien],
-    }[L],
-    tmpones: {
-      [1]: ($_ = [idx.roundId__id, idx.uid_roundId]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.uid_phien],
-    }[L],
+    cuocs: [idx.roundId__id, idx.playerId_roundId_F],
+    ones: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId],
+    tmpones: [idx.roundId__id, idx.uid_roundId],
   };
   const idxs = [
-    $Indexes(dbs.minigame.roulette_phiens, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
+    $Indexes(dbs.minigame.roulette_phiens, [idx.TTL, idx.time, idx.id]),
     $Indexes(dbs.minigame.roulette_cuocs, [idx.TTL, idx.time_archive, idx.uid__id, ...BL.cuocs]),
-    $Indexes(dbs.minigame.roulette_ones, [idx.TTL, idx.time_archive, idx.currency, ...BL.ones]),
+    $Indexes(dbs.minigame.roulette_ones, [idx.TTL, idx.time_archive, idx.currency, idx.__archive_summarized, idx.__archive_do_summary, ...BL.ones]),
     $Indexes(dbs.minigame.roulette_tmpones, [idx.timeTTL, ...BL.tmpones]),
   ];
   idxs.forEach((_) => _.deploy());

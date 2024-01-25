@@ -3,7 +3,7 @@ deploy: {
   const label = `archive_configs@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
 
-  if (![1, 2, 3].includes(L)) break deploy;
+  if (![1, 2].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   const archiveConfigData = [];
@@ -3124,6 +3124,55 @@ deploy: {
           gameConfigs,
           from: { db: "minigame", postfix: "_betlogs" },
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8, updateOnly: true },
+          filter: '{"playerId":null}',
+        },
+      ].forEach((config) => archiveConfigData.push(config));
+    }
+
+    /** { gameId: 76, name: "dragonball" } // auto */
+
+    /** { gameId: 77, name: "chineseblackjack" } */
+    {
+      const gameConfigs = { gameId: 77, name: "chineseblackjack" };
+      [
+        {
+          ...commonConfig,
+          id: 0,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_rounds" },
+          to: { db: "minigame_arc", postfix: "_rounds_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24, localField: "id" },
+          childs: [
+            {
+              from: { db: "minigame", postfix: "_bets" },
+              to: { db: "minigame_arc", postfix: "_bets_bk" },
+              config: { foreignField: "roundId" },
+              filter: '{"playerId":{"$gt":0}}',
+              log: { field: "_bets", value: "id" },
+            },
+          ],
+          log: { field: "_rounds", value: "id" },
+        },
+        {
+          ...commonConfig,
+          id: 2,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_bets" },
+          to: { db: "minigame_arc", postfix: "_bets_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8 },
+          filter: '{"playerId":{"$gt":0}}',
+          log: { field: "_bets", value: "id" },
+        },
+        {
+          ...commonConfig,
+          id: 3,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_bets" },
+          to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8, updateOnly: true },
           filter: '{"playerId":null}',

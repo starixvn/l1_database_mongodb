@@ -1,4 +1,4 @@
-/** L1 L2 L3 */
+/** L1 L2 */
 deploy: {
   const dbs = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;
@@ -14,21 +14,13 @@ deploy: {
     BL_uid_phien_red: $Index({ uid: 1, phien: 1, red: 1 }, { partialFilterExpression: { _id: { $lt: 0 } } }),
   };
   const BL = {
-    cuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id],
-    }[L],
-    ones: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.BL_uid, idx.BL_phien, idx.BL_uid_phien_red],
-    }[L],
+    cuocs: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id],
+    ones: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId],
   };
   const idxs = [
-    $Indexes(dbs.minigame.chanle_phiens, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
+    $Indexes(dbs.minigame.chanle_phiens, [idx.TTL, idx.time, idx.id]),
     $Indexes(dbs.minigame.chanle_cuocs, [idx.TTL, idx.time_archive, ...BL.cuocs]),
-    $Indexes(dbs.minigame.chanle_ones, [idx.TTL, idx.time_archive, idx.currency, ...BL.ones]),
+    $Indexes(dbs.minigame.chanle_ones, [idx.TTL, idx.time_archive, idx.currency, idx.__archive_summarized, idx.__archive_do_summary, ...BL.ones]),
   ];
   idxs.forEach((_) => _.deploy());
 }

@@ -1,4 +1,4 @@
-/** L1 -- L3 */
+/** L1 -- */
 deploy: {
   const dbs = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;
@@ -12,7 +12,17 @@ deploy: {
   };
   const idxs = [
     $Indexes(dbs.minigame.pontoon_rounds, [idx.TTL, idx.time, idx.id, idx.ended, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.pontoon_bets, [idx.TTL, idx.time_archive, idx.currency, idx.endTime, idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id]),
+    $Indexes(dbs.minigame.pontoon_bets, [
+      idx.TTL,
+      idx.time_archive,
+      idx.currency,
+      idx.endTime,
+      idx.roundId__id,
+      idx.playerId_roundId_F,
+      idx.uid_paid__id,
+      idx.__archive_summarized,
+      idx.__archive_do_summary,
+    ]),
   ];
   idxs.forEach((_) => _.deploy());
 }

@@ -60,13 +60,13 @@ deploy: {
     ...global.___idx[label],
   };
   const idxs = [
-    $Indexes(dbs.minigame_arc.baccaratdiamond_phiens_bk, [idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
+    $Indexes(dbs.minigame_arc.baccaratdiamond_phiens_bk, [idx.time, idx.id]),
     $Indexes(dbs.minigame_arc.baccaratdiamond_cuocs_bk, [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
 
-    $Indexes(dbs.minigame_arc.baccaratsapphire_phiens_bk, [idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
+    $Indexes(dbs.minigame_arc.baccaratsapphire_phiens_bk, [idx.time, idx.id]),
     $Indexes(dbs.minigame_arc.baccaratsapphire_cuocs_bk, [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
 
-    $Indexes(dbs.minigame_arc.baccaratruby_phiens_bk, [idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
+    $Indexes(dbs.minigame_arc.baccaratruby_phiens_bk, [idx.time, idx.id]),
     $Indexes(dbs.minigame_arc.baccaratruby_cuocs_bk, [idx.time, idx.phien, idx.memberId_phien_F, idx.uid_phien_U]),
   ];
   idxs.forEach((_) => _.deploy());

@@ -11,20 +11,12 @@ deploy: {
     ...global.___idx[label],
   };
   const BL = {
-    bets: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.uid_thanhtoan__id],
-    }[L],
-    tmpbets: {
-      [1]: ($_ = [idx.roundId__id, idx.uid_roundId]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.uid_phien],
-    }[L],
+    bets: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id],
+    tmpbets: [idx.roundId__id, idx.uid_roundId],
   };
   const idxs = [
-    $Indexes(dbs.minigame.blockchainbaccarat_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.blockchainbaccarat_bets, [idx.TTL, idx.time_archive, idx.currency, ...BL.bets]),
+    $Indexes(dbs.minigame.blockchainbaccarat_rounds, [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.blockchainbaccarat_bets, [idx.TTL, idx.time_archive, idx.currency, idx.__archive_summarized, idx.__archive_do_summary, ...BL.bets]),
     $Indexes(dbs.minigame.blockchainbaccarat_tmpbets, [idx.timeTTL, ...BL.tmpbets]),
     $Indexes(dbs.minigame.blockchainbaccarat_results, [idx.TTL, idx.time_archive, idx.roundId, idx.isAvailable]),
   ];

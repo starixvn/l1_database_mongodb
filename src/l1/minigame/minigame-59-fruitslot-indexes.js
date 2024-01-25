@@ -11,9 +11,9 @@ deploy: {
     ...global.___idx[label],
   };
   const idxs = [
-    $Indexes(dbs.minigame.fruitslot_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
+    $Indexes(dbs.minigame.fruitslot_rounds, [idx.TTL, idx.time, idx.id]),
     $Indexes(dbs.minigame.fruitslot_betlogs, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F, idx.uid__id]),
-    $Indexes(dbs.minigame.fruitslot_bets, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.currency]),
+    $Indexes(dbs.minigame.fruitslot_bets, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.currency, idx.__archive_summarized, idx.__archive_do_summary]),
     $Indexes(dbs.minigame.fruitslot_tmpbets, [idx.timeTTL, idx.roundId__id, idx.uid_roundId]),
   ];
   idxs.forEach((_) => _.deploy());
