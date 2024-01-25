@@ -1,4 +1,4 @@
-/** L1 L2 L3 */
+/** L1 L2 */
 deploy: {
   const dbs   = DBs(db);
   const label = `ops_configs-templates@${dbs.toString()}`;

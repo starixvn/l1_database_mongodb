@@ -1,4 +1,4 @@
-/** L1 L2 -- */
+/** L1 L2 */
 deploy: {
   const dbs = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;
@@ -11,21 +11,13 @@ deploy: {
     ...global.___idx[label],
   };
   const BL = {
-    betlogs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_thanhtoan__id],
-    }[L],
-    bets: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien],
-    }[L],
+    betlogs: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id],
+    bets: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId],
   };
   const idxs = [
-    $Indexes(dbs.minigame.bitcoinmaster_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
+    $Indexes(dbs.minigame.bitcoinmaster_rounds, [idx.TTL, idx.time, idx.id]),
     $Indexes(dbs.minigame.bitcoinmaster_betlogs, [idx.TTL, idx.time_archive, ...BL.betlogs]),
-    $Indexes(dbs.minigame.bitcoinmaster_bets, [idx.TTL, idx.time_archive, idx.currency, ...BL.bets]),
+    $Indexes(dbs.minigame.bitcoinmaster_bets, [idx.TTL, idx.time_archive, idx.currency, idx.__archive_summarized, idx.__archive_do_summary, ...BL.bets]),
 
     $Indexes(dbs.minigame.crypto_candlesticks, [idx.TTL, idx.time_archive]),
   ];

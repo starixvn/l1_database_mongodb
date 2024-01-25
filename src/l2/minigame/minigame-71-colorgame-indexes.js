@@ -15,9 +15,9 @@ deploy: {
     bets: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id],
   };
   const idxs = [
-    $Indexes(dbs.minigame.colorgame_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
+    $Indexes(dbs.minigame.colorgame_rounds, [idx.TTL, idx.time, idx.id]),
     $Indexes(dbs.minigame.colorgame_betlogs, [idx.TTL, idx.time_archive, ...BL.betlogs]),
-    $Indexes(dbs.minigame.colorgame_bets, [idx.TTL, idx.time_archive, idx.currency, ...BL.bets]),
+    $Indexes(dbs.minigame.colorgame_bets, [idx.TTL, idx.time_archive, idx.currency, idx.__archive_summarized, idx.__archive_do_summary, ...BL.bets]),
     $Indexes(dbs.minigame.colorgame_tmpbets, [idx.timeTTL, idx.roundId__id, idx.uid_roundId]),
   ];
   idxs.forEach((_) => _.deploy());

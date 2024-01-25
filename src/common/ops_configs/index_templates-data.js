@@ -3,7 +3,7 @@ deploy: {
   const label = `index_templates@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
 
-  if (![1, 2, 3].includes(L)) break deploy;
+  if (![1, 2].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   (global.___data = global.___data ?? {})[label] = [
@@ -90,8 +90,6 @@ deploy: {
             TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
             time: '{"key":{"time":1}}',
             id_U: '{"key":{"id":1},"unique":true}',
-            summarized: '{"key":{"__archive.summarized":1}}',
-            do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
           },
         },
         {
@@ -129,6 +127,8 @@ deploy: {
             player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"playerId":{"$gt":0}}}',
             uid_roundId: '{"key":{"uid":1,"roundId":1},"unique":true}',
             uid_paid: '{"key":{"uid":1,"paid":1,"_id":1}}',
+            summarized: '{"key":{"__archive.summarized":1}}',
+            do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
           },
         },
         {

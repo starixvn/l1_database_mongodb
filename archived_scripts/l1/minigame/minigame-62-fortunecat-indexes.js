@@ -11,7 +11,7 @@ deploy: {
     ...global.___idx[label],
   };
   const idxs = [
-    $Indexes(dbs.minigame.fortunecat_rounds, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary, idx.playerId_id_F, idx.paid_uid, idx.currency]),
+    $Indexes(dbs.minigame.fortunecat_rounds, [idx.TTL, idx.time, idx.id, idx.playerId_id_F, idx.paid_uid, idx.currency]),
     $Indexes(dbs.minigame.fortunecat_freespins, [idx.TTL, idx.time_archive, idx.id, idx.expiryTime]),
     $Indexes(dbs.minigame.fortunecat_fames, [idx.TTL, idx.time_archive, idx.uid_roundId]),
   ];

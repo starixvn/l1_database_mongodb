@@ -11,19 +11,11 @@ deploy: {
     ...global.___idx[label],
   };
   const BL = {
-    cuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F],
-    }[L],
-    ones: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien],
-    }[L],
+    cuocs: [idx.roundId__id, idx.playerId_roundId_F],
+    ones: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId],
   };
   const idxs = [
-    $Indexes(dbs.minigame.kenoproviet_phiens, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
+    $Indexes(dbs.minigame.kenoproviet_phiens, [idx.TTL, idx.time, idx.id]),
     $Indexes(dbs.minigame.kenoproviet_phiens_log, [idx.TTL, idx.time_archive]),
     $Indexes(dbs.minigame.kenoproviet_cuocs, [idx.TTL, idx.time_archive, idx.uid__id, ...BL.cuocs]),
     $Indexes(dbs.minigame.kenoproviet_ones, [idx.TTL, idx.time_archive, idx.currency, ...BL.ones]),

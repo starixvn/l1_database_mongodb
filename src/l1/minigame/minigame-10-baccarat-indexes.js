@@ -1,4 +1,4 @@
-/** L1 L2 L3 */
+/** L1 L2 */
 deploy: {
   const dbs = DBs(db);
   const label = `minigame-game@${dbs.toString()}`;
@@ -12,20 +12,12 @@ deploy: {
     BL_phien: $Index({ phien: 1 }, { partialFilterExpression: { _id: { $lt: 0 } } }),
   };
   const BL = {
-    cuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.memberId_phien_F, idx.uid_phien, idx.uid_thanhtoan__id, idx.BL_phien],
-    }[L],
-    tmpcuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.uid_roundId]),
-      [2]: $_,
-      [3]: [idx.phien__id, idx.uid_phien, idx.BL_phien],
-    }[L],
+    cuocs: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id],
+    tmpcuocs: [idx.roundId__id, idx.uid_roundId],
   };
   const idxs = [
-    $Indexes(dbs.minigame.baccarat_phiens, [idx.TTL, idx.time, idx.id, idx.__archive_summarized, idx.__archive_do_summary]),
-    $Indexes(dbs.minigame.baccarat_cuocs, [idx.TTL, idx.time_archive, idx.currency, ...BL.cuocs]),
+    $Indexes(dbs.minigame.baccarat_phiens, [idx.TTL, idx.time, idx.id]),
+    $Indexes(dbs.minigame.baccarat_cuocs, [idx.TTL, idx.time_archive, idx.currency, idx.__archive_summarized, idx.__archive_do_summary, ...BL.cuocs]),
     $Indexes(dbs.minigame.baccarat_tmpcuocs, [idx.timeTTL, ...BL.tmpcuocs]),
     $Indexes(dbs.minigame.baccarat_results, [idx.TTL, idx.time_archive, idx.roundId]),
   ];
