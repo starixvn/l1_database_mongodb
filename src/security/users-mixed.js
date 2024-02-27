@@ -192,6 +192,7 @@ deploy: {
       roles.log           .read,
       roles.member        .read,
       roles.minigame      .read,
+      roles.minigame_rm   .read,
       roles.summary       .read,
     ]),
   ];
