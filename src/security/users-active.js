@@ -134,7 +134,10 @@ deploy: {
     $User(dbs.admin, "svc_readonly", [
       roles.admin         .public,
       /** active */
+      roles.log           .read,
+      roles.member        .read,
       roles.minigame      .read,
+      roles.summary       .read,
     ]),
   ];
   users.forEach(_ => _.deploy());

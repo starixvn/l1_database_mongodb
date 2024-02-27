@@ -113,6 +113,7 @@ deploy: {
       roles.log           .readWrite,
       roles.member        .readWrite,
       roles.minigame      .readWrite,
+      roles.minigame_rm   .readWrite,
       roles.ops_configs   .readWrite,
       roles.summary       .read,
       /** archive */
@@ -188,7 +189,10 @@ deploy: {
     $User(dbs.admin, "svc_readonly", [
       roles.admin         .public,
       /** active */
+      roles.log           .read,
+      roles.member        .read,
       roles.minigame      .read,
+      roles.summary       .read,
     ]),
   ];
   users.forEach(_ => _.deploy());
