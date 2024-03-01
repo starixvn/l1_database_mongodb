@@ -137,8 +137,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -160,7 +160,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -180,7 +180,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -208,7 +208,7 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -230,7 +230,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -258,7 +258,7 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -280,7 +280,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -308,8 +308,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -331,7 +331,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -351,7 +351,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -381,8 +381,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -394,7 +394,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -414,7 +414,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -441,7 +441,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_phiens_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
-          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' }],
+          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' }],
           log: { field: "_phiens", value: "id" },
         },
         {
@@ -452,7 +452,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -479,7 +479,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_phiens_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
-          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' }],
+          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' }],
           log: { field: "_phiens", value: "id" },
         },
         {
@@ -490,7 +490,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -518,7 +518,7 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -540,7 +540,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -568,7 +568,7 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -590,7 +590,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -622,8 +622,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -645,7 +645,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -665,7 +665,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -693,8 +693,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -716,7 +716,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -736,7 +736,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -764,8 +764,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -787,7 +787,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -807,7 +807,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -835,8 +835,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -858,7 +858,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -878,7 +878,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -906,8 +906,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -929,7 +929,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -949,7 +949,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -977,8 +977,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -1000,7 +1000,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1020,7 +1020,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1050,8 +1050,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -1063,7 +1063,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1083,7 +1083,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1111,7 +1111,7 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -1133,7 +1133,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1165,7 +1165,7 @@ deploy: {
               from: { db: "minigame", postfix: "_cuocs" },
               to: { db: "minigame_arc", postfix: "_cuocs_bk" },
               config: { foreignField: "roundId" },
-              filter: '{"playerId":{"$gt":0}}',
+              filter: '{"playerId":{"$ne":null}}',
               log: { field: "_cuocs", value: "id" },
             },
           ],
@@ -1179,7 +1179,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
           log: { field: "_cuocs", value: "id" },
         },
         {
@@ -1208,8 +1208,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -1221,7 +1221,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1241,7 +1241,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1269,8 +1269,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -1292,7 +1292,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1312,7 +1312,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1339,7 +1339,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_phiens_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
-          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' }],
+          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' }],
           log: { field: "_phiens", value: "id" },
         },
         {
@@ -1350,7 +1350,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1379,7 +1379,7 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -1400,7 +1400,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1428,8 +1428,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_phiens", value: "id" },
@@ -1451,7 +1451,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1471,7 +1471,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1502,8 +1502,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -1515,7 +1515,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1535,7 +1535,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1567,8 +1567,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -1580,7 +1580,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1608,8 +1608,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -1621,7 +1621,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1641,7 +1641,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1669,8 +1669,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -1682,7 +1682,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1702,7 +1702,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1736,7 +1736,7 @@ deploy: {
               from: { db: "minigame", postfix: "_cuocs" },
               to: { db: "minigame_arc", postfix: "_cuocs_bk" },
               config: { foreignField: "roundId" },
-              filter: '{"playerId":{"$gt":0}}',
+              filter: '{"playerId":{"$ne":null}}',
             },
           ],
           log: { field: "_phiens", value: "id" },
@@ -1749,7 +1749,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1777,8 +1777,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -1790,7 +1790,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1810,7 +1810,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1838,8 +1838,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_phiens", value: "id" },
         },
@@ -1851,7 +1851,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1871,7 +1871,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1898,7 +1898,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_phiens_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
-          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' }],
+          childs: [{ from: { db: "minigame", postfix: "_cuocs" }, to: { db: "minigame_arc", postfix: "_cuocs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' }],
           log: { field: "_phiens", value: "id" },
         },
         {
@@ -1909,7 +1909,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_cuocs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1937,8 +1937,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -1959,7 +1959,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -1979,7 +1979,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2008,7 +2008,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_rounds_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
-          childs: [{ from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' }],
+          childs: [{ from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' }],
           log: { field: "_rounds", value: "id" },
         },
         {
@@ -2019,7 +2019,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2051,7 +2051,7 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" }, filter: '{"isAvailable":false}' },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2073,7 +2073,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2104,8 +2104,8 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2126,7 +2126,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2146,7 +2146,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2175,8 +2175,8 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2197,7 +2197,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2217,7 +2217,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2246,8 +2246,8 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2268,7 +2268,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2288,7 +2288,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2317,8 +2317,8 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_ones" }, to: { db: "minigame_arc", postfix: "_ones_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2339,7 +2339,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_ones_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2359,7 +2359,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2388,8 +2388,8 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2410,7 +2410,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2430,7 +2430,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2459,8 +2459,8 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2481,7 +2481,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2501,7 +2501,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2530,7 +2530,7 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2551,7 +2551,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2580,7 +2580,7 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2601,7 +2601,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2630,7 +2630,7 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2651,7 +2651,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2679,8 +2679,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2692,7 +2692,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2712,7 +2712,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2741,8 +2741,8 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2763,7 +2763,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2783,7 +2783,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2812,8 +2812,8 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2834,7 +2834,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2854,7 +2854,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2888,8 +2888,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
           ],
           log: { field: "_rounds", value: "id" },
@@ -2911,7 +2911,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2931,7 +2931,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2963,8 +2963,8 @@ deploy: {
           alias: { time: "time" },
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -2976,7 +2976,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -2996,7 +2996,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -3028,7 +3028,7 @@ deploy: {
               from: { db: "minigame", postfix: "_bets" },
               to: { db: "minigame_arc", postfix: "_bets_bk" },
               config: { foreignField: "roundId" },
-              filter: '{"playerId":{"$gt":0}}',
+              filter: '{"playerId":{"$ne":null}}',
               log: { field: "_bets", value: "id" },
             },
           ],
@@ -3042,7 +3042,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
           log: { field: "_bets", value: "id" },
         },
         {
@@ -3074,8 +3074,8 @@ deploy: {
           config: { cutOffsetHours: -24, localField: "id" },
           childs: [
             { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
-            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$gt":0}}' },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
           ],
           log: { field: "_rounds", value: "id" },
         },
@@ -3096,7 +3096,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -3116,7 +3116,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_betlogs_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
         },
         {
           ...commonConfig,
@@ -3150,7 +3150,7 @@ deploy: {
               from: { db: "minigame", postfix: "_bets" },
               to: { db: "minigame_arc", postfix: "_bets_bk" },
               config: { foreignField: "roundId" },
-              filter: '{"playerId":{"$gt":0}}',
+              filter: '{"playerId":{"$ne":null}}',
               log: { field: "_bets", value: "id" },
             },
           ],
@@ -3164,7 +3164,7 @@ deploy: {
           to: { db: "minigame_arc", postfix: "_bets_bk" },
           alias: { time: "time" },
           config: { cutOffsetHours: -24 * 8 },
-          filter: '{"playerId":{"$gt":0}}',
+          filter: '{"playerId":{"$ne":null}}',
           log: { field: "_bets", value: "id" },
         },
         {

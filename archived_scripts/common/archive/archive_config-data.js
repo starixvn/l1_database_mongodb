@@ -152,8 +152,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `taixiu_cuocs`, to: `taixiu_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `taixiu_ones`, to: `taixiu_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `taixiu_cuocs`, to: `taixiu_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `taixiu_ones`, to: `taixiu_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `taixiu_results`, to: `taixiu_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -200,7 +200,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `xocxoc_cuocs`, to: `xocxoc_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `xocxoc_cuocs`, to: `xocxoc_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `xocxoc_results`, to: `xocxoc_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -237,7 +237,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `baucua_cuocs`, to: `baucua_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `baucua_cuocs`, to: `baucua_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `baucua_results`, to: `baucua_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -274,8 +274,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `txturbo_cuocs`, to: `txturbo_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `txturbo_ones`, to: `txturbo_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `txturbo_cuocs`, to: `txturbo_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `txturbo_ones`, to: `txturbo_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `txturbo_results`, to: `txturbo_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -322,8 +322,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `chanle_cuocs`, to: `chanle_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `chanle_ones`, to: `chanle_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `chanle_cuocs`, to: `chanle_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `chanle_ones`, to: `chanle_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -359,8 +359,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `chanleturbo_cuocs`, to: `chanleturbo_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `chanleturbo_ones`, to: `chanleturbo_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `chanleturbo_cuocs`, to: `chanleturbo_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `chanleturbo_ones`, to: `chanleturbo_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -395,7 +395,7 @@ deploy: {
         logField: `_phiens`,
         logValue: `id`,
       },
-      childs: [{ from: `minidragontiger_cuocs`, to: `minidragontiger_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: `minidragontiger_cuocs`, to: `minidragontiger_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39007.101,
@@ -419,7 +419,7 @@ deploy: {
         logField: `_phiens`,
         logValue: `id`,
       },
-      childs: [{ from: `kenopromax_cuocs`, to: `kenopromax_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: `kenopromax_cuocs`, to: `kenopromax_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39008.101,
@@ -444,7 +444,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `minisedie_cuocs`, to: `minisedie_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `minisedie_cuocs`, to: `minisedie_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `minisedie_results`, to: `minisedie_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -481,7 +481,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `baccarat_cuocs`, to: `baccarat_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `baccarat_cuocs`, to: `baccarat_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `baccarat_results`, to: `baccarat_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -518,8 +518,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenoproviet_cuocs`, to: `kenoproviet_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenoproviet_ones`, to: `kenoproviet_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenoproviet_cuocs`, to: `kenoproviet_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenoproviet_ones`, to: `kenoproviet_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `kenoproviet_phiens_log`, to: `kenoproviet_phiens_log_bk`, join: `id`, updateOnly: false, filter: {} },
       ],
     },
@@ -566,8 +566,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenomax_cuocs`, to: `kenomax_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenomax_ones`, to: `kenomax_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenomax_cuocs`, to: `kenomax_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenomax_ones`, to: `kenomax_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `kenomax_results`, to: `kenomax_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -614,8 +614,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenomax2_cuocs`, to: `kenomax2_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenomax2_ones`, to: `kenomax2_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenomax2_cuocs`, to: `kenomax2_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenomax2_ones`, to: `kenomax2_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `kenomax2_results`, to: `kenomax2_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -662,8 +662,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenomini_cuocs`, to: `kenomini_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenomini_ones`, to: `kenomini_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenomini_cuocs`, to: `kenomini_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenomini_ones`, to: `kenomini_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `kenomini_results`, to: `kenomini_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -710,8 +710,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenomini2_cuocs`, to: `kenomini2_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenomini2_ones`, to: `kenomini2_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenomini2_cuocs`, to: `kenomini2_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenomini2_ones`, to: `kenomini2_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `kenomini2_results`, to: `kenomini2_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -758,8 +758,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenoeast_cuocs`, to: `kenoeast_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenoeast_ones`, to: `kenoeast_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenoeast_cuocs`, to: `kenoeast_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenoeast_ones`, to: `kenoeast_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `kenoeast_results`, to: `kenoeast_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -806,8 +806,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenowest_cuocs`, to: `kenowest_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenowest_ones`, to: `kenowest_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenowest_cuocs`, to: `kenowest_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenowest_ones`, to: `kenowest_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `kenowest_results`, to: `kenowest_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -854,8 +854,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenosouth_cuocs`, to: `kenosouth_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenosouth_ones`, to: `kenosouth_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenosouth_cuocs`, to: `kenosouth_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenosouth_ones`, to: `kenosouth_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `kenosouth_results`, to: `kenosouth_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -902,8 +902,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenonorth_cuocs`, to: `kenonorth_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenonorth_ones`, to: `kenonorth_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenonorth_cuocs`, to: `kenonorth_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenonorth_ones`, to: `kenonorth_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `kenonorth_results`, to: `kenonorth_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -950,8 +950,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `roulette_cuocs`, to: `roulette_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `roulette_ones`, to: `roulette_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `roulette_cuocs`, to: `roulette_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `roulette_ones`, to: `roulette_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -987,7 +987,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `vipsedie_cuocs`, to: `vipsedie_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `vipsedie_cuocs`, to: `vipsedie_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `vipsedie_results`, to: `vipsedie_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -1023,7 +1023,7 @@ deploy: {
         logField: `_phiens`,
         logValue: `id`,
       },
-      childs: [{ from: `blackjack_cuocs`, to: `blackjack_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_cuocs`, logValue: `id` }],
+      childs: [{ from: `blackjack_cuocs`, to: `blackjack_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_cuocs`, logValue: `id` }],
     },
     {
       _id: 39023.101,
@@ -1048,8 +1048,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `specialsedie_cuocs`, to: `specialsedie_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `specialsedie_ones`, to: `specialsedie_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `specialsedie_cuocs`, to: `specialsedie_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `specialsedie_ones`, to: `specialsedie_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -1085,8 +1085,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `sicbo_cuocs`, to: `sicbo_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `sicbo_ones`, to: `sicbo_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `sicbo_cuocs`, to: `sicbo_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `sicbo_ones`, to: `sicbo_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `sicbo_results`, to: `sicbo_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -1132,7 +1132,7 @@ deploy: {
         logField: `_phiens`,
         logValue: `id`,
       },
-      childs: [{ from: `vipfishprawncrab_cuocs`, to: `vipfishprawncrab_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: `vipfishprawncrab_cuocs`, to: `vipfishprawncrab_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39026.101,
@@ -1157,7 +1157,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `vipbaccarat_cuocs`, to: `vipbaccarat_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `vipbaccarat_cuocs`, to: `vipbaccarat_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `vipbaccarat_results`, to: `vipbaccarat_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -1194,8 +1194,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `vipsediewar_cuocs`, to: `vipsediewar_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `vipsediewar_ones`, to: `vipsediewar_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `vipsediewar_cuocs`, to: `vipsediewar_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `vipsediewar_ones`, to: `vipsediewar_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `vipsediewar_results`, to: `vipsediewar_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -1242,8 +1242,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `fourguardians_fames`, to: `fourguardians_fames_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `fourguardians_freespins`, to: `fourguardians_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` },
+        { from: `fourguardians_fames`, to: `fourguardians_fames_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `fourguardians_freespins`, to: `fourguardians_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` },
       ],
     },
     {
@@ -1279,7 +1279,7 @@ deploy: {
         logField: `_phiens`,
         logValue: `id`,
       },
-      childs: [{ from: `fishprawncrabpro_cuocs`, to: `fishprawncrabpro_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: `fishprawncrabpro_cuocs`, to: `fishprawncrabpro_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39030.101,
@@ -1304,8 +1304,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `lottery_cuocs`, to: `lottery_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `lottery_ones`, to: `lottery_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `lottery_cuocs`, to: `lottery_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `lottery_ones`, to: `lottery_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -1340,7 +1340,7 @@ deploy: {
         logField: `_phiens`,
         logValue: `id`,
       },
-      childs: [{ from: `baccaratdiamond_cuocs`, to: `baccaratdiamond_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: `baccaratdiamond_cuocs`, to: `baccaratdiamond_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39032.101,
@@ -1364,7 +1364,7 @@ deploy: {
         logField: `_phiens`,
         logValue: `id`,
       },
-      childs: [{ from: `baccaratsapphire_cuocs`, to: `baccaratsapphire_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: `baccaratsapphire_cuocs`, to: `baccaratsapphire_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39033.101,
@@ -1388,7 +1388,7 @@ deploy: {
         logField: `_phiens`,
         logValue: `id`,
       },
-      childs: [{ from: `baccaratruby_cuocs`, to: `baccaratruby_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: `baccaratruby_cuocs`, to: `baccaratruby_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39034.101,
@@ -1412,7 +1412,7 @@ deploy: {
         logField: `_phiens`,
         logValue: `id`,
       },
-      childs: [{ from: `threecards_cuocs`, to: `threecards_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: `threecards_cuocs`, to: `threecards_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39035.101,
@@ -1437,8 +1437,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenomatch1_cuocs`, to: `kenomatch1_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenomatch1_ones`, to: `kenomatch1_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenomatch1_cuocs`, to: `kenomatch1_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenomatch1_ones`, to: `kenomatch1_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -1474,8 +1474,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenomatch2_cuocs`, to: `kenomatch2_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenomatch2_ones`, to: `kenomatch2_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenomatch2_cuocs`, to: `kenomatch2_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenomatch2_ones`, to: `kenomatch2_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -1511,8 +1511,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `heroesslot_fames`, to: `heroesslot_fames_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `heroesslot_freespins`, to: `heroesslot_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` },
+        { from: `heroesslot_fames`, to: `heroesslot_fames_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `heroesslot_freespins`, to: `heroesslot_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` },
       ],
     },
     {
@@ -1549,7 +1549,7 @@ deploy: {
         logValue: "id",
       },
       childs: [
-        { from: "casinoholdempoker_cuocs", to: "casinoholdempoker_cuocs_bk", join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: "_cuocs", logValue: "id" },
+        { from: "casinoholdempoker_cuocs", to: "casinoholdempoker_cuocs_bk", join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: "_cuocs", logValue: "id" },
       ],
     },
     {
@@ -1575,8 +1575,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenopower1_cuocs`, to: `kenopower1_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenopower1_ones`, to: `kenopower1_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenopower1_cuocs`, to: `kenopower1_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenopower1_ones`, to: `kenopower1_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -1612,8 +1612,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `kenopower2_cuocs`, to: `kenopower2_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `kenopower2_ones`, to: `kenopower2_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `kenopower2_cuocs`, to: `kenopower2_cuocs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `kenopower2_ones`, to: `kenopower2_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -1648,7 +1648,7 @@ deploy: {
         logField: "_phiens",
         logValue: "id",
       },
-      childs: [{ from: "texasholdempoker_cuocs", to: "texasholdempoker_cuocs_bk", join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: "texasholdempoker_cuocs", to: "texasholdempoker_cuocs_bk", join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39042.101,
@@ -1673,8 +1673,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `bitcoinmaster_betlogs`, to: `bitcoinmaster_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `bitcoinmaster_bets`, to: `bitcoinmaster_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `bitcoinmaster_betlogs`, to: `bitcoinmaster_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `bitcoinmaster_bets`, to: `bitcoinmaster_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -1720,7 +1720,7 @@ deploy: {
         logField: "_phiens",
         logValue: "id",
       },
-      childs: [{ from: "paigowpoker_cuocs", to: "paigowpoker_cuocs_bk", join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: "paigowpoker_cuocs", to: "paigowpoker_cuocs_bk", join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39044.101,
@@ -1744,7 +1744,7 @@ deploy: {
         logField: "_rounds",
         logValue: "id",
       },
-      childs: [{ from: "hilo_betlogs", to: "hilo_betlogs_bk", join: "roundId", updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: "hilo_betlogs", to: "hilo_betlogs_bk", join: "roundId", updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39045.101,
@@ -1769,8 +1769,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `nightclub_fames`, to: `nightclub_fames_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `nightclub_freespins`, to: `nightclub_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` },
+        { from: `nightclub_fames`, to: `nightclub_fames_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `nightclub_freespins`, to: `nightclub_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` },
       ],
     },
     {
@@ -1807,7 +1807,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `treasureisland_freespins`, to: `treasureisland_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` },
+        { from: `treasureisland_freespins`, to: `treasureisland_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` },
       ],
     },
     {
@@ -1843,7 +1843,7 @@ deploy: {
         logField: `_rounds`,
         logValue: `id`,
       },
-      childs: [{ from: `blockchainbaccarat_bets`, to: `blockchainbaccarat_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } }],
+      childs: [{ from: `blockchainbaccarat_bets`, to: `blockchainbaccarat_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } }],
     },
     {
       _id: 39048.101,
@@ -1879,8 +1879,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `waytogoal_fames`, to: `waytogoal_fames_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `waytogoal_freespins`, to: `waytogoal_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` },
+        { from: `waytogoal_fames`, to: `waytogoal_fames_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `waytogoal_freespins`, to: `waytogoal_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` },
       ],
     },
     {
@@ -1917,8 +1917,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `unbalancedbigsmall1_betlogs`, to: `unbalancedbigsmall1_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `unbalancedbigsmall1_bets`, to: `unbalancedbigsmall1_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `unbalancedbigsmall1_betlogs`, to: `unbalancedbigsmall1_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `unbalancedbigsmall1_bets`, to: `unbalancedbigsmall1_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `unbalancedbigsmall1_results`, to: `unbalancedbigsmall1_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -1965,8 +1965,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `unbalancedbigsmall2_betlogs`, to: `unbalancedbigsmall2_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `unbalancedbigsmall2_bets`, to: `unbalancedbigsmall2_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `unbalancedbigsmall2_betlogs`, to: `unbalancedbigsmall2_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `unbalancedbigsmall2_bets`, to: `unbalancedbigsmall2_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `unbalancedbigsmall2_results`, to: `unbalancedbigsmall2_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2013,8 +2013,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `megakeno_bets`, to: `megakeno_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `megakeno_ones`, to: `megakeno_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `megakeno_bets`, to: `megakeno_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `megakeno_ones`, to: `megakeno_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `megakeno_results`, to: `megakeno_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2061,8 +2061,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `megakeno2_bets`, to: `megakeno2_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `megakeno2_ones`, to: `megakeno2_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `megakeno2_bets`, to: `megakeno2_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `megakeno2_ones`, to: `megakeno2_ones_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `megakeno2_results`, to: `megakeno2_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2109,8 +2109,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `unbalancedbigsmall3_betlogs`, to: `unbalancedbigsmall3_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `unbalancedbigsmall3_bets`, to: `unbalancedbigsmall3_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `unbalancedbigsmall3_betlogs`, to: `unbalancedbigsmall3_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `unbalancedbigsmall3_bets`, to: `unbalancedbigsmall3_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `unbalancedbigsmall3_results`, to: `unbalancedbigsmall3_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2157,8 +2157,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `unbalancedbigsmall4_betlogs`, to: `unbalancedbigsmall4_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `unbalancedbigsmall4_bets`, to: `unbalancedbigsmall4_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `unbalancedbigsmall4_betlogs`, to: `unbalancedbigsmall4_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `unbalancedbigsmall4_bets`, to: `unbalancedbigsmall4_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `unbalancedbigsmall4_results`, to: `unbalancedbigsmall4_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2205,7 +2205,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `minisedie2_bets`, to: `minisedie2_bets_bk`, join: `roundId`, updateOnly: false, filter: { playerId: { $gt: 0 } } },
+        { from: `minisedie2_bets`, to: `minisedie2_bets_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ playerId: { $gt: 0 } }, { playerId: { $gt: "" } }] } },
         { from: `minisedie2_results`, to: `minisedie2_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2242,7 +2242,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `minisedie3_bets`, to: `minisedie3_bets_bk`, join: `roundId`, updateOnly: false, filter: { playerId: { $gt: 0 } } },
+        { from: `minisedie3_bets`, to: `minisedie3_bets_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ playerId: { $gt: 0 } }, { playerId: { $gt: "" } }] } },
         { from: `minisedie3_results`, to: `minisedie3_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2279,7 +2279,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `minisedie4_bets`, to: `minisedie4_bets_bk`, join: `roundId`, updateOnly: false, filter: { playerId: { $gt: 0 } } },
+        { from: `minisedie4_bets`, to: `minisedie4_bets_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ playerId: { $gt: 0 } }, { playerId: { $gt: "" } }] } },
         { from: `minisedie4_results`, to: `minisedie4_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2316,8 +2316,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `fruitslot_betlogs`, to: `fruitslot_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `fruitslot_bets`, to: `fruitslot_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `fruitslot_betlogs`, to: `fruitslot_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `fruitslot_bets`, to: `fruitslot_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
       ],
     },
     {
@@ -2353,7 +2353,7 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `fantan_bets`, to: `fantan_bets_bk`, join: `roundId`, updateOnly: false, filter: { playerId: { $gt: 0 } } },
+        { from: `fantan_bets`, to: `fantan_bets_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ playerId: { $gt: 0 } }, { playerId: { $gt: "" } }] } },
         { from: `fantan_results`, to: `fantan_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2390,8 +2390,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `winthreecards_betlogs`, to: `winthreecards_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `winthreecards_bets`, to: `winthreecards_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `winthreecards_betlogs`, to: `winthreecards_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `winthreecards_bets`, to: `winthreecards_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `winthreecards_results`, to: `winthreecards_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2438,8 +2438,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `fortunecat_fames`, to: `fortunecat_fames_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `fortunecat_freespins`, to: `fortunecat_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` },
+        { from: `fortunecat_fames`, to: `fortunecat_fames_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `fortunecat_freespins`, to: `fortunecat_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` },
       ],
     },
     {
@@ -2476,8 +2476,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `happyfish_fames`, to: `happyfish_fames_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `happyfish_freespins`, to: `happyfish_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` },
+        { from: `happyfish_fames`, to: `happyfish_fames_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `happyfish_freespins`, to: `happyfish_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` },
       ],
     },
     {
@@ -2514,8 +2514,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `magicforest_fames`, to: `magicforest_fames_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `magicforest_freespins`, to: `magicforest_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` },
+        { from: `magicforest_fames`, to: `magicforest_fames_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `magicforest_freespins`, to: `magicforest_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` },
       ],
     },
     {
@@ -2552,8 +2552,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `djclub_fames`, to: `djclub_fames_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `djclub_freespins`, to: `djclub_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` },
+        { from: `djclub_fames`, to: `djclub_fames_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `djclub_freespins`, to: `djclub_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` },
       ],
     },
     {
@@ -2589,7 +2589,7 @@ deploy: {
         logField: `_rounds`,
         logValue: `id`,
       },
-      childs: [{ from: `candyland_freespins`, to: `candyland_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` }],
+      childs: [{ from: `candyland_freespins`, to: `candyland_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` }],
     },
     {
       _id: 39066.1,
@@ -2625,8 +2625,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `dragontigerfight_betlogs`, to: `dragontigerfight_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `dragontigerfight_bets`, to: `dragontigerfight_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `dragontigerfight_betlogs`, to: `dragontigerfight_betlogs_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `dragontigerfight_bets`, to: `dragontigerfight_bets_bk`, join: mapping.roundId, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         { from: `dragontigerfight_results`, to: `dragontigerfight_results_bk`, join: `roundId`, updateOnly: false, filter: {} },
       ],
     },
@@ -2673,13 +2673,13 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `missionimpossible_fames`, to: `missionimpossible_fames_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
+        { from: `missionimpossible_fames`, to: `missionimpossible_fames_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
         {
           from: `missionimpossible_freespins`,
           to: `missionimpossible_freespins_bk`,
           join: `roundId`,
           updateOnly: false,
-          filter: { [mapping.playerId]: { $gt: 0 } },
+          filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] },
           logField: `_freespins`,
           logValue: `id`,
         },
@@ -2719,8 +2719,8 @@ deploy: {
         logValue: `id`,
       },
       childs: [
-        { from: `blackpink_fames`, to: `blackpink_fames_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } } },
-        { from: `blackpink_freespins`, to: `blackpink_freespins_bk`, join: `roundId`, updateOnly: false, filter: { [mapping.playerId]: { $gt: 0 } }, logField: `_freespins`, logValue: `id` },
+        { from: `blackpink_fames`, to: `blackpink_fames_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+        { from: `blackpink_freespins`, to: `blackpink_freespins_bk`, join: `roundId`, updateOnly: false, filter: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] }, logField: `_freespins`, logValue: `id` },
       ],
     },
     {

@@ -10,7 +10,7 @@ deploy: {
     time_currency_gameId_operator_site_U: $Index({ time: 1, currency: 1, gameId: 1, operatorId: 1, siteId: 1 }, { unique: true }),
     gameId_currency_operator_site_time_round_U: $Index({ gameId: 1, currency: 1, operatorId: 1, siteId: 1, time: 1, roundId: 1 }, { unique: true }),
     gameId_round_operator_player_U: $Index({ gameId: 1, roundId: 1, operatorId: 1, playerId: 1 }, { unique: true }),
-    time_currency_gameId_system_partner_U: $Index({ time: 1, currency: 1, gameId: 1, system: 1, partnerId: 1 }, { unique: true }),
+    time_currency_gameId_system_partner_U: $Index({ time: 1, currency: 1, gameId: 1, system: 1, operatorId: 1 }, { unique: true }),
     gameId_system_time: $Index({ gameId: 1, system: 1, time: 1 }),
     gameId_U: $Index({ gameId: 1 }, { unique: true }),
     owGameTypeId_FU: $Index({ owGameTypeId: 1 }, { unique: true, partialFilterExpression: { owGameTypeId: { $gt: 0 } } }),
@@ -50,14 +50,14 @@ deploy: {
   if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   (global.___idx = global.___idx ?? {})[label] = {
-    time_currency_gameId_cash_partner_U: $Index({ time: 1, currency: 1, gameId: 1, isCash: 1, partnerId: 1 }, { unique: true }),
-    time_currency_gameId_system_partner_U: $Index({ time: 1, currency: 1, gameId: 1, system: 1, partnerId: 1 }, { unique: true }),
+    time_currency_gameId_cash_partner_U: $Index({ time: 1, currency: 1, gameId: 1, isCash: 1, operatorId: 1 }, { unique: true }),
+    time_currency_gameId_system_partner_U: $Index({ time: 1, currency: 1, gameId: 1, system: 1, operatorId: 1 }, { unique: true }),
     gameId_currency_operator_time_round_U: $Index({ gameId: 1, currency: 1, operatorId: 1, time: 1, roundId: 1 }, { unique: true }),
     gameId_currency: $Index({ gameId: 1, currency: 1 }),
     gameId_U: $Index({ gameId: 1 }, { unique: true }),
     owGameTypeId_FU: $Index({ owGameTypeId: 1 }, { unique: true, partialFilterExpression: { owGameTypeId: { $gt: 0 } } }),
     gameId_patId_time: $Index({ gameId: 1, patId: 1, time: 1 }),
-    gameId_memberId_time_U: $Index({ gameId: 1, memberId: 1, time: 1 }, { unique: true }),
+    gameId_memberId_time_U: $Index({ gameId: 1, playerId: 1, time: 1 }, { unique: true }),
     gameId_time_group: $Index({ gameId: 1, time: 1, group: 1 }),
   };
 

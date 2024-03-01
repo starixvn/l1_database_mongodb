@@ -21,7 +21,7 @@ deploy: {
             do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
             paid_uid: '{"key":{"paid":1,"uid":1}}',
             currency: '{"key":{"__archive.currency":1,"currency":1,"playerId":1,"uid":1}}',
-            playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"playerId":{"$gt":0}}}',
+            playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"$or":[{"playerId":{"$gt":0}},{"playerId":{"$gt":""}}]}}',
           },
         },
         {
@@ -57,7 +57,7 @@ deploy: {
             do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
             paid_uid: '{"key":{"paid":1,"uid":1}}',
             currency: '{"key":{"__archive.currency":1,"currency":1,"playerId":1,"uid":1}}',
-            playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"playerId":{"$gt":0}}}',
+            playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"$or":[{"playerId":{"$gt":0}},{"playerId":{"$gt":""}}]}}',
           },
         },
         {
@@ -114,7 +114,7 @@ deploy: {
             TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
             time: '{"key":{"time":1}}',
             roundId: '{"key":{"roundId":1,"_id":1}}',
-            player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"playerId":{"$gt":0}}}',
+            player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"$or":[{"playerId":{"$gt":0}},{"playerId":{"$gt":""}}]}}',
             uid: '{"key":{"uid":1}}',
           },
         },
@@ -124,7 +124,7 @@ deploy: {
             TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
             time: '{"key":{"time":1}}',
             roundId: '{"key":{"roundId":1,"_id":1}}',
-            player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"playerId":{"$gt":0}}}',
+            player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"$or":[{"playerId":{"$gt":0}},{"playerId":{"$gt":""}}]}}',
             uid_roundId: '{"key":{"uid":1,"roundId":1},"unique":true}',
             uid_paid: '{"key":{"uid":1,"paid":1,"_id":1}}',
             summarized: '{"key":{"__archive.summarized":1}}',
@@ -134,7 +134,7 @@ deploy: {
         {
           ns: { db: "minigame", postfix: "_tmpbetlogs" },
           idxs: {
-            timeTTL: '{"key":{"time":1},"expireAfterSeconds":120}',
+            timeTTL: '{"key":{"time":1},"expireAfterSeconds":1200}',
             roundId: '{"key":{"roundId":1,"_id":1}}',
             uid: '{"key":{"uid":1}}',
           },
@@ -142,7 +142,7 @@ deploy: {
         {
           ns: { db: "minigame", postfix: "_tmpbets" },
           idxs: {
-            timeTTL: '{"key":{"time":1},"expireAfterSeconds":120}',
+            timeTTL: '{"key":{"time":1},"expireAfterSeconds":1200}',
             roundId: '{"key":{"roundId":1,"_id":1}}',
             uid_roundId: '{"key":{"uid":1,"roundId":1}}',
           },
