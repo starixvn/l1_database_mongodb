@@ -1,6 +1,6 @@
 deploy: {
   const dbs = DBs(db);
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
+  if (![1, 2, 4].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["archive"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   const roles = {

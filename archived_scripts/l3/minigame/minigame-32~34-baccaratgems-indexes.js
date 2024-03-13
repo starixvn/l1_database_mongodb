@@ -12,11 +12,7 @@ deploy: {
     BL_phien: $Index({ roundId: 1 }, { partialFilterExpression: { _id: { $lt: 0 } } }),
   };
   const BL = {
-    cuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id]),
-      [2]: $_,
-      [3]: [idx.BL_phien],
-    }[L],
+    cuocs: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId, idx.uid_paid__id],
   };
   const idxs = [
     $Indexes(dbs.minigame.baccaratdiamond_phiens, [idx.TTL, idx.time, idx.id]),
