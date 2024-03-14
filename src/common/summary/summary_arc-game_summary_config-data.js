@@ -2,7 +2,7 @@ deploy: {
   const dbs = DBs(db);
   const label = `summary_arc-game_summary_config@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
-  if (![1, 2].includes(L)) break deploy;
+  if (![1, 2, 4].includes(L)) break deploy;
   if (!["archive", "mixed"].includes(stage)) break deploy;
 
   const game_summary = [

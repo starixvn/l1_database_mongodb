@@ -2,7 +2,7 @@ deploy: {
   const dbs = DBs(db);
   const label = `minigame-user@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
-  if (![1, 2].includes(L)) break deploy;
+  if (![1, 2, 4].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   (global.___colls = global.___colls ?? {})[label] = [
