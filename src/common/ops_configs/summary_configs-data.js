@@ -757,7 +757,21 @@ deploy: {
       calc: {
         roundId: '"$id"',
         tickets: '{"$literal":1}',
-        stake: '{"$multiply":["$bet",{"$toInt":{"$not":"$freeBet"}}]}',
+        stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
+        payout: '"$betwin"',
+        refund: '{"$literal":0}',
+      },
+    },
+    {
+      ...commonConfig,
+      gameConfigs: { gameId: 78, name: "footballdice" },
+      db: "minigame",
+      coll: { round: "_rounds", bet: "_bets" },
+      aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+      calc: {
+        roundId: '"$id"',
+        tickets: '{"$literal":1}',
+        stake: '"$totalAmount"',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
       },

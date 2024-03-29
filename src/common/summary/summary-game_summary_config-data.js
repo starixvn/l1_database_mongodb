@@ -481,6 +481,12 @@ deploy: {
       coll: { db: `minigame`, group: `chineseblackjack`, round: `_rounds`, postfix: `_bets` },
     },
     {
+      gameId: 78,
+      owGameTypeId: { [1]: 1685, [2]: 3877 }[L],
+      name: { en: `Football Dice`, vi: `Football Dice`, grp: `Football Dice`, game: `Football Dice` },
+      coll: { db: `minigame`, group: `footballdice`, round: `_rounds`, postfix: `_bets` },
+    },
+    {
       gameId: 99,
       owGameTypeId: { [1]: 1699, [2]: 3899 }[L],
       name: { en: `Jackpot Prize`, vi: `Giải Jackpot`, grp: `Slots`, game: `Jackpot` },
