@@ -757,7 +757,7 @@ deploy: {
       calc: {
         roundId: '"$id"',
         tickets: '{"$literal":1}',
-        stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
+        stake: '{"$multiply":["$bet",{"$toInt":{"$not":"$freeBet"}}]}',
         payout: '"$betwin"',
         refund: '{"$literal":0}',
       },
