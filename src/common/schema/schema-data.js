@@ -191,7 +191,7 @@ deploy: {
         [{ $project: { _id: 0 } }],
         [
           $BICol(`time`, `time`, `date`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`memberName`, `memberName`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`currencyCode`, `currencyCode`, `str`),
@@ -312,7 +312,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -426,7 +426,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -523,7 +523,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -610,7 +610,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -709,7 +709,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -792,7 +792,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -884,7 +884,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1047,7 +1047,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1143,7 +1143,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1192,7 +1192,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -1232,7 +1232,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -1309,7 +1309,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1358,7 +1358,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -1398,7 +1398,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -1475,7 +1475,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1684,7 +1684,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1733,7 +1733,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -1773,7 +1773,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -1850,7 +1850,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1899,7 +1899,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -1939,7 +1939,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -2010,7 +2010,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2157,7 +2157,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2206,7 +2206,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -2246,7 +2246,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -2341,7 +2341,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2449,7 +2449,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2557,7 +2557,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2665,7 +2665,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2773,7 +2773,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2881,7 +2881,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2989,7 +2989,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3097,7 +3097,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3245,7 +3245,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3400,7 +3400,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3532,7 +3532,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3657,7 +3657,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3768,7 +3768,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3880,7 +3880,7 @@ deploy: {
             $BICol(`phien`, `roundId`, `int64`),
             /* Member */
             $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
+            $BICol(`memberId`, `memberId`, `str`),
             $BICol(`name`, `nickname`, `str`),
             $BICol(`currency`, `currency`, `str`),
             $BICol(`partnerId`, `partnerId`, `str`),
@@ -3971,7 +3971,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4070,7 +4070,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4178,7 +4178,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4269,7 +4269,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4374,7 +4374,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4481,7 +4481,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4588,7 +4588,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4695,7 +4695,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4783,7 +4783,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4832,7 +4832,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -4872,7 +4872,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -4954,7 +4954,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5092,7 +5092,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5114,7 +5114,7 @@ deploy: {
         [],
         [
           $BICol(`_id`, `patId`, `int64`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`time`, `time`, `date`),
           $BICol(`group`, `group`, `str`),
           $BICol(`stake`, `stake`, `float`),
@@ -5142,7 +5142,7 @@ deploy: {
         [],
         [
           $BICol(`_id`, `patId`, `int64`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`time`, `time`, `date`),
           $BICol(`group`, `group`, `str`),
           $BICol(`stake`, `stake`, `float`),
@@ -5170,7 +5170,7 @@ deploy: {
         [],
         [
           $BICol(`_id`, `patId`, `int64`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`time`, `time`, `date`),
           $BICol(`group`, `group`, `str`),
           $BICol(`stake`, `stake`, `float`),
@@ -5198,7 +5198,7 @@ deploy: {
         [],
         [
           $BICol(`_id`, `patId`, `int64`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`time`, `time`, `date`),
           $BICol(`group`, `group`, `str`),
           $BICol(`stake`, `stake`, `float`),
@@ -5302,7 +5302,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5329,7 +5329,7 @@ deploy: {
           [{ $project: { _id: 0 } }],
           [
             $BICol(`roundId`, `roundId`, `int64`),
-            $BICol(`memberId`, `memberId`, `int64`),
+            $BICol(`memberId`, `memberId`, `str`),
             $BICol(`spinCnt`, `spinCnt`, `int64`),
             $BICol(`time`, `time`, `date`),
             $BICol(`expiryDate`, `expiryDate`, `date`),
@@ -5345,7 +5345,7 @@ deploy: {
           `spins`,
           [{ $project: { _id: 0 } }],
           [
-            $BICol(`memberId`, `memberId`, `int64`),
+            $BICol(`memberId`, `memberId`, `str`),
             $BICol(`availSpins`, `availSpins`, `int64`),
             $BICol(`usedSpins`, `usedSpins`, `int64`),
             $BICol(`enabled`, `enabled`, `bool`),
@@ -5364,7 +5364,7 @@ deploy: {
             $BICol(`uid`, `uid`, `str`),
             $BICol(`name`, `name`, `str`),
             $BICol(`result`, `result`, `float`),
-            $BICol(`memberId`, `memberId`, `int64`),
+            $BICol(`memberId`, `memberId`, `str`),
             $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
           ]
         ),
@@ -5446,7 +5446,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5525,7 +5525,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5606,7 +5606,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5655,7 +5655,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -5689,7 +5689,7 @@ deploy: {
           $BICol(`time`, `time`, `date`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`playerId`, `memberId`, `int64`),
+          $BICol(`playerId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           /* Additional Info */
           $BICol(`ended`, `ended`, `bool`),
@@ -5770,7 +5770,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5869,7 +5869,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5958,7 +5958,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6045,7 +6045,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6132,7 +6132,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6219,7 +6219,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6309,7 +6309,7 @@ deploy: {
           },
         ],
         [
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`memberName`, `memberName`, `str`),
           $BICol(`userId`, `userId`, `str`),
           $BICol(`username`, `username`, `str`),
@@ -6408,7 +6408,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6522,7 +6522,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6633,7 +6633,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6785,7 +6785,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6884,7 +6884,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6933,7 +6933,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -6973,7 +6973,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -7067,7 +7067,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -7185,7 +7185,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -7279,7 +7279,7 @@ deploy: {
           $BICol(`currency`, `currency`, `str`),
           $BICol(`isCash`, `isCash`, `bool`),
           $BICol(`operatorId`, `operatorId`, `str`),
-          $BICol(`playerIds`, `playerId`, `int64`),
+          $BICol(`playerIds`, `playerId`, `str`),
           $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
         ]
       ),
@@ -7315,7 +7315,7 @@ deploy: {
           $BICol(`currency`, `currency`, `str`),
           $BICol(`isCash`, `isCash`, `bool`),
           $BICol(`operatorId`, `operatorId`, `str`),
-          $BICol(`playerIds`, `playerId`, `int64`),
+          $BICol(`playerIds`, `playerId`, `str`),
           $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
         ]
       ),
