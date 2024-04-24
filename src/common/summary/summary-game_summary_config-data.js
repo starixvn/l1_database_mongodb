@@ -461,6 +461,7 @@ deploy: {
       owGameTypeId: { [1]: 1682, [2]: 3874 }[L],
       name: { en: `One Piece`, vi: `Đảo Hải Tặc`, grp: `Slots`, game: `One Piece` },
       coll: { db: `minigame`, group: `onepiece`, round: `_rounds`, postfix: `_rounds` },
+      config: { jpCont: { [2]: 0.025 }[L] },
     },
     {
       gameId: 75,
@@ -473,6 +474,7 @@ deploy: {
       owGameTypeId: { [1]: 1683, [2]: 3875 }[L],
       name: { en: `Dragon Ball`, vi: `Bảy Viên Ngọc Rồng`, grp: `Slots`, game: `Dragon Ball` },
       coll: { db: `minigame`, group: `dragonball`, round: `_rounds`, postfix: `_rounds` },
+      config: { jpCont: { [2]: 0.025 }[L] },
     },
     {
       gameId: 77,
