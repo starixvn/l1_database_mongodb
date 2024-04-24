@@ -646,7 +646,7 @@ deploy: {
     /** exchange_codes */
     const L = dbs._mongo._identity.L;
     const time = ISODate("2021-12-14T00:00:00Z");
-    const base = { [1]: "USD", [2]: "VND" }[L];
+    const base = { [1]: "USD", [2]: "VND", [4]: "USD" }[L];
     const configs = {
       codes: [
         "AUD",
