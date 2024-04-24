@@ -640,20 +640,7 @@ deploy: {
         refund: '{"$literal":0}',
       },
     },
-    {
-      ...commonConfig,
-      gameConfigs: { gameId: 59, name: "fruitslot" },
-      db: "minigame",
-      coll: { round: "_rounds", bet: "_bets" },
-      aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
-      calc: {
-        roundId: '"$id"',
-        tickets: '{"$literal":1}',
-        stake: '"$totalAmount"',
-        payout: '"$betwin"',
-        refund: '{"$literal":0}',
-      },
-    },
+    // gameConfigs: { gameId: 59, name: "fruitslot" }, // auto
     {
       ...commonConfig,
       gameConfigs: { gameId: 60, name: "fantan" },
@@ -776,6 +763,7 @@ deploy: {
         refund: '{"$literal":0}',
       },
     },
+    // gameConfigs: { gameId: 79, name: "footballslot" }, // auto
     {
       ...commonConfig,
       gameConfigs: { gameId: 99, name: "jackpots" },
