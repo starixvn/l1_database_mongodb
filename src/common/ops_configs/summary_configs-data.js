@@ -3,7 +3,7 @@ deploy: {
   const label = `summary_configs@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
 
-  if (![1, 2].includes(L)) break deploy;
+  if (![1, 2, 4].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   const commonConfig = { category: "games", type: 0, id: 0 };
@@ -640,20 +640,7 @@ deploy: {
         refund: '{"$literal":0}',
       },
     },
-    {
-      ...commonConfig,
-      gameConfigs: { gameId: 59, name: "fruitslot" },
-      db: "minigame",
-      coll: { round: "_rounds", bet: "_bets" },
-      aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
-      calc: {
-        roundId: '"$id"',
-        tickets: '{"$literal":1}',
-        stake: '"$totalAmount"',
-        payout: '"$betwin"',
-        refund: '{"$literal":0}',
-      },
-    },
+    // gameConfigs: { gameId: 59, name: "fruitslot" }, // auto
     {
       ...commonConfig,
       gameConfigs: { gameId: 60, name: "fantan" },
@@ -762,6 +749,21 @@ deploy: {
         refund: '{"$literal":0}',
       },
     },
+    {
+      ...commonConfig,
+      gameConfigs: { gameId: 78, name: "footballdice" },
+      db: "minigame",
+      coll: { round: "_rounds", bet: "_bets" },
+      aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+      calc: {
+        roundId: '"$id"',
+        tickets: '{"$literal":1}',
+        stake: '"$totalAmount"',
+        payout: '"$betwin"',
+        refund: '{"$literal":0}',
+      },
+    },
+    // gameConfigs: { gameId: 79, name: "footballslot" }, // auto
     {
       ...commonConfig,
       gameConfigs: { gameId: 99, name: "jackpots" },

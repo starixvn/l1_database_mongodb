@@ -1,6 +1,6 @@
 deploy: {
   const dbs = DBs(db);
-  if (![1, 2, 3].includes(dbs._mongo?._identity?.L)) break deploy;
+  if (![1, 2, 4].includes(dbs._mongo?._identity?.L)) break deploy;
   if (!["active"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
   const roles = {
@@ -134,7 +134,11 @@ deploy: {
     $User(dbs.admin, "svc_readonly", [
       roles.admin         .public,
       /** active */
+      roles.log           .read,
+      roles.member        .read,
       roles.minigame      .read,
+      roles.minigame_rm   .read,
+      roles.summary       .read,
     ]),
   ];
   users.forEach(_ => _.deploy());

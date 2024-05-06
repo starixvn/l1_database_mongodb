@@ -3,7 +3,7 @@ deploy: {
   const label = `summary_templates@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
 
-  if (![1, 2].includes(L)) break deploy;
+  if (![1, 2, 4].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   (global.___data = global.___data ?? {})[label] = [
@@ -41,6 +41,25 @@ deploy: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
             stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
+            payout: '"$betwin"',
+            refund: '{"$literal":0}',
+          },
+        },
+      ],
+    },
+    {
+      category: "games",
+      type: 4,
+      targets: [{ db: "ops_configs", coll: "summary_configs" }],
+      data: [
+        {
+          db: "minigame",
+          coll: { round: "_rounds", bet: "_bets" },
+          aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+          calc: {
+            roundId: '"$id"',
+            tickets: '{"$literal":1}',
+            stake: '"$totalAmount"',
             payout: '"$betwin"',
             refund: '{"$literal":0}',
           },

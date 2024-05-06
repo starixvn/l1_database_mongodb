@@ -11,11 +11,7 @@ deploy: {
     ...global.___idx[label],
   };
   const BL = {
-    cuocs: {
-      [1]: ($_ = [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id]),
-      [2]: $_,
-      [3]: [],
-    }[L],
+    cuocs: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id],
   };
   const idxs = [
     $Indexes(dbs.minigame.paigowpoker_phiens, [idx.TTL, idx.time, idx.id, idx.ended]),

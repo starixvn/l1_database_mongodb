@@ -2,7 +2,7 @@ deploy: {
   const dbs = DBs(db);
   const label = `summary-game_summary_config@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
-  if (![1, 2].includes(L)) break deploy;
+  if (![1, 2, 4].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   const commonFields = { vendorId: { [1]: 42, [2]: 66 }[L] };
@@ -461,6 +461,7 @@ deploy: {
       owGameTypeId: { [1]: 1682, [2]: 3874 }[L],
       name: { en: `One Piece`, vi: `Đảo Hải Tặc`, grp: `Slots`, game: `One Piece` },
       coll: { db: `minigame`, group: `onepiece`, round: `_rounds`, postfix: `_rounds` },
+      config: { jpCont: { [2]: 0.025 }[L] },
     },
     {
       gameId: 75,
@@ -473,12 +474,19 @@ deploy: {
       owGameTypeId: { [1]: 1683, [2]: 3875 }[L],
       name: { en: `Dragon Ball`, vi: `Bảy Viên Ngọc Rồng`, grp: `Slots`, game: `Dragon Ball` },
       coll: { db: `minigame`, group: `dragonball`, round: `_rounds`, postfix: `_rounds` },
+      config: { jpCont: { [2]: 0.025 }[L] },
     },
     {
       gameId: 77,
       owGameTypeId: { [1]: 1684, [2]: 3876 }[L],
       name: { en: `Chinese Blackjack`, vi: `Xì Dách`, grp: `Card Games`, game: `Blackjack` },
       coll: { db: `minigame`, group: `chineseblackjack`, round: `_rounds`, postfix: `_bets` },
+    },
+    {
+      gameId: 78,
+      owGameTypeId: { [1]: 1685, [2]: 3877 }[L],
+      name: { en: `Football Dice`, vi: `Football Dice`, grp: `Football Dice`, game: `Football Dice` },
+      coll: { db: `minigame`, group: `footballdice`, round: `_rounds`, postfix: `_bets` },
     },
     {
       gameId: 99,

@@ -3,7 +3,7 @@ deploy: {
   const label = `minigame-game@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
 
-  if (![1, 2].includes(L)) break deploy;
+  if (![1, 2, 4].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   const mapping = {
@@ -20,12 +20,12 @@ deploy: {
     isAvailable: $Index({ isAvailable: 1 }, { unique: true, partialFilterExpression: { isAvailable: true } }),
     id: $Index({ id: 1 }, { unique: true }),
     isCash: $Index({ "__archive.isCash": 1, isCash: 1, [mapping.playerId]: 1, uid: 1 }),
-    memberId_id_F: $Index({ memberId: 1, id: 1 }, { partialFilterExpression: { memberId: { $gt: 0 } } }),
-    memberId_phien_F: $Index({ memberId: 1, phien: 1 }, { partialFilterExpression: { memberId: { $gt: 0 } } }),
-    memberId_roundId_F: $Index({ memberId: 1, roundId: 1 }, { partialFilterExpression: { memberId: { $gt: 0 } } }),
-    playerId_id_F: $Index({ playerId: 1, id: 1 }, { partialFilterExpression: { playerId: { $gt: 0 } } }),
-    playerId_roundId_F: $Index({ playerId: 1, roundId: 1 }, { partialFilterExpression: { playerId: { $gt: 0 } } }),
-    phien__id: $Index({ phien: 1, _id: 1 }),
+    memberId_id_F: $Index({ playerId: 1, id: 1 }, { partialFilterExpression: { $or: [{ playerId: { $gt: 0 } }, { playerId: { $gt: "" } }] } }),
+    memberId_phien_F: $Index({ playerId: 1, roundId: 1 }, { partialFilterExpression: { $or: [{ playerId: { $gt: 0 } }, { playerId: { $gt: "" } }] } }),
+    memberId_roundId_F: $Index({ playerId: 1, roundId: 1 }, { partialFilterExpression: { $or: [{ playerId: { $gt: 0 } }, { playerId: { $gt: "" } }] } }),
+    playerId_id_F: $Index({ playerId: 1, id: 1 }, { partialFilterExpression: { $or: [{ playerId: { $gt: 0 } }, { playerId: { $gt: "" } }] } }),
+    playerId_roundId_F: $Index({ playerId: 1, roundId: 1 }, { partialFilterExpression: { $or: [{ playerId: { $gt: 0 } }, { playerId: { $gt: "" } }] } }),
+    phien__id: $Index({ roundId: 1, _id: 1 }),
     roundId: $Index({ roundId: 1 }),
     roundId__id: $Index({ roundId: 1, _id: 1 }),
     roundId_archive_playerId: $Index({ roundId: 1, "__archive.eventtime": 1, playerId: 1 }),
@@ -37,12 +37,12 @@ deploy: {
     time_archive: $Index({ time: 1, "__archive.eventtime": 1 }),
     timeTTL: $Index({ time: 1 }, { expireAfterSeconds: 120 }),
     uid__id: $Index({ uid: 1, _id: 1 }),
-    uid_phien: $Index({ uid: 1, phien: 1 }, { unique: true, partialFilterExpression: { phien: { $gt: 0 } } }),
+    uid_phien: $Index({ uid: 1, roundId: 1 }, { unique: true, partialFilterExpression: { roundId: { $gt: 0 } } }),
     uid_roundId: $Index({ uid: 1, roundId: 1 }, { unique: true }),
-    uid_phien_freeBet: $Index({ uid: 1, phien: 1, freeBet: 1 }, { unique: true, partialFilterExpression: { phien: { $gt: 0 } } }),
+    uid_phien_freeBet: $Index({ uid: 1, roundId: 1, freeBet: 1 }, { unique: true, partialFilterExpression: { roundId: { $gt: 0 } } }),
     uid_roundId_freeBet: $Index({ uid: 1, roundId: 1, freeBet: 1 }, { unique: true }),
     uid_paid__id: $Index({ uid: 1, paid: 1, _id: 1 }),
-    uid_thanhtoan__id: $Index({ uid: 1, thanhtoan: 1, _id: 1 }),
+    uid_thanhtoan__id: $Index({ uid: 1, paid: 1, _id: 1 }),
     metric_metadata_U: $Index({ metric: 1, metadata: 1 }, { unique: true }),
   };
 }

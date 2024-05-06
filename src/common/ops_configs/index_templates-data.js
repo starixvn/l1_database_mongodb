@@ -3,7 +3,7 @@ deploy: {
   const label = `index_templates@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
 
-  if (![1, 2].includes(L)) break deploy;
+  if (![1, 2, 4].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   (global.___data = global.___data ?? {})[label] = [
@@ -21,7 +21,7 @@ deploy: {
             do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
             paid_uid: '{"key":{"paid":1,"uid":1}}',
             currency: '{"key":{"__archive.currency":1,"currency":1,"playerId":1,"uid":1}}',
-            playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"playerId":{"$gt":0}}}',
+            playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"$or":[{"playerId":{"$gt":0}},{"playerId":{"$gt":""}}]}}',
           },
         },
         {
@@ -57,7 +57,7 @@ deploy: {
             do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
             paid_uid: '{"key":{"paid":1,"uid":1}}',
             currency: '{"key":{"__archive.currency":1,"currency":1,"playerId":1,"uid":1}}',
-            playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"playerId":{"$gt":0}}}',
+            playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"$or":[{"playerId":{"$gt":0}},{"playerId":{"$gt":""}}]}}',
           },
         },
         {
@@ -76,6 +76,51 @@ deploy: {
             time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
             playerId: '{"key":{"playerId":1}}',
             uid_ended_F: '{"key":{"uid":1,"ended":1},"unique":true,"partialFilterExpression":{"ended":false}}',
+          },
+        },
+      ],
+    },
+    {
+      category: "games",
+      type: 4,
+      colls: [
+        {
+          ns: { db: "minigame", postfix: "_rounds" },
+          idxs: {
+            TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+            time: '{"key":{"time":1}}',
+            id_U: '{"key":{"id":1},"unique":true}',
+          },
+        },
+        {
+          ns: { db: "minigame", postfix: "_betlogs" },
+          idxs: {
+            TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+            time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
+            roundId: '{"key":{"roundId":1,"_id":1}}',
+            player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"$or":[{"playerId":{"$gt":0}},{"playerId":{"$gt":""}}]}}',
+            uid: '{"key":{"uid":1}}',
+          },
+        },
+        {
+          ns: { db: "minigame", postfix: "_bets" },
+          idxs: {
+            TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+            time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
+            roundId: '{"key":{"roundId":1,"_id":1}}',
+            player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"$or":[{"playerId":{"$gt":0}},{"playerId":{"$gt":""}}]}}',
+            uid_roundId: '{"key":{"uid":1,"roundId":1},"unique":true}',
+            uid_paid: '{"key":{"uid":1,"paid":1,"_id":1}}',
+            summarized: '{"key":{"__archive.summarized":1}}',
+            do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
+          },
+        },
+        {
+          ns: { db: "minigame", postfix: "_tmpbets" },
+          idxs: {
+            timeTTL: '{"key":{"time":1},"expireAfterSeconds":1200}',
+            roundId: '{"key":{"roundId":1,"_id":1}}',
+            uid_roundId: '{"key":{"uid":1,"roundId":1}}',
           },
         },
       ],
@@ -112,9 +157,9 @@ deploy: {
           ns: { db: "minigame", postfix: "_betlogs" },
           idxs: {
             TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
-            time: '{"key":{"time":1}}',
+            time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
             roundId: '{"key":{"roundId":1,"_id":1}}',
-            player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"playerId":{"$gt":0}}}',
+            player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"$or":[{"playerId":{"$gt":0}},{"playerId":{"$gt":""}}]}}',
             uid: '{"key":{"uid":1}}',
           },
         },
@@ -122,9 +167,9 @@ deploy: {
           ns: { db: "minigame", postfix: "_bets" },
           idxs: {
             TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
-            time: '{"key":{"time":1}}',
+            time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
             roundId: '{"key":{"roundId":1,"_id":1}}',
-            player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"playerId":{"$gt":0}}}',
+            player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"$or":[{"playerId":{"$gt":0}},{"playerId":{"$gt":""}}]}}',
             uid_roundId: '{"key":{"uid":1,"roundId":1},"unique":true}',
             uid_paid: '{"key":{"uid":1,"paid":1,"_id":1}}',
             summarized: '{"key":{"__archive.summarized":1}}',
@@ -134,7 +179,7 @@ deploy: {
         {
           ns: { db: "minigame", postfix: "_tmpbetlogs" },
           idxs: {
-            timeTTL: '{"key":{"time":1},"expireAfterSeconds":120}',
+            timeTTL: '{"key":{"time":1},"expireAfterSeconds":1200}',
             roundId: '{"key":{"roundId":1,"_id":1}}',
             uid: '{"key":{"uid":1}}',
           },
@@ -142,7 +187,7 @@ deploy: {
         {
           ns: { db: "minigame", postfix: "_tmpbets" },
           idxs: {
-            timeTTL: '{"key":{"time":1},"expireAfterSeconds":120}',
+            timeTTL: '{"key":{"time":1},"expireAfterSeconds":1200}',
             roundId: '{"key":{"roundId":1,"_id":1}}',
             uid_roundId: '{"key":{"uid":1,"roundId":1}}',
           },
