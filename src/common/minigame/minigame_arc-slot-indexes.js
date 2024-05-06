@@ -8,7 +8,7 @@ deploy: {
   (global.___idx = global.___idx ?? {})[label] = {
     expiryTime    : $Index({'expiryTime': 1}),
     id            : $Index({'id': 1}),
-    memberId_id_F : $Index({'memberId': 1, 'id': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
+    memberId_id_F : $Index({'playerId': 1, 'id': 1}, {partialFilterExpression: {memberId: {$gt: 0}}}),
     playerId      : $Index({'playerId': 1}),
     playerId_id_F : $Index({'playerId': 1, 'id': 1}, {partialFilterExpression: {playerId: {$gt: 0}}}),
     time          : $Index({'time': 1}),

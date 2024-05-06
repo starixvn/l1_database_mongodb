@@ -29,28 +29,11 @@ deploy: {
         memberId: alias.playerId,
         settled: `$paid`,
         stake: [{ $ifNull: [`$totalAmount`, `$bet`] }],
-        payout: {
-          [1]: [
-            { $multiply: [`$betwin`, { $toInt: `$win` }] },
-            { $multiply: [{ $ifNull: [`$totalAmount`, `$bet`] }, { $toInt: `$win` }] },
-            { $multiply: [{ $ifNull: [`$refund`, `$tralai`] }, { $toInt: { $not: `$win` } }] },
-          ],
-          [2]: [
-            { $multiply: [`$betwin`, { $toInt: `$win` }] },
-            { $multiply: [{ $ifNull: [`$totalAmount`, `$bet`] }, { $toInt: `$win` }] },
-            { $multiply: [{ $ifNull: [`$refund`, `$tralai`] }, { $toInt: { $not: `$win` } }] },
-          ],
-          [3]: [
-            { $multiply: [`$betwin`, { $toInt: `$win` }] },
-            {
-              $cond: {
-                if: { $or: [{ $gte: ["$big", 0] }, { $gte: ["$small", 0] }] },
-                then: 0,
-                else: { $sum: [{ $multiply: [`$bet`, { $toInt: `$win` }] }, { $multiply: [`$tralai`, { $toInt: { $not: `$win` } }] }] },
-              },
-            },
-          ],
-        }[L],
+        payout: [
+          { $multiply: [`$betwin`, { $toInt: `$win` }] },
+          { $multiply: [{ $ifNull: [`$totalAmount`, `$bet`] }, { $toInt: `$win` }] },
+          { $multiply: [{ $ifNull: [`$refund`, `$tralai`] }, { $toInt: { $not: `$win` } }] },
+        ],
         refund: [{ $ifNull: [`$refund`, `$tralai`] }],
       },
       config: commonConfig,

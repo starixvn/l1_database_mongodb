@@ -9,9 +9,6 @@ deploy: {
   if (!global.___idx?.[label]) loadScript(`../../common/minigame/minigame-game-indexes.js`);
   const idx = {
     ...global.___idx[label],
-    BL_phien: $Index({ phien: 1 }, { partialFilterExpression: { _id: { $lt: 0 } } }),
-    BL_uid: $Index({ uid: 1 }, { partialFilterExpression: { _id: { $lt: 0 } } }),
-    BL_uid_phien_red: $Index({ uid: 1, phien: 1, red: 1 }, { partialFilterExpression: { _id: { $lt: 0 } } }),
   };
   const BL = {
     cuocs: [idx.roundId__id, idx.playerId_roundId_F, idx.uid_paid__id],

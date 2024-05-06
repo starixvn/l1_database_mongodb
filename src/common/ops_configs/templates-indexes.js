@@ -1,7 +1,7 @@
 deploy: {
     const dbs   = DBs(db);
     const label = `ops_configs-templates@${dbs.toString()}`;
-    if (![1, 2].includes(dbs._mongo?._identity?.L)) break deploy;
+    if (![1, 2, 4].includes(dbs._mongo?._identity?.L)) break deploy;
     if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
     (global.___colls = global.___colls ?? {})[label] = [

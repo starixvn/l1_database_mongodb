@@ -2,7 +2,7 @@ deploy: {
   const dbs = DBs(db);
   const label = `summary_arc-game_summary_config@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
-  if (![1, 2].includes(L)) break deploy;
+  if (![1, 2, 4].includes(L)) break deploy;
   if (!["archive", "mixed"].includes(stage)) break deploy;
 
   const game_summary = [
@@ -179,6 +179,7 @@ deploy: {
       owGameTypeId: { [1]: 1640, [2]: 3829 }[L],
       name: { en: `Four Guardians`, vi: `Long Lân Quy Phụng`, grp: `Slots` },
       coll: { db: `minigame_arc`, group: `fourguardians`, round: `_rounds_bk`, postfix: `_rounds_bk` },
+      config: { jpCont: { [2]: 0.025 }[L] },
     },
     {
       gameId: 30,
@@ -425,6 +426,7 @@ deploy: {
       owGameTypeId: { [1]: 1677, [2]: 3869 }[L],
       name: { en: `Transformers`, vi: `Đại Chiến Robot`, grp: `Slots` },
       coll: { db: `minigame_arc`, group: `transformers`, round: `_rounds_bk`, postfix: `_rounds_bk` },
+      config: { jpCont: { [2]: 0.025 }[L] },
     },
     {
       gameId: 71,
@@ -449,6 +451,7 @@ deploy: {
       owGameTypeId: { [1]: 1682, [2]: 3874 }[L],
       name: { en: `One Piece`, vi: `Đảo Hải Tặc`, grp: `Slots`, game: `One Piece` },
       coll: { db: `minigame_arc`, group: `onepiece`, round: `_rounds_bk`, postfix: `_rounds_bk` },
+      config: { jpCont: { [2]: 0.025 }[L] },
     },
     {
       gameId: 75,
@@ -461,12 +464,19 @@ deploy: {
       owGameTypeId: { [1]: 1683, [2]: 3875 }[L],
       name: { en: `Dragon Ball`, vi: `Bảy Viên Ngọc Rồng`, grp: `Slots`, game: `One Piece` },
       coll: { db: `minigame_arc`, group: `dragonball`, round: `_rounds_bk`, postfix: `_rounds_bk` },
+      config: { jpCont: { [2]: 0.025 }[L] },
     },
     {
       gameId: 77,
       owGameTypeId: { [1]: 1684, [2]: 3876 }[L],
       name: { en: `Chinese Blackjack`, vi: `Xì Dách`, grp: `Card Games`, game: `Blackjack` },
       coll: { db: `minigame_arc`, group: `blackjack`, round: `_rounds_bk`, postfix: `_bets_bk` },
+    },
+    {
+      gameId: 78,
+      owGameTypeId: { [1]: 1685, [2]: 3877 }[L],
+      name: { en: `Football Dice`, vi: `Football Dice`, grp: `Football Dice`, game: `Football Dice` },
+      coll: { db: `minigame_arc`, group: `footballdice`, round: `_rounds_bk`, postfix: `_bets_bk` },
     },
     {
       gameId: 99,

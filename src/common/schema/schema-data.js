@@ -191,7 +191,7 @@ deploy: {
         [{ $project: { _id: 0 } }],
         [
           $BICol(`time`, `time`, `date`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`memberName`, `memberName`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`currencyCode`, `currencyCode`, `str`),
@@ -277,7 +277,7 @@ deploy: {
         `baccarat_cuocs`,
         `baccarat_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -312,7 +312,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -383,7 +383,7 @@ deploy: {
         `baucua_cuocs`,
         `baucua_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -426,7 +426,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -490,7 +490,7 @@ deploy: {
         `bitcoinmaster_bets`,
         `bitcoinmaster_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -523,7 +523,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -579,7 +579,7 @@ deploy: {
         `blackjack_cuocs`,
         `blackjack_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -610,7 +610,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -630,108 +630,108 @@ deploy: {
         ]
       ),
       /** BLOCKCHAIN BACCARAT (G) */
-       $BITbl(
-          `blockchainbaccarat_rounds`,
-          `blockchainbaccarat_rounds`,
-          [
-            {
-              $project: {
-                _id: 0,
-                time: 1,
-                id: 1,
-                exchangeRateId: 1,
-                player: `$result.player`,
-                banker: `$result.banker`,
-                big: `$result.big`,
-                small: `$result.small`,
-                tie: `$result.tie`,
-                playerPair: `$result.playerPair`,
-                bankerPair: `$result.bankerPair`,
-                natural: `$result.natural`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+      $BITbl(
+        `blockchainbaccarat_rounds`,
+        `blockchainbaccarat_rounds`,
+        [
+          {
+            $project: {
+              _id: 0,
+              time: 1,
+              id: 1,
+              exchangeRateId: 1,
+              player: `$result.player`,
+              banker: `$result.banker`,
+              big: `$result.big`,
+              small: `$result.small`,
+              tie: `$result.tie`,
+              playerPair: `$result.playerPair`,
+              bankerPair: `$result.bankerPair`,
+              natural: `$result.natural`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`id`, `id`, `int64`),
-            $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
-            $BICol(`time`, `time`, `date`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Result */
-            $BICol(`player`, `player`, `bool`),
-            $BICol(`banker`, `banker`, `bool`),
-            $BICol(`big`, `big`, `bool`),
-            $BICol(`small`, `small`, `bool`),
-            $BICol(`tie`, `tie`, `bool`),
-            $BICol(`playerPair`, `playerPair`, `bool`),
-            $BICol(`bankerPair`, `bankerPair`, `bool`),
-            $BICol(`natural`, `natural`, `bool`),
-          ]
-        ),
-    $BITbl(
-          `blockchainbaccarat_bets`,
-          `blockchainbaccarat_bets`,
-          [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
-            {
-              $project: {
-                _id: 0,
-                freeBet: 1,
-                phien: `$${mapping.roundId}`,
-                uid: 1,
-                memberId: `$${mapping.playerId}`,
-                name: 1,
-                time: 1,
-                banker: 1,
-                bankerPair: 1,
-                player: 1,
-                playerPair: 1,
-                tie: 1,
-                big: 1,
-                small: 1,
-                betwin: 1,
-                thanhtoan: `$${mapping.paid}`,
-                rate: 1,
-                totalAmount: { $sum: [`$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small`] },
-                partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
-                currency: { $ifNull: [`$currency`, `$__archive.currency`] },
-                isCash: `$__archive.isCash`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`id`, `id`, `int64`),
+          $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
+          $BICol(`time`, `time`, `date`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Result */
+          $BICol(`player`, `player`, `bool`),
+          $BICol(`banker`, `banker`, `bool`),
+          $BICol(`big`, `big`, `bool`),
+          $BICol(`small`, `small`, `bool`),
+          $BICol(`tie`, `tie`, `bool`),
+          $BICol(`playerPair`, `playerPair`, `bool`),
+          $BICol(`bankerPair`, `bankerPair`, `bool`),
+          $BICol(`natural`, `natural`, `bool`),
+        ]
+      ),
+      $BITbl(
+        `blockchainbaccarat_bets`,
+        `blockchainbaccarat_bets`,
+        [
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+          {
+            $project: {
+              _id: 0,
+              freeBet: 1,
+              phien: `$${mapping.roundId}`,
+              uid: 1,
+              memberId: `$${mapping.playerId}`,
+              name: 1,
+              time: 1,
+              banker: 1,
+              bankerPair: 1,
+              player: 1,
+              playerPair: 1,
+              tie: 1,
+              big: 1,
+              small: 1,
+              betwin: 1,
+              thanhtoan: `$${mapping.paid}`,
+              rate: 1,
+              totalAmount: { $sum: [`$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small`] },
+              partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
+              currency: { $ifNull: [`$currency`, `$__archive.currency`] },
+              isCash: `$__archive.isCash`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`time`, `time`, `date`),
-            $BICol(`phien`, `roundId`, `int64`),
-            /* Member */
-            $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
-            $BICol(`name`, `nickname`, `str`),
-            $BICol(`currency`, `currency`, `str`),
-            $BICol(`partnerId`, `partnerId`, `str`),
-            /* Summary */
-            $BICol(`totalAmount`, `stake`, `float`),
-            $BICol(`betwin`, `payout`, `float`),
-            /* Attributes */
-            $BICol(`rate`, `rate`, `float`),
-            $BICol(`thanhtoan`, `settled`, `bool`),
-            $BICol(`freeBet`, `freeBet`, `bool`),
-            $BICol(`isCash`, `isCash`, `bool`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Bet Choices */
-            $BICol(`player`, `player`, `float`),
-            $BICol(`banker`, `banker`, `float`),
-            $BICol(`big`, `big`, `float`),
-            $BICol(`small`, `small`, `float`),
-            $BICol(`tie`, `tie`, `float`),
-            $BICol(`playerPair`, `playerPair`, `float`),
-            $BICol(`bankerPair`, `bankerPair`, `float`),
-          ]
-        ),
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`, `time`, `date`),
+          $BICol(`phien`, `roundId`, `int64`),
+          /* Member */
+          $BICol(`uid`, `uid`, `str`),
+          $BICol(`memberId`, `memberId`, `str`),
+          $BICol(`name`, `nickname`, `str`),
+          $BICol(`currency`, `currency`, `str`),
+          $BICol(`partnerId`, `partnerId`, `str`),
+          /* Summary */
+          $BICol(`totalAmount`, `stake`, `float`),
+          $BICol(`betwin`, `payout`, `float`),
+          /* Attributes */
+          $BICol(`rate`, `rate`, `float`),
+          $BICol(`thanhtoan`, `settled`, `bool`),
+          $BICol(`freeBet`, `freeBet`, `bool`),
+          $BICol(`isCash`, `isCash`, `bool`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Bet Choices */
+          $BICol(`player`, `player`, `float`),
+          $BICol(`banker`, `banker`, `float`),
+          $BICol(`big`, `big`, `float`),
+          $BICol(`small`, `small`, `float`),
+          $BICol(`tie`, `tie`, `float`),
+          $BICol(`playerPair`, `playerPair`, `float`),
+          $BICol(`bankerPair`, `bankerPair`, `float`),
+        ]
+      ),
       /** CASINO HOLDEM' POKER (Gs) */
       $BITbl(
         `casinoholdempoker_phiens`,
@@ -764,7 +764,7 @@ deploy: {
         `casinoholdempoker_cuocs`,
         `casinoholdempoker_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -792,7 +792,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -847,7 +847,7 @@ deploy: {
         `chanleturbo_ones`,
         `chanleturbo_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -884,7 +884,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -944,139 +944,139 @@ deploy: {
         ]
       ),
       /** FAN TAN (G) */
-     $BITbl(
-          `fantan_rounds`,
-          `fantan_rounds`,
-          [
-            {
-              $project: {
-                _id: 0,
-                time: 1,
-                id: 1,
-                exchangeRateId: 1,
-                odd: `$settlementResult.odd`,
-                even: `$settlementResult.even`,
-                fan1: `$settlementResult.fan1`,
-                fan2: `$settlementResult.fan2`,
-                fan3: `$settlementResult.fan3`,
-                fan4: `$settlementResult.fan4`,
-                kwok12: `$settlementResult.kwok12`,
-                kwok23: `$settlementResult.kwok23`,
-                kwok34: `$settlementResult.kwok34`,
-                kwok41: `$settlementResult.kwok41`,
-                chun123: `$settlementResult.chun123`,
-                chun124: `$settlementResult.chun124`,
-                chun134: `$settlementResult.chun134`,
-                chun234: `$settlementResult.chun234`,
-                totalBeads: `$result.totalBeads`,
-                finalBeads: `$result.finalBeads`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
-            },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`id`, `id`, `int64`),
-            $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
-            $BICol(`time`, `time`, `date`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Result */
-            $BICol(`odd`, `odd`, `bool`),
-            $BICol(`even`, `even`, `bool`),
-            $BICol(`fan1`, `fan1`, `bool`),
-            $BICol(`fan2`, `fan2`, `bool`),
-            $BICol(`fan3`, `fan3`, `bool`),
-            $BICol(`fan4`, `fan4`, `bool`),
-            $BICol(`kwok12`, `kwok12`, `bool`),
-            $BICol(`kwok23`, `kwok23`, `bool`),
-            $BICol(`kwok34`, `kwok34`, `bool`),
-            $BICol(`kwok41`, `kwok41`, `bool`),
-            $BICol(`chun123`, `chun123`, `bool`),
-            $BICol(`chun124`, `chun124`, `bool`),
-            $BICol(`chun134`, `chun134`, `bool`),
-            $BICol(`chun234`, `chun234`, `bool`),
-            /* Details */
-            $BICol(`totalBeads`, `totalBeads`, `int64`),
-            $BICol(`finalBeads`, `finalBeads`, `int64`),
-          ]
-        ),
       $BITbl(
-          `fantan_bets`,
-          `fantan_tickets`,
-          [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
-            {
-              $project: {
-                _id: 0,
-                freeBet: 1,
-                phien: `$${mapping.roundId}`,
-                uid: 1,
-                memberId: `$${mapping.playerId}`,
-                name: 1,
-                time: 1,
-                even: 1,
-                odd: 1,
-                fan1: 1,
-                fan2: 1,
-                fan3: 1,
-                fan4: 1,
-                kwok12: 1,
-                kwok23: 1,
-                kwok34: 1,
-                kwok41: 1,
-                chun123: 1,
-                chun124: 1,
-                chun134: 1,
-                chun234: 1,
-                betwin: 1,
-                thanhtoan: `$${mapping.paid}`,
-                rate: 1,
-                totalAmount: 1,
-                partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
-                currency: { $ifNull: [`$currency`, `$__archive.currency`] },
-                isCash: `$__archive.isCash`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+        `fantan_rounds`,
+        `fantan_rounds`,
+        [
+          {
+            $project: {
+              _id: 0,
+              time: 1,
+              id: 1,
+              exchangeRateId: 1,
+              odd: `$settlementResult.odd`,
+              even: `$settlementResult.even`,
+              fan1: `$settlementResult.fan1`,
+              fan2: `$settlementResult.fan2`,
+              fan3: `$settlementResult.fan3`,
+              fan4: `$settlementResult.fan4`,
+              kwok12: `$settlementResult.kwok12`,
+              kwok23: `$settlementResult.kwok23`,
+              kwok34: `$settlementResult.kwok34`,
+              kwok41: `$settlementResult.kwok41`,
+              chun123: `$settlementResult.chun123`,
+              chun124: `$settlementResult.chun124`,
+              chun134: `$settlementResult.chun134`,
+              chun234: `$settlementResult.chun234`,
+              totalBeads: `$result.totalBeads`,
+              finalBeads: `$result.finalBeads`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`time`, `time`, `date`),
-            $BICol(`phien`, `roundId`, `int64`),
-            /* Member */
-            $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
-            $BICol(`name`, `nickname`, `str`),
-            $BICol(`currency`, `currency`, `str`),
-            $BICol(`partnerId`, `partnerId`, `str`),
-            /* Summary */
-            $BICol(`totalAmount`, `stake`, `float`),
-            $BICol(`betwin`, `payout`, `float`),
-            /* Attributes */
-            $BICol(`rate`, `rate`, `float`),
-            $BICol(`thanhtoan`, `settled`, `bool`),
-            $BICol(`freeBet`, `freeBet`, `bool`),
-            $BICol(`isCash`, `isCash`, `bool`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Bet Choices */
-            $BICol(`odd`, `odd`, `float`),
-            $BICol(`even`, `even`, `float`),
-            $BICol(`fan1`, `fan1`, `float`),
-            $BICol(`fan2`, `fan2`, `float`),
-            $BICol(`fan3`, `fan3`, `float`),
-            $BICol(`fan4`, `fan4`, `float`),
-            $BICol(`kwok12`, `kwok12`, `float`),
-            $BICol(`kwok23`, `kwok23`, `float`),
-            $BICol(`kwok34`, `kwok34`, `float`),
-            $BICol(`kwok41`, `kwok41`, `float`),
-            $BICol(`chun123`, `chun123`, `float`),
-            $BICol(`chun124`, `chun124`, `float`),
-            $BICol(`chun134`, `chun134`, `float`),
-            $BICol(`chun234`, `chun234`, `float`),
-          ]
-        ),
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`id`, `id`, `int64`),
+          $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
+          $BICol(`time`, `time`, `date`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Result */
+          $BICol(`odd`, `odd`, `bool`),
+          $BICol(`even`, `even`, `bool`),
+          $BICol(`fan1`, `fan1`, `bool`),
+          $BICol(`fan2`, `fan2`, `bool`),
+          $BICol(`fan3`, `fan3`, `bool`),
+          $BICol(`fan4`, `fan4`, `bool`),
+          $BICol(`kwok12`, `kwok12`, `bool`),
+          $BICol(`kwok23`, `kwok23`, `bool`),
+          $BICol(`kwok34`, `kwok34`, `bool`),
+          $BICol(`kwok41`, `kwok41`, `bool`),
+          $BICol(`chun123`, `chun123`, `bool`),
+          $BICol(`chun124`, `chun124`, `bool`),
+          $BICol(`chun134`, `chun134`, `bool`),
+          $BICol(`chun234`, `chun234`, `bool`),
+          /* Details */
+          $BICol(`totalBeads`, `totalBeads`, `int64`),
+          $BICol(`finalBeads`, `finalBeads`, `int64`),
+        ]
+      ),
+      $BITbl(
+        `fantan_bets`,
+        `fantan_tickets`,
+        [
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+          {
+            $project: {
+              _id: 0,
+              freeBet: 1,
+              phien: `$${mapping.roundId}`,
+              uid: 1,
+              memberId: `$${mapping.playerId}`,
+              name: 1,
+              time: 1,
+              even: 1,
+              odd: 1,
+              fan1: 1,
+              fan2: 1,
+              fan3: 1,
+              fan4: 1,
+              kwok12: 1,
+              kwok23: 1,
+              kwok34: 1,
+              kwok41: 1,
+              chun123: 1,
+              chun124: 1,
+              chun134: 1,
+              chun234: 1,
+              betwin: 1,
+              thanhtoan: `$${mapping.paid}`,
+              rate: 1,
+              totalAmount: 1,
+              partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
+              currency: { $ifNull: [`$currency`, `$__archive.currency`] },
+              isCash: `$__archive.isCash`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
+            },
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`, `time`, `date`),
+          $BICol(`phien`, `roundId`, `int64`),
+          /* Member */
+          $BICol(`uid`, `uid`, `str`),
+          $BICol(`memberId`, `memberId`, `str`),
+          $BICol(`name`, `nickname`, `str`),
+          $BICol(`currency`, `currency`, `str`),
+          $BICol(`partnerId`, `partnerId`, `str`),
+          /* Summary */
+          $BICol(`totalAmount`, `stake`, `float`),
+          $BICol(`betwin`, `payout`, `float`),
+          /* Attributes */
+          $BICol(`rate`, `rate`, `float`),
+          $BICol(`thanhtoan`, `settled`, `bool`),
+          $BICol(`freeBet`, `freeBet`, `bool`),
+          $BICol(`isCash`, `isCash`, `bool`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Bet Choices */
+          $BICol(`odd`, `odd`, `float`),
+          $BICol(`even`, `even`, `float`),
+          $BICol(`fan1`, `fan1`, `float`),
+          $BICol(`fan2`, `fan2`, `float`),
+          $BICol(`fan3`, `fan3`, `float`),
+          $BICol(`fan4`, `fan4`, `float`),
+          $BICol(`kwok12`, `kwok12`, `float`),
+          $BICol(`kwok23`, `kwok23`, `float`),
+          $BICol(`kwok34`, `kwok34`, `float`),
+          $BICol(`kwok41`, `kwok41`, `float`),
+          $BICol(`chun123`, `chun123`, `float`),
+          $BICol(`chun124`, `chun124`, `float`),
+          $BICol(`chun134`, `chun134`, `float`),
+          $BICol(`chun234`, `chun234`, `float`),
+        ]
+      ),
       /** FORTUNE CAT (Gsl) */
       $BITbl(
         `fortunecat_rounds`,
@@ -1112,7 +1112,7 @@ deploy: {
         `fortunecat_rounds`,
         `fortunecat_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1143,7 +1143,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1166,7 +1166,7 @@ deploy: {
         `fortunecat_freespins`,
         `fortunecat_freespins`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1192,7 +1192,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -1208,7 +1208,7 @@ deploy: {
         `fortunecat_fames`,
         `fortunecat_fames`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1232,7 +1232,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -1278,7 +1278,7 @@ deploy: {
         `fourguardians_rounds`,
         `fourguardians_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1309,7 +1309,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1332,7 +1332,7 @@ deploy: {
         `fourguardians_freespins`,
         `fourguardians_freespins`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1358,7 +1358,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -1374,7 +1374,7 @@ deploy: {
         `fourguardians_fames`,
         `fourguardians_fames`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1398,7 +1398,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -1437,7 +1437,7 @@ deploy: {
         `fruitslot_bets`,
         `fruitslot_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1475,7 +1475,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1653,7 +1653,7 @@ deploy: {
         `happyfish_rounds`,
         `happyfish_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1684,7 +1684,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1707,7 +1707,7 @@ deploy: {
         `happyfish_freespins`,
         `happyfish_freespins`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1733,7 +1733,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -1749,7 +1749,7 @@ deploy: {
         `happyfish_fames`,
         `happyfish_fames`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1773,7 +1773,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -1819,7 +1819,7 @@ deploy: {
         `heroesslot_rounds`,
         `heroesslot_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1850,7 +1850,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -1873,7 +1873,7 @@ deploy: {
         `heroesslot_freespins`,
         `heroesslot_freespins`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1899,7 +1899,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -1915,7 +1915,7 @@ deploy: {
         `heroesslot_fames`,
         `heroesslot_fames`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -1939,7 +1939,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -1981,7 +1981,7 @@ deploy: {
         `hilo_rounds`,
         `hilo_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2010,7 +2010,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2032,7 +2032,7 @@ deploy: {
         `idcounters`,
         `idcounters`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2126,7 +2126,7 @@ deploy: {
         `magicforest_rounds`,
         `magicforest_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2157,7 +2157,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2180,7 +2180,7 @@ deploy: {
         `magicforest_freespins`,
         `magicforest_freespins`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2206,7 +2206,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -2222,7 +2222,7 @@ deploy: {
         `magicforest_fames`,
         `magicforest_fames`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2246,7 +2246,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -2304,7 +2304,7 @@ deploy: {
         `kenoeast_ones`,
         `kenoeast_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2341,7 +2341,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2412,7 +2412,7 @@ deploy: {
         `kenowest_ones`,
         `kenowest_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2449,7 +2449,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2520,7 +2520,7 @@ deploy: {
         `kenosouth_ones`,
         `kenosouth_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2557,7 +2557,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2628,7 +2628,7 @@ deploy: {
         `kenonorth_ones`,
         `kenonorth_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2665,7 +2665,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2736,7 +2736,7 @@ deploy: {
         `kenomax_ones`,
         `kenomax_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2773,7 +2773,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2844,7 +2844,7 @@ deploy: {
         `kenomax2_ones`,
         `kenomax2_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2881,7 +2881,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -2952,7 +2952,7 @@ deploy: {
         `kenomini_ones`,
         `kenomini_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -2989,7 +2989,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3060,7 +3060,7 @@ deploy: {
         `kenomini2_ones`,
         `kenomini2_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -3097,7 +3097,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3200,7 +3200,7 @@ deploy: {
         `kenomatch1_ones`,
         `kenomatch1_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -3245,7 +3245,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3355,7 +3355,7 @@ deploy: {
         `kenomatch2_ones`,
         `kenomatch2_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -3400,7 +3400,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3493,7 +3493,7 @@ deploy: {
         `kenopower1_ones`,
         `kenopower1_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -3532,7 +3532,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3618,7 +3618,7 @@ deploy: {
         `kenopower2_ones`,
         `kenopower2_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -3657,7 +3657,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3731,7 +3731,7 @@ deploy: {
         `kenopromax_cuocs`,
         `kenopromax_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -3768,7 +3768,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -3843,7 +3843,7 @@ deploy: {
           `kenoproviet_cuocs`,
           `kenoproviet_tickets`,
           [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
+            { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
             {
               $project: {
                 _id: 0,
@@ -3880,7 +3880,7 @@ deploy: {
             $BICol(`phien`, `roundId`, `int64`),
             /* Member */
             $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
+            $BICol(`memberId`, `memberId`, `str`),
             $BICol(`name`, `nickname`, `str`),
             $BICol(`currency`, `currency`, `str`),
             $BICol(`partnerId`, `partnerId`, `str`),
@@ -3943,7 +3943,7 @@ deploy: {
         `lottery_ones`,
         `lottery_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -3971,7 +3971,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4033,7 +4033,7 @@ deploy: {
         `megakeno_ones`,
         `megakeno_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4070,7 +4070,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4141,7 +4141,7 @@ deploy: {
         `megakeno2_ones`,
         `megakeno2_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4178,7 +4178,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4238,7 +4238,7 @@ deploy: {
         `minidragontiger_cuocs`,
         `minidragontiger_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4269,7 +4269,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4340,7 +4340,7 @@ deploy: {
         `minisedie_cuocs`,
         `minisedie_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4374,7 +4374,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4447,7 +4447,7 @@ deploy: {
         `minisedie2_bets`,
         `minisedie2_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4481,7 +4481,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4554,7 +4554,7 @@ deploy: {
         `minisedie3_bets`,
         `minisedie3_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4588,7 +4588,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4661,7 +4661,7 @@ deploy: {
         `minisedie4_bets`,
         `minisedie4_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4695,7 +4695,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4752,7 +4752,7 @@ deploy: {
         `nightclub_rounds`,
         `nightclub_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4783,7 +4783,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -4806,7 +4806,7 @@ deploy: {
         `nightclub_freespins`,
         `nightclub_freespins`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4832,7 +4832,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -4848,7 +4848,7 @@ deploy: {
         `nightclub_fames`,
         `nightclub_fames`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4872,7 +4872,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Summary */
@@ -4914,7 +4914,7 @@ deploy: {
         `roulette_ones`,
         `roulette_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -4954,7 +4954,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5064,7 +5064,7 @@ deploy: {
         `sicbo_ones`,
         `sicbo_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -5092,7 +5092,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5114,7 +5114,7 @@ deploy: {
         [],
         [
           $BICol(`_id`, `patId`, `int64`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`time`, `time`, `date`),
           $BICol(`group`, `group`, `str`),
           $BICol(`stake`, `stake`, `float`),
@@ -5142,7 +5142,7 @@ deploy: {
         [],
         [
           $BICol(`_id`, `patId`, `int64`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`time`, `time`, `date`),
           $BICol(`group`, `group`, `str`),
           $BICol(`stake`, `stake`, `float`),
@@ -5170,7 +5170,7 @@ deploy: {
         [],
         [
           $BICol(`_id`, `patId`, `int64`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`time`, `time`, `date`),
           $BICol(`group`, `group`, `str`),
           $BICol(`stake`, `stake`, `float`),
@@ -5198,7 +5198,7 @@ deploy: {
         [],
         [
           $BICol(`_id`, `patId`, `int64`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`time`, `time`, `date`),
           $BICol(`group`, `group`, `str`),
           $BICol(`stake`, `stake`, `float`),
@@ -5271,7 +5271,7 @@ deploy: {
         `specialsedie_ones`,
         `specialsedie_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -5302,7 +5302,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5329,7 +5329,7 @@ deploy: {
           [{ $project: { _id: 0 } }],
           [
             $BICol(`roundId`, `roundId`, `int64`),
-            $BICol(`memberId`, `memberId`, `int64`),
+            $BICol(`memberId`, `memberId`, `str`),
             $BICol(`spinCnt`, `spinCnt`, `int64`),
             $BICol(`time`, `time`, `date`),
             $BICol(`expiryDate`, `expiryDate`, `date`),
@@ -5345,7 +5345,7 @@ deploy: {
           `spins`,
           [{ $project: { _id: 0 } }],
           [
-            $BICol(`memberId`, `memberId`, `int64`),
+            $BICol(`memberId`, `memberId`, `str`),
             $BICol(`availSpins`, `availSpins`, `int64`),
             $BICol(`usedSpins`, `usedSpins`, `int64`),
             $BICol(`enabled`, `enabled`, `bool`),
@@ -5364,7 +5364,7 @@ deploy: {
             $BICol(`uid`, `uid`, `str`),
             $BICol(`name`, `name`, `str`),
             $BICol(`result`, `result`, `float`),
-            $BICol(`memberId`, `memberId`, `int64`),
+            $BICol(`memberId`, `memberId`, `str`),
             $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
           ]
         ),
@@ -5409,7 +5409,7 @@ deploy: {
         `taixiu_ones`,
         `taixiu_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -5446,7 +5446,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5497,7 +5497,7 @@ deploy: {
         `texasholdempoker_cuocs`,
         `texasholdempoker_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -5525,7 +5525,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5575,7 +5575,7 @@ deploy: {
         `treasureisland_rounds`,
         `treasureisland_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -5606,7 +5606,7 @@ deploy: {
           $BICol(`id`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5629,7 +5629,7 @@ deploy: {
         `treasureisland_freespins`,
         `treasureisland_freespins`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -5655,7 +5655,7 @@ deploy: {
           $BICol(`roundId`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
           /* Additional Info */
@@ -5671,7 +5671,7 @@ deploy: {
         `treasureisland_multipliers`,
         `treasureisland_multipliers`,
         [
-          { $match: { playerId: { $gt: 0 } } },
+          { $match: { $or: [{ playerId: { $gt: 0 } }, { playerId: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -5689,7 +5689,7 @@ deploy: {
           $BICol(`time`, `time`, `date`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`playerId`, `memberId`, `int64`),
+          $BICol(`playerId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           /* Additional Info */
           $BICol(`ended`, `ended`, `bool`),
@@ -5736,7 +5736,7 @@ deploy: {
         `threecards_cuocs`,
         `threecards_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -5770,7 +5770,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5832,7 +5832,7 @@ deploy: {
         `txturbo_ones`,
         `txturbo_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -5869,7 +5869,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -5928,7 +5928,7 @@ deploy: {
         `unbalancedbigsmall1_bets`,
         `unbalancedbigsmall1_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -5958,7 +5958,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6015,7 +6015,7 @@ deploy: {
         `unbalancedbigsmall2_bets`,
         `unbalancedbigsmall2_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -6045,7 +6045,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6102,7 +6102,7 @@ deploy: {
         `unbalancedbigsmall3_bets`,
         `unbalancedbigsmall3_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -6132,7 +6132,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6189,7 +6189,7 @@ deploy: {
         `unbalancedbigsmall4_bets`,
         `unbalancedbigsmall4_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -6219,7 +6219,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -6309,7 +6309,7 @@ deploy: {
           },
         ],
         [
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`memberName`, `memberName`, `str`),
           $BICol(`userId`, `userId`, `str`),
           $BICol(`username`, `username`, `str`),
@@ -6330,765 +6330,765 @@ deploy: {
       ),
       /** VIP BACCARAT (G) */
       $BITbl(
-          `vipbaccarat_phiens`,
-          `vipbaccarat_rounds`,
-          [
-            {
-              $project: {
-                _id: 0,
-                time: 1,
-                id: 1,
-                exchangeRateId: 1,
-                player: `$settlementResult.player`,
-                banker: `$settlementResult.banker`,
-                big: `$settlementResult.big`,
-                small: `$settlementResult.small`,
-                tie: `$settlementResult.tie`,
-                playerPair: `$settlementResult.playerPair`,
-                bankerPair: `$settlementResult.bankerPair`,
-                natural: `$settlementResult.natural`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+        `vipbaccarat_phiens`,
+        `vipbaccarat_rounds`,
+        [
+          {
+            $project: {
+              _id: 0,
+              time: 1,
+              id: 1,
+              exchangeRateId: 1,
+              player: `$settlementResult.player`,
+              banker: `$settlementResult.banker`,
+              big: `$settlementResult.big`,
+              small: `$settlementResult.small`,
+              tie: `$settlementResult.tie`,
+              playerPair: `$settlementResult.playerPair`,
+              bankerPair: `$settlementResult.bankerPair`,
+              natural: `$settlementResult.natural`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`id`, `id`, `int64`),
-            $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
-            $BICol(`time`, `time`, `date`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Result */
-            $BICol(`player`, `player`, `bool`),
-            $BICol(`banker`, `banker`, `bool`),
-            $BICol(`big`, `big`, `bool`),
-            $BICol(`small`, `small`, `bool`),
-            $BICol(`tie`, `tie`, `bool`),
-            $BICol(`playerPair`, `playerPair`, `bool`),
-            $BICol(`bankerPair`, `bankerPair`, `bool`),
-            $BICol(`natural`, `natural`, `bool`),
-          ]
-        ),
-     $BITbl(
-          `vipbaccarat_cuocs`,
-          `vipbaccarat_tickets`,
-          [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
-            {
-              $project: {
-                _id: 0,
-                freeBet: 1,
-                phien: `$${mapping.roundId}`,
-                uid: 1,
-                memberId: `$${mapping.playerId}`,
-                name: 1,
-                time: 1,
-                banker: 1,
-                bankerPair: 1,
-                player: 1,
-                playerPair: 1,
-                tie: 1,
-                big: 1,
-                small: 1,
-                betwin: 1,
-                thanhtoan: `$${mapping.paid}`,
-                rate: 1,
-                totalAmount: { $sum: [`$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small`] },
-                partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
-                currency: { $ifNull: [`$currency`, `$__archive.currency`] },
-                isCash: `$__archive.isCash`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`id`, `id`, `int64`),
+          $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
+          $BICol(`time`, `time`, `date`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Result */
+          $BICol(`player`, `player`, `bool`),
+          $BICol(`banker`, `banker`, `bool`),
+          $BICol(`big`, `big`, `bool`),
+          $BICol(`small`, `small`, `bool`),
+          $BICol(`tie`, `tie`, `bool`),
+          $BICol(`playerPair`, `playerPair`, `bool`),
+          $BICol(`bankerPair`, `bankerPair`, `bool`),
+          $BICol(`natural`, `natural`, `bool`),
+        ]
+      ),
+      $BITbl(
+        `vipbaccarat_cuocs`,
+        `vipbaccarat_tickets`,
+        [
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+          {
+            $project: {
+              _id: 0,
+              freeBet: 1,
+              phien: `$${mapping.roundId}`,
+              uid: 1,
+              memberId: `$${mapping.playerId}`,
+              name: 1,
+              time: 1,
+              banker: 1,
+              bankerPair: 1,
+              player: 1,
+              playerPair: 1,
+              tie: 1,
+              big: 1,
+              small: 1,
+              betwin: 1,
+              thanhtoan: `$${mapping.paid}`,
+              rate: 1,
+              totalAmount: { $sum: [`$banker`, `$bankerPair`, `$player`, `$playerPair`, `$tie`, `$big`, `$small`] },
+              partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
+              currency: { $ifNull: [`$currency`, `$__archive.currency`] },
+              isCash: `$__archive.isCash`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`time`, `time`, `date`),
-            $BICol(`phien`, `roundId`, `int64`),
-            /* Member */
-            $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
-            $BICol(`name`, `nickname`, `str`),
-            $BICol(`currency`, `currency`, `str`),
-            $BICol(`partnerId`, `partnerId`, `str`),
-            /* Summary */
-            $BICol(`totalAmount`, `stake`, `float`),
-            $BICol(`betwin`, `payout`, `float`),
-            /* Attributes */
-            $BICol(`rate`, `rate`, `float`),
-            $BICol(`thanhtoan`, `settled`, `bool`),
-            $BICol(`freeBet`, `freeBet`, `bool`),
-            $BICol(`isCash`, `isCash`, `bool`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Bet Choices */
-            $BICol(`big`, `big`, `float`),
-            $BICol(`small`, `small`, `float`),
-            $BICol(`banker`, `banker`, `float`),
-            $BICol(`tie`, `tie`, `float`),
-            $BICol(`player`, `player`, `float`),
-            $BICol(`bankerPair`, `bankerPair`, `float`),
-            $BICol(`playerPair`, `playerPair`, `float`),
-          ]
-        ),
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`, `time`, `date`),
+          $BICol(`phien`, `roundId`, `int64`),
+          /* Member */
+          $BICol(`uid`, `uid`, `str`),
+          $BICol(`memberId`, `memberId`, `str`),
+          $BICol(`name`, `nickname`, `str`),
+          $BICol(`currency`, `currency`, `str`),
+          $BICol(`partnerId`, `partnerId`, `str`),
+          /* Summary */
+          $BICol(`totalAmount`, `stake`, `float`),
+          $BICol(`betwin`, `payout`, `float`),
+          /* Attributes */
+          $BICol(`rate`, `rate`, `float`),
+          $BICol(`thanhtoan`, `settled`, `bool`),
+          $BICol(`freeBet`, `freeBet`, `bool`),
+          $BICol(`isCash`, `isCash`, `bool`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Bet Choices */
+          $BICol(`big`, `big`, `float`),
+          $BICol(`small`, `small`, `float`),
+          $BICol(`banker`, `banker`, `float`),
+          $BICol(`tie`, `tie`, `float`),
+          $BICol(`player`, `player`, `float`),
+          $BICol(`bankerPair`, `bankerPair`, `float`),
+          $BICol(`playerPair`, `playerPair`, `float`),
+        ]
+      ),
       /** VIP FISH PRAWN CRAB (G) */
-     $BITbl(
-          `vipfishprawncrab_phiens`,
-          `vipfishprawncrab_rounds`,
-          [
-            {
-              $project: {
-                _id: 0,
-                time: 1,
-                id: 1,
-                exchangeRateId: 1,
-                stag: `$settlementResult.stag`,
-                gourd: `$settlementResult.gourd`,
-                rooster: `$settlementResult.rooster`,
-                fish: `$settlementResult.fish`,
-                crab: `$settlementResult.crab`,
-                prawn: `$settlementResult.prawn`,
-                anyTriple: `$settlementResult.anyTriple`,
-                mountain: `$settlementResult.mountain`,
-                ocean: `$settlementResult.ocean`,
-                dice1: `$result.dice1`,
-                dice2: `$result.dice2`,
-                dice3: `$result.dice3`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+      $BITbl(
+        `vipfishprawncrab_phiens`,
+        `vipfishprawncrab_rounds`,
+        [
+          {
+            $project: {
+              _id: 0,
+              time: 1,
+              id: 1,
+              exchangeRateId: 1,
+              stag: `$settlementResult.stag`,
+              gourd: `$settlementResult.gourd`,
+              rooster: `$settlementResult.rooster`,
+              fish: `$settlementResult.fish`,
+              crab: `$settlementResult.crab`,
+              prawn: `$settlementResult.prawn`,
+              anyTriple: `$settlementResult.anyTriple`,
+              mountain: `$settlementResult.mountain`,
+              ocean: `$settlementResult.ocean`,
+              dice1: `$result.dice1`,
+              dice2: `$result.dice2`,
+              dice3: `$result.dice3`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`id`, `id`, `int64`),
-            $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
-            $BICol(`time`, `time`, `date`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Result */
-            $BICol(`stag`, `stag`, `bool`),
-            $BICol(`gourd`, `gourd`, `bool`),
-            $BICol(`rooster`, `rooster`, `bool`),
-            $BICol(`fish`, `fish`, `bool`),
-            $BICol(`crab`, `crab`, `bool`),
-            $BICol(`prawn`, `prawn`, `bool`),
-            $BICol(`anyTriple`, `anyTriple`, `bool`),
-            $BICol(`mountain`, `mountain`, `bool`),
-            $BICol(`ocean`, `ocean`, `bool`),
-            /* Details */
-            $BICol(`dice1`, `dice1`, `int64`),
-            $BICol(`dice2`, `dice2`, `int64`),
-            $BICol(`dice3`, `dice3`, `int64`),
-          ]
-        ),
-   $BITbl(
-          `vipfishprawncrab_cuocs`,
-          `vipfishprawncrab_tickets`,
-          [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
-            {
-              $project: {
-                _id: 0,
-                freeBet: 1,
-                phien: `$${mapping.roundId}`,
-                uid: 1,
-                memberId: `$${mapping.playerId}`,
-                name: 1,
-                time: 1,
-                stag: 1,
-                gourd: 1,
-                rooster: 1,
-                fish: 1,
-                crab: 1,
-                prawn: 1,
-                mountain: 1,
-                ocean: 1,
-                anyTriple: 1,
-                betwin: 1,
-                thanhtoan: `$${mapping.paid}`,
-                rate: 1,
-                totalAmount: { $sum: [`$stag`, `$gourd`, `$rooster`, `$fish`, `$crab`, `$prawn`, `$mountain`, `$ocean`, `$anyTriple`] },
-                partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
-                currency: { $ifNull: [`$currency`, `$__archive.currency`] },
-                isCash: `$__archive.isCash`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`id`, `id`, `int64`),
+          $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
+          $BICol(`time`, `time`, `date`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Result */
+          $BICol(`stag`, `stag`, `bool`),
+          $BICol(`gourd`, `gourd`, `bool`),
+          $BICol(`rooster`, `rooster`, `bool`),
+          $BICol(`fish`, `fish`, `bool`),
+          $BICol(`crab`, `crab`, `bool`),
+          $BICol(`prawn`, `prawn`, `bool`),
+          $BICol(`anyTriple`, `anyTriple`, `bool`),
+          $BICol(`mountain`, `mountain`, `bool`),
+          $BICol(`ocean`, `ocean`, `bool`),
+          /* Details */
+          $BICol(`dice1`, `dice1`, `int64`),
+          $BICol(`dice2`, `dice2`, `int64`),
+          $BICol(`dice3`, `dice3`, `int64`),
+        ]
+      ),
+      $BITbl(
+        `vipfishprawncrab_cuocs`,
+        `vipfishprawncrab_tickets`,
+        [
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+          {
+            $project: {
+              _id: 0,
+              freeBet: 1,
+              phien: `$${mapping.roundId}`,
+              uid: 1,
+              memberId: `$${mapping.playerId}`,
+              name: 1,
+              time: 1,
+              stag: 1,
+              gourd: 1,
+              rooster: 1,
+              fish: 1,
+              crab: 1,
+              prawn: 1,
+              mountain: 1,
+              ocean: 1,
+              anyTriple: 1,
+              betwin: 1,
+              thanhtoan: `$${mapping.paid}`,
+              rate: 1,
+              totalAmount: { $sum: [`$stag`, `$gourd`, `$rooster`, `$fish`, `$crab`, `$prawn`, `$mountain`, `$ocean`, `$anyTriple`] },
+              partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
+              currency: { $ifNull: [`$currency`, `$__archive.currency`] },
+              isCash: `$__archive.isCash`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`time`, `time`, `date`),
-            $BICol(`phien`, `roundId`, `int64`),
-            /* Member */
-            $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
-            $BICol(`name`, `nickname`, `str`),
-            $BICol(`currency`, `currency`, `str`),
-            $BICol(`partnerId`, `partnerId`, `str`),
-            /* Summary */
-            $BICol(`totalAmount`, `stake`, `float`),
-            $BICol(`betwin`, `payout`, `float`),
-            /* Attributes */
-            $BICol(`rate`, `rate`, `float`),
-            $BICol(`thanhtoan`, `settled`, `bool`),
-            $BICol(`freeBet`, `freeBet`, `bool`),
-            $BICol(`isCash`, `isCash`, `bool`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Bet Choices */
-            $BICol(`crab`, `crab`, `float`),
-            $BICol(`fish`, `fish`, `float`),
-            $BICol(`gourd`, `gourd`, `float`),
-            $BICol(`prawn`, `prawn`, `float`),
-            $BICol(`rooster`, `rooster`, `float`),
-            $BICol(`stag`, `stag`, `float`),
-            $BICol(`mountain`, `mountain`, `float`),
-            $BICol(`ocean`, `ocean`, `float`),
-          ]
-        ),
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`, `time`, `date`),
+          $BICol(`phien`, `roundId`, `int64`),
+          /* Member */
+          $BICol(`uid`, `uid`, `str`),
+          $BICol(`memberId`, `memberId`, `str`),
+          $BICol(`name`, `nickname`, `str`),
+          $BICol(`currency`, `currency`, `str`),
+          $BICol(`partnerId`, `partnerId`, `str`),
+          /* Summary */
+          $BICol(`totalAmount`, `stake`, `float`),
+          $BICol(`betwin`, `payout`, `float`),
+          /* Attributes */
+          $BICol(`rate`, `rate`, `float`),
+          $BICol(`thanhtoan`, `settled`, `bool`),
+          $BICol(`freeBet`, `freeBet`, `bool`),
+          $BICol(`isCash`, `isCash`, `bool`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Bet Choices */
+          $BICol(`crab`, `crab`, `float`),
+          $BICol(`fish`, `fish`, `float`),
+          $BICol(`gourd`, `gourd`, `float`),
+          $BICol(`prawn`, `prawn`, `float`),
+          $BICol(`rooster`, `rooster`, `float`),
+          $BICol(`stag`, `stag`, `float`),
+          $BICol(`mountain`, `mountain`, `float`),
+          $BICol(`ocean`, `ocean`, `float`),
+        ]
+      ),
       /** VIP SEDIE (G) */
       $BITbl(
-          `vipsedie_phiens`,
-          `vipsedie_rounds`,
-          [
-            {
-              $project: {
-                _id: 0,
-                time: 1,
-                id: 1,
-                exchangeRateId: 1,
-                odd: `$settlementResult.odd`,
-                even: `$settlementResult.even`,
-                r0: `$settlementResult.white4`,
-                r1: `$settlementResult.white3`,
-                r2: `$settlementResult.red2`,
-                r3: `$settlementResult.red3`,
-                r4: `$settlementResult.red4`,
-                red1: `$result.red1`,
-                red2: `$result.red2`,
-                red3: `$result.red3`,
-                red4: `$result.red4`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+        `vipsedie_phiens`,
+        `vipsedie_rounds`,
+        [
+          {
+            $project: {
+              _id: 0,
+              time: 1,
+              id: 1,
+              exchangeRateId: 1,
+              odd: `$settlementResult.odd`,
+              even: `$settlementResult.even`,
+              r0: `$settlementResult.white4`,
+              r1: `$settlementResult.white3`,
+              r2: `$settlementResult.red2`,
+              r3: `$settlementResult.red3`,
+              r4: `$settlementResult.red4`,
+              red1: `$result.red1`,
+              red2: `$result.red2`,
+              red3: `$result.red3`,
+              red4: `$result.red4`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`id`, `id`, `int64`),
-            $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
-            $BICol(`time`, `time`, `date`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Result */
-            $BICol(`odd`, `odd`, `bool`),
-            $BICol(`even`, `even`, `bool`),
-            $BICol(`r0`, `r0`, `bool`),
-            $BICol(`r1`, `r1`, `bool`),
-            $BICol(`r2`, `r2`, `bool`),
-            $BICol(`r3`, `r3`, `bool`),
-            $BICol(`r4`, `r4`, `bool`),
-            /* Details */
-            $BICol(`red1`, `red1`, `bool`),
-            $BICol(`red2`, `red2`, `bool`),
-            $BICol(`red3`, `red3`, `bool`),
-            $BICol(`red4`, `red4`, `bool`),
-          ]
-        ),
-       $BITbl(
-          `vipsedie_cuocs`,
-          `vipsedie_tickets`,
-          [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
-            {
-              $project: {
-                _id: 0,
-                freeBet: 1,
-                phien: `$${mapping.roundId}`,
-                uid: 1,
-                memberId: `$${mapping.playerId}`,
-                name: 1,
-                time: 1,
-                even: 1,
-                odd: 1,
-                red2: 1,
-                red3: 1,
-                red4: 1,
-                white3: 1,
-                white4: 1,
-                betwin: 1,
-                thanhtoan: `$${mapping.paid}`,
-                rate: 1,
-                totalAmount: { $sum: [`$even`, `$odd`, `$red2`, `$red3`, `$red4`, `$white3`, `$white4`] },
-                partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
-                currency: { $ifNull: [`$currency`, `$__archive.currency`] },
-                isCash: `$__archive.isCash`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`id`, `id`, `int64`),
+          $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
+          $BICol(`time`, `time`, `date`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Result */
+          $BICol(`odd`, `odd`, `bool`),
+          $BICol(`even`, `even`, `bool`),
+          $BICol(`r0`, `r0`, `bool`),
+          $BICol(`r1`, `r1`, `bool`),
+          $BICol(`r2`, `r2`, `bool`),
+          $BICol(`r3`, `r3`, `bool`),
+          $BICol(`r4`, `r4`, `bool`),
+          /* Details */
+          $BICol(`red1`, `red1`, `bool`),
+          $BICol(`red2`, `red2`, `bool`),
+          $BICol(`red3`, `red3`, `bool`),
+          $BICol(`red4`, `red4`, `bool`),
+        ]
+      ),
+      $BITbl(
+        `vipsedie_cuocs`,
+        `vipsedie_tickets`,
+        [
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+          {
+            $project: {
+              _id: 0,
+              freeBet: 1,
+              phien: `$${mapping.roundId}`,
+              uid: 1,
+              memberId: `$${mapping.playerId}`,
+              name: 1,
+              time: 1,
+              even: 1,
+              odd: 1,
+              red2: 1,
+              red3: 1,
+              red4: 1,
+              white3: 1,
+              white4: 1,
+              betwin: 1,
+              thanhtoan: `$${mapping.paid}`,
+              rate: 1,
+              totalAmount: { $sum: [`$even`, `$odd`, `$red2`, `$red3`, `$red4`, `$white3`, `$white4`] },
+              partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
+              currency: { $ifNull: [`$currency`, `$__archive.currency`] },
+              isCash: `$__archive.isCash`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`time`, `time`, `date`),
-            $BICol(`phien`, `roundId`, `int64`),
-            /* Member */
-            $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
-            $BICol(`name`, `nickname`, `str`),
-            $BICol(`currency`, `currency`, `str`),
-            $BICol(`partnerId`, `partnerId`, `str`),
-            /* Summary */
-            $BICol(`totalAmount`, `stake`, `float`),
-            $BICol(`betwin`, `payout`, `float`),
-            /* Attributes */
-            $BICol(`rate`, `rate`, `float`),
-            $BICol(`thanhtoan`, `settled`, `bool`),
-            $BICol(`freeBet`, `freeBet`, `bool`),
-            $BICol(`isCash`, `isCash`, `bool`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Bet Choices */
-            $BICol(`odd`, `odd`, `float`),
-            $BICol(`even`, `even`, `float`),
-            $BICol(`red4`, `red4`, `float`),
-            $BICol(`red3`, `red3`, `float`),
-            $BICol(`red2`, `red2`, `float`),
-            $BICol(`white3`, `white3`, `float`),
-            $BICol(`white4`, `white4`, `float`),
-          ]
-        ),
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`, `time`, `date`),
+          $BICol(`phien`, `roundId`, `int64`),
+          /* Member */
+          $BICol(`uid`, `uid`, `str`),
+          $BICol(`memberId`, `memberId`, `str`),
+          $BICol(`name`, `nickname`, `str`),
+          $BICol(`currency`, `currency`, `str`),
+          $BICol(`partnerId`, `partnerId`, `str`),
+          /* Summary */
+          $BICol(`totalAmount`, `stake`, `float`),
+          $BICol(`betwin`, `payout`, `float`),
+          /* Attributes */
+          $BICol(`rate`, `rate`, `float`),
+          $BICol(`thanhtoan`, `settled`, `bool`),
+          $BICol(`freeBet`, `freeBet`, `bool`),
+          $BICol(`isCash`, `isCash`, `bool`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Bet Choices */
+          $BICol(`odd`, `odd`, `float`),
+          $BICol(`even`, `even`, `float`),
+          $BICol(`red4`, `red4`, `float`),
+          $BICol(`red3`, `red3`, `float`),
+          $BICol(`red2`, `red2`, `float`),
+          $BICol(`white3`, `white3`, `float`),
+          $BICol(`white4`, `white4`, `float`),
+        ]
+      ),
       /** VIP SEDIE WAR (G) */
-    $BITbl(
-          `vipsediewar_phiens`,
-          `vipsediewar_rounds`,
-          [
-            {
-              $project: {
-                _id: 0,
-                time: 1,
-                id: 1,
-                exchangeRateId: 1,
-                player: `$settlementResult.player`,
-                banker: `$settlementResult.banker`,
-                tie: `$settlementResult.tie`,
-                odd: `$settlementResult.odd`,
-                even: `$settlementResult.even`,
-                playerOdd: `$settlementResult.playerOdd`,
-                playerEven: `$settlementResult.playerEven`,
-                playerR0: `$settlementResult.playerWhite4`,
-                playerR1: `$settlementResult.playerWhite3`,
-                playerR2: { $not: { $or: [`$settlementResult.playerWhite4`, `$settlementResult.playerWhite3`, `$settlementResult.playerRed3`, `$settlementResult.playerRed4`] } },
-                playerR3: `$settlementResult.playerRed3`,
-                playerR4: `$settlementResult.playerRed4`,
-                bankerOdd: `$settlementResult.bankerOdd`,
-                bankerEven: `$settlementResult.bankerEven`,
-                bankerR0: `$settlementResult.bankerWhite4`,
-                bankerR1: `$settlementResult.bankerWhite3`,
-                bankerR2: { $not: { $or: [`$settlementResult.bankerWhite4`, `$settlementResult.bankerWhite3`, `$settlementResult.bankerRed3`, `$settlementResult.bankerRed4`] } },
-                bankerR3: `$settlementResult.bankerRed3`,
-                bankerR4: `$settlementResult.bankerRed4`,
-                playerRed1: `$result.player.red1`,
-                playerRed2: `$result.player.red2`,
-                playerRed3: `$result.player.red3`,
-                playerRed4: `$result.player.red4`,
-                bankerRed1: `$result.banker.red1`,
-                bankerRed2: `$result.banker.red2`,
-                bankerRed3: `$result.banker.red3`,
-                bankerRed4: `$result.banker.red4`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+      $BITbl(
+        `vipsediewar_phiens`,
+        `vipsediewar_rounds`,
+        [
+          {
+            $project: {
+              _id: 0,
+              time: 1,
+              id: 1,
+              exchangeRateId: 1,
+              player: `$settlementResult.player`,
+              banker: `$settlementResult.banker`,
+              tie: `$settlementResult.tie`,
+              odd: `$settlementResult.odd`,
+              even: `$settlementResult.even`,
+              playerOdd: `$settlementResult.playerOdd`,
+              playerEven: `$settlementResult.playerEven`,
+              playerR0: `$settlementResult.playerWhite4`,
+              playerR1: `$settlementResult.playerWhite3`,
+              playerR2: { $not: { $or: [`$settlementResult.playerWhite4`, `$settlementResult.playerWhite3`, `$settlementResult.playerRed3`, `$settlementResult.playerRed4`] } },
+              playerR3: `$settlementResult.playerRed3`,
+              playerR4: `$settlementResult.playerRed4`,
+              bankerOdd: `$settlementResult.bankerOdd`,
+              bankerEven: `$settlementResult.bankerEven`,
+              bankerR0: `$settlementResult.bankerWhite4`,
+              bankerR1: `$settlementResult.bankerWhite3`,
+              bankerR2: { $not: { $or: [`$settlementResult.bankerWhite4`, `$settlementResult.bankerWhite3`, `$settlementResult.bankerRed3`, `$settlementResult.bankerRed4`] } },
+              bankerR3: `$settlementResult.bankerRed3`,
+              bankerR4: `$settlementResult.bankerRed4`,
+              playerRed1: `$result.player.red1`,
+              playerRed2: `$result.player.red2`,
+              playerRed3: `$result.player.red3`,
+              playerRed4: `$result.player.red4`,
+              bankerRed1: `$result.banker.red1`,
+              bankerRed2: `$result.banker.red2`,
+              bankerRed3: `$result.banker.red3`,
+              bankerRed4: `$result.banker.red4`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`id`, `id`, `int64`),
-            $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
-            $BICol(`time`, `time`, `date`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Result */
-            $BICol(`player`, `player`, `bool`),
-            $BICol(`banker`, `banker`, `bool`),
-            $BICol(`tie`, `tie`, `bool`),
-            $BICol(`odd`, `odd`, `bool`),
-            $BICol(`even`, `even`, `bool`),
-            $BICol(`playerOdd`, `playerOdd`, `bool`),
-            $BICol(`playerEven`, `playerEven`, `bool`),
-            $BICol(`playerR0`, `playerR0`, `bool`),
-            $BICol(`playerR1`, `playerR1`, `bool`),
-            $BICol(`playerR2`, `playerR2`, `bool`),
-            $BICol(`playerR3`, `playerR3`, `bool`),
-            $BICol(`playerR4`, `playerR4`, `bool`),
-            $BICol(`bankerOdd`, `bankerOdd`, `bool`),
-            $BICol(`bankerEven`, `bankerEven`, `bool`),
-            $BICol(`bankerR0`, `bankerR0`, `bool`),
-            $BICol(`bankerR1`, `bankerR1`, `bool`),
-            $BICol(`bankerR2`, `bankerR2`, `bool`),
-            $BICol(`bankerR3`, `bankerR3`, `bool`),
-            $BICol(`bankerR4`, `bankerR4`, `bool`),
-            /* Details */
-            $BICol(`playerRed1`, `playerRed1`, `bool`),
-            $BICol(`playerRed2`, `playerRed2`, `bool`),
-            $BICol(`playerRed3`, `playerRed3`, `bool`),
-            $BICol(`playerRed4`, `playerRed4`, `bool`),
-            $BICol(`bankerRed1`, `bankerRed1`, `bool`),
-            $BICol(`bankerRed2`, `bankerRed2`, `bool`),
-            $BICol(`bankerRed3`, `bankerRed3`, `bool`),
-            $BICol(`bankerRed4`, `bankerRed4`, `bool`),
-          ]
-        ),
-    $BITbl(
-          `vipsediewar_ones`,
-          `vipsediewar_tickets`,
-          [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
-            {
-              $project: {
-                _id: 0,
-                freeBet: 1,
-                phien: `$${mapping.roundId}`,
-                uid: 1,
-                memberId: `$${mapping.playerId}`,
-                name: 1,
-                time: 1,
-                player: { $ifNull: [`$player`, 0] },
-                banker: { $ifNull: [`$banker`, 0] },
-                tie: { $ifNull: [`$tie`, 0] },
-                odd: { $ifNull: [`$odd`, 0] },
-                even: { $ifNull: [`$even`, 0] },
-                playerOdd: { $ifNull: [`$playerOdd`, 0] },
-                playerEven: { $ifNull: [`$playerEven`, 0] },
-                playerWhite4: { $ifNull: [`$playerWhite4`, 0] },
-                playerWhite3: { $ifNull: [`$playerWhite3`, 0] },
-                playerRed3: { $ifNull: [`$playerRed3`, 0] },
-                playerRed4: { $ifNull: [`$playerRed4`, 0] },
-                bankerOdd: { $ifNull: [`$bankerOdd`, 0] },
-                bankerEven: { $ifNull: [`$bankerEven`, 0] },
-                bankerWhite4: { $ifNull: [`$bankerWhite4`, 0] },
-                bankerWhite3: { $ifNull: [`$bankerWhite3`, 0] },
-                bankerRed3: { $ifNull: [`$bankerRed3`, 0] },
-                bankerRed4: { $ifNull: [`$bankerRed4`, 0] },
-                totalAmount: 1,
-                betwin: 1,
-                thanhtoan: `$${mapping.paid}`,
-                rate: 1,
-                partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
-                currency: { $ifNull: [`$currency`, `$__archive.currency`] },
-                isCash: `$__archive.isCash`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`id`, `id`, `int64`),
+          $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
+          $BICol(`time`, `time`, `date`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Result */
+          $BICol(`player`, `player`, `bool`),
+          $BICol(`banker`, `banker`, `bool`),
+          $BICol(`tie`, `tie`, `bool`),
+          $BICol(`odd`, `odd`, `bool`),
+          $BICol(`even`, `even`, `bool`),
+          $BICol(`playerOdd`, `playerOdd`, `bool`),
+          $BICol(`playerEven`, `playerEven`, `bool`),
+          $BICol(`playerR0`, `playerR0`, `bool`),
+          $BICol(`playerR1`, `playerR1`, `bool`),
+          $BICol(`playerR2`, `playerR2`, `bool`),
+          $BICol(`playerR3`, `playerR3`, `bool`),
+          $BICol(`playerR4`, `playerR4`, `bool`),
+          $BICol(`bankerOdd`, `bankerOdd`, `bool`),
+          $BICol(`bankerEven`, `bankerEven`, `bool`),
+          $BICol(`bankerR0`, `bankerR0`, `bool`),
+          $BICol(`bankerR1`, `bankerR1`, `bool`),
+          $BICol(`bankerR2`, `bankerR2`, `bool`),
+          $BICol(`bankerR3`, `bankerR3`, `bool`),
+          $BICol(`bankerR4`, `bankerR4`, `bool`),
+          /* Details */
+          $BICol(`playerRed1`, `playerRed1`, `bool`),
+          $BICol(`playerRed2`, `playerRed2`, `bool`),
+          $BICol(`playerRed3`, `playerRed3`, `bool`),
+          $BICol(`playerRed4`, `playerRed4`, `bool`),
+          $BICol(`bankerRed1`, `bankerRed1`, `bool`),
+          $BICol(`bankerRed2`, `bankerRed2`, `bool`),
+          $BICol(`bankerRed3`, `bankerRed3`, `bool`),
+          $BICol(`bankerRed4`, `bankerRed4`, `bool`),
+        ]
+      ),
+      $BITbl(
+        `vipsediewar_ones`,
+        `vipsediewar_tickets`,
+        [
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+          {
+            $project: {
+              _id: 0,
+              freeBet: 1,
+              phien: `$${mapping.roundId}`,
+              uid: 1,
+              memberId: `$${mapping.playerId}`,
+              name: 1,
+              time: 1,
+              player: { $ifNull: [`$player`, 0] },
+              banker: { $ifNull: [`$banker`, 0] },
+              tie: { $ifNull: [`$tie`, 0] },
+              odd: { $ifNull: [`$odd`, 0] },
+              even: { $ifNull: [`$even`, 0] },
+              playerOdd: { $ifNull: [`$playerOdd`, 0] },
+              playerEven: { $ifNull: [`$playerEven`, 0] },
+              playerWhite4: { $ifNull: [`$playerWhite4`, 0] },
+              playerWhite3: { $ifNull: [`$playerWhite3`, 0] },
+              playerRed3: { $ifNull: [`$playerRed3`, 0] },
+              playerRed4: { $ifNull: [`$playerRed4`, 0] },
+              bankerOdd: { $ifNull: [`$bankerOdd`, 0] },
+              bankerEven: { $ifNull: [`$bankerEven`, 0] },
+              bankerWhite4: { $ifNull: [`$bankerWhite4`, 0] },
+              bankerWhite3: { $ifNull: [`$bankerWhite3`, 0] },
+              bankerRed3: { $ifNull: [`$bankerRed3`, 0] },
+              bankerRed4: { $ifNull: [`$bankerRed4`, 0] },
+              totalAmount: 1,
+              betwin: 1,
+              thanhtoan: `$${mapping.paid}`,
+              rate: 1,
+              partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
+              currency: { $ifNull: [`$currency`, `$__archive.currency`] },
+              isCash: `$__archive.isCash`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`time`, `time`, `date`),
-            $BICol(`phien`, `roundId`, `int64`),
-            /* Member */
-            $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
-            $BICol(`name`, `nickname`, `str`),
-            $BICol(`currency`, `currency`, `str`),
-            $BICol(`partnerId`, `partnerId`, `str`),
-            /* Summary */
-            $BICol(`totalAmount`, `stake`, `float`),
-            $BICol(`betwin`, `payout`, `float`),
-            /* Attributes */
-            $BICol(`rate`, `rate`, `float`),
-            $BICol(`thanhtoan`, `settled`, `bool`),
-            $BICol(`freeBet`, `freeBet`, `bool`),
-            $BICol(`isCash`, `isCash`, `bool`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Bet Choices */
-            $BICol(`player`, `player`, `float`),
-            $BICol(`banker`, `banker`, `float`),
-            $BICol(`tie`, `tie`, `float`),
-            $BICol(`odd`, `odd`, `float`),
-            $BICol(`even`, `even`, `float`),
-            $BICol(`playerOdd`, `playerOdd`, `float`),
-            $BICol(`playerEven`, `playerEven`, `float`),
-            $BICol(`playerWhite4`, `playerWhite4`, `float`),
-            $BICol(`playerWhite3`, `playerWhite3`, `float`),
-            $BICol(`playerRed3`, `playerRed3`, `float`),
-            $BICol(`playerRed4`, `playerRed4`, `float`),
-            $BICol(`bankerOdd`, `bankerOdd`, `float`),
-            $BICol(`bankerEven`, `bankerEven`, `float`),
-            $BICol(`bankerWhite4`, `bankerWhite4`, `float`),
-            $BICol(`bankerWhite3`, `bankerWhite3`, `float`),
-            $BICol(`bankerRed3`, `bankerRed3`, `float`),
-            $BICol(`bankerRed4`, `bankerRed4`, `float`),
-          ]
-        ),
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`, `time`, `date`),
+          $BICol(`phien`, `roundId`, `int64`),
+          /* Member */
+          $BICol(`uid`, `uid`, `str`),
+          $BICol(`memberId`, `memberId`, `str`),
+          $BICol(`name`, `nickname`, `str`),
+          $BICol(`currency`, `currency`, `str`),
+          $BICol(`partnerId`, `partnerId`, `str`),
+          /* Summary */
+          $BICol(`totalAmount`, `stake`, `float`),
+          $BICol(`betwin`, `payout`, `float`),
+          /* Attributes */
+          $BICol(`rate`, `rate`, `float`),
+          $BICol(`thanhtoan`, `settled`, `bool`),
+          $BICol(`freeBet`, `freeBet`, `bool`),
+          $BICol(`isCash`, `isCash`, `bool`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Bet Choices */
+          $BICol(`player`, `player`, `float`),
+          $BICol(`banker`, `banker`, `float`),
+          $BICol(`tie`, `tie`, `float`),
+          $BICol(`odd`, `odd`, `float`),
+          $BICol(`even`, `even`, `float`),
+          $BICol(`playerOdd`, `playerOdd`, `float`),
+          $BICol(`playerEven`, `playerEven`, `float`),
+          $BICol(`playerWhite4`, `playerWhite4`, `float`),
+          $BICol(`playerWhite3`, `playerWhite3`, `float`),
+          $BICol(`playerRed3`, `playerRed3`, `float`),
+          $BICol(`playerRed4`, `playerRed4`, `float`),
+          $BICol(`bankerOdd`, `bankerOdd`, `float`),
+          $BICol(`bankerEven`, `bankerEven`, `float`),
+          $BICol(`bankerWhite4`, `bankerWhite4`, `float`),
+          $BICol(`bankerWhite3`, `bankerWhite3`, `float`),
+          $BICol(`bankerRed3`, `bankerRed3`, `float`),
+          $BICol(`bankerRed4`, `bankerRed4`, `float`),
+        ]
+      ),
       /** WAY TO GOAL (Gsl) */
       $BITbl(
-          `waytogoal_rounds`,
-          `waytogoal_rounds`,
-          [
-            {
-              $project: {
-                _id: 0,
-                time: 1,
-                id: 1,
-                exchangeRateId: 1,
-                freeSpins: `$settlementResult.freeSpins.count`,
-                bonus: `$settlementResult.bonus.count`,
-                jackpot: { $not: { $not: `$settlementResult.jackpot` } },
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+        `waytogoal_rounds`,
+        `waytogoal_rounds`,
+        [
+          {
+            $project: {
+              _id: 0,
+              time: 1,
+              id: 1,
+              exchangeRateId: 1,
+              freeSpins: `$settlementResult.freeSpins.count`,
+              bonus: `$settlementResult.bonus.count`,
+              jackpot: { $not: { $not: `$settlementResult.jackpot` } },
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`id`, `id`, `int64`),
-            $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
-            $BICol(`time`, `time`, `date`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Result */
-            $BICol(`freeSpins`, `freeSpins`, `int`),
-            $BICol(`bonus`, `bonus`, `int`),
-            $BICol(`jackpot`, `jackpot`, `bool`),
-          ]
-        ),
-    $BITbl(
-          `waytogoal_rounds`,
-          `waytogoal_tickets`,
-          [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
-            {
-              $project: {
-                _id: 0,
-                freeSpin: 1,
-                id: 1,
-                uid: 1,
-                name: 1,
-                time: 1,
-                memberId: `$${mapping.playerId}`,
-                endTime: 1,
-                bet: 1,
-                paid: 1,
-                rate: 1,
-                betwin: `$betWin`,
-                totalAmount: { $multiply: [`$totalAmount`, { $toInt: { $not: `$freeSpin` } }] },
-                partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
-                currency: { $ifNull: [`$currency`, `$__archive.currency`] },
-                isCash: `$__archive.isCash`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-                freeBet: { $literal: false },
-              },
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`id`, `id`, `int64`),
+          $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
+          $BICol(`time`, `time`, `date`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Result */
+          $BICol(`freeSpins`, `freeSpins`, `int`),
+          $BICol(`bonus`, `bonus`, `int`),
+          $BICol(`jackpot`, `jackpot`, `bool`),
+        ]
+      ),
+      $BITbl(
+        `waytogoal_rounds`,
+        `waytogoal_tickets`,
+        [
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+          {
+            $project: {
+              _id: 0,
+              freeSpin: 1,
+              id: 1,
+              uid: 1,
+              name: 1,
+              time: 1,
+              memberId: `$${mapping.playerId}`,
+              endTime: 1,
+              bet: 1,
+              paid: 1,
+              rate: 1,
+              betwin: `$betWin`,
+              totalAmount: { $multiply: [`$totalAmount`, { $toInt: { $not: `$freeSpin` } }] },
+              partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
+              currency: { $ifNull: [`$currency`, `$__archive.currency`] },
+              isCash: `$__archive.isCash`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
+              freeBet: { $literal: false },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`time`, `time`, `date`),
-            $BICol(`id`, `roundId`, `int64`),
-            /* Member */
-            $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
-            $BICol(`name`, `nickname`, `str`),
-            $BICol(`currency`, `currency`, `str`),
-            $BICol(`partnerId`, `partnerId`, `str`),
-            /* Summary */
-            $BICol(`totalAmount`, `stake`, `float`),
-            $BICol(`betwin`, `payout`, `float`),
-            /* Attributes */
-            $BICol(`rate`, `rate`, `float`),
-            $BICol(`bet`, `pool`, `float`),
-            $BICol(`paid`, `settled`, `bool`),
-            $BICol(`freeBet`, `freeBet`, `bool`),
-            $BICol(`freeSpin`, `freeSpin`, `bool`),
-            $BICol(`isCash`, `isCash`, `bool`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Additional Info */
-            $BICol(`endTime`, `endTime`, `date`),
-          ]
-        ),
-  $BITbl(
-          `waytogoal_freespins`,
-          `waytogoal_freespins`,
-          [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
-            {
-              $project: {
-                _id: 0,
-                uid: 1,
-                memberId: `$${mapping.playerId}`,
-                name: 1,
-                id: 1,
-                roundId: 1,
-                bet: 1,
-                total: 1,
-                available: 1,
-                time: 1,
-                expiryTime: 1,
-                partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`, `time`, `date`),
+          $BICol(`id`, `roundId`, `int64`),
+          /* Member */
+          $BICol(`uid`, `uid`, `str`),
+          $BICol(`memberId`, `memberId`, `str`),
+          $BICol(`name`, `nickname`, `str`),
+          $BICol(`currency`, `currency`, `str`),
+          $BICol(`partnerId`, `partnerId`, `str`),
+          /* Summary */
+          $BICol(`totalAmount`, `stake`, `float`),
+          $BICol(`betwin`, `payout`, `float`),
+          /* Attributes */
+          $BICol(`rate`, `rate`, `float`),
+          $BICol(`bet`, `pool`, `float`),
+          $BICol(`paid`, `settled`, `bool`),
+          $BICol(`freeBet`, `freeBet`, `bool`),
+          $BICol(`freeSpin`, `freeSpin`, `bool`),
+          $BICol(`isCash`, `isCash`, `bool`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Additional Info */
+          $BICol(`endTime`, `endTime`, `date`),
+        ]
+      ),
+      $BITbl(
+        `waytogoal_freespins`,
+        `waytogoal_freespins`,
+        [
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+          {
+            $project: {
+              _id: 0,
+              uid: 1,
+              memberId: `$${mapping.playerId}`,
+              name: 1,
+              id: 1,
+              roundId: 1,
+              bet: 1,
+              total: 1,
+              available: 1,
+              time: 1,
+              expiryTime: 1,
+              partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`time`, `time`, `date`),
-            $BICol(`roundId`, `roundId`, `int64`),
-            /* Member */
-            $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
-            $BICol(`name`, `nickname`, `str`),
-            $BICol(`partnerId`, `partnerId`, `str`),
-            /* Additional Info */
-            $BICol(`id`, `id`, `int64`),
-            $BICol(`total`, `total`, `int64`),
-            $BICol(`available`, `available`, `int64`),
-            $BICol(`bet`, `pool`, `float`),
-            $BICol(`expiryTime`, `expiryTime`, `date`),
-            $BICol(`archived`, `archived`, `bool`),
-          ]
-        ),
-       $BITbl(
-          `waytogoal_fames`,
-          `waytogoal_fames`,
-          [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
-            {
-              $project: {
-                _id: 0,
-                freeSpin: 1,
-                uid: 1,
-                name: 1,
-                memberId: `$${mapping.playerId}`,
-                roundId: 1,
-                time: 1,
-                bet: 1,
-                totalAmount: 1,
-                winningAmount: 1,
-                partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
-              },
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`, `time`, `date`),
+          $BICol(`roundId`, `roundId`, `int64`),
+          /* Member */
+          $BICol(`uid`, `uid`, `str`),
+          $BICol(`memberId`, `memberId`, `str`),
+          $BICol(`name`, `nickname`, `str`),
+          $BICol(`partnerId`, `partnerId`, `str`),
+          /* Additional Info */
+          $BICol(`id`, `id`, `int64`),
+          $BICol(`total`, `total`, `int64`),
+          $BICol(`available`, `available`, `int64`),
+          $BICol(`bet`, `pool`, `float`),
+          $BICol(`expiryTime`, `expiryTime`, `date`),
+          $BICol(`archived`, `archived`, `bool`),
+        ]
+      ),
+      $BITbl(
+        `waytogoal_fames`,
+        `waytogoal_fames`,
+        [
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+          {
+            $project: {
+              _id: 0,
+              freeSpin: 1,
+              uid: 1,
+              name: 1,
+              memberId: `$${mapping.playerId}`,
+              roundId: 1,
+              time: 1,
+              bet: 1,
+              totalAmount: 1,
+              winningAmount: 1,
+              partnerId: { $ifNull: [{ $ifNull: [`$operatorId`, `$partnerId`] }, { $literal: `ONEworks1` }] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`time`, `time`, `date`),
-            $BICol(`roundId`, `roundId`, `int64`),
-            /* Member */
-            $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
-            $BICol(`name`, `nickname`, `str`),
-            $BICol(`partnerId`, `partnerId`, `str`),
-            /* Summary */
-            $BICol(`totalAmount`, `stake`, `float`),
-            $BICol(`winningAmount`, `payout`, `float`),
-            /* Additional Info */
-            $BICol(`bet`, `pool`, `float`),
-            $BICol(`freeSpin`, `freeSpin`, `bool`),
-          ]
-        ),
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`, `time`, `date`),
+          $BICol(`roundId`, `roundId`, `int64`),
+          /* Member */
+          $BICol(`uid`, `uid`, `str`),
+          $BICol(`memberId`, `memberId`, `str`),
+          $BICol(`name`, `nickname`, `str`),
+          $BICol(`partnerId`, `partnerId`, `str`),
+          /* Summary */
+          $BICol(`totalAmount`, `stake`, `float`),
+          $BICol(`winningAmount`, `payout`, `float`),
+          /* Additional Info */
+          $BICol(`bet`, `pool`, `float`),
+          $BICol(`freeSpin`, `freeSpin`, `bool`),
+        ]
+      ),
       /** WIN THREE CARDS (G) */
-    $BITbl(
-          `winthreecards_rounds`,
-          `winthreecards_rounds`,
-          [
-            {
-              $project: {
-                _id: 0,
-                time: 1,
-                id: 1,
-                exchangeRateId: 1,
-                dragon: `$settlementResult.dragon`,
-                phoenix: `$settlementResult.phoenix`,
-                tie: `$settlementResult.tie`,
-                threeOfAKind: `$settlementResult.threeOfAKind`,
-                straightFlush: `$settlementResult.straightFlush`,
-                flush: `$settlementResult.flush`,
-                straight: `$settlementResult.straight`,
-                pair8Plus: `$settlementResult.pair8Plus`,
-                killer235: `$settlementResult.killer235`,
-                highCard: `$settlementResult.highCard`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+      $BITbl(
+        `winthreecards_rounds`,
+        `winthreecards_rounds`,
+        [
+          {
+            $project: {
+              _id: 0,
+              time: 1,
+              id: 1,
+              exchangeRateId: 1,
+              dragon: `$settlementResult.dragon`,
+              phoenix: `$settlementResult.phoenix`,
+              tie: `$settlementResult.tie`,
+              threeOfAKind: `$settlementResult.threeOfAKind`,
+              straightFlush: `$settlementResult.straightFlush`,
+              flush: `$settlementResult.flush`,
+              straight: `$settlementResult.straight`,
+              pair8Plus: `$settlementResult.pair8Plus`,
+              killer235: `$settlementResult.killer235`,
+              highCard: `$settlementResult.highCard`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`id`, `id`, `int64`),
-            $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
-            $BICol(`time`, `time`, `date`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Result */
-            $BICol(`dragon`, `dragon`, `bool`),
-            $BICol(`phoenix`, `phoenix`, `bool`),
-            $BICol(`tie`, `tie`, `bool`),
-            $BICol(`threeOfAKind`, `threeOfAKind`, `bool`),
-            $BICol(`straightFlush`, `straightFlush`, `bool`),
-            $BICol(`flush`, `flush`, `bool`),
-            $BICol(`straight`, `straight`, `bool`),
-            $BICol(`pair8Plus`, `pair8Plus`, `bool`),
-            $BICol(`killer235`, `killer235`, `bool`),
-            $BICol(`highCard`, `highCard`, `bool`),
-          ]
-        ),
-    $BITbl(
-          `winthreecards_bets`,
-          `winthreecards_tickets`,
-          [
-            { $match: { [mapping.playerId]: { $gt: 0 } } },
-            {
-              $project: {
-                _id: 0,
-                freeBet: 1,
-                phien: `$${mapping.roundId}`,
-                uid: 1,
-                memberId: `$${mapping.playerId}`,
-                name: 1,
-                time: 1,
-                red: 1,
-                black: 1,
-                diamonds: 1,
-                hearts: 1,
-                clubs: 1,
-                spades: 1,
-                betwin: 1,
-                thanhtoan: `$${mapping.paid}`,
-                rate: 1,
-                totalAmount: 1,
-                partnerId: `$operatorId`,
-                currency: 1,
-                isCash: `$__archive.isCash`,
-                archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
-              },
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`id`, `id`, `int64`),
+          $BICol(`exchangeRateId`, `exchangeRateId`, `int64`),
+          $BICol(`time`, `time`, `date`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Result */
+          $BICol(`dragon`, `dragon`, `bool`),
+          $BICol(`phoenix`, `phoenix`, `bool`),
+          $BICol(`tie`, `tie`, `bool`),
+          $BICol(`threeOfAKind`, `threeOfAKind`, `bool`),
+          $BICol(`straightFlush`, `straightFlush`, `bool`),
+          $BICol(`flush`, `flush`, `bool`),
+          $BICol(`straight`, `straight`, `bool`),
+          $BICol(`pair8Plus`, `pair8Plus`, `bool`),
+          $BICol(`killer235`, `killer235`, `bool`),
+          $BICol(`highCard`, `highCard`, `bool`),
+        ]
+      ),
+      $BITbl(
+        `winthreecards_bets`,
+        `winthreecards_tickets`,
+        [
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
+          {
+            $project: {
+              _id: 0,
+              freeBet: 1,
+              phien: `$${mapping.roundId}`,
+              uid: 1,
+              memberId: `$${mapping.playerId}`,
+              name: 1,
+              time: 1,
+              red: 1,
+              black: 1,
+              diamonds: 1,
+              hearts: 1,
+              clubs: 1,
+              spades: 1,
+              betwin: 1,
+              thanhtoan: `$${mapping.paid}`,
+              rate: 1,
+              totalAmount: 1,
+              partnerId: `$operatorId`,
+              currency: 1,
+              isCash: `$__archive.isCash`,
+              archived: { $ifNull: [{ $toBool: `$__archive.eventtime` }, false] },
             },
-          ],
-          [
-            $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
-            /* Metadata */
-            $BICol(`time`, `time`, `date`),
-            $BICol(`phien`, `roundId`, `int64`),
-            /* Member */
-            $BICol(`uid`, `uid`, `str`),
-            $BICol(`memberId`, `memberId`, `int64`),
-            $BICol(`name`, `nickname`, `str`),
-            $BICol(`currency`, `currency`, `str`),
-            $BICol(`partnerId`, `partnerId`, `str`),
-            /* Summary */
-            $BICol(`totalAmount`, `stake`, `float`),
-            $BICol(`betwin`, `payout`, `float`),
-            /* Attributes */
-            $BICol(`rate`, `rate`, `float`),
-            $BICol(`thanhtoan`, `settled`, `bool`),
-            $BICol(`freeBet`, `freeBet`, `bool`),
-            $BICol(`isCash`, `isCash`, `bool`),
-            $BICol(`archived`, `archived`, `bool`),
-            /* Bet Choices */
-            $BICol(`red`, `red`, `float`),
-            $BICol(`black`, `black`, `float`),
-            $BICol(`diamonds`, `diamonds`, `float`),
-            $BICol(`hearts`, `hearts`, `float`),
-            $BICol(`clubs`, `clubs`, `float`),
-            $BICol(`spades`, `spades`, `float`),
-          ]
-        ),
+          },
+        ],
+        [
+          $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
+          /* Metadata */
+          $BICol(`time`, `time`, `date`),
+          $BICol(`phien`, `roundId`, `int64`),
+          /* Member */
+          $BICol(`uid`, `uid`, `str`),
+          $BICol(`memberId`, `memberId`, `str`),
+          $BICol(`name`, `nickname`, `str`),
+          $BICol(`currency`, `currency`, `str`),
+          $BICol(`partnerId`, `partnerId`, `str`),
+          /* Summary */
+          $BICol(`totalAmount`, `stake`, `float`),
+          $BICol(`betwin`, `payout`, `float`),
+          /* Attributes */
+          $BICol(`rate`, `rate`, `float`),
+          $BICol(`thanhtoan`, `settled`, `bool`),
+          $BICol(`freeBet`, `freeBet`, `bool`),
+          $BICol(`isCash`, `isCash`, `bool`),
+          $BICol(`archived`, `archived`, `bool`),
+          /* Bet Choices */
+          $BICol(`red`, `red`, `float`),
+          $BICol(`black`, `black`, `float`),
+          $BICol(`diamonds`, `diamonds`, `float`),
+          $BICol(`hearts`, `hearts`, `float`),
+          $BICol(`clubs`, `clubs`, `float`),
+          $BICol(`spades`, `spades`, `float`),
+        ]
+      ),
       /** XOC XOC (G) */
       $BITbl(
         `xocxoc_phiens`,
@@ -7141,7 +7141,7 @@ deploy: {
         `xocxoc_cuocs`,
         `xocxoc_tickets`,
         [
-          { $match: { [mapping.playerId]: { $gt: 0 } } },
+          { $match: { $or: [{ [mapping.playerId]: { $gt: 0 } }, { [mapping.playerId]: { $gt: "" } }] } },
           {
             $project: {
               _id: 0,
@@ -7185,7 +7185,7 @@ deploy: {
           $BICol(`phien`, `roundId`, `int64`),
           /* Member */
           $BICol(`uid`, `uid`, `str`),
-          $BICol(`memberId`, `memberId`, `int64`),
+          $BICol(`memberId`, `memberId`, `str`),
           $BICol(`name`, `nickname`, `str`),
           $BICol(`currency`, `currency`, `str`),
           $BICol(`partnerId`, `partnerId`, `str`),
@@ -7279,7 +7279,7 @@ deploy: {
           $BICol(`currency`, `currency`, `str`),
           $BICol(`isCash`, `isCash`, `bool`),
           $BICol(`operatorId`, `operatorId`, `str`),
-          $BICol(`playerIds`, `playerId`, `int64`),
+          $BICol(`playerIds`, `playerId`, `str`),
           $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
         ]
       ),
@@ -7315,7 +7315,7 @@ deploy: {
           $BICol(`currency`, `currency`, `str`),
           $BICol(`isCash`, `isCash`, `bool`),
           $BICol(`operatorId`, `operatorId`, `str`),
-          $BICol(`playerIds`, `playerId`, `int64`),
+          $BICol(`playerIds`, `playerId`, `str`),
           $BICol(`_MONGOFILTER`, `_MONGOFILTER`, `filter`),
         ]
       ),

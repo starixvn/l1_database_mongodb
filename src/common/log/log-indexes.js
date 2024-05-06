@@ -2,7 +2,7 @@ deploy: {
   const dbs   = DBs(db);
   const label = `log@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
-  if (![1, 2].includes(L)) break deploy;
+  if (![1, 2, 4].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
