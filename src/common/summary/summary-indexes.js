@@ -44,7 +44,6 @@ deploy: {
     $Indexes(dbs.summary.hourly_statements, [global.___idx[label].TTL_arc, global.___idx[label].time_game_operator_site_player_U]),
     $Indexes(dbs.summary.hourly_summaries, [global.___idx[label].TTL_arc, global.___idx[label].time_currency_game_operator_site_U]),
     $Indexes(dbs.summary.game_summary_config, [global.___idx[label].gameId_U, global.___idx[label].owGameTypeId_FU]),
-    $Indexes(dbs.summary.metadata_configs, [global.___idx[label].gameId_U]),
     $Indexes(dbs.summary.round_summaries, [
       global.___idx[label].TTL_arc,
       global.___idx[label].game_currency_operator_site_round_U,
@@ -54,7 +53,6 @@ deploy: {
       global.___idx[label].__archive_do_hourly,
     ]),
     $Indexes(dbs.summary.summary_configs, [global.___idx[label].gameId_U]),
-    $Indexes(dbs.summary.metadata_queue, [global.___idx[label].db_coll__id_U, global.___idx[label].db_coll__id_U_en_2]),
   ];
 }
 
