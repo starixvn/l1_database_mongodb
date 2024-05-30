@@ -28,7 +28,7 @@ deploy: {
     sessionId_U: $Index({ sessionId: 1 }, { unique: true }),
     ssoToken: $Index({ ssoToken: 1 }),
     type_inRoom_red: $Index({ type: 1, inRoom: 1, red: 1 }),
-    UID_U: $Index({ UID: 1 }, { unique: true, sparse: true, collation: { locale: "simple" } }),
+    UID_U: $Index({ UID: 1 }, { unique: true, collation: { locale: "en", strength: 2 } }),
     username_U_en: $Index({ "local.username": 1 }, { unique: true, collation: { locale: "en", strength: 2 } }),
   };
 

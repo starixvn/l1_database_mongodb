@@ -23,7 +23,7 @@ deploy: {
       $Privilege(dbs.local.system.profile     , $Privilege.actions.monitor),
       $Privilege(dbs.local.system.replset     , $Privilege.actions.monitor),
       $Privilege(dbs.local.system.rollback.id , $Privilege.actions.monitor),
-      $Privilege(dbs._mongo                   , $Privilege.actions.monitor),
+      $Privilege(dbs._mongo                   , $Privilege.actions.monitor, ["listCollections", "listDatabases"]),
       $Privilege(dbs._.system.js              , $Privilege.actions.monitor),
       $Privilege(dbs._.system.profile         , $Privilege.actions.monitor),
     ]),
