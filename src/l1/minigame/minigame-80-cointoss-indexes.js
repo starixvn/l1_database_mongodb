@@ -15,6 +15,7 @@ deploy: {
     $Indexes(dbs.minigame.cointoss_betlogs, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F]),
     $Indexes(dbs.minigame.cointoss_bets, [idx.TTL, idx.time_archive, idx.currency, idx.__archive_summarized, idx.__archive_do_summary, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]),
     $Indexes(dbs.minigame.cointoss_results, [idx.TTL, idx.time_archive, idx.roundId]),
+    $Indexes(dbs.minigame.cointoss_tmpbets, [idx.timeTTL, idx.roundId__id, idx.uid_roundId]),
   ];
   idxs.forEach((_) => _.deploy());
 }

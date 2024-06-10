@@ -183,6 +183,7 @@ deploy: {
         from: { db: "minigame", postfix: "" },
         to: { db: "minigame_arc", postfix: "_bk" },
         alias: { time: "_id" },
+        config: { updateOnly: true },
       },
     ].forEach((config) => archiveConfigData.push(config));
   }
