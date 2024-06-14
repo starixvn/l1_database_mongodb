@@ -38,7 +38,7 @@ deploy: {
     },
   ];
 
-  const actions = data.map(({ gameId, ...data }) => ({ updateOne: { filter: { gameId }, update: data, upsert: true } }));
+  const actions = data.map(({ gameId, ...data }) => ({ updateOne: { filter: { gameId }, update: { $set: data }, upsert: true } }));
   actions.push({ deleteMany: { filter: { gameId: { $nin: data.map(({ gameId }) => gameId) } } } });
 
   {

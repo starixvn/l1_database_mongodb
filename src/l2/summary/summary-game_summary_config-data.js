@@ -8,7 +8,7 @@ deploy: {
   if (!global.___data?.[label]) loadScript(`../../common/summary/summary-game_summary_config-data.js`);
   const data = [...global.___data[label]];
 
-  const actions = data.map(({ gameId, ...data }) => ({ updateOne: { filter: { gameId }, update: data, upsert: true } }));
+  const actions = data.map(({ gameId, ...data }) => ({ updateOne: { filter: { gameId }, update: { $set: data }, upsert: true } }));
   actions.push({ deleteMany: { filter: { gameId: { $nin: data.map(({ gameId }) => gameId) } } } });
 
   {

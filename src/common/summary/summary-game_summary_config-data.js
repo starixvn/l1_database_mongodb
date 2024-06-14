@@ -2,7 +2,7 @@ deploy: {
   const dbs = DBs(db);
   const label = `summary-game_summary_config@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
-  if (![1, 2, 4].includes(L)) break deploy;
+  if (![1, 2].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   const commonFields = { vendorId: { [1]: 42, [2]: 66 }[L] };
