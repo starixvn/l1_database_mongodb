@@ -3153,6 +3153,97 @@ deploy: {
       ].forEach((config) => archiveConfigData.push(config));
     }
 
+    /** { gameId: 81, name: "bac81" } */
+    {
+      const gameConfigs = { gameId: 81, name: "bac81" };
+      [
+        {
+          ...commonConfig,
+          id: 0,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_rounds" },
+          to: { db: "minigame_arc", postfix: "_rounds_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24, localField: "id" },
+          childs: [
+            { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
+            { from: { db: "minigame", postfix: "_bets" }, to: { db: "minigame_arc", postfix: "_bets_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_betlogs" }, to: { db: "minigame_arc", postfix: "_betlogs_bk" }, config: { foreignField: "roundId" }, filter: '{"playerId":{"$ne":null}}' },
+            { from: { db: "minigame", postfix: "_multipliers" }, to: { db: "minigame_arc", postfix: "_multipliers_bk" }, config: { foreignField: "roundId" } },
+            { from: { db: "minigame", postfix: "_cut_card_pfs" }, to: { db: "minigame_arc", postfix: "_cut_card_pfs_bk" }, config: { foreignField: "roundId" } },
+          ],
+          log: { field: "_rounds", value: "id" },
+        },
+        {
+          ...commonConfig,
+          id: 1,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_results" },
+          to: { db: "minigame_arc", postfix: "_results_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8 },
+        },
+        {
+          ...commonConfig,
+          id: 2,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_bets" },
+          to: { db: "minigame_arc", postfix: "_bets_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8 },
+          filter: '{"playerId":{"$ne":null}}',
+        },
+        {
+          ...commonConfig,
+          id: 3,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_bets" },
+          to: { db: "minigame_arc", postfix: "_bets_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8, updateOnly: true },
+          filter: '{"playerId":null}',
+        },
+        {
+          ...commonConfig,
+          id: 4,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_betlogs" },
+          to: { db: "minigame_arc", postfix: "_betlogs_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8 },
+          filter: '{"playerId":{"$ne":null}}',
+        },
+        {
+          ...commonConfig,
+          id: 5,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_betlogs" },
+          to: { db: "minigame_arc", postfix: "_betlogs_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8, updateOnly: true },
+          filter: '{"playerId":null}',
+        },
+        {
+          ...commonConfig,
+          id: 6,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_multipliers" },
+          to: { db: "minigame_arc", postfix: "_multipliers_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8 },
+        },
+        {
+          ...commonConfig,
+          id: 7,
+          gameConfigs,
+          from: { db: "minigame", postfix: "_cut_card_pfs" },
+          to: { db: "minigame_arc", postfix: "_cut_card_pfs_bk" },
+          alias: { time: "time" },
+          config: { cutOffsetHours: -24 * 8 },
+        },
+      ].forEach((config) => archiveConfigData.push(config));
+    }
+
     /** { gameId: 99, name: "jackpots" } */
     {
       const gameConfigs = { gameId: 99, name: "jackpots" };
