@@ -794,6 +794,20 @@ deploy: {
     },
     {
       ...commonConfig,
+      gameConfigs: { gameId: 93, name: "footballcointoss" },
+      db: "minigame",
+      coll: { round: "_rounds", bet: "_bets" },
+      aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+      calc: {
+        roundId: '"$id"',
+        tickets: '{"$literal":1}',
+        stake: '"$totalAmount"',
+        payout: '"$betwin"',
+        refund: '{"$literal":0}',
+      },
+    },
+    {
+      ...commonConfig,
       gameConfigs: { gameId: 99, name: "jackpots" },
       db: "minigame",
       coll: { round: "" },

@@ -501,6 +501,12 @@ deploy: {
       coll: { db: `minigame`, group: `cointoss`, round: `_rounds`, postfix: `_bets` },
     },
     {
+      gameId: 93,
+      owGameTypeId: { [1]: 1688, [2]: 3880 }[L],
+      name: { en: `EURO 2024 RNG`, vi: `EURO 2024 RNG`, grp: `Coin Toss`, game: `Coin Toss` },
+      coll: { db: `minigame`, group: `footballcointoss`, round: `_rounds`, postfix: `_bets` },
+    },
+    {
       gameId: 99,
       owGameTypeId: { [1]: 1699, [2]: 3899 }[L],
       name: { en: `Jackpot Prize`, vi: `Giải Jackpot`, grp: `Slots`, game: `Jackpot` },

@@ -21,13 +21,13 @@ deploy: {
     {
       gameId: 1003,
       owGameTypeId: 10803,
-      name: { en: "Lucky Next 1", vi: "Lucky Next 1", grp: "Lucky Next", game: "Lucky Next" },
+      name: { en: "Lucky Next 1", vi: "Lucky Next 1", grp: "Lucky Next", game: "Lucky RNG" },
       coll: { db: "minigame", group: "luckynext1", round: "_rounds", postfix: "_bets" },
     },
     {
       gameId: 1004,
       owGameTypeId: 10804,
-      name: { en: "Lucky Next 2", vi: "Lucky Next 2", grp: "Lucky Next", game: "Lucky Next" },
+      name: { en: "Lucky Next 2", vi: "Lucky Next 2", grp: "Lucky Next", game: "Lucky RNG" },
       coll: { db: "minigame", group: "luckynext2", round: "_rounds", postfix: "_bets" },
     },
     {
@@ -35,6 +35,12 @@ deploy: {
       owGameTypeId: 10805,
       name: { en: "Se Ball", vi: "Se Ball", grp: "Se Ball", game: "Se Ball" },
       coll: { db: "minigame", group: "seball1", round: "_rounds", postfix: "_bets" },
+    },
+    {
+      gameId: 1006,
+      owGameTypeId: 10806,
+      name: { en: "Lucky Three", vi: "Lucky Three", grp: "Lucky Three", game: "Lucky RNG" },
+      coll: { db: "minigame", group: "luckythree", round: "_rounds", postfix: "_bets" },
     },
   ];
 
