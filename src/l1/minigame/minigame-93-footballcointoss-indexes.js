@@ -67,15 +67,15 @@ deploy: {
           upsert: true,
         },
       },
-      {
-        updateOne: {
-          filter: { startTime: ISODate("2024-07-05T19:00:00Z") },
-          update: { $set: { home: "W41", away: "W42" } },
-          // update: { $set: { home: "FRA", away: "POR" } },
-          // update: { $set: { home: "BEL", away: "SVN" } },
-          upsert: true,
-        },
-      },
+      // {
+      //   updateOne: {
+      //     filter: { startTime: ISODate("2024-07-05T19:00:00Z") },
+      //     update: { $set: { home: "W41", away: "W42" } },
+      //     // update: { $set: { home: "FRA", away: "POR" } },
+      //     // update: { $set: { home: "BEL", away: "SVN" } },
+      //     upsert: true,
+      //   },
+      // },
       {
         updateOne: {
           filter: { startTime: ISODate("2024-07-06T16:00:00Z") },
@@ -83,36 +83,36 @@ deploy: {
           upsert: true,
         },
       },
-      {
-        updateOne: {
-          filter: { startTime: ISODate("2024-07-06T19:00:00Z") },
-          update: { $set: { home: "W43", away: "W44" } },
-          // update: { $set: { home: "ROU", away: "AUT" } },
-          // update: { $set: { home: "NED", away: "TUR" } },
-          upsert: true,
-        },
-      },
-      {
-        updateOne: {
-          filter: { startTime: ISODate("2024-07-09T19:00:00Z") },
-          update: { $set: { home: "W45", away: "W46" } },
-          upsert: true,
-        },
-      },
-      {
-        updateOne: {
-          filter: { startTime: ISODate("2024-07-10T19:00:00Z") },
-          update: { $set: { home: "W47", away: "W48" } },
-          upsert: true,
-        },
-      },
-      {
-        updateOne: {
-          filter: { startTime: ISODate("2024-07-14T19:00:00Z") },
-          update: { $set: { home: "W49", away: "W50" } },
-          upsert: true,
-        },
-      },
+      // {
+      //   updateOne: {
+      //     filter: { startTime: ISODate("2024-07-06T19:00:00Z") },
+      //     update: { $set: { home: "W43", away: "W44" } },
+      //     // update: { $set: { home: "ROU", away: "AUT" } },
+      //     // update: { $set: { home: "NED", away: "TUR" } },
+      //     upsert: true,
+      //   },
+      // },
+      // {
+      //   updateOne: {
+      //     filter: { startTime: ISODate("2024-07-09T19:00:00Z") },
+      //     update: { $set: { home: "W45", away: "W46" } },
+      //     upsert: true,
+      //   },
+      // },
+      // {
+      //   updateOne: {
+      //     filter: { startTime: ISODate("2024-07-10T19:00:00Z") },
+      //     update: { $set: { home: "W47", away: "W48" } },
+      //     upsert: true,
+      //   },
+      // },
+      // {
+      //   updateOne: {
+      //     filter: { startTime: ISODate("2024-07-14T19:00:00Z") },
+      //     update: { $set: { home: "W49", away: "W50" } },
+      //     upsert: true,
+      //   },
+      // },
     ],
     { ordered: false }
   );
