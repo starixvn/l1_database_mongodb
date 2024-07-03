@@ -14,7 +14,7 @@ deploy: {
     $Indexes(dbs.minigame.bac81_rounds, [idx.TTL, idx.time, idx.id]),
     $Indexes(dbs.minigame.bac81_betlogs, [idx.TTL, idx.time_archive, idx.roundId__id, idx.playerId_roundId_F]),
     $Indexes(dbs.minigame.bac81_bets, [idx.TTL, idx.time_archive, idx.currency, idx.__archive_summarized, idx.__archive_do_summary, idx.roundId__id, idx.playerId_roundId_F, idx.uid_roundId]),
-    $Indexes(dbs.minigame.bac81_results, [idx.TTL, idx.time_archive, $Index({ firstRoundId: 1 })]),
+    $Indexes(dbs.minigame.bac81_results, [idx.TTL, idx.time_archive, $Index({ firstRoundId: 1 }), $Index({ isAvailable: 1 }, { partialFilterExpression: { isAvailable: true } })]),
     $Indexes(dbs.minigame.bac81_tmpbets, [idx.timeTTL, idx.roundId__id, idx.uid_roundId]),
     $Indexes(dbs.minigame.bac81_multipliers, [idx.TTL, idx.roundId__id]),
     $Indexes(dbs.minigame.bac81_cut_card_pfs, [idx.TTL, idx.roundId__id, idx.time_archive]),

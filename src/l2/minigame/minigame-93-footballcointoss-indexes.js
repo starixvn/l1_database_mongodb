@@ -29,7 +29,7 @@ deploy: {
   ];
   idxs.forEach((_) => _.deploy());
 
-  dbs.minigame.footballcointoss_matches.bulkWrite(
+  const res = dbs.minigame.footballcointoss_matches.bulkWrite(
     [
       {
         updateOne: {
@@ -67,15 +67,13 @@ deploy: {
           upsert: true,
         },
       },
-      // {
-      //   updateOne: {
-      //     filter: { startTime: ISODate("2024-07-05T19:00:00Z") },
-      //     update: { $set: { home: "W41", away: "W42" } },
-      //     // update: { $set: { home: "FRA", away: "POR" } },
-      //     // update: { $set: { home: "BEL", away: "SVN" } },
-      //     upsert: true,
-      //   },
-      // },
+      {
+        updateOne: {
+          filter: { startTime: ISODate("2024-07-05T19:00:00Z") },
+          update: { $set: { home: "POR", away: "FRA" } },
+          upsert: true,
+        },
+      },
       {
         updateOne: {
           filter: { startTime: ISODate("2024-07-06T16:00:00Z") },
@@ -83,15 +81,13 @@ deploy: {
           upsert: true,
         },
       },
-      // {
-      //   updateOne: {
-      //     filter: { startTime: ISODate("2024-07-06T19:00:00Z") },
-      //     update: { $set: { home: "W43", away: "W44" } },
-      //     // update: { $set: { home: "ROU", away: "AUT" } },
-      //     // update: { $set: { home: "NED", away: "TUR" } },
-      //     upsert: true,
-      //   },
-      // },
+      {
+        updateOne: {
+          filter: { startTime: ISODate("2024-07-06T19:00:00Z") },
+          update: { $set: { home: "NED", away: "TUR" } },
+          upsert: true,
+        },
+      },
       // {
       //   updateOne: {
       //     filter: { startTime: ISODate("2024-07-09T19:00:00Z") },
@@ -116,6 +112,7 @@ deploy: {
     ],
     { ordered: false }
   );
+  $Log(`DATA`).info(`minigame.footballcointoss_matches`, `#-${res.matchedCount} • D-${res.deletedCount} • I-${res.insertedCount} • M-${res.modifiedCount} • U-${res.upsertedCount}`);
 }
 
 deploy: {
