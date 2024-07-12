@@ -21,6 +21,20 @@ deploy: {
         refund: '{"$literal":0}',
       },
     },
+    {
+      ...commonConfig,
+      gameConfigs: { gameId: 1007, name: "sicball" },
+      db: "minigame",
+      coll: { round: "_rounds", bet: "_bets" },
+      aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+      calc: {
+        roundId: '"$id"',
+        tickets: '{"$literal":1}',
+        stake: '"$totalAmount"',
+        payout: '"$betwin"',
+        refund: '{"$literal":0}',
+      },
+    },
   ];
 
   const bulkWrite = data.map(({ gameConfigs, category, type, ...restData }) => ({

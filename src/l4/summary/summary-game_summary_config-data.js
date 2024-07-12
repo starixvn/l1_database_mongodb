@@ -42,6 +42,12 @@ deploy: {
       name: { en: "Lucky Three", vi: "Lucky Three", grp: "Lucky Three", game: "Lucky RNG" },
       coll: { db: "minigame", group: "luckythree", round: "_rounds", postfix: "_bets" },
     },
+    {
+      gameId: 1007,
+      owGameTypeId: 10807,
+      name: { en: "Sic Ball", vi: "Sic Ball", grp: "Sic Ball", game: "Sic Ball" },
+      coll: { db: "minigame", group: "sicball", round: "_rounds", postfix: "_bets" },
+    },
   ];
 
   const actions = data.map(({ gameId, ...data }) => ({ updateOne: { filter: { gameId }, update: { $set: data }, upsert: true } }));

@@ -88,27 +88,27 @@ deploy: {
           upsert: true,
         },
       },
-      // {
-      //   updateOne: {
-      //     filter: { startTime: ISODate("2024-07-09T19:00:00Z") },
-      //     update: { $set: { home: "W45", away: "W46" } },
-      //     upsert: true,
-      //   },
-      // },
-      // {
-      //   updateOne: {
-      //     filter: { startTime: ISODate("2024-07-10T19:00:00Z") },
-      //     update: { $set: { home: "W47", away: "W48" } },
-      //     upsert: true,
-      //   },
-      // },
-      // {
-      //   updateOne: {
-      //     filter: { startTime: ISODate("2024-07-14T19:00:00Z") },
-      //     update: { $set: { home: "W49", away: "W50" } },
-      //     upsert: true,
-      //   },
-      // },
+      {
+        updateOne: {
+          filter: { startTime: ISODate("2024-07-09T19:00:00Z") },
+          update: { $set: { home: "ESP", away: "FRA" } },
+          upsert: true,
+        },
+      },
+      {
+        updateOne: {
+          filter: { startTime: ISODate("2024-07-10T19:00:00Z") },
+          update: { $set: { home: "NED", away: "ENG" } },
+          upsert: true,
+        },
+      },
+      {
+        updateOne: {
+          filter: { startTime: ISODate("2024-07-14T19:00:00Z") },
+          update: { $set: { home: "ESP", away: "ENG" } },
+          upsert: true,
+        },
+      },
     ],
     { ordered: false }
   );
