@@ -1,34 +1,42 @@
 {
-  local.forEach(instance => {
-    /** Authenticate instance */
-    while (!auth(instance)) {};
+    Object.keys(require.cache)
+        .filter((_) => RegExp(path.resolve().replaceAll("\\", "\\\\")).test(_))
+        .forEach((_) => {
+            delete require.cache[_];
+        });
+}
 
-    /** Switch to deploying db */
-    const oldDB = global.db;
-    global.db = instance.admin;
-    global.dbs = DBs(global.db);
-    global.env = 'local';
+{
+    local.forEach((instance) => {
+        /** Authenticate instance */
+        while (!auth(instance)) {}
 
-    try {
-      const logger = $Log(util.inspect(dbs));
-      logger.info(`Start `, `Deploying...`);
+        /** Switch to deploying db */
+        const oldDB = global.db;
+        global.db = instance.admin;
+        global.dbs = DBs(global.db);
+        global.env = "local";
 
-      loadScript(`init/admin-identity.js`);
+        try {
+            const logger = $Log(util.inspect(dbs));
+            logger.info(`Start `, `Deploying...`);
 
-      loadScript(`security/roles.js`);
-      loadScript(`security/users-${dbs._mongo._identity.stage}.js`);
+            loadScript(`init/admin-identity.js`);
 
-      loadFolder(`common`);
-      loadFolder(`l${dbs._mongo._identity.L}`);
+            loadScript(`security/roles.js`);
+            loadScript(`security/users-${dbs._mongo._identity.stage}.js`);
 
-      logger.info(`Finish`, `Deployed.\n`);
-    } catch (e) {
-      console.error(e);
-    }
+            loadFolder(`common`);
+            loadFolder(`l${dbs._mongo._identity.L}`);
 
-    /** Switch back to old db */
-    global.db = oldDB;
-    global.dbs = DBs(global.db);
-    delete global.env;
-  });
+            logger.info(`Finish`, `Deployed.\n`);
+        } catch (e) {
+            console.error(e);
+        }
+
+        /** Switch back to old db */
+        global.db = oldDB;
+        global.dbs = DBs(global.db);
+        delete global.env;
+    });
 }
