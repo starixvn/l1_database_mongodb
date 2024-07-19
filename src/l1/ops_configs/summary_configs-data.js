@@ -6,12 +6,12 @@ deploy: {
     const { summaryConfigs } = require("../../modules/ops_configs/summary_configs.cjs");
 
     const bulkWrite = summaryConfigs.map((doc) => {
-        const { gameConfigs, category, type } = doc;
-        const data = Object.assign({}, { _id: { gameConfigs, category, type } }, doc);
+        const { gameConfigs, id } = doc;
+        const data = Object.assign({}, { _id: { gameConfigs, id } }, doc);
 
         return {
             replaceOne: {
-                filter: { gameConfigs, category, type },
+                filter: { gameConfigs, id },
                 replacement: data,
                 upsert: true,
             },
