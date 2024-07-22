@@ -553,7 +553,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 53, name: "megakeno2" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
