@@ -8,7 +8,7 @@ const summaryTemplates = [
                 db: "minigame",
                 coll: { round: "_rounds" },
                 filter: '{"paid":true}',
-                aliases: { playerId: "playerId", settled: "paid", time: "time" },
+                aliases: { playerId: "playerId", settled: "paid", time: "time", subRoundId: "id" },
                 calc: {
                     roundId: '"$id"',
                     tickets: '{"$literal":1}',
@@ -28,7 +28,7 @@ const summaryTemplates = [
                 db: "minigame",
                 coll: { round: "_rounds" },
                 filter: '{"paid":true}',
-                aliases: { playerId: "playerId", settled: "paid", time: "time" },
+                aliases: { playerId: "playerId", settled: "paid", time: "time", subRoundId: "id" },
                 calc: {
                     roundId: '"$id"',
                     tickets: '{"$literal":1}',
@@ -47,7 +47,7 @@ const summaryTemplates = [
             {
                 db: "minigame",
                 coll: { round: "_rounds", bet: "_bets" },
-                aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+                aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
                 calc: {
                     roundId: '"$id"',
                     tickets: '{"$literal":1}',
@@ -66,7 +66,7 @@ const summaryTemplates = [
             {
                 db: "minigame",
                 coll: { round: "_rounds", bet: "_bets" },
-                aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+                aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
                 calc: {
                     roundId: '"$id"',
                     tickets: '{"$literal":1}',

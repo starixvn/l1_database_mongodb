@@ -11,7 +11,7 @@ deploy: {
             gameConfigs: { gameId: 1005, name: "seball1" },
             db: "minigame",
             coll: { round: "_rounds", bet: "_bets" },
-            aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+            aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "drawId" },
             calc: {
                 roundId: '"$id"',
                 tickets: '{"$literal":1}',
@@ -25,7 +25,7 @@ deploy: {
             gameConfigs: { gameId: 1007, name: "sicball" },
             db: "minigame",
             coll: { round: "_rounds", bet: "_bets" },
-            aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+            aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "drawId" },
             calc: {
                 roundId: '"$id"',
                 tickets: '{"$literal":1}',
