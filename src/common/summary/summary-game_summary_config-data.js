@@ -2,7 +2,7 @@ deploy: {
   const dbs = DBs(db);
   const label = `summary-game_summary_config@${dbs.toString()}`;
   const { L, stage } = dbs._mongo._identity;
-  if (![1, 2, 4].includes(L)) break deploy;
+  if (![1, 2].includes(L)) break deploy;
   if (!["active", "mixed"].includes(stage)) break deploy;
 
   const commonFields = { vendorId: { [1]: 42, [2]: 66 }[L] };
@@ -368,7 +368,7 @@ deploy: {
     {
       gameId: 59,
       owGameTypeId: { [1]: 1666, [2]: 3858 }[L],
-      name: { en: `Fruit Slot`, vi: `Xèng Hoa Quả`, grp: `Casino`, game: `Fruit Slot` },
+      name: { en: `Fruit 77`, vi: `Xèng Hoa Quả 77`, grp: `Casino`, game: `Fruit Slot` },
       coll: { db: `minigame`, group: `fruitslot`, round: `_rounds`, postfix: `_bets` },
     },
     {
@@ -453,7 +453,7 @@ deploy: {
     {
       gameId: 73,
       owGameTypeId: { [1]: 1681, [2]: 3873 }[L],
-      name: { en: `Spaceflight`, vi: `Spaceflight`, grp: `Crash Games`, game: `Spaceflight` },
+      name: { en: `Spaceflight`, vi: `Phi Thuyền Không Gian`, grp: `Crash Games`, game: `Spaceflight` },
       coll: { db: `minigame`, group: `spaceflight`, round: `_rounds`, postfix: `_bets` },
     },
     {
@@ -466,13 +466,13 @@ deploy: {
     {
       gameId: 75,
       owGameTypeId: { [1]: 1680, [2]: 3872 }[L],
-      name: { en: `Bandar Qiu Qiu`, vi: `Bandar Qiu Qiu`, grp: `Card Games`, game: `Bandar Qiu Qiu` },
+      name: { en: `Bandar Qiu Qiu`, vi: `Domino 99`, grp: `Card Games`, game: `Bandar Qiu Qiu` },
       coll: { db: `minigame`, group: `bandarqiuqiu`, round: `_rounds`, postfix: `_bets` },
     },
     {
       gameId: 76,
       owGameTypeId: { [1]: 1683, [2]: 3875 }[L],
-      name: { en: `Dragon Ball`, vi: `Bảy Viên Ngọc Rồng`, grp: `Slots`, game: `Dragon Ball` },
+      name: { en: `Dragon Ball`, vi: `Dragon Ball`, grp: `Slots`, game: `Dragon Ball` },
       coll: { db: `minigame`, group: `dragonball`, round: `_rounds`, postfix: `_rounds` },
       config: { jpCont: { [2]: 0.025 }[L] },
     },
@@ -485,8 +485,26 @@ deploy: {
     {
       gameId: 78,
       owGameTypeId: { [1]: 1685, [2]: 3877 }[L],
-      name: { en: `Football Dice`, vi: `Football Dice`, grp: `Football Dice`, game: `Football Dice` },
+      name: { en: `Football Dice`, vi: `Xí Ngầu Túc Cầu`, grp: `Football Dice`, game: `Football Dice` },
       coll: { db: `minigame`, group: `footballdice`, round: `_rounds`, postfix: `_bets` },
+    },
+    {
+      gameId: 79,
+      owGameTypeId: { [1]: 1686, [2]: 3878 }[L],
+      name: { en: `Football Spin`, vi: `Sôi Động Cầu Trường`, grp: `Casino`, game: `Football Spin` },
+      coll: { db: `minigame`, group: `footballslot`, round: `_rounds`, postfix: `_bets` },
+    },
+    {
+      gameId: 80,
+      owGameTypeId: { [1]: 1687, [2]: 3879 }[L],
+      name: { en: `Coin Toss`, vi: `Coin Toss`, grp: `Coin Toss`, game: `Coin Toss` },
+      coll: { db: `minigame`, group: `cointoss`, round: `_rounds`, postfix: `_bets` },
+    },
+    {
+      gameId: 93,
+      owGameTypeId: { [1]: 1688, [2]: 3880 }[L],
+      name: { en: `EURO 2024 RNG`, vi: `EURO 2024 RNG`, grp: `Coin Toss`, game: `Coin Toss` },
+      coll: { db: `minigame`, group: `footballcointoss`, round: `_rounds`, postfix: `_bets` },
     },
     {
       gameId: 99,

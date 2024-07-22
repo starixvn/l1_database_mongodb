@@ -1,32 +1,34 @@
-/** L1 L2 */
 deploy: {
-  const dbs   = DBs(db);
-  const label = `summary-game_summary_config@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+    const dbs = DBs(db);
+    const { L } = dbs._mongo._identity;
+    if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
+    if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  if (!global.___data?.[label]) loadScript(`../../common/summary/summary-game_summary_config-data.js`);
-  const data = [
-    ...global.___data[label],
-  ];
+    const { gameSummaryConfig } = require("../../modules/summary/summary-game_summary_config.cjs");
 
-  const del = dbs.summary.game_summary_config.deleteMany({});
-  const res = dbs.summary.game_summary_config.insertMany(data, {ordered: false});
-  $Log(`DATA`).info(`summary.game_summary_config`, `D-${del.deletedCount} • I-${Object.keys(res.insertedIds).length} • M-0 • U-0`);
-}
+    const bulkWrite = gameSummaryConfig(L).map((doc) => {
+        const { gameId } = doc;
+        const data = Object.assign({}, { _id: { gameId } }, doc);
 
-deploy: {
-  const dbs   = DBs(db);
-  const label = `summary_arc-game_summary_config@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+        return {
+            replaceOne: {
+                filter: { gameId },
+                replacement: data,
+                upsert: true,
+            },
+        };
+    });
 
-  if (!global.___data?.[label]) loadScript(`../../common/summary/summary_arc-game_summary_config-data.js`);
-  const data = [
-    ...global.___data[label],
-  ];
+    bulkWrite.push({
+        deleteMany: {
+            filter: {
+                gameId: { $nin: gameSummaryConfig(L).map(({ gameId }) => gameId) },
+            },
+        },
+    });
 
-  const del = dbs.summary_arc.game_summary_config.deleteMany({});
-  const res = dbs.summary_arc.game_summary_config.insertMany(data, {ordered: false});
-  $Log(`DATA`).info(`summary_arc.game_summary_config`, `D-${del.deletedCount} • I-${Object.keys(res.insertedIds).length} • M-0 • U-0`);
+    {
+        const res = dbs.summary.game_summary_config.bulkWrite(bulkWrite, { ordered: false });
+        $Log("DATA").info("summary.game_summary_config", `#=${res.matchedCount} • I+${res.insertedCount} • U+${res.upsertedCount} • M=${res.modifiedCount} • D-${res.deletedCount}`);
+    }
 }

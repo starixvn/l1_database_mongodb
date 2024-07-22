@@ -1,32 +1,76 @@
-/** L1 L2 */
 deploy: {
-  const dbs   = DBs(db);
-  const label = `summary-game_summary_config@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+    const dbs = DBs(db);
+    if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
+    if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
 
-  if (!global.___data?.[label]) loadScript(`../../common/summary/summary-game_summary_config-data.js`);
-  const data = [
-    ...global.___data[label],
-  ];
+    const gameSummaryConfig = [
+        {
+            gameId: 1001,
+            owGameTypeId: 10801,
+            name: { en: "Bac Ball 1", vi: "Bac Ball 1", grp: "Bac Ball", game: "Bac Ball" },
+            coll: { db: "minigame", group: "bacball1", round: "_rounds", postfix: "_bets" },
+        },
+        {
+            gameId: 1002,
+            owGameTypeId: 10802,
+            name: { en: "Bac Ball 2", vi: "Bac Ball 2", grp: "Bac Ball", game: "Bac Ball" },
+            coll: { db: "minigame", group: "bacball2", round: "_rounds", postfix: "_bets" },
+        },
+        {
+            gameId: 1003,
+            owGameTypeId: 10803,
+            name: { en: "Lucky Next 1", vi: "Lucky Next 1", grp: "Lucky Next", game: "Lucky RNG" },
+            coll: { db: "minigame", group: "luckynext1", round: "_rounds", postfix: "_bets" },
+        },
+        {
+            gameId: 1004,
+            owGameTypeId: 10804,
+            name: { en: "Lucky Next 2", vi: "Lucky Next 2", grp: "Lucky Next", game: "Lucky RNG" },
+            coll: { db: "minigame", group: "luckynext2", round: "_rounds", postfix: "_bets" },
+        },
+        {
+            gameId: 1005,
+            owGameTypeId: 10805,
+            name: { en: "Se Ball", vi: "Se Ball", grp: "Se Ball", game: "Se Ball" },
+            coll: { db: "minigame", group: "seball1", round: "_rounds", postfix: "_bets" },
+        },
+        {
+            gameId: 1006,
+            owGameTypeId: 10806,
+            name: { en: "Lucky Three", vi: "Lucky Three", grp: "Lucky Three", game: "Lucky RNG" },
+            coll: { db: "minigame", group: "luckythree", round: "_rounds", postfix: "_bets" },
+        },
+        {
+            gameId: 1007,
+            owGameTypeId: 10807,
+            name: { en: "Sic Ball", vi: "Sic Ball", grp: "Sic Ball", game: "Sic Ball" },
+            coll: { db: "minigame", group: "sicball", round: "_rounds", postfix: "_bets" },
+        },
+    ];
 
-  const del = dbs.summary.game_summary_config.deleteMany({});
-  const res = dbs.summary.game_summary_config.insertMany(data, {ordered: false});
-  $Log(`DATA`).info(`summary.game_summary_config`, `D-${del.deletedCount} • I-${Object.keys(res.insertedIds).length} • M-0 • U-0`);
-}
+    const bulkWrite = gameSummaryConfig.map((doc) => {
+        const { gameId } = doc;
+        const data = Object.assign({}, { _id: { gameId } }, doc);
 
-deploy: {
-  const dbs   = DBs(db);
-  const label = `summary_arc-game_summary_config@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+        return {
+            replaceOne: {
+                filter: { gameId },
+                replacement: data,
+                upsert: true,
+            },
+        };
+    });
 
-  if (!global.___data?.[label]) loadScript(`../../common/summary/summary_arc-game_summary_config-data.js`);
-  const data = [
-    ...global.___data[label],
-  ];
+    bulkWrite.push({
+        deleteMany: {
+            filter: {
+                gameId: { $nin: gameSummaryConfig.map(({ gameId }) => gameId) },
+            },
+        },
+    });
 
-  const del = dbs.summary_arc.game_summary_config.deleteMany({});
-  const res = dbs.summary_arc.game_summary_config.insertMany(data, {ordered: false});
-  $Log(`DATA`).info(`summary_arc.game_summary_config`, `D-${del.deletedCount} • I-${Object.keys(res.insertedIds).length} • M-0 • U-0`);
+    {
+        const res = dbs.summary.game_summary_config.bulkWrite(bulkWrite, { ordered: false });
+        $Log("DATA").info("summary.game_summary_config", `#=${res.matchedCount} • I+${res.insertedCount} • U+${res.upsertedCount} • M=${res.modifiedCount} • D-${res.deletedCount}`);
+    }
 }
