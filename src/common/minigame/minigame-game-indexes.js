@@ -44,5 +44,8 @@ deploy: {
     uid_paid__id: $Index({ uid: 1, paid: 1, _id: 1 }),
     uid_thanhtoan__id: $Index({ uid: 1, paid: 1, _id: 1 }),
     metric_metadata_U: $Index({ metric: 1, metadata: 1 }, { unique: true }),
+    drawId_U: $Index({ drawId: 1 }, { unique: true }),
+    uid_drawId: $Index({ uid: 1, drawId: 1 }, { unique: true }),
+    drawId: $Index({ drawId: 1, _id: 1 }),
   };
 }

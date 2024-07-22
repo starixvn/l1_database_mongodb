@@ -15,6 +15,9 @@ deploy: {
     archive     : {
       read            : $Role(dbs.archive     , `read`          ),
     },
+    bi          : {
+      read            : $Role(dbs.bi          , `read`          ),
+    },
     config      : {
       owner           : $Role(dbs.config      , `dbOwner`       ),
     },
@@ -171,6 +174,7 @@ deploy: {
     $User(dbs.admin, `mongosqld`, [
       roles.admin         .public,
       roles.Proteus       .read,
+      roles.bi            .read,
       roles.schema        .read,
       /** active */
       roles.archive       .read,

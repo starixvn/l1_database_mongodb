@@ -1,22 +1,24 @@
-/** L1 L2 -- */
 deploy: {
-  const dbs   = DBs(db);
-  const label = `minigame-global_configs@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+    const dbs = DBs(db);
+    const { L, stage } = dbs._mongo._identity;
+    if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
+    if (!["active", "mixed"].includes(stage)) break deploy;
 
-  if (!global.___data?.[label]) loadScript(`../../common/minigame/minigame-global_configs-data.js`);
-  const data = {
-    ...global.___data[label],
-  };
+    const { exchangeCodes, kenoMatchLiveOdds } = require("../../modules/minigame/minigame-global_configs.cjs");
 
-  const bulkPipe = Object.keys(data).map(type => ({
-    updateOne : {
-      filter  : { type },
-      update  : { $set: data[type] },
-      upsert  : true,
-    },
-  }));
-  const res = dbs.minigame.global_configs.bulkWrite(bulkPipe, {ordered: false});
-  $Log(`DATA`).info(`minigame.global_configs`, `D-${res.deletedCount ?? 0} • I-${(res.insertedCount ?? 0) + (res.upsertedCount ?? 0)} • M-${res.matchedCount ?? 0} • U-${res.modifiedCount ?? 0}`);
+    const bulkWrite = [exchangeCodes(L), kenoMatchLiveOdds].map((doc) => {
+        const { type } = doc;
+        const data = Object.assign({}, { _id: { type } }, doc);
+
+        return {
+            replaceOne: {
+                filter: { type },
+                replacement: data,
+                upsert: true,
+            },
+        };
+    });
+
+    const res = dbs.minigame.global_configs.bulkWrite(bulkWrite, { ordered: false });
+    $Log("DATA").info("minigame.global_configs", `#=${res.matchedCount} • I+${res.insertedCount} • U+${res.upsertedCount} • M=${res.modifiedCount} • D-${res.deletedCount}`);
 }
