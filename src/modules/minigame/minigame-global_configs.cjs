@@ -4,6 +4,10 @@ module.exports = {};
     /** kenomatch_liveodds */
     const type = "kenomatch_liveodds";
     const time = new Date("2021-10-04T00:00:00Z");
+    const _id = `${Math.floor(new Date("2021-10-04T00:00:00Z").valueOf() / 1000).toString(16)}${"liveodds"
+        .split("")
+        .map((_) => _.charCodeAt(0).toString(16))
+        .join("")}`;
     const blueRed = {
         "-150": { liveFTBlue: 9.01, liveFTRed: 1.06 },
         "-149": { liveFTBlue: 9.0, liveFTRed: 1.06 },
@@ -633,13 +637,17 @@ module.exports = {};
         blueRed: 2,
         overUnder: 1.5,
     };
-    module.exports.kenoMatchLiveOdds = { type, time, blueRed, overUnder, adjRate };
+    module.exports.kenoMatchLiveOdds = { _id, type, time, blueRed, overUnder, adjRate };
 }
 
 module.exports.exchangeCodes = (L) => {
     /** exchange_codes */
     const type = "exchange_codes";
     const time = new Date("2021-12-14T00:00:00Z");
+    const _id = `${Math.floor(new Date("2021-12-14T00:00:00Z").valueOf() / 1000).toString(16)}${"ex_codes"
+        .split("")
+        .map((_) => _.charCodeAt(0).toString(16))
+        .join("")}`;
     const base = { [1]: "USD", [2]: "VND", [4]: "USD" }[L];
     const configs = {
         codes: [
@@ -688,5 +696,5 @@ module.exports.exchangeCodes = (L) => {
             "COP",
         ],
     };
-    return { type, time, base, configs };
+    return { _id, type, time, base, configs };
 };

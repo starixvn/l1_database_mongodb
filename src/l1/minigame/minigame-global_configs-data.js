@@ -7,8 +7,8 @@ deploy: {
     const { exchangeCodes, kenoMatchLiveOdds } = require("../../modules/minigame/minigame-global_configs.cjs");
 
     const bulkWrite = [exchangeCodes(L), kenoMatchLiveOdds].map((doc) => {
-        const { type } = doc;
-        const data = Object.assign({}, { _id: { type } }, doc);
+        const { _id } = doc;
+        const data = Object.assign({}, { _id: ObjectId(_id) }, doc);
 
         return {
             replaceOne: {
