@@ -8,7 +8,7 @@ deploy: {
 
     const bulkWrite = [exchangeCodes(L)].map((doc) => {
         const { _id, type } = doc;
-        const data = Object.assign({}, { _id: ObjectId(_id) }, doc);
+        const data = Object.assign({}, doc, { _id: ObjectId(_id) });
 
         return {
             replaceOne: {
