@@ -7,7 +7,7 @@ deploy: {
     const { exchangeCodes } = require("../../modules/minigame/minigame-global_configs.cjs");
 
     const bulkWrite = [exchangeCodes(L)].map((doc) => {
-        const { _id } = doc;
+        const { _id, type } = doc;
         const data = Object.assign({}, { _id: ObjectId(_id) }, doc);
 
         return {

@@ -694,6 +694,7 @@ module.exports.exchangeCodes = (L) => {
             "SEK",
             "TRY",
             "COP",
+            "EGP",
         ],
     };
     return { _id, type, time, base, configs };
