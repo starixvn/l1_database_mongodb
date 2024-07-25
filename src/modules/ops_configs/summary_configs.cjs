@@ -6,7 +6,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 1, name: "taixiu" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -20,7 +20,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 2, name: "xocxoc" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -34,7 +34,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 3, name: "baucua" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -48,7 +48,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 4, name: "txturbo" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -63,7 +63,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 6, name: "chanleturbo" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -77,7 +77,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 7, name: "minidragontiger" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -91,7 +91,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 8, name: "kenopromax" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -105,7 +105,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 9, name: "minisedie" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -119,7 +119,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 10, name: "baccarat" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -136,7 +136,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 14, name: "kenomini" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -150,7 +150,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 15, name: "kenomini2" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -164,7 +164,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 16, name: "kenoeast" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -178,7 +178,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 17, name: "kenowest" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -192,7 +192,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 18, name: "kenosouth" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -206,7 +206,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 19, name: "kenonorth" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -221,7 +221,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 21, name: "roulette" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -235,7 +235,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 22, name: "vipsedie" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -249,7 +249,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 23, name: "blackjack" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "id" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -263,7 +263,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 24, name: "specialsedie" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -277,7 +277,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 25, name: "sicbo" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -291,7 +291,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 26, name: "vipfishprawncrab" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -305,7 +305,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 27, name: "vipbaccarat" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -319,7 +319,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 28, name: "vipsediewar" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -334,7 +334,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 30, name: "fishprawncrabpro" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -348,7 +348,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 31, name: "lottery" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -365,7 +365,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 35, name: "threecards" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -379,7 +379,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 36, name: "kenomatch1" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -393,7 +393,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 37, name: "kenomatch2" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -408,7 +408,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 39, name: "casinoholdempoker" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -422,7 +422,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 40, name: "kenopower1" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -436,7 +436,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 41, name: "kenopower2" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -450,7 +450,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 42, name: "texasholdempoker" },
         db: "minigame",
         coll: { round: "_phiens", bet: "_cuocs" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -464,7 +464,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 43, name: "bitcoinmaster" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -480,7 +480,7 @@ const summaryConfigs = [
         db: "minigame",
         coll: { round: "_rounds" },
         filter: '{"paid":true}',
-        aliases: { playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { playerId: "playerId", settled: "paid", time: "time", subRoundId: "id" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -496,7 +496,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 48, name: "blockchainbaccarat" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -511,7 +511,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 50, name: "unbalancedbigsmall1" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -525,7 +525,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 51, name: "unbalancedbigsmall2" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -539,7 +539,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 52, name: "megakeno" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -553,7 +553,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 53, name: "megakeno2" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_ones" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -567,7 +567,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 54, name: "unbalancedbigsmall3" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -581,7 +581,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 55, name: "unbalancedbigsmall4" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -595,7 +595,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 56, name: "minisedie2" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -609,7 +609,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 57, name: "minisedie3" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -623,7 +623,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 58, name: "minisedie4" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -638,7 +638,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 60, name: "fantan" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -652,7 +652,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 61, name: "winthreecards" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -671,7 +671,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 67, name: "dragontigerfight" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -688,7 +688,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 71, name: "colorgame" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -702,7 +702,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 72, name: "pontoon" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "id" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -717,7 +717,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 75, name: "bandarqiuqiu" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -732,7 +732,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 77, name: "chineseblackjack" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "id" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -746,7 +746,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 78, name: "footballdice" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -761,7 +761,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 80, name: "cointoss" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -775,7 +775,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 81, name: "bac81" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -789,7 +789,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 93, name: "footballcointoss" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
         calc: {
             roundId: '"$id"',
             tickets: '{"$literal":1}',
@@ -803,7 +803,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 99, name: "jackpots" },
         db: "minigame",
         coll: { round: "" },
-        aliases: { playerId: "winnerId", settled: "winnerId", time: "hitTime" },
+        aliases: { playerId: "winnerId", settled: "winnerId", time: "hitTime", subRoundId: "hitAt" },
         calc: {
             roundId: '{"$toDecimal":{"$concat":[{"$toString":"$gameId"},".",{"$toString":"$hitAt"}]}}',
             tickets: '{"$literal":0}',

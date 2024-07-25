@@ -1,12 +1,5 @@
 {
-    Object.keys(require.cache)
-        .filter((_) => RegExp(path.resolve().replaceAll("\\", "\\\\")).test(_))
-        .forEach((_) => {
-            delete require.cache[_];
-        });
-}
-
-{
+    loadScript("clear-cache.js");
     local.forEach((instance) => {
         /** Authenticate instance */
         while (!auth(instance)) {}
