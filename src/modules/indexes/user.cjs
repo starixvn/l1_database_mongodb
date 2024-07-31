@@ -3,7 +3,8 @@ const LOCALE = {
     en: { locale: "en", strength: 2 },
 };
 
-module.exports = {
+/** @type {import("../type.cjs").IndexConfig} */
+const indexes = {
     TTL: {
         key: { "__archive.eventtime": 1 },
         options: { expireAfterSeconds: 3600 * 24 * 8 },
@@ -61,3 +62,5 @@ module.exports = {
         options: { unique: true, collation: LOCALE.en },
     },
 };
+
+module.exports = indexes;

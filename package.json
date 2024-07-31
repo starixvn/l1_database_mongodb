@@ -1,0 +1,9 @@
+{
+    "devDependencies": {
+        "@ldb/mongo": "^6.8.0",
+        "@mongosh/service-provider-core": "^2.2.6",
+        "@mongosh/service-provider-server": "^2.2.6",
+        "@mongosh/shell-api": "^2.2.6",
+        "@types/node": "^20.14.2"
+    }
+}

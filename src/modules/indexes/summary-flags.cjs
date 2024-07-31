@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import("../type.cjs").IndexConfig} */
+const indexes = {
     __archive_summarized: {
         key: { "__archive.summarized": 1 },
         options: {},
@@ -24,3 +25,5 @@ module.exports = {
         options: { partialFilterExpression: { "__archive.do_hourly": true } },
     },
 };
+
+module.exports = indexes;

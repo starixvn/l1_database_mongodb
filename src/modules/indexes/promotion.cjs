@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import("../type.cjs").IndexConfig} */
+const indexes = {
     promo_U: {
         key: { promotionId: 1 },
         options: { unique: true },
@@ -16,3 +17,5 @@ module.exports = {
         options: { unique: true },
     },
 };
+
+module.exports = indexes;

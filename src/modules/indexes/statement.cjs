@@ -1,4 +1,5 @@
-module.exports = {
+/** @type {import("../type.cjs").IndexConfig} */
+const indexes = {
     game_round_subRound_operator_player_U: {
         key: { gameId: 1, roundId: 1, subRoundId: 1, operatorId: 1, playerId: 1 },
         options: { unique: true },
@@ -16,3 +17,5 @@ module.exports = {
         options: {},
     },
 };
+
+module.exports = indexes;
