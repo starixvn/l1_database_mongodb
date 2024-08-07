@@ -3,7 +3,7 @@ const LOCALE = {
     en: { locale: "en", strength: 2 },
 };
 
-/** @type {import("../type.cjs").IndexConfig} */
+/** @satisfies {import("../type.cjs").IndexConfig} */
 const indexes = {
     TTL: {
         key: { "__archive.eventtime": 1 },

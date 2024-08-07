@@ -1,4 +1,4 @@
-/** @type {import("../type.cjs").IndexConfig} */
+/** @satisfies {import("../type.cjs").IndexConfig} */
 const indexes = {
     promo_U: {
         key: { promotionId: 1 },

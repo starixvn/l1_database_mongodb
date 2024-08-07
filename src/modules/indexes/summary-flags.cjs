@@ -1,4 +1,4 @@
-/** @type {import("../type.cjs").IndexConfig} */
+/** @satisfies {import("../type.cjs").IndexConfig} */
 const indexes = {
     __archive_summarized: {
         key: { "__archive.summarized": 1 },
