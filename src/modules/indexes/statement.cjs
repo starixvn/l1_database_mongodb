@@ -20,6 +20,10 @@ const indexes = {
         key: { time: 1, code: 1 },
         options: { unique: true },
     },
+    player_operator: {
+        key: { playerId: 1, operatorId: 1 },
+        options: {},
+    },
 };
 
 module.exports = indexes;

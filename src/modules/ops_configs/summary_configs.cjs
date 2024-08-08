@@ -803,7 +803,7 @@ const summaryConfigs = [
         gameConfigs: { gameId: 99, name: "jackpots" },
         db: "minigame",
         coll: { round: "" },
-        aliases: { playerId: "winnerId", settled: "winnerId", time: "hitTime", subRoundId: "hitAt" },
+        aliases: { playerId: "winnerId", settled: "hitAt", time: "hitTime", subRoundId: "hitAt" },
         calc: {
             roundId: '{"$toDecimal":{"$concat":[{"$toString":"$gameId"},".",{"$toString":"$hitAt"}]}}',
             tickets: '{"$literal":0}',

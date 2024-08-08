@@ -14,7 +14,7 @@ deploy: {
         _.validate();
     });
 
-    const { game_round_subRound_operator_player_U, game_player_time, time, game_roundTime, time_code_U } = require("../../modules/indexes/statement.cjs");
+    const { game_round_subRound_operator_player_U, game_player_time, time, game_roundTime, time_code_U, player_operator } = require("../../modules/indexes/statement.cjs");
     const { __archive_daily, __archive_do_daily, __archive_do_hourly, __archive_do_summary, __archive_hourly, __archive_summarized } = require("../../modules/indexes/summary-flags.cjs");
 
     /** @param {import("../../modules/type.cjs").IndexConfig[string]} arg */
@@ -35,5 +35,6 @@ deploy: {
     [
         $Indexes(dbs.minigame.ticket_silos, idxs), //
         $Indexes(dbs.minigame.exchange_silos, [toIdx(time_code_U)]),
+        $Indexes(dbs.minigame.user_silos, [toIdx(player_operator)]),
     ].forEach((_) => _.deploy());
 }
