@@ -803,9 +803,9 @@ const summaryConfigs = [
         gameConfigs: { gameId: 99, name: "jackpots" },
         db: "minigame",
         coll: { round: "" },
-        aliases: { playerId: "winnerId", settled: "winnerId", time: "hitTime", subRoundId: "hitAt" },
+        aliases: { playerId: "winnerId", settled: "hitAt", time: "hitTime", subRoundId: "hitAt" },
         calc: {
-            roundId: '{"$toDecimal":{"$concat":[{"$toString":"$gameId"},".",{"$toString":"$hitAt"}]}}',
+            roundId: '{"$add":["$hitAt",{"$divide":["$gameId",100000]}]}',
             tickets: '{"$literal":0}',
             stake: '{"$literal":0}',
             payout: '{"$divide":[{"$multiply":["$amount","$winningRatio"]},{"$ifNull":["$rate",{"$literal":1}]}]}',

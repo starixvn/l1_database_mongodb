@@ -1,15 +1,45 @@
-/** L1 L2 -- */
 deploy: {
-  const dbs = DBs(db);
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+    const dbs = DBs(db);
+    const { L, stage } = dbs._mongo._identity;
+    if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
+    if (!["active", "mixed"].includes(stage)) break deploy;
 
-  const idx = {
-    gameId_pool_createdAt : $Index({'gameId': 1, 'pool': 1, 'createdAt': 1}, {unique: true}),
-    gameId_pool_FU: $Index({'gameId': 1, 'pool': 1}, {unique: true, partialFilterExpression: { hitAt: null }}),
-  };
-  const idxs = [
-    $Indexes(dbs.minigame.jackpots , [idx.gameId_pool_createdAt, idx.__archive_summarized, idx.__archive_do_summary]),
-  ];
-  idxs.forEach(_ => _.deploy());
+    /** @param {import("../../modules/type.cjs").IndexConfig[string]} arg */
+    const toIdx = ({ key, options }) => $Index(key, options);
+    const { __archive_do_summary, __archive_summarized } = require("../../modules/indexes/summary-flags.cjs");
+
+    const { game_pool_FU, game_pool_created_FU, game_prize_FU, game_prize_created_FU } = {
+        game_pool_created_FU: $Index(
+            { gameId: 1, pool: 1, createdAt: 1 },
+            {
+                unique: true,
+                partialFilterExpression: { pool: { $gt: 0 } },
+            }
+        ),
+        game_pool_FU: $Index(
+            { gameId: 1, pool: 1 },
+            {
+                unique: true,
+                partialFilterExpression: { hitAt: null, pool: { $gt: 0 } },
+            }
+        ),
+        game_prize_created_FU: $Index(
+            { gameId: 1, prize: 1, createdAt: 1 },
+            {
+                unique: true,
+                partialFilterExpression: { prize: { $gt: "" } },
+            }
+        ),
+        game_prize_FU: $Index(
+            { gameId: 1, prize: 1 },
+            {
+                unique: true,
+                partialFilterExpression: { hitAt: null, prize: { $gt: "" } },
+            }
+        ),
+    };
+    const idxs = [
+        $Indexes(dbs.minigame.jackpots, [game_pool_FU, game_pool_created_FU, game_prize_FU, game_prize_created_FU, toIdx(__archive_summarized), toIdx(__archive_do_summary)]), //
+    ];
+    idxs.forEach((_) => _.deploy());
 }
