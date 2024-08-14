@@ -20,7 +20,7 @@ deploy: {
             { gameId: 1, pool: 1 },
             {
                 unique: true,
-                partialFilterExpression: { hitAt: null, pool: { $gt: 0 } },
+                partialFilterExpression: { hitAt: null, pool: { $gt: 0 }, gameId: { $gt: 29 } },
             }
         ),
         game_prize_created_FU: $Index(
