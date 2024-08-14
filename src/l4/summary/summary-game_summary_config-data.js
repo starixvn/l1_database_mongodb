@@ -48,6 +48,7 @@ deploy: {
         },
     ];
 
+    /** @type {import("@ldb/mongo").AnyBulkWriteOperation[]} */
     const bulkWrite = gameSummaryConfig.map((doc) => {
         const { gameId } = doc;
         const data = Object.assign({}, { _id: { gameId } }, doc);
