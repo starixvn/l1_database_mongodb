@@ -122,4 +122,6 @@ const validateColl = async (db, name, options) => {
     );
 };
 
+
+
 module.exports = { getIdentity, ensureCollection, ensureView, validateColl };

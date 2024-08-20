@@ -18,7 +18,24 @@ const DEFAULT_COLLATE = /** @type { const } */ ({
  * @param { CollationOptions } [collate]
  */
 const getCollate = (collate = DEFAULT_COLLATE) => {
-    return /** @type { Collation } */ ({ ...DEFAULT_COLLATE, ...collate });
+    const mergedCollate = /** @type { Collation } */ ({ ...DEFAULT_COLLATE, ...collate });
+    delete mergedCollate["version"];
+    return mergedCollate;
 };
 
-module.exports = { DEFAULT_COLLATE, getCollate };
+/** @param { CollationOptions } [collation] */
+const getCollationSimpleName = (collation = DEFAULT_COLLATE) => {
+    const { locale, strength } = getCollate(collation);
+
+    if (locale === "simple") {
+        return "";
+    }
+
+    if ((strength ?? 3) === 3) {
+        return locale;
+    }
+
+    return `${locale}_${strength}`;
+};
+
+module.exports = { DEFAULT_COLLATE, getCollate, getCollationSimpleName };

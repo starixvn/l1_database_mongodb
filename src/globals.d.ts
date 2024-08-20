@@ -1,4 +1,11 @@
-import type { AnyBulkWriteOperation as AnyBulkWriteOperationType, Document as DocumentType, EJSON as EJSONType, IndexDescription as IndexDescriptionType, ObjectId as ObjectIdType } from "@ldb/mongo";
+import type {
+    AnyBulkWriteOperation as AnyBulkWriteOperationType,
+    Document as DocumentType,
+    EJSON as EJSONType,
+    IndexDescription as IndexDescriptionType,
+    MongoServerError as MongoServerErrorType,
+    ObjectId as ObjectIdType,
+} from "@ldb/mongo";
 import type { CollationOptions as CollationOptionsType, CreateCollectionOptions as CreateCollectionOptionsType } from "@mongosh/service-provider-core";
 import type { BulkWriteResult as BulkWriteResultType, Database as DatabaseType, ReplicaSet as ReplicaSetType } from "@mongosh/shell-api";
 import pathModule from "path";
@@ -19,8 +26,10 @@ declare global {
     type CreateCollectionOptions = CreateCollectionOptionsType;
     type Database = DatabaseType;
     type IndexDescription = IndexDescriptionType;
-    type IndexConfig = Record<string, { key: IndexDescription["key"]; options: Omit<IndexDescription, "key"> }>;
+    type IndexDefinition = { key: IndexDescription["key"]; options: Omit<IndexDescription, "key"> };
+    type IndexConfig = Record<string, IndexDefinition>;
     type ReplicaSet = ReplicaSetType;
+    type MongoServerError = MongoServerErrorType;
 }
 
 /** Custom type */
@@ -183,7 +192,7 @@ declare global {
         | "zu";
     type Strength = 1 | 2 | 3 | 4 | 5;
     type CollationOptions = CollationOptionsType;
-    type Collation = CollationOptions & { locale: Locale; strength?: Strength };
+    type Collation = CollationOptions & { locale: Locale; strength?: Strength; version?: string };
 }
 
 /** BI */
