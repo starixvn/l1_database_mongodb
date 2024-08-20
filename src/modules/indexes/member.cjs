@@ -1,19 +1,11 @@
 /** @satisfies { IndexConfig } */
 const indexes = {
-    StartDate: {
-        key: { StartDate: 1 },
+    memberId_iP: {
+        key: { memberId: 1, iP: 1 },
         options: {},
     },
-    requestTimeStamp: {
-        key: { requestTimeStamp: 1 },
-        options: {},
-    },
-    logTimeStamp: {
-        key: { requestTimeStamp: 1 },
-        options: {},
-    },
-    betlogs: {
-        key: { "__archive.betlogs": 1, _id: 1 },
+    token: {
+        key: { token: 1 },
         options: {},
     },
 };

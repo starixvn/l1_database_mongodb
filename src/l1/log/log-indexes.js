@@ -7,7 +7,7 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
-    const { TTL } = require("../../modules/indexes/archive-flags.cjs");
+    const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
     const { StartDate, logTimeStamp, betlogs } = require("../../modules/indexes/log.cjs");
 
     const logDB = db.getSiblingDB("log");
@@ -26,14 +26,14 @@
             "void_games",
         ].map((collName) => ensureCollection(logDB, collName, STORAGE_COMPRESSED))
     );
-    await deployIndexes(logDB, "audit_events", [TTL, StartDate]);
-    await deployIndexes(logDB, "bets", [TTL, logTimeStamp, betlogs]);
-    await deployIndexes(logDB, "end_games", [TTL, logTimeStamp]);
-    await deployIndexes(logDB, "failed_requests", [TTL, logTimeStamp]);
-    await deployIndexes(logDB, "membersignin_requests", [TTL, logTimeStamp]);
-    await deployIndexes(logDB, "owsignin_requests", [TTL, logTimeStamp]);
-    await deployIndexes(logDB, "retrieve_requests", [TTL, logTimeStamp]);
-    await deployIndexes(logDB, "signin_requests", [TTL, logTimeStamp]);
-    await deployIndexes(logDB, "ticket_detail_requests", [TTL, logTimeStamp]);
-    await deployIndexes(logDB, "void_games", [TTL, logTimeStamp]);
+    await deployIndexes(logDB, "audit_events", [TTL_8d, StartDate]);
+    await deployIndexes(logDB, "bets", [TTL_8d, logTimeStamp, betlogs]);
+    await deployIndexes(logDB, "end_games", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "failed_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "membersignin_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "owsignin_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "retrieve_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "signin_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "ticket_detail_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "void_games", [TTL_8d, logTimeStamp]);
 })();

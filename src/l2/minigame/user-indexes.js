@@ -7,7 +7,7 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { COLLATION_EN } = require("../../modules/const.cjs");
-    const { TTL } = require("../../modules/indexes/archive-flags.cjs");
+    const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
     const { __archive_summarized, __archive_do_summary } = require("../../modules/indexes/summary-flags.cjs");
     const {
         operatorId,
@@ -35,5 +35,5 @@
     );
     await deployIndexes(gameDB, "users", [memberId_en, operatorId, playerId, username_U_en]);
     await deployIndexes(gameDB, "userinfos", [currency_en, id_U, id_U_en, name_U_en, type_inRoom_en, UID_U_en]);
-    await deployIndexes(gameDB, "usersessions", [TTL, playerId, recheckInTime, sessionId_U, ssoToken, __archive_summarized, __archive_do_summary]);
+    await deployIndexes(gameDB, "usersessions", [TTL_8d, playerId, recheckInTime, sessionId_U, ssoToken, __archive_summarized, __archive_do_summary]);
 })();
