@@ -1,3 +1,4 @@
+/** @type { BsonDocument[] } */
 const archiveGameConfigs = [];
 
 /** Games */

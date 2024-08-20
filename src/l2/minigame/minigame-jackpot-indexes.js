@@ -4,7 +4,7 @@ deploy: {
     if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
     if (!["active", "mixed"].includes(stage)) break deploy;
 
-    /** @param {import("../../modules/type.cjs").IndexConfig[string]} arg */
+    /** @param { IndexConfig[string] } arg */
     const toIdx = ({ key, options }) => $Index(key, options);
     const { __archive_do_summary, __archive_summarized } = require("../../modules/indexes/summary-flags.cjs");
 

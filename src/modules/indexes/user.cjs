@@ -1,9 +1,10 @@
+/** @satisfies { Record<string, Collation> } */
 const LOCALE = {
     simple: { locale: "simple" },
     en: { locale: "en", strength: 2 },
 };
 
-/** @satisfies {import("../type.cjs").IndexConfig} */
+/** @satisfies { IndexConfig } */
 const indexes = {
     TTL: {
         key: { "__archive.eventtime": 1 },

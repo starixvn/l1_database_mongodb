@@ -16,7 +16,7 @@ deploy: {
         _.validate();
     });
 
-    /** @param {import("../../modules/type.cjs").IndexConfig[string]} arg */
+    /** @param { IndexConfig[string] } arg */
     const toIdx = ({ key, options }) => $Index(key, options);
     const userIdxs = require("../../modules/indexes/user.cjs");
     const flagIdxs = require("../../modules/indexes/summary-flags.cjs");

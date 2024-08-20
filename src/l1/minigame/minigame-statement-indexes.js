@@ -17,7 +17,7 @@ deploy: {
     const { game_round_subRound_operator_player_U, game_player_time, time, game_roundTime, time_code_U, player_operator } = require("../../modules/indexes/statement.cjs");
     const { __archive_daily, __archive_do_daily, __archive_do_hourly, __archive_do_summary, __archive_hourly, __archive_summarized } = require("../../modules/indexes/summary-flags.cjs");
 
-    /** @param {import("../../modules/type.cjs").IndexConfig[string]} arg */
+    /** @param { IndexConfig[string] } arg */
     const toIdx = ({ key, options }) => $Index(key, options);
     const idxs = [
         game_round_subRound_operator_player_U,

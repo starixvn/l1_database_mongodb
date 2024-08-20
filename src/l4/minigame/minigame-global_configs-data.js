@@ -1,11 +1,14 @@
-deploy: {
-    const dbs = DBs(db);
-    const { L, stage } = dbs._mongo._identity;
-    if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
-    if (!["active", "mixed"].includes(stage)) break deploy;
+(async () => {
+    const { getIdentity } = require("../../modules/db.cjs");
+    const { log, stringifyResult } = require("../../modules/utils.cjs");
+
+    const { L, stage } = await getIdentity(db);
+    if (path.basename(path.resolve(`..`)) !== `l${L}`) return;
+    if (!["active", "mixed"].includes(stage)) return;
 
     const { exchangeCodes } = require("../../modules/minigame/minigame-global_configs.cjs");
 
+    /** @type { AnyBulkWriteOperation[] } */
     const bulkWrite = [exchangeCodes(L)].map((doc) => {
         const { _id, type } = doc;
         const data = Object.assign({}, doc, { _id: ObjectId(_id) });
@@ -19,6 +22,9 @@ deploy: {
         };
     });
 
-    const res = dbs.minigame.global_configs.bulkWrite(bulkWrite, { ordered: false });
-    $Log("DATA").info("minigame.global_configs", `#=${res.matchedCount} • I+${res.insertedCount} • U+${res.upsertedCount} • M=${res.modifiedCount} • D-${res.deletedCount}`);
-}
+    const gameDB = db.getSiblingDB("minigame");
+    {
+        const res = await gameDB.getCollection("global_configs").bulkWrite(bulkWrite, { ordered: false });
+        log("I", "DATA", `[${gameDB.getName()}.global_configs]`, `• ${stringifyResult(res)}`);
+    }
+})();

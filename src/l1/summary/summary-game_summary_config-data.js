@@ -1,11 +1,14 @@
-deploy: {
-    const dbs = DBs(db);
-    const { L } = dbs._mongo._identity;
-    if (path.basename(path.resolve(`..`)) != `l${L}`) break deploy;
-    if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+(async () => {
+    const { getIdentity } = require("../../modules/db.cjs");
+    const { log, stringifyResult } = require("../../modules/utils.cjs");
+
+    const { L, stage } = await getIdentity(db);
+    if (path.basename(path.resolve(`..`)) !== `l${L}`) return;
+    if (!["active", "mixed"].includes(stage)) return;
 
     const { gameSummaryConfig } = require("../../modules/summary/summary-game_summary_config.cjs");
 
+    /** @type { AnyBulkWriteOperation[] } */
     const bulkWrite = gameSummaryConfig(L).map((doc) => {
         const { gameId } = doc;
         const data = Object.assign({}, { _id: { gameId } }, doc);
@@ -27,8 +30,9 @@ deploy: {
         },
     });
 
+    const sumDB = db.getSiblingDB("summary");
     {
-        const res = dbs.summary.game_summary_config.bulkWrite(bulkWrite, { ordered: false });
-        $Log("DATA").info("summary.game_summary_config", `#=${res.matchedCount} • I+${res.insertedCount} • U+${res.upsertedCount} • M=${res.modifiedCount} • D-${res.deletedCount}`);
+        const res = await sumDB.getCollection("game_summary_config").bulkWrite(bulkWrite, { ordered: false });
+        log("I", "DATA", `[${sumDB.getName()}.game_summary_config]`, `• ${stringifyResult(res)}`);
     }
-}
+})();
