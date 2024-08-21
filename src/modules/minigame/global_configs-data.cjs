@@ -640,6 +640,7 @@ module.exports = {};
     module.exports.kenoMatchLiveOdds = { _id, type, time, blueRed, overUnder, adjRate };
 }
 
+/** @param { number } L */
 module.exports.exchangeCodes = (L) => {
     /** exchange_codes */
     const type = "exchange_codes";
