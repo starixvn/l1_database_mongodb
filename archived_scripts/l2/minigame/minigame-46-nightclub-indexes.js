@@ -1,1 +1,0 @@
-../../l1/minigame/minigame-46-nightclub-indexes.js
