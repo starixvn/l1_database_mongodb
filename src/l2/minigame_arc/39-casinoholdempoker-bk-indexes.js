@@ -2,7 +2,7 @@
     const { getIdentity, ensureCollection } = require("../../modules/db.cjs");
 
     const { L, stage } = await getIdentity(db);
-    if (path.basename(path.resolve(`..`)) !== `l${L}`) return;
+    if (path.basename(path.resolve("..")) !== `l${L}`) return;
     if (!["archive", "mixed"].includes(stage)) return;
 
     const { deployIndexes } = require("../../modules/index.cjs");

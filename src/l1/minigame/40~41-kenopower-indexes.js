@@ -2,12 +2,12 @@
     const { getIdentity } = require("../../modules/db.cjs");
 
     const { L, stage } = await getIdentity(db);
-    if (path.basename(path.resolve(`..`)) !== `l${L}`) return;
+    if (path.basename(path.resolve("..")) !== `l${L}`) return;
     if (!["active", "mixed"].includes(stage)) return;
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
-    const { id_U, time, time_archive, round__id, player_round_F, uid_round_U , uid__id } = require("../../modules/indexes/game.cjs");
+    const { id_U, time, time_archive, round__id, player_round_F, uid_round_U, uid__id } = require("../../modules/indexes/game.cjs");
     const { __archive_do_summary, __archive_summarized } = require("../../modules/indexes/summary-flags.cjs");
 
     const gameDB = db.getSiblingDB("minigame");

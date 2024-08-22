@@ -9,12 +9,15 @@ const getIndexList = async (db, collection) => {
     /** @type { Map<string, string> } */
     const mapping = new Map();
 
-    const indexes = await db.getCollection(collection).getIndexes();
-    for (const { key, name } of indexes) {
-        const keyString = JSON.stringify(key);
-        mapping.set(name, keyString);
-        mapping.set(keyString, name);
-    }
+    try {
+        const indexes = await db.getCollection(collection).getIndexes();
+
+        for (const { key, name } of indexes) {
+            const keyString = JSON.stringify(key);
+            mapping.set(name, keyString);
+            mapping.set(keyString, name);
+        }
+    } catch {}
 
     return mapping;
 };

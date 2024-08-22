@@ -2,7 +2,7 @@
     const { getIdentity } = require("../../modules/db.cjs");
 
     const { L, stage } = await getIdentity(db);
-    if (path.basename(path.resolve(`..`)) !== `l${L}`) return;
+    if (path.basename(path.resolve("..")) !== `l${L}`) return;
     if (!["active", "mixed"].includes(stage)) return;
 
     const { log, stringifyResult } = require("../../modules/utils.cjs");

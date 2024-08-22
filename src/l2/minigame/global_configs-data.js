@@ -3,7 +3,7 @@
     const { log, stringifyResult } = require("../../modules/utils.cjs");
 
     const { L, stage } = await getIdentity(db);
-    if (path.basename(path.resolve(`..`)) !== `l${L}`) return;
+    if (path.basename(path.resolve("..")) !== `l${L}`) return;
     if (!["active", "mixed"].includes(stage)) return;
 
     const { exchangeCodes, kenoMatchLiveOdds } = require("../../modules/minigame/global_configs-data.cjs");

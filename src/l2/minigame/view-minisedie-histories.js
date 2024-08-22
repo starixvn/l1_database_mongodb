@@ -2,7 +2,7 @@
     const { getIdentity, ensureView } = require("../../modules/db.cjs");
 
     const { L, stage } = await getIdentity(db);
-    if (path.basename(path.resolve(`..`)) !== `l${L}`) return;
+    if (path.basename(path.resolve("..")) !== `l${L}`) return;
     if (!["active", "mixed"].includes(stage)) return;
 
     const gameDB = db.getSiblingDB("minigame");

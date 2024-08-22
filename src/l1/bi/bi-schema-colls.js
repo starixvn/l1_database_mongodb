@@ -2,7 +2,7 @@
     const { getIdentity, ensureCollection, ensureView, validateColl } = require("../../modules/db.cjs");
 
     const { L, stage } = await getIdentity(db);
-    if (path.basename(path.resolve(`..`)) !== `l${L}`) return;
+    if (path.basename(path.resolve("..")) !== `l${L}`) return;
     if (!["active", "mixed"].includes(stage)) return;
 
     const ns = {
