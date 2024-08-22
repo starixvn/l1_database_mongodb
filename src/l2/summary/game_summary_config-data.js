@@ -6,7 +6,7 @@
     if (path.basename(path.resolve(`..`)) !== `l${L}`) return;
     if (!["active", "mixed"].includes(stage)) return;
 
-    const { gameSummaryConfig } = require("../../modules/summary/summary-game_summary_config.cjs");
+    const { gameSummaryConfig } = require("../../modules/summary/game_summary_config-data.cjs");
 
     /** @type { AnyBulkWriteOperation[] } */
     const bulkWrite = gameSummaryConfig(L).map((doc) => {

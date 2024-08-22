@@ -497,6 +497,12 @@ const gameSummaryConfig = (L) => [
         coll: { db: "minigame", group: "footballcointoss", round: "_rounds", postfix: "_bets" },
     },
     {
+        gameId: 95,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Se Die 3X", vi: "Xóc Đĩa 3 Xu", grp: "Se Die", game: "Se Die 3" },
+        coll: { db: "minigame", group: "sedie3", round: "_rounds", postfix: "_bets" },
+    },
+    {
         gameId: 99,
         owGameTypeId: { [1]: 1699, [2]: 3899 }[L],
         name: { en: "Jackpot Prize", vi: "Giải Jackpot", grp: "Slots", game: "Jackpot" },

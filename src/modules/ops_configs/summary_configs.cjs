@@ -800,6 +800,20 @@ const summaryConfigs = [
     },
     {
         ...commonConfig,
+        gameConfigs: { gameId: 95, name: "sedie3" },
+        db: "minigame",
+        coll: { round: "_rounds", bet: "_bets" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
+        calc: {
+            roundId: '"$id"',
+            tickets: '{"$literal":1}',
+            stake: '"$totalAmount"',
+            payout: '"$betwin"',
+            refund: '{"$literal":0}',
+        },
+    },
+    {
+        ...commonConfig,
         gameConfigs: { gameId: 99, name: "jackpots" },
         db: "minigame",
         coll: { round: "" },
