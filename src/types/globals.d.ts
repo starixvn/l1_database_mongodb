@@ -26,7 +26,7 @@ declare global {
 
     type AnyBulkWriteOperation = ldbMongo.AnyBulkWriteOperation;
     type BsonDocument = ldbMongo.Document;
-    type BulkWriteResult = ldbMongo.BulkWriteResult;
+    type BulkWriteResult = shellApi.BulkWriteResult;
     type CreateCollectionOptions = ldbMongo.CreateCollectionOptions;
     type Database = shellApi.Database;
     type IndexDescription = ldbMongo.IndexDescription;
