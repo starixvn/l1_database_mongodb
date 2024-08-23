@@ -4,6 +4,16 @@
 
     await loadScript("clear-cache.js");
 
+    global._auth = 3;
+    while (global._auth) {
+        try {
+            await auth(db);
+            global._auth = 0;
+        } catch {
+            global._auth--;
+        }
+    }
+
     log("I", "DEPLOY", "Starting...");
 
     await loadScript("init/admin-identity.js");

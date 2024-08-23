@@ -5,13 +5,21 @@
 
     await loadScript("clear-cache.js");
 
-    log("I", "DEPLOY", "Starting...");
-
     for (const dbs of sit) {
         const oldDB = global.db;
 
         try {
             global.db = dbs.admin;
+            log("I", "DEPLOY", db, "Starting...");
+            global._auth = 3;
+            while (global._auth) {
+                try {
+                    await auth(db);
+                    global._auth = 0;
+                } catch {
+                    global._auth--;
+                }
+            }
 
             await loadScript("init/admin-identity.js");
             await loadFolder("security");
@@ -24,9 +32,8 @@
         } catch (e) {
             log("E", "DEPLOY", inspect(e, false, null, true));
         } finally {
+            log("I", "DEPLOY", db, "Finished.\n");
             global.db = oldDB;
         }
     }
-
-    log("I", "DEPLOY", "Finished.\n");
 })();

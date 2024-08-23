@@ -15,6 +15,9 @@ declare global {
     var pro: DBs[];
     var pro_arc: DBs[];
 
+    var _auth: number;
+    var auth: (db: DBs | Database) => Promise<void>;
+
     var db: shellApi.Database;
     var rs: shellApi.ReplicaSet;
     var load: shellApi.ShellApi["load"];
