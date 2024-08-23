@@ -4,7 +4,8 @@
         "moduleResolution": "node",
         "checkJs": true,
         "maxNodeModuleJsDepth": 1,
-        "strict": true
+        "strict": true,
+        "alwaysStrict": true
     },
     "include": ["src"]
 }

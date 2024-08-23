@@ -53,4 +53,10 @@ const stringifyResult = (result) => {
     return `#=${matchedCount} • I+${insertedCount} • U+${upsertedCount} • M=${modifiedCount} • D-${deletedCount}`;
 };
 
-module.exports = { log, wait, compare, stringifyResult };
+/**
+ * @param { string } text
+ * @param { number } spaces
+ */
+const indent = (text, spaces) => text.replace(/\n/g, `\n${" ".repeat(spaces)}`);
+
+module.exports = { log, wait, compare, stringifyResult, indent };

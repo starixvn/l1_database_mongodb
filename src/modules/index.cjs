@@ -24,6 +24,7 @@ const getIndexList = async (db, collection) => {
 
 /** @param { IndexDefinition["key"] } indexKeys */
 const buildIndexKeyName = (indexKeys) => {
+    /** @type { string[] } */
     const names = [];
     for (const [field, direction] of Object.entries(indexKeys)) {
         if (direction === 1) {

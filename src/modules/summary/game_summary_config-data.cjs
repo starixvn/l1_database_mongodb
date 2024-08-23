@@ -498,9 +498,15 @@ const gameSummaryConfig = (L) => [
     },
     {
         gameId: 95,
-        owGameTypeId: { [1]: null, [2]: null }[L],
+        owGameTypeId: { [1]: 1690, [2]: 3882 }[L],
         name: { en: "Se Die 3X", vi: "Xóc Đĩa 3 Xu", grp: "Se Die", game: "Se Die 3" },
         coll: { db: "minigame", group: "sedie3", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 96,
+        owGameTypeId: { [1]: 1691, [2]: 3883 }[L],
+        name: { en: "Kara Krus", vi: "Kara Krus", grp: "Se Die", game: "Se Die 3" },
+        coll: { db: "minigame", group: "karakrus", round: "_rounds", postfix: "_bets" },
     },
     {
         gameId: 99,
