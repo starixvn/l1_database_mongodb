@@ -5,7 +5,7 @@
 
     await loadScript("clear-cache.js");
 
-    for (const dbs of uat) {
+    for (const dbs of [...uat, ...uat_arc]) {
         const oldDB = global.db;
 
         try {

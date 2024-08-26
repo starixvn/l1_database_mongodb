@@ -11,7 +11,9 @@ declare global {
 
     var local: DBs[];
     var sit: DBs[];
+    var sit_arc: DBs[];
     var uat: DBs[];
+    var uat_arc: DBs[];
     var pro: DBs[];
     var pro_arc: DBs[];
 
