@@ -1,1 +1,0 @@
-../../l1/minigame/minigame-49-waytogoal-indexes.js

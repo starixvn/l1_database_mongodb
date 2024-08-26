@@ -1,3 +1,4 @@
+/** @type { BsonDocument[] } */
 const archiveConfigs = [];
 
 /** Logs */
@@ -16,10 +17,18 @@ const archiveConfigs = [];
         {
             ...commonConfig,
             id: 0,
+            gameConfigs: { type: "log", name: "bet_limits" },
+            from: { db: "log", postfix: "" },
+            to: { db: "log_arc", postfix: "_bk" },
+            alias: { time: "logTimeStamp" },
+        },
+        {
+            ...commonConfig,
+            id: 0,
             gameConfigs: { type: "log", name: "bets" },
             from: { db: "log", postfix: "" },
             to: { db: "log_arc", postfix: "_bk" },
-            alias: { time: "requestTimeStamp" },
+            alias: { time: "logTimeStamp" },
         },
         {
             ...commonConfig,
@@ -27,7 +36,15 @@ const archiveConfigs = [];
             gameConfigs: { type: "log", name: "end_games" },
             from: { db: "log", postfix: "" },
             to: { db: "log_arc", postfix: "_bk" },
-            alias: { time: "requestTimeStamp" },
+            alias: { time: "logTimeStamp" },
+        },
+        {
+            ...commonConfig,
+            id: 0,
+            gameConfigs: { type: "log", name: "enter_portals" },
+            from: { db: "log", postfix: "" },
+            to: { db: "log_arc", postfix: "_bk" },
+            alias: { time: "logTimeStamp" },
         },
         {
             ...commonConfig,
@@ -35,7 +52,7 @@ const archiveConfigs = [];
             gameConfigs: { type: "log", name: "failed_requests" },
             from: { db: "log", postfix: "" },
             to: { db: "log_arc", postfix: "_bk" },
-            alias: { time: "requestTimeStamp" },
+            alias: { time: "logTimeStamp" },
         },
         {
             ...commonConfig,
@@ -43,7 +60,7 @@ const archiveConfigs = [];
             gameConfigs: { type: "log", name: "hit_jackpots" },
             from: { db: "log", postfix: "" },
             to: { db: "log_arc", postfix: "_bk" },
-            alias: { time: "requestTimeStamp" },
+            alias: { time: "logTimeStamp" },
         },
         {
             ...commonConfig,
@@ -51,7 +68,7 @@ const archiveConfigs = [];
             gameConfigs: { type: "log", name: "membersignin_requests" },
             from: { db: "log", postfix: "" },
             to: { db: "log_arc", postfix: "_bk" },
-            alias: { time: "requestTimeStamp" },
+            alias: { time: "logTimeStamp" },
         },
         {
             ...commonConfig,
@@ -59,7 +76,7 @@ const archiveConfigs = [];
             gameConfigs: { type: "log", name: "owsignin_requests" },
             from: { db: "log", postfix: "" },
             to: { db: "log_arc", postfix: "_bk" },
-            alias: { time: "requestTimeStamp" },
+            alias: { time: "logTimeStamp" },
         },
         {
             ...commonConfig,
@@ -67,7 +84,7 @@ const archiveConfigs = [];
             gameConfigs: { type: "log", name: "retrieve_requests" },
             from: { db: "log", postfix: "" },
             to: { db: "log_arc", postfix: "_bk" },
-            alias: { time: "requestTimeStamp" },
+            alias: { time: "logTimeStamp" },
         },
         {
             ...commonConfig,
@@ -75,7 +92,7 @@ const archiveConfigs = [];
             gameConfigs: { type: "log", name: "signin_requests" },
             from: { db: "log", postfix: "" },
             to: { db: "log_arc", postfix: "_bk" },
-            alias: { time: "requestTimeStamp" },
+            alias: { time: "logTimeStamp" },
         },
         {
             ...commonConfig,
@@ -83,7 +100,7 @@ const archiveConfigs = [];
             gameConfigs: { type: "log", name: "ticket_detail_requests" },
             from: { db: "log", postfix: "" },
             to: { db: "log_arc", postfix: "_bk" },
-            alias: { time: "requestTimeStamp" },
+            alias: { time: "logTimeStamp" },
         },
         {
             ...commonConfig,
@@ -91,7 +108,7 @@ const archiveConfigs = [];
             gameConfigs: { type: "log", name: "void_games" },
             from: { db: "log", postfix: "" },
             to: { db: "log_arc", postfix: "_bk" },
-            alias: { time: "requestTimeStamp" },
+            alias: { time: "logTimeStamp" },
         },
     ].forEach((config) => archiveConfigs.push(config));
 }

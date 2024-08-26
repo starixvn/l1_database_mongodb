@@ -1,4 +1,4 @@
-/** @satisfies {import("../type.cjs").IndexConfig} */
+/** @satisfies { IndexConfig } */
 const indexes = {
     game_round_subRound_operator_player_U: {
         key: { gameId: 1, roundId: 1, subRoundId: 1, operatorId: 1, playerId: 1 },

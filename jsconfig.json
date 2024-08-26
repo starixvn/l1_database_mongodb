@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
-        "target": "ES2016",
+        "target": "ES2021",
         "moduleResolution": "node",
         "checkJs": true,
         "maxNodeModuleJsDepth": 1,
-        "strict": true
-    }
+        "strict": true,
+        "alwaysStrict": true
+    },
+    "include": ["src"]
 }

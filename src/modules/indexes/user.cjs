@@ -1,41 +1,34 @@
-const LOCALE = {
-    simple: { locale: "simple" },
-    en: { locale: "en", strength: 2 },
-};
+const { LOCALES } = require("../const.cjs");
 
-/** @satisfies {import("../type.cjs").IndexConfig} */
+/** @satisfies { IndexConfig } */
 const indexes = {
-    TTL: {
-        key: { "__archive.eventtime": 1 },
-        options: { expireAfterSeconds: 3600 * 24 * 8 },
-    },
     currency_en: {
         key: { currency: 1 },
-        options: { collation: LOCALE.en },
+        options: { collation: LOCALES.en },
     },
     id_U: {
-        key: { id: 1 },
-        options: { unique: true, collation: LOCALE.simple },
+        key: { id: -1 },
+        options: { unique: true, collation: LOCALES.simple },
     },
     id_U_en: {
         key: { id: 1 },
-        options: { unique: true, collation: LOCALE.en },
+        options: { unique: true, collation: LOCALES.en },
     },
-    memberId: {
+    memberId_en: {
         key: { "local.memberId": 1 },
-        options: {},
+        options: { collation: LOCALES.en },
     },
     name_U_en: {
         key: { name: 1 },
-        options: { unique: true, collation: LOCALE.en },
+        options: { unique: true, collation: LOCALES.en },
     },
     operatorId: {
         key: { operatorId: 1 },
-        options: { collation: LOCALE.simple },
+        options: { collation: LOCALES.simple },
     },
     playerId: {
         key: { playerId: 1 },
-        options: { collation: LOCALE.simple },
+        options: { collation: LOCALES.simple },
     },
     recheckInTime: {
         key: { recheckInTime: 1 },
@@ -49,17 +42,17 @@ const indexes = {
         key: { ssoToken: 1 },
         options: {},
     },
-    type_inRoom: {
+    type_inRoom_en: {
         key: { type: 1, inRoom: 1, inGameRoom: 1 },
-        options: {},
+        options: { collation: LOCALES.en },
     },
     UID_U_en: {
         key: { UID: 1 },
-        options: { unique: true, collation: LOCALE.en },
+        options: { unique: true, collation: LOCALES.en },
     },
     username_U_en: {
         key: { "local.username": 1 },
-        options: { unique: true, collation: LOCALE.en },
+        options: { unique: true, collation: LOCALES.en },
     },
 };
 

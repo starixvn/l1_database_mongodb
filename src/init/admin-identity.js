@@ -1,4 +1,5 @@
-{
-  const id = $Collection(dbs.admin.identity, { capped: true, size: 256, max: 1 });
-  id.create(); id.validate();
-}
+(async () => {
+    const { ensureCollection } = require("../modules/db.cjs");
+    const adminDB = db.getSiblingDB("admin");
+    await ensureCollection(adminDB, "identity", { capped: true, size: 256, max: 1 });
+})();

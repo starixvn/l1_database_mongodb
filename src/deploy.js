@@ -1,20 +1,29 @@
-{
-  global.env = "dr";
+(async () => {
+    const { log } = require("./modules/utils.cjs");
+    const { getIdentity } = require("./modules/db.cjs");
 
-  try {
-    const logger = $Log(util.inspect(dbs));
-    logger.info(`Start `, `Deploying...`);
+    await loadScript("clear-cache.js");
 
-    loadScript(`init/admin-identity.js`);
+    global._auth = 3;
+    while (global._auth) {
+        try {
+            await auth(db);
+            global._auth = 0;
+        } catch {
+            global._auth--;
+        }
+    }
 
-    loadScript(`security/roles.js`);
-    loadScript(`security/users-${dbs._mongo._identity.stage}.js`);
+    log("I", "DEPLOY", "Starting...");
 
-    loadFolder(`common`);
-    loadFolder(`l${dbs._mongo._identity.L}`);
+    await loadScript("init/admin-identity.js");
+    await loadFolder("security");
 
-    logger.info(`Finish`, `Deployed.\n`);
-  } catch (e) {
-    console.error(e);
-  }
-}
+    const { L, stage } = await getIdentity(db);
+    if (L && stage) {
+        log("I", "DEPLOY", { L, stage, db });
+        await loadFolder(`l${L}`);
+    }
+
+    log("I", "DEPLOY", "Finished.\n");
+})();

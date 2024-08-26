@@ -1,101 +1,39 @@
-/** L1 -- -- */
-deploy: {
-  const dbs   = DBs(db);
-  const label = `log@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["active", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+(async () => {
+    const { getIdentity, ensureCollection } = require("../../modules/db.cjs");
 
-  if ((!global.___colls?.[label]) || (!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log-indexes.js`);
-  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
-  const colls = [
-    ...global.___colls[label],
-    $Collection(dbs.log.audit_events          , {storageEngine}),
-    $Collection(dbs.log.retrieve_requests     , {storageEngine}),
-    $Collection(dbs.log.signin_requests       , {storageEngine}),
-    $Collection(dbs.log.ticket_detail_requests, {storageEngine}),
-    $Collection(dbs.log.void_games            , {storageEngine}),
-  ];
-  colls.forEach(_ => { _.create(); _.validate(); });
-  const idx = {
-    ...global.___idx[label],
-    obCustId_requestTS: $Index({'request.obCustId': 1, requestTimeStamp: 1}),
-    playerId_requestTS: $Index({'request.playerId': 1, requestTimeStamp: 1}),
-    StartDate         : $Index({StartDate: 1}),
-  };
-  const idxs = [
-    ...global.___idxs[label],
-    $Indexes(dbs.log.audit_events, [
-      idx.TTL,
-      idx.StartDate,
-    ]),
-    $Indexes(dbs.log.retrieve_requests, [
-      idx.TTL,
-      idx.requestTimeStamp,
-      idx.logTimeStamp,
-      idx.playerId_gameRoundId_gameTypeId,
-      idx.gameTypeId_gameRoundId_playerId,
-    ]),
-    $Indexes(dbs.log.signin_requests, [
-      idx.TTL,
-      idx.requestTimeStamp,
-      idx.logTimeStamp,
-      idx.siteId_requestTimeStamp, // lmn_readonly
-      idx.playerId_requestTS,
-    ]),
-    $Indexes(dbs.log.ticket_detail_requests, [
-      idx.TTL,
-      idx.requestTimeStamp,
-      idx.logTimeStamp,
-    ]),
-    $Indexes(dbs.log.void_games, [
-      idx.TTL,
-      idx.requestTimeStamp,
-      idx.logTimeStamp,
-      idx.playerId_gameRoundId_gameTypeId,
-      idx.gameTypeId_gameRoundId_playerId,
-    ]),
-  ];
-  idxs.forEach(_ => _.deploy());
-}
+    const { L, stage } = await getIdentity(db);
+    if (path.basename(path.resolve("..")) !== `l${L}`) return;
+    if (!["active", "mixed"].includes(stage)) return;
 
-deploy: {
-  const dbs   = DBs(db);
-  const label = `log_arc@${dbs.toString()}`;
-  if (path.basename(path.resolve(`..`)) != `l${dbs._mongo?._identity?.L}`) break deploy;
-  if (!["archive", "mixed"].includes(dbs._mongo?._identity?.stage)) break deploy;
+    const { deployIndexes } = require("../../modules/index.cjs");
+    const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
+    const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
+    const { StartDate, logTimeStamp, betlogs } = require("../../modules/indexes/log.cjs");
 
-  if ((!global.___colls?.[label]) || (!global.___idx?.[label]) || (!global.___idxs?.[label])) loadScript(`../../common/log/log_arc-indexes.js`);
-  const storageEngine = {wiredTiger: {configString: 'block_compressor=zstd'}};
-  const colls = [
-    ...global.___colls[label],
-    $Collection(dbs.log_arc.audit_events_bk          , {storageEngine}),
-    $Collection(dbs.log_arc.retrieve_requests_bk     , {storageEngine}),
-    $Collection(dbs.log_arc.signin_requests_bk       , {storageEngine}),
-    $Collection(dbs.log_arc.ticket_detail_requests_bk, {storageEngine}),
-    $Collection(dbs.log_arc.void_games_bk            , {storageEngine}),
-  ];
-  colls.forEach(_ => { _.create(); _.validate(); });
-  const idx = {
-    ...global.___idx[label],
-    StartDate: $Index({StartDate: 1}),
-  };
-  const idxs = [
-    ...global.___idxs[label],
-    $Indexes(dbs.log_arc.audit_events_bk, [
-      idx.StartDate,
-    ]),
-    $Indexes(dbs.log_arc.retrieve_requests_bk, [
-      idx.requestTimeStamp,
-    ]),
-    $Indexes(dbs.log_arc.signin_requests_bk, [
-      idx.requestTimeStamp,
-    ]),
-    $Indexes(dbs.log_arc.ticket_detail_requests_bk, [
-      idx.requestTimeStamp,
-    ]),
-    $Indexes(dbs.log_arc.void_games_bk, [
-      idx.requestTimeStamp,
-    ]),
-  ];
-  idxs.forEach(_ => _.deploy());
-}
+    const logDB = db.getSiblingDB("log");
+
+    await Promise.allSettled(
+        [
+            "audit_events", //
+            "bets",
+            "end_games",
+            "failed_requests",
+            "membersignin_requests",
+            "owsignin_requests",
+            "retrieve_requests",
+            "signin_requests",
+            "ticket_detail_requests",
+            "void_games",
+        ].map((collName) => ensureCollection(logDB, collName, STORAGE_COMPRESSED))
+    );
+    await deployIndexes(logDB, "audit_events", [TTL_8d, StartDate]);
+    await deployIndexes(logDB, "bets", [TTL_8d, logTimeStamp, betlogs]);
+    await deployIndexes(logDB, "end_games", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "failed_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "membersignin_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "owsignin_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "retrieve_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "signin_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "ticket_detail_requests", [TTL_8d, logTimeStamp]);
+    await deployIndexes(logDB, "void_games", [TTL_8d, logTimeStamp]);
+})();

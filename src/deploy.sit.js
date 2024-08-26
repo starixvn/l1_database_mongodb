@@ -1,33 +1,39 @@
-{
-    loadScript("clear-cache.js");
-    sit.forEach((instance) => {
-        /** Authenticate instance */
-        while (!auth(instance)) {}
+(async () => {
+    const { inspect } = require("util");
+    const { log } = require("./modules/utils.cjs");
+    const { getIdentity } = require("./modules/db.cjs");
 
-        /** Switch to deploying db */
+    await loadScript("clear-cache.js");
+
+    for (const dbs of [...sit, ...sit_arc]) {
         const oldDB = global.db;
-        global.db = instance.admin;
-        global.dbs = DBs(global.db);
 
         try {
-            const logger = $Log(util.inspect(dbs));
-            logger.info(`Start `, `Deploying...`);
+            global.db = dbs.admin;
+            log("I", "DEPLOY", db, "Starting...");
+            global._auth = 3;
+            while (global._auth) {
+                try {
+                    await auth(db);
+                    global._auth = 0;
+                } catch {
+                    global._auth--;
+                }
+            }
 
-            loadScript(`init/admin-identity.js`);
+            await loadScript("init/admin-identity.js");
+            await loadFolder("security");
 
-            loadScript(`security/roles.js`);
-            loadScript(`security/users-${dbs._mongo._identity.stage}.js`);
-
-            loadFolder(`common`);
-            loadFolder(`l${dbs._mongo._identity.L}`);
-
-            logger.info(`Finish`, `Deployed.\n`);
+            const { L, stage } = await getIdentity(db);
+            if (L && stage) {
+                log("I", "DEPLOY", { L, stage, db });
+                await loadFolder(`l${L}`);
+            }
         } catch (e) {
-            console.error(e);
+            log("E", "DEPLOY", inspect(e, false, null, true));
+        } finally {
+            log("I", "DEPLOY", db, "Finished.\n");
+            global.db = oldDB;
         }
-
-        /** Switch back to old db */
-        global.db = oldDB;
-        global.dbs = DBs(global.db);
-    });
-}
+    }
+})();
