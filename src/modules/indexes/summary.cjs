@@ -32,6 +32,10 @@ const indexes = {
         key: { gameId: 1, system: 1, time: 1 },
         options: {},
     },
+    owGameTypeId_FU: {
+        key: { owGameTypeId: 1 },
+        options: { unique: true, partialFilterExpression: { owGameTypeId: { $gt: 0 } } },
+    },
     time_TTL_8d: {
         key: { time: 1 },
         options: { expireAfterSeconds: 8 * 24 * 3_600 },

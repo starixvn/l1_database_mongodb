@@ -19,6 +19,7 @@
         flag_hourly,
         time_currency_game_operator_site_U,
         time_game_operator_site_player_U,
+        owGameTypeId_FU,
     } = require("../../modules/indexes/summary.cjs");
     const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
 
@@ -35,7 +36,7 @@
         ].map((collName) => ensureCollection(sumDB, collName, STORAGE_COMPRESSED))
     );
 
-    await deployIndexes(sumDB, "game_summary_config", [game_U, time_currency_game_system_operator_U, game_system_time]);
+    await deployIndexes(sumDB, "game_summary_config", [game_U, owGameTypeId_FU]);
 
     await deployIndexes(sumDB, "betlog_summaries", [time_TTL_8d, time_currency_game_system_operator_U, game_system_time]);
     await deployIndexes(sumDB, "round_summaries", [TTL_8d, game_currency_operator_site_round_U, flag_do_daily_F, flag_daily, flag_do_hourly_F, flag_hourly]);
