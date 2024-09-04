@@ -142,8 +142,10 @@ const deployIndexes = async (db, collection, indexDefinitions) => {
         indexList.delete(name);
     }
     for (const key of indexList.keys()) {
-        const regex = /^\{.*\}$/;
-        if (regex.test(key)) {
+        if (/^\{.*\}$/.test(key)) {
+            continue;
+        }
+        if (/^[#]/.test(key)) {
             continue;
         }
         await dropIndex(db, collection, key);

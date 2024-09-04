@@ -211,7 +211,7 @@ const archiveTemplates = /** @type {const} */ ([
                     {
                         from: { db: "minigame", postfix: "_livegamelogs" },
                         to: { db: "minigame_arc", postfix: "_livegamelogs_bk" },
-                        config: { foreignField: "roundId" },
+                        config: { foreignField: "roundId", updateOnly: true },
                     },
                     {
                         from: { db: "minigame", postfix: "_bets" },
@@ -242,7 +242,7 @@ const archiveTemplates = /** @type {const} */ ([
                 from: { db: "minigame", postfix: "_livegamelogs" },
                 to: { db: "minigame_arc", postfix: "_livegamelogs_bk" },
                 alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
+                config: { cutOffsetHours: -24 * 8, updateOnly: true },
             },
             {
                 id: 3,
