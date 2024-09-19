@@ -696,6 +696,7 @@ module.exports.exchangeCodes = (L) => {
             "TRY",
             "COP",
             "EGP",
+            "LBP",
         ],
     };
     return { _id, type, time, base, configs };
