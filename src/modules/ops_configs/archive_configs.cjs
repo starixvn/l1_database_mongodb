@@ -161,6 +161,24 @@ const archiveConfigs = [];
             alias: { time: "time" },
             config: { cutOffsetHours: -24 * 3 },
         },
+        {
+            ...commonConfig,
+            id: 0,
+            gameConfigs: { type: "sum", name: "hourly_statements" },
+            from: { db: "summary", postfix: "" },
+            to: { db: "summary_arc", postfix: "_bk" },
+            alias: { time: "time" },
+            config: { cutOffsetHours: -24 * 3 },
+        },
+        {
+            ...commonConfig,
+            id: 0,
+            gameConfigs: { type: "sum", name: "daily_statements" },
+            from: { db: "summary", postfix: "" },
+            to: { db: "summary_arc", postfix: "_bk" },
+            alias: { time: "time" },
+            config: { cutOffsetHours: -24 * 3 },
+        },
     ].forEach((config) => archiveConfigs.push(config));
 }
 
