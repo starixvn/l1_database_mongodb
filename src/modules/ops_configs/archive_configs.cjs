@@ -179,6 +179,15 @@ const archiveConfigs = [];
             alias: { time: "time" },
             config: { cutOffsetHours: -24 * 3 },
         },
+        {
+            ...commonConfig,
+            id: 0,
+            gameConfigs: { type: "sum", name: "ticket_silos" },
+            from: { db: "minigame", postfix: "" },
+            to: { db: "minigame_arc", postfix: "_bk" },
+            alias: { time: "roundTime" },
+            config: { cutOffsetHours: -24 * 3 },
+        },
     ].forEach((config) => archiveConfigs.push(config));
 }
 
