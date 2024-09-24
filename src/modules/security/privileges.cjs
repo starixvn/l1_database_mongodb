@@ -9,6 +9,7 @@ const privileges = /** @type {const} */ ({
         { resource: { db: "", collection: "" }, actions: [...monitor, ...list] },
         { resource: { db: "", collection: "system.js" }, actions: monitor },
         { resource: { db: "", collection: "system.profile" }, actions: monitor },
+        { resource: { db: "", collection: "system.views" }, actions: monitor },
         { resource: { db: "admin", collection: "system.keys" }, actions: monitor },
         { resource: { db: "admin", collection: "system.profile" }, actions: monitor },
         { resource: { db: "admin", collection: "system.roles" }, actions: monitor },
