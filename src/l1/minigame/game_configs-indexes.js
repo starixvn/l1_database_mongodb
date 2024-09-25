@@ -7,7 +7,7 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { COLLATION_EN } = require("../../modules/const.cjs");
-    const { name_U_en, name_U, gameId_U, type_U, partner_en, partner_U_en, name_partner_U_en, group_game_U, value_U } = require("../../modules/indexes/game-configs.cjs");
+    const { name_U_en, name_U, gameId_U, type_U, partner_en, partner_U_en, name_partner_U_en, group_game_U, value_U, name_partner_U } = require("../../modules/indexes/game-configs.cjs");
 
     const gameDB = db.getSiblingDB("minigame");
 
@@ -23,7 +23,7 @@
     await deployIndexes(gameDB, "global_configs", [type_U]);
     await deployIndexes(gameDB, "partners", [partner_U_en]);
     await deployIndexes(gameDB, "currency_groups", [partner_en]);
-    await deployIndexes(gameDB, "currencies", [name_partner_U_en]);
+    await deployIndexes(gameDB, "currencies", [name_partner_U, name_partner_U_en]);
     await deployIndexes(gameDB, "currency_group_games", [group_game_U]);
     await deployIndexes(gameDB, "chips", [value_U]);
 })();

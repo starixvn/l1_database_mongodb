@@ -22,6 +22,10 @@ const indexes = {
         key: { type: 1 },
         options: { unique: true },
     },
+    name_partner_U: {
+        key: { name: 1, partnerId: 1 },
+        options: { unique: true, collation: LOCALES.simple },
+    },
     name_partner_U_en: {
         key: { name: 1, partnerId: 1 },
         options: { unique: true, collation: LOCALES.en },
