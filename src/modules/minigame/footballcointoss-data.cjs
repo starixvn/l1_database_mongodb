@@ -78,6 +78,98 @@ const updateMatches = [
             upsert: true,
         },
     },
+
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-09-29T15:30:00Z") },
+            update: { $set: { home: "MU", away: "TOT" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-10-20T15:30:00Z") },
+            update: { $set: { home: "LIV", away: "CHE" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-10-27T16:30:00Z") },
+            update: { $set: { home: "ARS", away: "LIV" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-11-03T16:30:00Z") },
+            update: { $set: { home: "MU", away: "CHE" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-11-10T16:30:00Z") },
+            update: { $set: { home: "CHE", away: "ARS" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-11-23T17:30:00Z") },
+            update: { $set: { home: "MC", away: "TOT" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-12-01T16:00:00Z") },
+            update: { $set: { home: "LIV", away: "MC" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-12-03T19:45:00Z") },
+            update: { $set: { home: "ARS", away: "MU" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-12-14T15:00:00Z") },
+            update: { $set: { home: "MC", away: "MU" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2025-02-01T15:00:00Z") },
+            update: { $set: { home: "MC", away: "ARS" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-11-27T20:00:00Z") },
+            update: { $set: { home: "LIV", away: "REAL" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-10-27T14:15:00Z") },
+            update: { $set: { home: "REAL", away: "BARCA" } },
+            upsert: true,
+        },
+    },
+    {
+        updateOne: {
+            filter: { startTime: new Date("2024-10-05T15:30:00Z") },
+            update: { $set: { home: "MC", away: "REAL" } },
+            upsert: true,
+        },
+    },
 ];
 
 module.exports = { updateMatches };
