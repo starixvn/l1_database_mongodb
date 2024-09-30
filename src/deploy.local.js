@@ -13,11 +13,14 @@
             log("I", "DEPLOY", db, "Starting...");
             global._auth = 3;
             while (global._auth) {
-                try {
-                    await auth(db);
+                if (await auth(db)) {
                     global._auth = 0;
-                } catch {
-                    global._auth--;
+                    break;
+                }
+                --global._auth;
+                if (!global._auth) {
+                    log("F", "DEPLOY", new Error(`${dbs.toString()} - Failed to authenticate. Aborting...`));
+                    return;
                 }
             }
 
