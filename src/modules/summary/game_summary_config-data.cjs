@@ -487,14 +487,86 @@ const gameSummaryConfig = (L) => [
     {
         gameId: 81,
         owGameTypeId: { [1]: 1689, [2]: 3881 }[L],
-        name: { en: "Lucky Baccarat", vi: "Lucky Baccarat", grp: "Baccarat", game: "Lucky Baccarat" },
+        name: { en: "Lucky Baccarat", vi: "Lucky Baccarat", grp: "Baccarat Lobby", game: "Lucky Baccarat" },
         coll: { db: "minigame", group: "bac81", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 82,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Lucky Baccarat 2", vi: "Lucky Baccarat 2", grp: "Baccarat Lobby", game: "Lucky Baccarat" },
+        coll: { db: "minigame", group: "bac82", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 83,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Lucky Baccarat 3", vi: "Lucky Baccarat", grp: "Baccarat Lobby", game: "Lucky Baccarat" },
+        coll: { db: "minigame", group: "bac83", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 84,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Baccarat 2", vi: "Baccarat 2", grp: "Baccarat Lobby", game: "Baccarat" },
+        coll: { db: "minigame", group: "bac84", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 85,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Baccarat 3", vi: "Baccarat 3", grp: "Baccarat Lobby", game: "Baccarat" },
+        coll: { db: "minigame", group: "bac85", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 86,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "VIP Baccarat 2", vi: "VIP Baccarat 2", grp: "Baccarat Lobby", game: "VIP Baccarat" },
+        coll: { db: "minigame", group: "bac86", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 87,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "VIP Baccarat 3", vi: "VIP Baccarat 3", grp: "Baccarat Lobby", game: "VIP Baccarat" },
+        coll: { db: "minigame", group: "bac87", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 88,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Lucky Baccarat 4", vi: "Lucky Baccarat 4", grp: "Baccarat Lobby", game: "Lucky Baccarat" },
+        coll: { db: "minigame", group: "bac88", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 89,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Lucky Baccarat 5", vi: "Lucky Baccarat 5", grp: "Baccarat Lobby", game: "Lucky Baccarat" },
+        coll: { db: "minigame", group: "bac89", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 90,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Baccarat 4", vi: "Baccarat 4", grp: "Baccarat Lobby", game: "Baccarat" },
+        coll: { db: "minigame", group: "bac90", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 91,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Baccarat 5", vi: "Baccarat 5", grp: "Baccarat Lobby", game: "Baccarat" },
+        coll: { db: "minigame", group: "bac91", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 92,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "VIP Baccarat 4", vi: "VIP Baccarat 4", grp: "Baccarat Lobby", game: "VIP Baccarat" },
+        coll: { db: "minigame", group: "bac92", round: "_rounds", postfix: "_bets" },
     },
     {
         gameId: 93,
         owGameTypeId: { [1]: 1688, [2]: 3880 }[L],
         name: { en: "EURO 2024 RNG", vi: "EURO 2024 RNG", grp: "Coin Toss", game: "Coin Toss" },
         coll: { db: "minigame", group: "footballcointoss", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 94,
+        owGameTypeId: { [1]: 1692, [2]: 3884 }[L],
+        name: { en: "Pusoy", vi: "Mậu binh", grp: "Pusoy", game: "Pusoy" },
+        coll: { db: "minigame", group: "pusoy", round: "_rounds", postfix: "_bets" },
     },
     {
         gameId: 95,
@@ -509,10 +581,34 @@ const gameSummaryConfig = (L) => [
         coll: { db: "minigame", group: "karakrus", round: "_rounds", postfix: "_bets" },
     },
     {
+        gameId: 97,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "VIP Baccarat 5", vi: "VIP Baccarat 5", grp: "Baccarat Lobby", game: "VIP Baccarat" },
+        coll: { db: "minigame", group: "bac97", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 98,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Speed Baccarat", vi: "Speed Baccarat", grp: "Baccarat Lobby", game: "Speed Baccarat" },
+        coll: { db: "minigame", group: "bac98", round: "_rounds", postfix: "_bets" },
+    },
+    {
         gameId: 99,
         owGameTypeId: { [1]: 1699, [2]: 3899 }[L],
         name: { en: "Jackpot Prize", vi: "Giải Jackpot", grp: "Slots", game: "Jackpot" },
         coll: { db: "minigame", group: "jackpots", round: "", postfix: "" },
+    },
+    {
+        gameId: 100,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Speed Baccarat 2", vi: "Speed Baccarat 2", grp: "Baccarat Lobby", game: "Speed Baccarat" },
+        coll: { db: "minigame", group: "bac100", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 101,
+        owGameTypeId: { [1]: null, [2]: null }[L],
+        name: { en: "Speed Baccarat 3", vi: "Speed Baccarat 3", grp: "Baccarat Lobby", game: "Speed Baccarat" },
+        coll: { db: "minigame", group: "bac101", round: "_rounds", postfix: "_bets" },
     },
 ];
 
