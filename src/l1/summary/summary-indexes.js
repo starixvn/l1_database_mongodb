@@ -1,4 +1,3 @@
-const { _ids_hourlySummary, _ids_dailySummary } = require("../../modules/indexes/summary-flags.cjs");
 
 (async () => {
     const { getIdentity, ensureCollection } = require("../../modules/db.cjs");
@@ -23,6 +22,7 @@ const { _ids_hourlySummary, _ids_dailySummary } = require("../../modules/indexes
         time_game_operator_site_player_U,
         owGameTypeId_FU,
     } = require("../../modules/indexes/summary.cjs");
+    const { _ids_hourlySummary, _ids_dailySummary } = require("../../modules/indexes/summary-flags.cjs");
     const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
 
     const sumDB = db.getSiblingDB("summary");
