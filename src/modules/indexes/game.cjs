@@ -24,6 +24,10 @@ const indexes = {
         key: { isAvailable: 1 },
         options: { unique: true, partialFilterExpression: { isAvailable: true } },
     },
+    player: {
+        key: { playerId: 1 },
+        options: {},
+    },
     player_round: {
         key: { playerId: 1, roundId: 1 },
         options: {},
@@ -46,6 +50,10 @@ const indexes = {
     round__id: {
         key: { roundId: 1, _id: 1 },
         options: {},
+    },
+    round_bot_U: {
+        key: { roundId: 1, botId: 1 },
+        options: { unique: true },
     },
     startTime: {
         key: { startTime: 1 },
