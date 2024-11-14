@@ -1,4 +1,5 @@
-const { readdirSync, Dirent } = require("fs");
+/* eslint-disable security/detect-non-literal-fs-filename */
+const { readdirSync } = require("fs");
 const { basename, resolve, join, dirname } = require("path");
 const process = require("process");
 const { inspect } = require("util");
@@ -48,8 +49,8 @@ const loadScript = async (load, path, isRetry = false) => {
     } finally {
         process.chdir(cwd);
         process.title = title;
-        return true;
     }
+    return true;
 };
 
 /**
@@ -67,9 +68,8 @@ const loadFolder = async (load, path) => {
         }
     } catch (e) {
         log("E", "FOLDER", `Error while loading folder [${basename(path)}].\n${inspect(e, false, null, true)}`);
-    } finally {
-        return true;
     }
+    return true;
 };
 
 module.exports = { loadScript, loadFolder };

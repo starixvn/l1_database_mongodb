@@ -17,7 +17,7 @@
             "promotion_runs",
             "promotion_bets",
             "promotion_leaderboards",
-        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(gameDB, "promotion_configs", [promo_U]);
     await deployIndexes(gameDB, "promotion_runs", [promo_U]);

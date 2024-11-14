@@ -22,7 +22,7 @@
             "megakeno2_cuocs_bk",
             "megakeno2_ones_bk",
             "megakeno2_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "megakeno_rounds_bk", [id, time]);

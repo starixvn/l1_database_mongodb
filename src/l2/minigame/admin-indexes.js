@@ -14,7 +14,7 @@
         [
             "admins", //
             "admin_users",
-        ].map((collName) => ensureCollection(gameDB, collName, {}))
+        ].map((collName) => ensureCollection(gameDB, collName, {})),
     );
     await deployIndexes(gameDB, "admins", [username_U_en]);
     await deployIndexes(gameDB, "admin_users", [username_U_en]);

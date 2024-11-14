@@ -17,7 +17,7 @@
             "cointoss_betlogs_bk",
             "cointoss_bets_bk",
             "cointoss_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "cointoss_rounds_bk", [id, time]);

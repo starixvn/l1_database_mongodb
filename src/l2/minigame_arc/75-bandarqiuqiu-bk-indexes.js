@@ -17,7 +17,7 @@
             "bandarqiuqiu_betlogs_bk",
             "bandarqiuqiu_bets_bk",
             "bandarqiuqiu_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "bandarqiuqiu_rounds_bk", [id, time]);

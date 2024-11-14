@@ -45,7 +45,7 @@
                     },
                 },
             ],
-            { ordered: false }
+            { ordered: false },
         );
         log("I", "DATA", `[${biDB.getName()}.names]`, `• ${stringifyResult(res)}`);
     }

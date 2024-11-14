@@ -32,7 +32,7 @@
             "unbalancedbigsmall4_betlogs_bk",
             "unbalancedbigsmall4_bets_bk",
             "unbalancedbigsmall4_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "unbalancedbigsmall1_rounds_bk", [id, time]);

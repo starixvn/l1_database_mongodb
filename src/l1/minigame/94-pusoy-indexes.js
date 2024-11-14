@@ -13,5 +13,5 @@
 
     await deployIndexes(gameDB, "pusoy_rounds", [TTL_8d, id_U, time]);
     await deployIndexes(gameDB, "pusoy_bots", [TTL_8d, round_bot_U]);
-    await deployIndexes(gameDB, "pusoy_survey", [player]);
+    await deployIndexes(gameDB, "pusoy_surveys", [player]);
 })();

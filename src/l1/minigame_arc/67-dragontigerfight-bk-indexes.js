@@ -17,7 +17,7 @@
             "dragontigerfight_betlogs_bk",
             "dragontigerfight_bets_bk",
             "dragontigerfight_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "dragontigerfight_rounds_bk", [id, time]);

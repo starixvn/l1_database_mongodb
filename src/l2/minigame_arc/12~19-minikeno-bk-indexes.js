@@ -52,7 +52,7 @@
             "kenonorth_cuocs_bk",
             "kenonorth_ones_bk",
             "kenonorth_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "kenomax_phiens_bk", [id, time]);

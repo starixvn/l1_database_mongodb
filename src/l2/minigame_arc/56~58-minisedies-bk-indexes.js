@@ -24,7 +24,7 @@
             "minisedie4_rounds_bk",
             "minisedie4_bets_bk",
             "minisedie4_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "minisedie2_rounds_bk", [id, time]);

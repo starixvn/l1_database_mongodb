@@ -1,5 +1,5 @@
-const { date, filter, float, int64, str, oid, bool } = require("../data-types.cjs");
-const { arrToJSON, objToJSON } = require("../ultilities.cjs");
+const { date, filter, float, int64, str, bool } = require("../data-types.cjs");
+const { arrToJSON } = require("../ultilities.cjs");
 
 /** @type { BITable[] } */
 const promotionTables = [

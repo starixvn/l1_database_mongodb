@@ -13,7 +13,6 @@
         time_currency_game_operator_site,
         time_game_operator_site_player,
     } = require("../../modules/indexes/summary.cjs");
-    const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
 
     const sumDBArc = db.getSiblingDB("summary_arc");
 
@@ -25,7 +24,7 @@
             "hourly_summaries",
             "daily_statements",
             "hourly_statements",
-        ].map((collName) => ensureCollection(sumDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(sumDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(sumDBArc, "betlog_summaries", [time_currency_game_system_operator]);

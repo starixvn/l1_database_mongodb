@@ -15,7 +15,7 @@
         [
             "kenopromax_phiens_bk", //
             "kenopromax_cuocs_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "kenopromax_phiens_bk", [id, time]);

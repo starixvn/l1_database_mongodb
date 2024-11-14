@@ -16,7 +16,7 @@
             "blockchainbaccarat_rounds_bk", //
             "blockchainbaccarat_bets_bk",
             "blockchainbaccarat_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "blockchainbaccarat_rounds_bk", [id, time]);

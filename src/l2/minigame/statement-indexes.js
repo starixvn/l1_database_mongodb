@@ -28,7 +28,7 @@
             "ticket_silos", //
             "exchange_silos",
             "user_silos",
-        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(gameDB, "ticket_silos", [
         TTL_31d,

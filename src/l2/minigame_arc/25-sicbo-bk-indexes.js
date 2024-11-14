@@ -17,7 +17,7 @@
             "sicbo_cuocs_bk",
             "sicbo_ones_bk",
             "sicbo_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "sicbo_phiens_bk", [id, time]);

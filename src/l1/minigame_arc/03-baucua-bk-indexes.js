@@ -16,7 +16,7 @@
             "baucua_phiens_bk", //
             "baucua_cuocs_bk",
             "baucua_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "baucua_phiens_bk", [id, time]);

@@ -16,7 +16,7 @@
             "fantan_rounds_bk", //
             "fantan_bets_bk",
             "fantan_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "fantan_rounds_bk", [id, time]);

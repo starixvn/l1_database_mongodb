@@ -15,7 +15,7 @@
     await Promise.allSettled(
         [
             "notification_service_events", //
-        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(gameDB, "notification_service_events", [TTL_1h, createdAt]);
 })();

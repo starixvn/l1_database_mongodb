@@ -16,7 +16,7 @@
             "colorgame_rounds_bk", //
             "colorgame_betlogs_bk",
             "colorgame_bets_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "colorgame_rounds_bk", [id, time]);

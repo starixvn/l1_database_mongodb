@@ -17,7 +17,7 @@
             "vipsediewar_cuocs_bk",
             "vipsediewar_ones_bk",
             "vipsediewar_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "vipsediewar_phiens_bk", [id, time]);

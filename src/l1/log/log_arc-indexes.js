@@ -23,7 +23,7 @@
             "signin_requests_bk",
             "ticket_detail_requests_bk",
             "void_games_bk",
-        ].map((collName) => ensureCollection(logDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(logDBArc, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(logDBArc, "bets_bk", [betlogs]);
 })();

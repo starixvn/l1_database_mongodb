@@ -24,7 +24,7 @@
             "signin_requests",
             "ticket_detail_requests",
             "void_games",
-        ].map((collName) => ensureCollection(logDB, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(logDB, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(logDB, "audit_events", [TTL_8d, StartDate]);
     await deployIndexes(logDB, "bets", [TTL_8d, logTimeStamp, betlogs]);

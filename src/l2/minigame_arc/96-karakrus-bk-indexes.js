@@ -17,7 +17,7 @@
             "karakrus_betlogs_bk",
             "karakrus_bets_bk",
             "karakrus_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "karakrus_rounds_bk", [id, time]);

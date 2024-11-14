@@ -21,7 +21,7 @@
             "smartbot_taixiu_bets",
             "smartbot_txturbo_patterns",
             "smartbot_txturbo_bets",
-        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(gameDB, "smartbot_xocxoc_patterns", [time_group]);
     await deployIndexes(gameDB, "smartbot_xocxoc_bets", [pat_time]);

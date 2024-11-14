@@ -17,7 +17,9 @@ const getIndexList = async (db, collection) => {
             mapping.set(name, keyString);
             mapping.set(keyString, name);
         }
-    } catch {}
+    } catch {
+        //
+    }
 
     return mapping;
 };

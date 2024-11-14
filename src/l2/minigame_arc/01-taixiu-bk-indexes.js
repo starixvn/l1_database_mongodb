@@ -17,7 +17,7 @@
             "taixiu_cuocs_bk",
             "taixiu_ones_bk",
             "taixiu_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "taixiu_phiens_bk", [id, time]);

@@ -124,7 +124,7 @@
             "bac101_results_bk",
             "bac101_multipliers_bk",
             "bac101_cut_card_pfs_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "bac81_rounds_bk", [id, time]);

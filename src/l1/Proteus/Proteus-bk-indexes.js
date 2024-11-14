@@ -14,7 +14,7 @@
     await Promise.allSettled(
         [
             "betlogs_bk", //
-        ].map((collName) => ensureCollection(proteusDB, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(proteusDB, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(proteusDB, "betlogs_bk", [ts]);

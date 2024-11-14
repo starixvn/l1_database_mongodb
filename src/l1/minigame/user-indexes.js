@@ -31,7 +31,7 @@
         [
             "users", //
             "userinfos",
-        ].map((collName) => ensureCollection(gameDB, collName, COLLATION_EN))
+        ].map((collName) => ensureCollection(gameDB, collName, COLLATION_EN)),
     );
     await deployIndexes(gameDB, "users", [memberId_en, operatorId, playerId, username_U_en]);
     await deployIndexes(gameDB, "userinfos", [currency_en, id_U, id_U_en, name_U_en, type_inRoom_en, UID_U_en]);

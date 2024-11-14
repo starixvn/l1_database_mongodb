@@ -16,7 +16,7 @@
             "bitcoinmaster_rounds_bk", //
             "bitcoinmaster_betlogs_bk",
             "bitcoinmaster_bets_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "bitcoinmaster_rounds_bk", [id, time]);

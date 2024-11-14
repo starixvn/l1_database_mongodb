@@ -17,7 +17,7 @@
             "txturbo_cuocs_bk",
             "txturbo_ones_bk",
             "txturbo_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "txturbo_phiens_bk", [id, time]);

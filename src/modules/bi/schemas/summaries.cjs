@@ -51,6 +51,7 @@ const summariesTables = [
             { mongo_name: "siteId", sql_name: "siteId", ...str },
             { mongo_name: "siteName", sql_name: "siteName", ...str },
             { mongo_name: "roundId", sql_name: "roundId", ...int64 },
+            { mongo_name: "subRoundId", sql_name: "subRoundId", ...int64 },
             { mongo_name: "playerId", sql_name: "playerId", ...str },
             { mongo_name: "tickets", sql_name: "tickets", ...int64 },
             { mongo_name: "stake", sql_name: "stake", ...float },

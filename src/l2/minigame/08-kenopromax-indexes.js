@@ -13,6 +13,15 @@
     const gameDB = db.getSiblingDB("minigame");
 
     await deployIndexes(gameDB, "kenopromax_phiens", [TTL_8d, id_U, time]);
-    await deployIndexes(gameDB, "kenopromax_cuocs", [TTL_8d, uid_round_freeBet_U, time_archive, round__id, uid_paid__id, player_round_F, __archive_do_summary, __archive_summarized]);
+    await deployIndexes(gameDB, "kenopromax_cuocs", [
+        TTL_8d,
+        uid_round_freeBet_U,
+        time_archive,
+        round__id,
+        uid_paid__id,
+        player_round_F,
+        __archive_do_summary,
+        __archive_summarized,
+    ]);
     await deployIndexes(gameDB, "kenopromax_tmpcuocs", [time_TTL_2m, round__id, uid_round_U]);
 })();

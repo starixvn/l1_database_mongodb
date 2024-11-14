@@ -17,7 +17,7 @@
             "winthreecards_betlogs_bk",
             "winthreecards_bets_bk",
             "winthreecards_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "winthreecards_rounds_bk", [id, time]);

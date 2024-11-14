@@ -16,7 +16,7 @@
             "vipbaccarat_phiens_bk", //
             "vipbaccarat_cuocs_bk",
             "vipbaccarat_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "vipbaccarat_phiens_bk", [id, time]);

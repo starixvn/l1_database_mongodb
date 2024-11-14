@@ -17,7 +17,7 @@
             "footballdice_betlogs_bk",
             "footballdice_bets_bk",
             "footballdice_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "footballdice_rounds_bk", [id, time]);
