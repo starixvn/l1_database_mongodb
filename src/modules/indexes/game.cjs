@@ -71,6 +71,10 @@ const indexes = {
         key: { time: 1 },
         options: { expireAfterSeconds: 120 },
     },
+    uid: {
+        key: { uid: 1 },
+        options: {},
+    },
     uid__id: {
         key: { uid: 1, _id: 1 },
         options: {},

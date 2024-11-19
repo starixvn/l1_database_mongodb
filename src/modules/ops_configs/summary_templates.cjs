@@ -1,4 +1,23 @@
-const summaryTemplates = [
+const summaryTemplates = /** @type {const} */ ([
+    {
+        category: "games",
+        type: 1,
+        targets: [{ db: "ops_configs", coll: "summary_configs" }],
+        data: [
+            {
+                db: "minigame",
+                coll: { round: "_rounds", bet: "_bets" },
+                aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
+                calc: {
+                    roundId: '"$id"',
+                    tickets: '{"$literal":1}',
+                    stake: '"$totalAmount"',
+                    payout: '"$betwin"',
+                    refund: '{"$literal":0}',
+                },
+            },
+        ],
+    },
     {
         category: "games",
         type: 2,
@@ -77,6 +96,6 @@ const summaryTemplates = [
             },
         ],
     },
-];
+]);
 
 module.exports = { summaryTemplates };

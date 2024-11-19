@@ -616,6 +616,12 @@ const gameSummaryConfig = (L) => [
         name: { en: "BaccaratX", vi: "BaccaratX", grp: "BaccaratX", game: "BaccaratX" },
         coll: { db: "minigame", group: "_bacx_", round: "_rounds", postfix: "_bets" },
     },
+    {
+        gameId: 103,
+        owGameTypeId: { [1]: 13211, [2]: 13504 }[`${L}`],
+        name: { en: "7 Up 7 Down", vi: "Trên 7 Dưới 7", grp: "7 Up 7 Down", game: "7 Up 7 Down" },
+        coll: { db: "minigame", group: "sevenupdown", round: "_rounds", postfix: "_bets" },
+    },
 ];
 
 module.exports = { gameSummaryConfig };

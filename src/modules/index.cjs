@@ -83,6 +83,10 @@ const deployIndex = async (db, collection, indexDefinition) => {
  * @param { string } indexName
  */
 const dropIndex = async (db, collection, indexName) => {
+    if (/^[#@]/.test(indexName)) {
+        log("E", "INDEX", `[${namespace}]`, `Index ${indexName} should NOT be dropped. Aborting...`);
+        return;
+    }
     const namespace = `${db.getName()}.${collection}`;
     await db.getCollection(collection).dropIndex(indexName);
     log("W", "INDEX", `[${namespace}]`, `Index ${indexName} dropped.`);
@@ -124,15 +128,20 @@ const deployIndexes = async (db, collection, indexDefinitions) => {
                 continue;
             }
             if (err.codeName === "IndexOptionsConflict") {
-                log("W", "INDEX", `[${namespace}]`, "IndexOptionsConflict");
                 const name = indexList.get(JSON.stringify(indexDefinition.key));
-                if (name) {
-                    await dropIndex(db, collection, name);
-                    const indexName = await deployIndex(db, collection, indexDefinition);
-                    log("I", "INDEX", `[${namespace}]`, `Index ${indexName} created.`);
+                if (!name || ["@", "#"].includes(name[0])) {
+                    log("I", "INDEX", `[${namespace}]`, `Index ${name} existed.`);
                     indexList.delete(indexList.get(name) ?? "");
                     indexList.delete(name);
+                    continue;
                 }
+
+                log("W", "INDEX", `[${namespace}]`, "IndexOptionsConflict");
+                await dropIndex(db, collection, name);
+                const indexName = await deployIndex(db, collection, indexDefinition);
+                log("I", "INDEX", `[${namespace}]`, `Index ${indexName} created.`);
+                indexList.delete(indexList.get(name) ?? "");
+                indexList.delete(name);
                 continue;
             }
             log("E", "INDEX", `[${namespace}]`, e);
@@ -147,7 +156,11 @@ const deployIndexes = async (db, collection, indexDefinitions) => {
         if (/^\{.*\}$/.test(key)) {
             continue;
         }
+        if (/^[@]/.test(key)) {
+            continue;
+        }
         if (/^[#]/.test(key)) {
+            log("W", "INDEX", `[${namespace}]`, `Index ${key} ignored.`);
             continue;
         }
         await dropIndex(db, collection, key);
