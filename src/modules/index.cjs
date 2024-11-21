@@ -83,10 +83,6 @@ const deployIndex = async (db, collection, indexDefinition) => {
  * @param { string } indexName
  */
 const dropIndex = async (db, collection, indexName) => {
-    if (/^[#@]/.test(indexName)) {
-        log("E", "INDEX", `[${namespace}]`, `Index ${indexName} should NOT be dropped. Aborting...`);
-        return;
-    }
     const namespace = `${db.getName()}.${collection}`;
     await db.getCollection(collection).dropIndex(indexName);
     log("W", "INDEX", `[${namespace}]`, `Index ${indexName} dropped.`);
@@ -157,6 +153,7 @@ const deployIndexes = async (db, collection, indexDefinitions) => {
             continue;
         }
         if (/^[@]/.test(key)) {
+            log("W", "INDEX", `[${namespace}]`, `Index ${key} is automated. Ignored.`);
             continue;
         }
         if (/^[#]/.test(key)) {
