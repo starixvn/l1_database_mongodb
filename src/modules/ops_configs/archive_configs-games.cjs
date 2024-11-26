@@ -3147,7 +3147,7 @@ const archiveGameConfigs = [];
         { gameId: 90, name: "bac90" },
         { gameId: 91, name: "bac91" },
         { gameId: 92, name: "bac92" },
-        { gameId: 97, name: "bac98" },
+        { gameId: 97, name: "bac97" },
         { gameId: 98, name: "bac98" },
         { gameId: 100, name: "bac100" },
         { gameId: 101, name: "bac101" },

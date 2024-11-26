@@ -35,12 +35,7 @@ const indexes = {
     player_round_F: {
         key: { playerId: 1, roundId: 1 },
         options: {
-            partialFilterExpression: {
-                $or: [
-                    { playerId: { $gt: 0 } }, //
-                    { playerId: { $gt: "" } },
-                ],
-            },
+            partialFilterExpression: { playerId: { $gt: "" } },
         },
     },
     round: {

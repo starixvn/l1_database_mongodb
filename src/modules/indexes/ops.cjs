@@ -8,6 +8,10 @@ const indexes = {
         key: { gameConfigs: 1, id: 1 },
         options: { unique: true },
     },
+    name_id_U: {
+        key: { "gameConfigs.name": 1, id: 1 },
+        options: { unique: true },
+    },
 };
 
 module.exports = indexes;
