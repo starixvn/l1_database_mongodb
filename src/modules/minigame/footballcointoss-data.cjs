@@ -137,7 +137,7 @@ const updateMatches = [
     },
     {
         updateOne: {
-            filter: { startTime: new Date("2024-12-14T15:00:00Z") },
+            filter: { startTime: new Date("2024-12-15T16:30:00Z") },
             update: { $set: { home: "MC", away: "MU" } },
             upsert: true,
         },
