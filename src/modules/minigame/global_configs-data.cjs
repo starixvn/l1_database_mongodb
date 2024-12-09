@@ -1,8 +1,13 @@
 module.exports = {};
 
-{
+/** @param { number } L */
+module.exports.kenoMatchLiveOdds = (L) => {
     /** kenomatch_liveodds */
-    const type = "kenomatch_liveodds";
+    const type = {
+        [1]: "kenomatch_liveodds", //
+        [2]: "kenomatch_liveodds",
+        [4]: "kenosoccer_liveodds",
+    }[`${L}`];
     const time = new Date("2021-10-04T00:00:00Z");
     const _id = `${Math.floor(new Date("2021-10-04T00:00:00Z").valueOf() / 1000).toString(16)}${"liveodds"
         .split("")
@@ -637,8 +642,8 @@ module.exports = {};
         blueRed: 2,
         overUnder: 1.5,
     };
-    module.exports.kenoMatchLiveOdds = { _id, type, time, blueRed, overUnder, adjRate };
-}
+    return { _id, type, time, blueRed, overUnder, adjRate };
+};
 
 /** @param { number } L */
 module.exports.exchangeCodes = (L) => {
@@ -649,7 +654,7 @@ module.exports.exchangeCodes = (L) => {
         .split("")
         .map((_) => _.charCodeAt(0).toString(16))
         .join("")}`;
-    const base = { [1]: "USD", [2]: "VND", [4]: "USD" }[L];
+    const base = { [1]: "USD", [2]: "VND", [4]: "USD" }[`${L}`];
     const configs = {
         codes: [
             "AED",
