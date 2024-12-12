@@ -1,5 +1,5 @@
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     promo_U: {
         key: { promotionId: 1 },
         options: { unique: true },
@@ -16,6 +16,6 @@ const indexes = {
         key: { promotionId: 1, operatorId: 1, playerId: 1 },
         options: { unique: true },
     },
-};
+});
 
 module.exports = indexes;

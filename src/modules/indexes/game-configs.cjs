@@ -1,7 +1,7 @@
 const { LOCALES } = require("../const.cjs");
 
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     name_U: {
         key: { name: -1 },
         options: { unique: true },
@@ -42,6 +42,6 @@ const indexes = {
         key: { gameId: 1 },
         options: { unique: true },
     },
-};
+});
 
 module.exports = indexes;

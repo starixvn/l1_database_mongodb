@@ -1,5 +1,5 @@
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     __archive_summarized: {
         key: { "__archive.summarized": 1 },
         options: {},
@@ -44,6 +44,6 @@ const indexes = {
         key: { "_ids.dailySummary": 1 },
         options: {},
     },
-};
+});
 
 module.exports = indexes;

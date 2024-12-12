@@ -1,5 +1,5 @@
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     ts: {
         key: { ts: 1 },
         options: {},
@@ -8,6 +8,6 @@ const indexes = {
         key: { ts: 1 },
         options: { expireAfterSeconds: 8 * 24 * 3_600 },
     },
-};
+});
 
 module.exports = indexes;

@@ -1,9 +1,9 @@
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     createdAt: {
         key: { createdAt: 1 },
         options: {},
     },
-};
+});
 
 module.exports = indexes;

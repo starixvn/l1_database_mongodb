@@ -1,5 +1,5 @@
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     flag_do_daily_F: {
         key: { "__archive.do_daily": 1 },
         options: { partialFilterExpression: { "__archive.do_daily": true } },
@@ -64,6 +64,6 @@ const indexes = {
         key: { time: 1, gameId: 1, operatorId: 1, siteId: 1, playerId: 1 },
         options: { unique: true },
     },
-};
+});
 
 module.exports = indexes;

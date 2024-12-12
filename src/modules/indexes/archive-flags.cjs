@@ -1,5 +1,5 @@
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     TTL_31d: {
         key: { "__archive.eventtime": 1 },
         options: { expireAfterSeconds: 3600 * 24 * 31 },
@@ -12,6 +12,6 @@ const indexes = {
         key: { "__archive.eventtime": 1 },
         options: { expireAfterSeconds: 3600 },
     },
-};
+});
 
 module.exports = indexes;

@@ -1,5 +1,5 @@
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     draw: {
         key: { drawId: 1 },
         options: {},
@@ -90,6 +90,6 @@ const indexes = {
         key: { uid: 1, roundId: 1, freeBet: 1 },
         options: { unique: true },
     },
-};
+});
 
 module.exports = indexes;
