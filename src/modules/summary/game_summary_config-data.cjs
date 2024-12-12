@@ -622,6 +622,18 @@ const gameSummaryConfig = (L) => [
         name: { en: "7 Up 7 Down", vi: "Trên 7 Dưới 7", grp: "7 Up 7 Down", game: "7 Up 7 Down" },
         coll: { db: "minigame", group: "sevenupdown", round: "_rounds", postfix: "_bets" },
     },
+    {
+        gameId: 104,
+        owGameTypeId: { [1]: null, [2]: null }[`${L}`],
+        name: { en: "Marble Football", vi: "Marble Football", grp: "Marble Football", game: "Marble Football" },
+        coll: { db: "minigame", group: "marblefootball", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 106,
+        owGameTypeId: { [1]: 13212, [2]: 13505 }[`${L}`],
+        name: { en: "Christmas X", vi: "Christmas X", grp: "Crash Games", game: "Christmas X" },
+        coll: { db: "minigame", group: "christmascrash", round: "_rounds", postfix: "_bets" },
+    },
 ];
 
 module.exports = { gameSummaryConfig };
