@@ -8,7 +8,7 @@
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
     const { TTL_31d } = require("../../modules/indexes/archive-flags.cjs");
-    const { game_round_subRound_operator_player_U, game_player_time, time, time_code_U, player_operator } = require("../../modules/indexes/statement.cjs");
+    const { game_round_subRound_operator_player, game_player_time, time, time_code_U, player_operator } = require("../../modules/indexes/statement.cjs");
     const {
         __archive_daily,
         __archive_do_daily,
@@ -32,7 +32,7 @@
     );
     await deployIndexes(gameDB, "ticket_silos", [
         TTL_31d,
-        game_round_subRound_operator_player_U,
+        game_round_subRound_operator_player,
         game_player_time,
         time,
         __archive_daily,
