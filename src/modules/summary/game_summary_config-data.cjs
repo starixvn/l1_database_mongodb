@@ -624,8 +624,8 @@ const gameSummaryConfig = (L) => [
     },
     {
         gameId: 104,
-        owGameTypeId: { [1]: null, [2]: null }[`${L}`],
-        name: { en: "Marble Football", vi: "Marble Football", grp: "Marble Football", game: "Marble Football" },
+        owGameTypeId: { [1]: 13213, [2]: 13506 }[`${L}`],
+        name: { en: "Spinner Soccer", vi: "Bóng Xoáy", grp: "Marble Football", game: "Marble Football" },
         coll: { db: "minigame", group: "marblefootball", round: "_rounds", postfix: "_bets" },
     },
     {
