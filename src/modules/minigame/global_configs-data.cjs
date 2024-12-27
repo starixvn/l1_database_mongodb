@@ -703,6 +703,7 @@ module.exports.exchangeCodes = (L) => {
             "PYG",
             "RON",
             "RUB",
+            "SAR",
             "SEK",
             "SGD",
             "THB",
