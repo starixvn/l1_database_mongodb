@@ -69,6 +69,7 @@ declare global {
     type WriteConcern = serviceProviderCore.WriteConcern;
     type DatabaseAggregationPipeline = ldbMongo.DatabaseAggregationPipeline;
     type CollectionAggregationPipeline = ldbMongo.CollectionAggregationPipeline;
+    type DBNamespace = ldbMongo.ChangeStreamNameSpace;
 }
 
 /** Security */
