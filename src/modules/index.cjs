@@ -125,7 +125,7 @@ const deployIndexes = async (db, collection, indexDefinitions) => {
             }
             if (err.codeName === "IndexOptionsConflict") {
                 const name = indexList.get(JSON.stringify(indexDefinition.key));
-                if (!name || ["@", "#"].includes(name[0])) {
+                if (!name || ["@"].includes(name[0])) {
                     log("I", "INDEX", `[${namespace}]`, `Index ${name} existed.`);
                     indexList.delete(indexList.get(name) ?? "");
                     indexList.delete(name);

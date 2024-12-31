@@ -16,6 +16,7 @@ const {
     minigame_arc$readWrite,
     minigame_rm$read,
     minigame_rm$readWrite,
+    ops_configs$read,
     Proteus$read,
     Proteus$readWrite,
     root,
@@ -46,6 +47,7 @@ const archiveUsers = {
             minigame_arc$readWrite,
             minigame_rm$readWrite,
             summary_arc$readWrite,
+            ops_configs$read,
         ],
     },
     lmn_backup: {

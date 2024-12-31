@@ -64,6 +64,7 @@ declare global {
         options: Omit<IndexDescription, "key">;
     };
     type IndexConfig = Record<string, IndexDefinition>;
+    type IndexGroup = Record<string, IndexDefinition[]>;
     type MongoServerError = ldbMongo.MongoServerError;
     type ReplicaSet = shellApi.ReplicaSet;
     type WriteConcern = serviceProviderCore.WriteConcern;

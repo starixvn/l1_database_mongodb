@@ -8,6 +8,7 @@
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
     const { time, round, id, player_round } = require("../../modules/indexes/game.cjs");
+    const { featureMD5 } = require("../../modules/indexes/md5.cjs");
 
     const gameDBArc = db.getSiblingDB("minigame_arc");
 
@@ -23,5 +24,5 @@
     await deployIndexes(gameDBArc, "winthreecards_rounds_bk", [id, time]);
     await deployIndexes(gameDBArc, "winthreecards_betlogs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "winthreecards_bets_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "winthreecards_results_bk", [round]);
+    await deployIndexes(gameDBArc, "winthreecards_results_bk", [round, ...featureMD5]);
 })();
