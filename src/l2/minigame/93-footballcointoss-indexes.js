@@ -21,8 +21,37 @@
     await deployIndexes(gameDB, "footballcointoss_results", [TTL_8d, round]);
 
     const { updateMatches } = require("../../modules/minigame/footballcointoss-data.cjs");
+
+    /** @type { Extract<AnyBulkWriteOperation, { updateOne: unknown }>[] } */
+    const bulkOps = [];
+
+    /** @type { ObjectId[] } */
+    const matchIds = [];
+
+    updateMatches.forEach(({ startTime, home, away }) => {
+        const idTime = (startTime.valueOf() / 1000).toString(16).substring(0, 8);
+        const idHome = Buffer.from(home).toString("hex").padEnd(8, "0").substring(0, 8);
+        const idAway = Buffer.from(away).toString("hex").padEnd(8, "0").substring(0, 8);
+
+        const _id = new ObjectId(`${idTime}${idHome}${idAway}`);
+
+        bulkOps.push({
+            updateOne: {
+                filter: { _id },
+                update: { $set: { startTime, home, away } },
+                upsert: true,
+            },
+        });
+
+        matchIds.push(_id);
+    });
+
     {
-        const res = await gameDB.getCollection("footballcointoss_matches").bulkWrite(updateMatches, { ordered: false });
+        const res = await gameDB.getCollection("footballcointoss_matches").deleteMany({ _id: { $nin: matchIds }, __isTest: { $ne: true } });
+        log("I", "DATA", `[${gameDB.getName()}.footballcointoss_matches]`, `• ${stringifyResult(res)}`);
+    }
+    {
+        const res = await gameDB.getCollection("footballcointoss_matches").bulkWrite(bulkOps, { ordered: false });
         log("I", "DATA", `[${gameDB.getName()}.footballcointoss_matches]`, `• ${stringifyResult(res)}`);
     }
 })();

@@ -48,9 +48,10 @@ const compare = (have, need, label = "") => {
 };
 
 /** @param { BulkWriteResult } result */
+const NULL = /** @type { const } */ ("∅");
 const stringifyResult = (result) => {
     const { matchedCount, insertedCount, upsertedCount, modifiedCount, deletedCount } = result;
-    return `#=${matchedCount} • I+${insertedCount} • U+${upsertedCount} • M=${modifiedCount} • D-${deletedCount}`;
+    return `#=${matchedCount ?? NULL} • I+${insertedCount ?? NULL} • U+${upsertedCount ?? NULL} • M=${modifiedCount ?? NULL} • D-${deletedCount ?? NULL}`;
 };
 
 /**
