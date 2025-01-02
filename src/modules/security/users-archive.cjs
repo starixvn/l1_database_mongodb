@@ -47,7 +47,6 @@ const archiveUsers = {
             minigame_arc$readWrite,
             minigame_rm$readWrite,
             summary_arc$readWrite,
-            ops_configs$read,
         ],
     },
     lmn_backup: {
@@ -79,6 +78,7 @@ const archiveUsers = {
             log_arc$readWrite,
             minigame_arc$readWrite,
             summary_arc$readWrite,
+            ops_configs$read,
         ],
     },
     mongodb_exporter: {

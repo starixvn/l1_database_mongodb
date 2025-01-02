@@ -23,5 +23,5 @@
     await deployIndexes(gameDBArc, "footballcointoss_rounds_bk", [id, time]);
     await deployIndexes(gameDBArc, "footballcointoss_betlogs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "footballcointoss_bets_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "footballcointoss_results_bk", [round]);
+    await deployIndexes(gameDBArc, "footballcointoss_results_bk", [round, ...featureProvablyFair]);
 })();
