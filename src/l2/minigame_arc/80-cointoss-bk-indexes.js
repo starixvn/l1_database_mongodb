@@ -8,6 +8,7 @@
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
     const { time, round, id, player_round } = require("../../modules/indexes/game.cjs");
+    const { featureProvablyFair } = require("../../modules/indexes/md5.cjs");
 
     const gameDBArc = db.getSiblingDB("minigame_arc");
 

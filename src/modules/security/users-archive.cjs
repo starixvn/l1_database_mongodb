@@ -66,6 +66,7 @@ const archiveUsers = {
             member_arc$read,
             minigame_arc$read,
             minigame_rm$read,
+            ops_configs$read,
             summary_arc$read,
         ],
     },
@@ -77,8 +78,8 @@ const archiveUsers = {
             Proteus$readWrite,
             log_arc$readWrite,
             minigame_arc$readWrite,
-            summary_arc$readWrite,
             ops_configs$read,
+            summary_arc$readWrite,
         ],
     },
     mongodb_exporter: {
