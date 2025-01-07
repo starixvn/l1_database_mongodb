@@ -23,6 +23,7 @@ const {
     schema$read,
     summary$read,
     summary$readWrite,
+    ops_configs$readWrite,
 } = require("./roles.cjs");
 
 /** @satisfies { Record<string, UserDefinition> } */
@@ -48,6 +49,19 @@ const activeUsers = {
             ops_configs$read,
             summary$readWrite,
             minigame_rm$readWrite,
+        ],
+    },
+    lmn_backend: {
+        db: "admin",
+        user: "lmn_backend",
+        roles: [
+            ldb$$public, //
+            log$readWrite,
+            member$readWrite,
+            minigame$readWrite,
+            minigame_rm$readWrite,
+            ops_configs$readWrite,
+            summary$read,
         ],
     },
     lmn_backup: {

@@ -49,6 +49,18 @@ const archiveUsers = {
             summary_arc$readWrite,
         ],
     },
+    lmn_backend: {
+        db: "admin",
+        user: "lmn_backend",
+        roles: [
+            ldb$$public, //
+            log_arc$read,
+            member_arc$read,
+            minigame_arc$read,
+            minigame_rm$read,
+            summary_arc$read,
+        ],
+    },
     lmn_backup: {
         db: "admin",
         user: "lmn_backup",

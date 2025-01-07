@@ -3,6 +3,7 @@ const roles = /** @type {const} */ ({
     clusterMonitor: { db: "admin", role: "clusterMonitor" },
     dbOwner: { db: "admin", role: "dbOwner" },
     readAnyDatabase: { db: "admin", role: "readAnyDatabase" },
+    readWriteAnyDatabase: { db: "admin", role: "readWriteAnyDatabase" },
     root: { db: "admin", role: "root" },
 
     ldb$$public: { db: "admin", role: "public" },
@@ -53,6 +54,33 @@ const roles = /** @type {const} */ ({
     summary_arc$readWrite: { db: "summary_arc", role: "readWrite" },
 
     demo$readWrite: { db: "demo", role: "readWrite" },
+
+    prefix_log$read: (prefix) => /** @type {const} */ ({ db: `${prefix}_log`, role: "read" }),
+    prefix_log$readWrite: (prefix) => /** @type {const} */ ({ db: `${prefix}_log`, role: "readWrite" }),
+
+    prefix_log_arc$read: (prefix) => /** @type {const} */ ({ db: `${prefix}_log_arc`, role: "read" }),
+    prefix_log_arc$readWrite: (prefix) => /** @type {const} */ ({ db: `${prefix}_log_arc`, role: "readWrite" }),
+
+    prefix_member$read: (prefix) => /** @type {const} */ ({ db: `${prefix}_member`, role: "read" }),
+    prefix_member$readWrite: (prefix) => /** @type {const} */ ({ db: `${prefix}_member`, role: "readWrite" }),
+
+    prefix_member_arc$read: (prefix) => /** @type {const} */ ({ db: `${prefix}_member_arc`, role: "read" }),
+    prefix_member_arc$readWrite: (prefix) => /** @type {const} */ ({ db: `${prefix}_member_arc`, role: "readWrite" }),
+
+    prefix_minigame$read: (prefix) => /** @type {const} */ ({ db: `${prefix}_minigame`, role: "read" }),
+    prefix_minigame$readWrite: (prefix) => /** @type {const} */ ({ db: `${prefix}_minigame`, role: "readWrite" }),
+
+    prefix_minigame_arc$read: (prefix) => /** @type {const} */ ({ db: `${prefix}_minigame_arc`, role: "read" }),
+    prefix_minigame_arc$readWrite: (prefix) => /** @type {const} */ ({ db: `${prefix}_minigame_arc`, role: "readWrite" }),
+
+    prefix_minigame_rm$read: (prefix) => /** @type {const} */ ({ db: `${prefix}_minigame_rm`, role: "read" }),
+    prefix_minigame_rm$readWrite: (prefix) => /** @type {const} */ ({ db: `${prefix}_minigame_rm`, role: "readWrite" }),
+
+    prefix_summary$read: (prefix) => /** @type {const} */ ({ db: `${prefix}_summary`, role: "read" }),
+    prefix_summary$readWrite: (prefix) => /** @type {const} */ ({ db: `${prefix}_summary`, role: "readWrite" }),
+
+    prefix_summary_arc$read: (prefix) => /** @type {const} */ ({ db: `${prefix}_summary_arc`, role: "read" }),
+    prefix_summary_arc$readWrite: (prefix) => /** @type {const} */ ({ db: `${prefix}_summary_arc`, role: "readWrite" }),
 });
 
 module.exports = roles;

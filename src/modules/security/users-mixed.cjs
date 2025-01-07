@@ -31,6 +31,7 @@ const {
     summary$readWrite,
     summary_arc$read,
     summary_arc$readWrite,
+    ops_configs$readWrite,
 } = require("./roles.cjs");
 
 /** @satisfies { Record<string, UserDefinition> } */
@@ -60,6 +61,23 @@ const mixedUsers = {
             minigame_arc$readWrite,
             minigame_rm$readWrite,
             summary_arc$readWrite,
+        ],
+    },
+    lmn_backend: {
+        db: "admin",
+        user: "lmn_backend",
+        roles: [
+            ldb$$public, //
+            log$readWrite,
+            log_arc$read,
+            member$readWrite,
+            member_arc$read,
+            minigame$readWrite,
+            minigame_arc$read,
+            minigame_rm$readWrite,
+            ops_configs$readWrite,
+            summary$read,
+            summary_arc$read,
         ],
     },
     lmn_backup: {

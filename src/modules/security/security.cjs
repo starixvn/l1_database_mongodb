@@ -1,3 +1,4 @@
+const { randomUUID } = require("crypto");
 const { inspect } = require("util");
 const { log, indent } = require("../utils.cjs");
 const { roleToString, stringToRole, privilegeToString, stringToPrivilege } = require("./security-utils.cjs");
@@ -136,9 +137,8 @@ const createUser = async (db, userDefinition) => {
     const { db: dbName, user, roles, customData } = userDefinition;
     const targetDB = db.getSiblingDB(dbName);
 
-    log("W", "USER", `[${user}@${dbName}] Input password:`);
-    const pwd = await passwordPrompt();
-    console.log();
+    log("W", "USER", `[${user}@${dbName}] Create user with random password.`);
+    const pwd = randomUUID();
     return await targetDB.createUser({ user, pwd, roles, customData }, WRITE_CONCERN);
 };
 
