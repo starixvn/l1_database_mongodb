@@ -66,6 +66,10 @@ const indexes = /** @type {const} */ ({
         key: { time: 1 },
         options: { expireAfterSeconds: 120 },
     },
+    time_TTL_10m: {
+        key: { time: 1 },
+        options: { expireAfterSeconds: 600 },
+    },
     uid: {
         key: { uid: 1 },
         options: {},
