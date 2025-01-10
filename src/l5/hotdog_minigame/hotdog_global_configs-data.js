@@ -22,7 +22,7 @@
         };
     });
 
-    const gameDB = db.getSiblingDB("minigame");
+    const gameDB = db.getSiblingDB("hotdog_minigame");
     {
         const res = await gameDB.getCollection("global_configs").bulkWrite(bulkWrite, { ordered: false });
         log("I", "DATA", `[${gameDB.getName()}.global_configs]`, `• ${stringifyResult(res)}`);

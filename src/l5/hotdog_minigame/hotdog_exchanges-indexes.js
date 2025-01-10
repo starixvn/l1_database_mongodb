@@ -7,14 +7,14 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
-    const { memberId_iP } = require("../../modules/indexes/member.cjs");
+    const { exId_U, time } = require("../../modules/indexes/exchange.cjs");
 
-    const memberDBArc = db.getSiblingDB("member_arc");
+    const gameDB = db.getSiblingDB("hotdog_minigame");
 
     await Promise.allSettled(
         [
-            "member_auths_bk", //
-        ].map((collName) => ensureCollection(memberDBArc, collName, STORAGE_COMPRESSED)),
+            "exchange_rates", //
+        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
     );
-    await deployIndexes(memberDBArc, "member_auths_bk", [memberId_iP]);
+    await deployIndexes(gameDB, "exchange_rates", [exId_U, time]);
 })();

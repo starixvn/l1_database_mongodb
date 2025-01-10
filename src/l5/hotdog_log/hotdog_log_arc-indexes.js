@@ -9,7 +9,7 @@
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
     const { betlogs } = require("../../modules/indexes/log.cjs");
 
-    const logDBArc = db.getSiblingDB("log_arc");
+    const logDBArc = db.getSiblingDB("hotdog_log_arc");
 
     await Promise.allSettled(
         [

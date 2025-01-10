@@ -14,7 +14,7 @@
         time_game_operator_site_player,
     } = require("../../modules/indexes/summary.cjs");
 
-    const sumDBArc = db.getSiblingDB("summary_arc");
+    const sumDBArc = db.getSiblingDB("hotdog_summary_arc");
 
     await Promise.allSettled(
         [

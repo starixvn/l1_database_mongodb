@@ -8,7 +8,7 @@
     const { deployIndexes } = require("../../modules/index.cjs");
     const { username_U_en } = require("../../modules/indexes/admin.cjs");
 
-    const gameDB = db.getSiblingDB("minigame");
+    const gameDB = db.getSiblingDB("hotdog_minigame");
 
     await Promise.allSettled(
         [

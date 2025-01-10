@@ -7,16 +7,15 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
+    const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
+    const { memberId_iP, token } = require("../../modules/indexes/member.cjs");
 
-    const gameDB = db.getSiblingDB("minigame");
+    const memberDB = db.getSiblingDB("hotdog_member");
 
     await Promise.allSettled(
         [
-            "player_tracking", //
-        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
+            "member_auths", //
+        ].map((collName) => ensureCollection(memberDB, collName, STORAGE_COMPRESSED)),
     );
-    await deployIndexes(gameDB, "player_tracking", [
-        { key: { visitorId: 1 }, options: { unique: true } },
-        { key: { "players.playerId": 1, "players.operatorId": 1 }, options: {} },
-    ]);
+    await deployIndexes(memberDB, "member_auths", [TTL_8d, memberId_iP, token]);
 })();

@@ -10,7 +10,7 @@
     const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
     const { StartDate, logTimeStamp, betlogs } = require("../../modules/indexes/log.cjs");
 
-    const logDB = db.getSiblingDB("log");
+    const logDB = db.getSiblingDB("hotdog_log");
 
     await Promise.allSettled(
         [

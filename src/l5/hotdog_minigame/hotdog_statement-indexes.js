@@ -21,7 +21,7 @@
         _ids_dailyStatement,
     } = require("../../modules/indexes/summary-flags.cjs");
 
-    const gameDB = db.getSiblingDB("minigame");
+    const gameDB = db.getSiblingDB("hotdog_minigame");
 
     await Promise.allSettled(
         [

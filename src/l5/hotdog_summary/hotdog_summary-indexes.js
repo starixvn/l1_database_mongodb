@@ -24,7 +24,7 @@
     const { _ids_hourlySummary, _ids_dailySummary } = require("../../modules/indexes/summary-flags.cjs");
     const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
 
-    const sumDB = db.getSiblingDB("summary");
+    const sumDB = db.getSiblingDB("hotdog_summary");
 
     await Promise.allSettled(
         [

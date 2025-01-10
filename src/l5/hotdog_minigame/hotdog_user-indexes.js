@@ -25,7 +25,7 @@
         memberId_en,
     } = require("../../modules/indexes/user.cjs");
 
-    const gameDB = db.getSiblingDB("minigame");
+    const gameDB = db.getSiblingDB("hotdog_minigame");
 
     await Promise.allSettled(
         [

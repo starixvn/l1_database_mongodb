@@ -20,7 +20,7 @@
         name_partner_U,
     } = require("../../modules/indexes/game-configs.cjs");
 
-    const gameDB = db.getSiblingDB("minigame");
+    const gameDB = db.getSiblingDB("hotdog_minigame");
 
     await Promise.allSettled(
         [

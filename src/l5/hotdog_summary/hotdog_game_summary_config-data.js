@@ -30,7 +30,7 @@
         },
     });
 
-    const sumDB = db.getSiblingDB("summary");
+    const sumDB = db.getSiblingDB("hotdog_summary");
     {
         const res = await sumDB.getCollection("game_summary_config").bulkWrite(bulkWrite, { ordered: false });
         log("I", "DATA", `[${sumDB.getName()}.game_summary_config]`, `• ${stringifyResult(res)}`);

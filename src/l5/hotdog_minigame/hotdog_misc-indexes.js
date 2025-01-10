@@ -7,14 +7,15 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
-    const { exId_U, time } = require("../../modules/indexes/exchange.cjs");
+    const { TTL_1h } = require("../../modules/indexes/archive-flags.cjs");
+    const { createdAt } = require("../../modules/indexes/misc.cjs");
 
-    const gameDB = db.getSiblingDB("minigame");
+    const gameDB = db.getSiblingDB("hotdog_minigame");
 
     await Promise.allSettled(
         [
-            "exchange_rates", //
+            "notification_service_events", //
         ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
     );
-    await deployIndexes(gameDB, "exchange_rates", [exId_U, time]);
+    await deployIndexes(gameDB, "notification_service_events", [TTL_1h, createdAt]);
 })();
