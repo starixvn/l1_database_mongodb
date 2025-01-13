@@ -6,10 +6,10 @@
     if (path.basename(path.resolve("..")) !== `l${L}`) return;
     if (!["active", "mixed"].includes(stage)) return;
 
-    const { exchangeCodes, kenoMatchLiveOdds } = require("../../modules/minigame/global_configs-data.cjs");
+    const { exchangeCodes } = require("../../modules/minigame/global_configs-data.cjs");
 
     /** @type { AnyBulkWriteOperation[] } */
-    const bulkWrite = [exchangeCodes(L), kenoMatchLiveOdds(L)].map((doc) => {
+    const bulkWrite = [exchangeCodes(L)].map((doc) => {
         const { _id, type } = doc;
         const data = Object.assign({}, doc, { _id: ObjectId(_id) });
 
