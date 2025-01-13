@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @satisfies { Record<string, Role> } */
 const builtinClusterRoles = /** @type {const} */ ({
     clusterAdmin: { db: "admin", role: "clusterAdmin" },
@@ -17,11 +19,11 @@ const builtinClusterRoles = /** @type {const} */ ({
 
 /** @satisfies { Record<string, (db: string) => Role> } */
 const builtinDbRoles = /** @type {const} */ {
-    db$read: (db) => /** @type {const} */ ({ db, role: "read" }),
-    db$readWrite: (db) => /** @type {const} */ ({ db, role: "readWrite" }),
-    db$dbAdmin: (db) => /** @type {const} */ ({ db, role: "dbAdmin" }),
-    db$dbOwner: (db) => /** @type {const} */ ({ db, role: "dbOwner" }),
-    db$userAdmin: (db) => /** @type {const} */ ({ db, role: "userAdmin" }),
+    db$read: /** @template {string} T @param {T} db */ (db) => /** @type {const} */ ({ db, role: "read" }),
+    db$readWrite: /** @template {string} T @param {T} db */ (db) => /** @type {const} */ ({ db, role: "readWrite" }),
+    db$dbAdmin: /** @template {string} T @param {T} db */ (db) => /** @type {const} */ ({ db, role: "dbAdmin" }),
+    db$dbOwner: /** @template {string} T @param {T} db */ (db) => /** @type {const} */ ({ db, role: "dbOwner" }),
+    db$userAdmin: /** @template {string} T @param {T} db */ (db) => /** @type {const} */ ({ db, role: "userAdmin" }),
 };
 
-module.exports = { builtinClusterRoles, builtinDbRoles };
+module.exports = { ...builtinClusterRoles, ...builtinDbRoles };

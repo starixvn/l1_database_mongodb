@@ -1,3 +1,5 @@
+// @ts-check
+
 const { monitor, read, list, backup } = require("./actions.cjs");
 
 /** @satisfies { Record<string, Privilege[]> } */

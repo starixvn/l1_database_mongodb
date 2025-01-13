@@ -1,3 +1,4 @@
+// @ts-check
 const { randomUUID } = require("crypto");
 const { inspect } = require("util");
 const { log, indent } = require("../utils.cjs");

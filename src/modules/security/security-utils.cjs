@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @param { (Role | string) } roleObj */
 const roleToString = (roleObj) => {
     if (typeof roleObj === "string") {
@@ -23,4 +25,12 @@ const stringToPrivilege = (privilegeStr) => {
     return /** @type { Privilege } */ (JSON.parse(privilegeStr));
 };
 
-module.exports = { roleToString, stringToRole, privilegeToString, stringToPrivilege };
+/**
+ * @template { string } DB
+ * @template { string } R
+ * @param { { db: DB, role: R } } definition
+ * @returns { { db: DB, role: R } }
+ */
+const definitionToRef = ({ db, role }) => ({ db, role });
+
+module.exports = { roleToString, stringToRole, privilegeToString, stringToPrivilege, definitionToRef };
