@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @satisfies { IndexConfig } */
 const indexes = /** @type {const} */ ({
     category_type_U: {

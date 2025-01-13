@@ -1,3 +1,4 @@
+// @ts-check
 const { getCollationSimpleName } = require("./collate.cjs");
 const { log } = require("./utils.cjs");
 
@@ -125,7 +126,12 @@ const deployIndexes = async (db, collection, indexDefinitions) => {
             }
             if (err.codeName === "IndexOptionsConflict") {
                 const name = indexList.get(JSON.stringify(indexDefinition.key));
-                if (!name || ["@"].includes(name[0])) {
+                if (!name) {
+                    log("W", "INDEX", `[${namespace}]`, `Invalid index name [${name}] .`);
+                    continue;
+                }
+
+                if (["@"].includes(name[0])) {
                     log("I", "INDEX", `[${namespace}]`, `Index ${name} existed.`);
                     indexList.delete(indexList.get(name) ?? "");
                     indexList.delete(name);

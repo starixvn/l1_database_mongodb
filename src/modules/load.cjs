@@ -1,3 +1,7 @@
+// @ts-check
+
+/** @typedef { import("fs").Dirent } Dirent */
+
 /* eslint-disable security/detect-non-literal-fs-filename */
 const { readdirSync } = require("fs");
 const { basename, resolve, join, dirname } = require("path");

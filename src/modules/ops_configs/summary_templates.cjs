@@ -1,3 +1,4 @@
+// @ts-check
 const summaryTemplates = /** @type {const} */ ([
     {
         category: "games",

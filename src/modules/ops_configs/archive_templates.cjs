@@ -1,3 +1,4 @@
+// @ts-check
 const archiveTemplates = /** @type {const} */ ([
     {
         category: "games",

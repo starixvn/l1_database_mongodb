@@ -1,3 +1,4 @@
+// @ts-check
 const { LOCALES } = require("../const.cjs");
 
 /** @satisfies { IndexConfig } */

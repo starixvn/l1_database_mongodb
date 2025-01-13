@@ -1,3 +1,4 @@
+// @ts-check
 const { date, filter, float, int64, str, bool } = require("../data-types.cjs");
 const { arrToJSON } = require("../ultilities.cjs");
 

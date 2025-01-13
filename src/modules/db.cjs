@@ -1,3 +1,4 @@
+// @ts-check
 const { fail } = require("assert");
 const { getCollate } = require("./collate.cjs");
 const { log, compare } = require("./utils.cjs");

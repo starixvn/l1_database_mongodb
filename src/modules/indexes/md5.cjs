@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @satisfies { IndexGroup } */
 const indexes = /** @type {const} */ ({
     featureMD5: [

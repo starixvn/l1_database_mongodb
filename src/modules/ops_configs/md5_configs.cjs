@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @type { { _id: DBNamespace, fields: string[] }[] } */
 const md5Configs = [];
 

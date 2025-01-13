@@ -1,3 +1,4 @@
+// @ts-check
 const commonConfig = { category: "games", type: 0, id: 0 };
 
 const summaryConfigs = [

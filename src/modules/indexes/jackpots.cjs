@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @satisfies { IndexConfig } */
 const indexes = /** @type {const} */ ({
     game_pool_created_FU: {

@@ -1,4 +1,6 @@
-/** @param {number} L */
+// @ts-check
+
+/** @param { 1 | 2 } L */
 const gameSummaryConfig = (L) => [
     {
         gameId: 1,
@@ -173,7 +175,7 @@ const gameSummaryConfig = (L) => [
         owGameTypeId: { [1]: 1640, [2]: 3829 }[`${L}`],
         name: { en: "Four Guardians", vi: "Long Lân Quy Phụng", grp: "Slots", game: "Four Guardians" },
         coll: { db: "minigame", group: "fourguardians", round: "_rounds", postfix: "_rounds" },
-        config: { jpCont: { [2]: 0.025 }[`${L}`] },
+        config: { jpCont: { [1]: 0, [2]: 0.025 }[`${L}`] },
     },
     {
         gameId: 30,
@@ -420,7 +422,7 @@ const gameSummaryConfig = (L) => [
         owGameTypeId: { [1]: 1677, [2]: 3869 }[`${L}`],
         name: { en: "Transformers", vi: "Đại Chiến Robot", grp: "Slots", game: "Transformers" },
         coll: { db: "minigame", group: "transformers", round: "_rounds", postfix: "_rounds" },
-        config: { jpCont: { [2]: 0.025 }[`${L}`] },
+        config: { jpCont: { [1]: 0, [2]: 0.025 }[`${L}`] },
     },
     {
         gameId: 71,
@@ -445,7 +447,7 @@ const gameSummaryConfig = (L) => [
         owGameTypeId: { [1]: 1682, [2]: 3874 }[`${L}`],
         name: { en: "One Piece", vi: "Đảo Hải Tặc", grp: "Slots", game: "One Piece" },
         coll: { db: "minigame", group: "onepiece", round: "_rounds", postfix: "_rounds" },
-        config: { jpCont: { [2]: 0.025 }[`${L}`] },
+        config: { jpCont: { [1]: 0, [2]: 0.025 }[`${L}`] },
     },
     {
         gameId: 75,
@@ -458,7 +460,7 @@ const gameSummaryConfig = (L) => [
         owGameTypeId: { [1]: 1683, [2]: 3875 }[`${L}`],
         name: { en: "Dragon Ball", vi: "Dragon Ball", grp: "Slots", game: "Dragon Ball" },
         coll: { db: "minigame", group: "dragonball", round: "_rounds", postfix: "_rounds" },
-        config: { jpCont: { [2]: 0.025 }[`${L}`] },
+        config: { jpCont: { [1]: 0, [2]: 0.025 }[`${L}`] },
     },
     {
         gameId: 77,

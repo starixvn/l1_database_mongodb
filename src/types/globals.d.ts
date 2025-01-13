@@ -434,6 +434,10 @@ declare global {
 }
 
 declare module "@mongosh/shell-api" {
+    interface Database {
+        getSiblingDB(dbName: string): globalThis.Database;
+    }
+
     interface Collection {
         aggregate(pipeline: ldbMongo.CollectionAggregationPipeline, options: ldbMongo.Document & { explain?: never }, _: null): ldbMongo.AggregationCursor;
         aggregate(pipeline: ldbMongo.CollectionAggregationPipeline, options: ldbMongo.Document & { explain: ldbMongo.ExplainVerbosityLike }, _: null): ldbMongo.Document;

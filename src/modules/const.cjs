@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @satisfies { Pick<CreateCollectionOptions, "storageEngine"> } */
 const STORAGE_COMPRESSED = { storageEngine: { wiredTiger: { configString: "block_compressor=zstd" } } };
 

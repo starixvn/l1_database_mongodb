@@ -1,3 +1,4 @@
+// @ts-check
 const indexTemplates = /** @type {const} */ ([
     {
         category: "games",

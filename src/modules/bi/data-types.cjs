@@ -1,3 +1,4 @@
+// @ts-check
 const biColumnType = /** @type {const} */ ({
     oid: { mongo_type: `bson.ObjectId`, sql_type: `objectid` },
     str: { mongo_type: `string`, sql_type: `varchar` },

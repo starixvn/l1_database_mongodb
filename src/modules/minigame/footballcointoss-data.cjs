@@ -1,3 +1,4 @@
+// @ts-check
 const updateMatches = /** @type { const } */ ([
     { startTime: new Date("2024-07-01T16:00:00Z"), home: "FRA", away: "BEL" },
     { startTime: new Date("2024-07-01T19:00:00Z"), home: "POR", away: "SVN" },
