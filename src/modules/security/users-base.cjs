@@ -1,6 +1,6 @@
 // @ts-check
 const { db$dbOwner, root, clusterMonitor } = require("./role-builtin.cjs");
-const { ldb$readSystem, ldb$monitorSystem } = require("./role-base-refs.cjs");
+const { ldb$readSystem, ldb$monitorSystem, ldb$clusterWatcher } = require("./role-base-refs.cjs");
 
 /** @satisfies { Record<string, UserDefinition> } */
 const baseUsers = /** @type {const} */ ({
@@ -19,6 +19,13 @@ const baseUsers = /** @type {const} */ ({
         user: "lmn_backup",
         roles: [
             ldb$readSystem, //
+        ],
+    },
+    lmn_watcher: {
+        db: "admin",
+        user: "lmn_watcher",
+        roles: [
+            ldb$clusterWatcher, //
         ],
     },
     mongodb_exporter: {

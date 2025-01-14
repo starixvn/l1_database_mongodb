@@ -43,6 +43,7 @@ const privileges = /** @type {const} */ ({
         { resource: { db: "local", collection: "system.replset" }, actions: read },
         { resource: { db: "local", collection: "system.rollback.id" }, actions: read },
     ],
+    clusterChangeStream: [{ resource: { db: "", collection: "" }, actions: ["find", "changeStream"] }],
 });
 
 module.exports = privileges;
