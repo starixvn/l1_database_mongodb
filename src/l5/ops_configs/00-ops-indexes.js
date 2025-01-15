@@ -16,6 +16,10 @@
     await deployIndexes(opsDB, "summary_templates", [category_type_U]);
     await deployIndexes(opsDB, "archive_templates", [category_type_U]);
 
+    await opsDB.runCommand({ collMod: "index_templates", changeStreamPreAndPostImages: { enabled: true } });
+    await opsDB.runCommand({ collMod: "summary_templates", changeStreamPreAndPostImages: { enabled: true } });
+    await opsDB.runCommand({ collMod: "archive_templates", changeStreamPreAndPostImages: { enabled: true } });
+
     await deployIndexes(opsDB, "summary_configs", [gameConfigs_id_U, name_id_U]);
     await deployIndexes(opsDB, "archive_configs", [gameConfigs_id_U, name_id_U]);
 

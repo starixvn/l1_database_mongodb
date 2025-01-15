@@ -37,4 +37,6 @@
     await deployIndexes(gameDB, "currencies", [name_partner_U, name_partner_U_en]);
     await deployIndexes(gameDB, "currency_group_games", [group_game_U]);
     await deployIndexes(gameDB, "chips", [value_U]);
+
+    await gameDB.runCommand({ collMod: "game_configs", changeStreamPreAndPostImages: { enabled: true } });
 })();
