@@ -21,7 +21,7 @@ declare global {
     var _auth: number;
     var auth: (db: DBs | Database) => void;
 
-    var db: shellApi.Database;
+    var db: globalThis.Database;
     var rs: shellApi.ReplicaSet;
     var load: shellApi.ShellApi["load"];
     var loadScript: shellApi.ShellApi["load"];

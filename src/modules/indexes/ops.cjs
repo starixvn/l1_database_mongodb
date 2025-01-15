@@ -14,6 +14,10 @@ const indexes = /** @type {const} */ ({
         key: { "gameConfigs.name": 1, id: 1 },
         options: { unique: true },
     },
+    ns_U: {
+        key: { ns: 1 },
+        options: { unique: true },
+    },
 });
 
 module.exports = indexes;

@@ -37,6 +37,14 @@ const activeUsers = /** @type {const} */ ({
             biSchema,
         ],
     },
+    lmn_backend: {
+        db: "admin",
+        user: "lmn_backend",
+        roles: [
+            ldb$public, //
+            hotdogBackend$archive,
+        ],
+    },
     lmn_readonly: {
         db: "admin",
         user: "lmn_readonly",
