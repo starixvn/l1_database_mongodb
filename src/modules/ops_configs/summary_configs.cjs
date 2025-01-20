@@ -659,7 +659,6 @@ const summaryConfigs = [
     { gameId: 100, name: "bac100" },
     { gameId: 101, name: "bac101" },
     { gameId: 103, name: "sevenupdown" },
-    { gameId: 104, name: "marblefootball" },
 ].forEach((gameConfigs) =>
     summaryConfigs.push({
         ...commonConfig,

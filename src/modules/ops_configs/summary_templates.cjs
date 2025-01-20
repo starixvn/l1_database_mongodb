@@ -19,6 +19,7 @@ const summaryTemplates = /** @type {const} */ ([
                 },
             },
         ],
+        __v: 2,
     },
     {
         category: "games",
@@ -39,6 +40,7 @@ const summaryTemplates = /** @type {const} */ ([
                 },
             },
         ],
+        __v: 2,
     },
     {
         category: "games",
@@ -58,6 +60,7 @@ const summaryTemplates = /** @type {const} */ ([
                 },
             },
         ],
+        __v: 2,
     },
     {
         category: "games",
@@ -77,6 +80,27 @@ const summaryTemplates = /** @type {const} */ ([
                 },
             },
         ],
+        __v: 2,
+    },
+    {
+        category: "games",
+        type: 7,
+        targets: [{ db: "ops_configs", coll: "summary_configs" }],
+        data: [
+            {
+                db: "minigame",
+                coll: { round: "_rounds", bet: "_bets" },
+                aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
+                calc: {
+                    roundId: '"$id"',
+                    tickets: '{"$literal":1}',
+                    stake: '"$totalAmount"',
+                    payout: '"$betwin"',
+                    refund: '{"$literal":0}',
+                },
+            },
+        ],
+        __v: 2,
     },
 ]);
 
