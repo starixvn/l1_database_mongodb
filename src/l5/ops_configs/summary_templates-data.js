@@ -6,7 +6,28 @@
     if (path.basename(path.resolve("..")) !== `l${L}`) return;
     if (!["active", "mixed"].includes(stage)) return;
 
-    const summaryTemplates = [];
+    const summaryTemplates = [
+        {
+            category: "games",
+            type: 6,
+            dbs: ["hotdog_minigame"],
+            data: [
+                {
+                    coll: { round: "_rounds", bet: "_bets" },
+                    aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
+                    calc: {
+                        roundId: '"$id"',
+                        tickets: '{"$literal":1}',
+                        stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
+                        payout: '"$betwin"',
+                        refund: '{"$literal":0}',
+                    },
+                },
+            ],
+            targets: [{ db: "ops_configs", coll: "summary_configs" }],
+            __v: 3,
+        },
+    ];
 
     /** @type { AnyBulkWriteOperation[] } */
     const bulkWrite = summaryTemplates.map((doc) => {
