@@ -80,4 +80,21 @@ const md5Configs = [];
     });
 }
 
+{
+    const fields = [
+        "serverSeedHash",
+        "encryptedServerSeed.iv",
+        "encryptedServerSeed.content",
+        "encryptedFinalResult.iv",
+        "encryptedFinalResult.content",
+        "encryptedFinalHash.iv",
+        "encryptedFinalHash.content",
+    ];
+    [
+        { db: "minigame_arc", coll: "coinmining_results_bk" }, //
+    ].forEach((_id) => {
+        md5Configs.push({ _id, fields });
+    });
+}
+
 module.exports = { md5Configs };
