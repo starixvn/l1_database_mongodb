@@ -36,6 +36,7 @@ const roleDefinitions = /** @type {const} */ ({
             db$read("log"), //
             db$read("member"),
             db$read("minigame"),
+            db$read("minigame_backup"),
             db$read("minigame_rm"),
             db$read("ops_configs"),
             db$read("Proteus"),
