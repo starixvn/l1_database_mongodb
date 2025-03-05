@@ -15,7 +15,7 @@
     await Promise.allSettled(
         [
             "member_auths", //
-        ].map((collName) => ensureCollection(memberDB, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(memberDB, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(memberDB, "member_auths", [TTL_8d, memberId_iP, token]);
 })();

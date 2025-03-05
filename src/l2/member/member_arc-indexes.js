@@ -7,15 +7,14 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
-    const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
-    const { memberId_iP, token } = require("../../modules/indexes/member.cjs");
+    const { memberId_iP } = require("../../modules/indexes/member.cjs");
 
     const memberDBArc = db.getSiblingDB("member_arc");
 
     await Promise.allSettled(
         [
             "member_auths_bk", //
-        ].map((collName) => ensureCollection(memberDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(memberDBArc, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(memberDBArc, "member_auths_bk", [memberId_iP]);
 })();

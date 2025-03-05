@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @satisfies { Record<string, PrivilegeAction[]> } */
 const actions = /** @type {const} */ ({
     list: ["listDatabases", "listCollections"],

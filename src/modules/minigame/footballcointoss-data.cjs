@@ -1,83 +1,31 @@
-/** @type { AnyBulkWriteOperation[] } */
-const updateMatches = [
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-01T16:00:00Z") },
-            update: { $set: { home: "FRA", away: "BEL" } },
-            upsert: true,
-        },
-    },
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-01T19:00:00Z") },
-            update: { $set: { home: "POR", away: "SVN" } },
-            upsert: true,
-        },
-    },
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-02T16:00:00Z") },
-            update: { $set: { home: "ROU", away: "NED" } },
-            upsert: true,
-        },
-    },
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-02T19:00:00Z") },
-            update: { $set: { home: "AUT", away: "TUR" } },
-            upsert: true,
-        },
-    },
-    // PROD
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-05T16:00:00Z") },
-            update: { $set: { home: "ESP", away: "GER" } },
-            upsert: true,
-        },
-    },
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-05T19:00:00Z") },
-            update: { $set: { home: "POR", away: "FRA" } },
-            upsert: true,
-        },
-    },
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-06T16:00:00Z") },
-            update: { $set: { home: "ENG", away: "SUI" } },
-            upsert: true,
-        },
-    },
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-06T19:00:00Z") },
-            update: { $set: { home: "NED", away: "TUR" } },
-            upsert: true,
-        },
-    },
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-09T19:00:00Z") },
-            update: { $set: { home: "ESP", away: "FRA" } },
-            upsert: true,
-        },
-    },
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-10T19:00:00Z") },
-            update: { $set: { home: "NED", away: "ENG" } },
-            upsert: true,
-        },
-    },
-    {
-        updateOne: {
-            filter: { startTime: new Date("2024-07-14T19:00:00Z") },
-            update: { $set: { home: "ESP", away: "ENG" } },
-            upsert: true,
-        },
-    },
-];
+// @ts-check
+const updateMatches = /** @type { const } */ ([
+    { startTime: new Date("2024-07-01T16:00:00Z"), home: "FRA", away: "BEL" },
+    { startTime: new Date("2024-07-01T19:00:00Z"), home: "POR", away: "SVN" },
+    { startTime: new Date("2024-07-02T16:00:00Z"), home: "ROU", away: "NED" },
+    { startTime: new Date("2024-07-02T19:00:00Z"), home: "AUT", away: "TUR" },
+    { startTime: new Date("2024-07-05T16:00:00Z"), home: "ESP", away: "GER" },
+    { startTime: new Date("2024-07-05T19:00:00Z"), home: "POR", away: "FRA" },
+    { startTime: new Date("2024-07-06T16:00:00Z"), home: "ENG", away: "SUI" },
+    { startTime: new Date("2024-07-06T19:00:00Z"), home: "NED", away: "TUR" },
+    { startTime: new Date("2024-07-09T19:00:00Z"), home: "ESP", away: "FRA" },
+    { startTime: new Date("2024-07-10T19:00:00Z"), home: "NED", away: "ENG" },
+    { startTime: new Date("2024-07-14T19:00:00Z"), home: "ESP", away: "ENG" },
+    { startTime: new Date("2024-09-29T15:30:00Z"), home: "MU", away: "TOT" },
+    { startTime: new Date("2024-10-05T15:30:00Z"), home: "MC", away: "REAL" },
+    { startTime: new Date("2024-10-20T15:30:00Z"), home: "LIV", away: "CHE" },
+    { startTime: new Date("2024-10-27T14:15:00Z"), home: "REAL", away: "BARCA" },
+    { startTime: new Date("2024-10-27T16:30:00Z"), home: "ARS", away: "LIV" },
+    { startTime: new Date("2024-11-03T16:30:00Z"), home: "MU", away: "CHE" },
+    { startTime: new Date("2024-11-10T16:30:00Z"), home: "CHE", away: "ARS" },
+    { startTime: new Date("2024-11-23T17:30:00Z"), home: "MC", away: "TOT" },
+    { startTime: new Date("2024-11-27T20:00:00Z"), home: "LIV", away: "REAL" },
+    { startTime: new Date("2024-12-01T16:00:00Z"), home: "LIV", away: "MC" },
+    { startTime: new Date("2024-12-03T19:45:00Z"), home: "ARS", away: "MU" },
+    { startTime: new Date("2024-12-15T16:30:00Z"), home: "MC", away: "MU" },
+    { startTime: new Date("2025-01-02T13:00:00Z"), home: "VIE", away: "THA" },
+    { startTime: new Date("2025-01-05T13:00:00Z"), home: "THA", away: "VIE" },
+    { startTime: new Date("2025-02-01T15:00:00Z"), home: "MC", away: "ARS" },
+]);
 
 module.exports = { updateMatches };

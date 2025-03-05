@@ -17,7 +17,7 @@
             "sicball_betlogs_bk",
             "sicball_bets_bk",
             "sicball_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "sicball_rounds_bk", [id, time]);

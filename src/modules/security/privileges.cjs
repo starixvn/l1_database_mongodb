@@ -1,3 +1,5 @@
+// @ts-check
+
 const { monitor, read, list, backup } = require("./actions.cjs");
 
 /** @satisfies { Record<string, Privilege[]> } */
@@ -9,6 +11,7 @@ const privileges = /** @type {const} */ ({
         { resource: { db: "", collection: "" }, actions: [...monitor, ...list] },
         { resource: { db: "", collection: "system.js" }, actions: monitor },
         { resource: { db: "", collection: "system.profile" }, actions: monitor },
+        { resource: { db: "", collection: "system.views" }, actions: monitor },
         { resource: { db: "admin", collection: "system.keys" }, actions: monitor },
         { resource: { db: "admin", collection: "system.profile" }, actions: monitor },
         { resource: { db: "admin", collection: "system.roles" }, actions: monitor },
@@ -40,6 +43,7 @@ const privileges = /** @type {const} */ ({
         { resource: { db: "local", collection: "system.replset" }, actions: read },
         { resource: { db: "local", collection: "system.rollback.id" }, actions: read },
     ],
+    clusterChangeStream: [{ resource: { db: "", collection: "" }, actions: ["find", "changeStream"] }],
 });
 
 module.exports = privileges;

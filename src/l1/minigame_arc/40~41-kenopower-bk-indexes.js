@@ -20,7 +20,7 @@
             "kenopower2_phiens_bk",
             "kenopower2_cuocs_bk",
             "kenopower2_ones_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "kenopower1_phiens_bk", [id, time]);

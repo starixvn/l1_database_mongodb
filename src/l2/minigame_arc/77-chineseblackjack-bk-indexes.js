@@ -15,7 +15,7 @@
         [
             "chineseblackjack_rounds_bk", //
             "chineseblackjack_bets_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "chineseblackjack_rounds_bk", [id, time]);

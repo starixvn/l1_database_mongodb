@@ -16,7 +16,7 @@
             "roulette_phiens_bk", //
             "roulette_cuocs_bk",
             "roulette_ones_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "roulette_phiens_bk", [id, time]);

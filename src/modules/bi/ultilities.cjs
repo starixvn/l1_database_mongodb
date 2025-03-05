@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * @param { BsonDocument | string } expression
  * @returns { BsonDocument | string }

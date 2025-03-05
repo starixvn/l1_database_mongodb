@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @type { BsonDocument[] } */
 const archiveGameConfigs = [];
 
@@ -2351,8 +2353,6 @@ const archiveGameConfigs = [];
         ].forEach((config) => archiveGameConfigs.push(config));
     }
 
-    /** { gameId: 44, name: "paigowpoker" } // vg3 */
-
     /** { gameId: 45, name: "hilo" } */
     {
         const gameConfigs = { gameId: 45, name: "hilo" };
@@ -2400,9 +2400,6 @@ const archiveGameConfigs = [];
             },
         ].forEach((config) => archiveGameConfigs.push(config));
     }
-
-    /** { gameId: 46, name: "nightclub" } // auto */
-    /** { gameId: 47, name: "treasureisland" } // auto */
 
     /** { gameId: 48, name: "blockchainbaccarat" } */
     {
@@ -2466,182 +2463,6 @@ const archiveGameConfigs = [];
                 gameConfigs,
                 from: { db: "minigame", postfix: "_bets" },
                 to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 49, name: "waytogoal" } // auto */
-
-    /** { gameId: 50, name: "unbalancedbigsmall1" } */
-    {
-        const gameConfigs = { gameId: 50, name: "unbalancedbigsmall1" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 51, name: "unbalancedbigsmall2" } */
-    {
-        const gameConfigs = { gameId: 51, name: "unbalancedbigsmall2" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    { from: { db: "minigame", postfix: "_results" }, to: { db: "minigame_arc", postfix: "_results_bk" }, config: { foreignField: "roundId" } },
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
                 alias: { time: "time" },
                 config: { cutOffsetHours: -24 * 8, updateOnly: true },
                 filter: '{"playerId":null}',
@@ -2824,188 +2645,6 @@ const archiveGameConfigs = [];
                 gameConfigs,
                 from: { db: "minigame", postfix: "_bets" },
                 to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 54, name: "unbalancedbigsmall3" } */
-    {
-        const gameConfigs = { gameId: 54, name: "unbalancedbigsmall3" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    {
-                        from: { db: "minigame", postfix: "_results" },
-                        to: { db: "minigame_arc", postfix: "_results_bk" },
-                        config: { foreignField: "roundId" },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 55, name: "unbalancedbigsmall4" } */
-    {
-        const gameConfigs = { gameId: 55, name: "unbalancedbigsmall4" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    {
-                        from: { db: "minigame", postfix: "_results" },
-                        to: { db: "minigame_arc", postfix: "_results_bk" },
-                        config: { foreignField: "roundId" },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
                 alias: { time: "time" },
                 config: { cutOffsetHours: -24 * 8, updateOnly: true },
                 filter: '{"playerId":null}',
@@ -3200,291 +2839,6 @@ const archiveGameConfigs = [];
         ].forEach((config) => archiveGameConfigs.push(config));
     }
 
-    /** { gameId: 59, name: "fruitslot" } // auto */
-
-    /** { gameId: 60, name: "fantan" } */
-    {
-        const gameConfigs = { gameId: 60, name: "fantan" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    {
-                        from: { db: "minigame", postfix: "_results" },
-                        to: { db: "minigame_arc", postfix: "_results_bk" },
-                        config: { foreignField: "roundId" },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 61, name: "winthreecards" } */
-    {
-        const gameConfigs = { gameId: 61, name: "winthreecards" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    {
-                        from: { db: "minigame", postfix: "_results" },
-                        to: { db: "minigame_arc", postfix: "_results_bk" },
-                        config: { foreignField: "roundId" },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 62, name: "fortunecat" } // auto */
-    /** { gameId: 63, name: "happyfish" } // auto */
-    /** { gameId: 64, name: "magicforest" } // auto */
-    /** { gameId: 65, name: "djclub" } // auto */
-    /** { gameId: 66, name: "candyland" } // auto */
-
-    /** { gameId: 67, name: "dragontigerfight" } */
-    {
-        const gameConfigs = { gameId: 67, name: "dragontigerfight" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_results" },
-                        to: { db: "minigame_arc", postfix: "_results_bk" },
-                        config: { foreignField: "roundId" },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 68, name: "missionimpossible" } // auto */
-    /** { gameId: 69, name: "blackpink" } // auto */
-    /** { gameId: 70, name: "transformers" } // auto */
-
     /** { gameId: 71, name: "colorgame" } */
     {
         const gameConfigs = { gameId: 71, name: "colorgame" };
@@ -3612,101 +2966,6 @@ const archiveGameConfigs = [];
         ].forEach((config) => archiveGameConfigs.push(config));
     }
 
-    /** { gameId: 73, name: "spaceflight" } // auto */
-
-    /** { gameId: 75, name: "bandarqiuqiu" } */
-    {
-        const gameConfigs = { gameId: 75, name: "bandarqiuqiu" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    {
-                        from: { db: "minigame", postfix: "_results" },
-                        to: { db: "minigame_arc", postfix: "_results_bk" },
-                        config: { foreignField: "roundId" },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 76, name: "dragonball" } // auto */
-
     /** { gameId: 77, name: "chineseblackjack" } */
     {
         const gameConfigs = { gameId: 77, name: "chineseblackjack" };
@@ -3757,9 +3016,40 @@ const archiveGameConfigs = [];
         ].forEach((config) => archiveGameConfigs.push(config));
     }
 
-    /** { gameId: 78, name: "footballdice" } */
+    /** { gameId: 99, name: "jackpots" } */
     {
-        const gameConfigs = { gameId: 78, name: "footballdice" };
+        const gameConfigs = { gameId: 99, name: "jackpots" };
+        [
+            {
+                ...commonConfig,
+                id: 0,
+                gameConfigs,
+                from: { db: "minigame", postfix: "" },
+                to: { db: "minigame_arc", postfix: "_bk" },
+                alias: { time: "hitTime" },
+                config: { cutOffsetHours: -24 },
+            },
+        ].forEach((config) => archiveGameConfigs.push(config));
+    }
+
+    /** { gameId: 104, name: "marblefootball" } */
+
+    [
+        { gameId: 50, name: "unbalancedbigsmall1" },
+        { gameId: 51, name: "unbalancedbigsmall2" },
+        { gameId: 54, name: "unbalancedbigsmall3" },
+        { gameId: 55, name: "unbalancedbigsmall4" },
+        { gameId: 60, name: "fantan" },
+        { gameId: 61, name: "winthreecards" },
+        { gameId: 67, name: "dragontigerfight" },
+        { gameId: 75, name: "bandarqiuqiu" },
+        { gameId: 78, name: "footballdice" },
+        { gameId: 80, name: "cointoss" },
+        { gameId: 93, name: "footballcointoss" },
+        { gameId: 95, name: "sedie3" },
+        { gameId: 96, name: "karakrus" },
+        { gameId: 103, name: "sevenupdown" },
+    ].forEach((gameConfigs) => {
         [
             {
                 ...commonConfig,
@@ -3846,104 +3136,26 @@ const archiveGameConfigs = [];
                 filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
             },
         ].forEach((config) => archiveGameConfigs.push(config));
-    }
+    });
 
-    /** { gameId: 79, name: "footballslot" } // auto */
-
-    /** { gameId: 80, name: "cointoss" } */
-    {
-        const gameConfigs = { gameId: 80, name: "cointoss" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    {
-                        from: { db: "minigame", postfix: "_results" },
-                        to: { db: "minigame_arc", postfix: "_results_bk" },
-                        config: { foreignField: "roundId" },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 81, name: "bac81" } */
-    {
-        const gameConfigs = { gameId: 81, name: "bac81" };
+    [
+        { gameId: 81, name: "bac81" },
+        { gameId: 82, name: "bac82" },
+        { gameId: 83, name: "bac83" },
+        { gameId: 84, name: "bac84" },
+        { gameId: 85, name: "bac85" },
+        { gameId: 86, name: "bac86" },
+        { gameId: 87, name: "bac87" },
+        { gameId: 88, name: "bac88" },
+        { gameId: 89, name: "bac89" },
+        { gameId: 90, name: "bac90" },
+        { gameId: 91, name: "bac91" },
+        { gameId: 92, name: "bac92" },
+        { gameId: 97, name: "bac97" },
+        { gameId: 98, name: "bac98" },
+        { gameId: 100, name: "bac100" },
+        { gameId: 101, name: "bac101" },
+    ].forEach((gameConfigs) => {
         [
             {
                 ...commonConfig,
@@ -4087,205 +3299,7 @@ const archiveGameConfigs = [];
                 },
             },
         ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 93, name: "cointoss" } */
-    {
-        const gameConfigs = { gameId: 93, name: "footballcointoss" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    {
-                        from: { db: "minigame", postfix: "_results" },
-                        to: { db: "minigame_arc", postfix: "_results_bk" },
-                        config: { foreignField: "roundId" },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 95, name: "sedie3" } */
-    {
-        const gameConfigs = { gameId: 95, name: "sedie3" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_rounds" },
-                to: { db: "minigame_arc", postfix: "_rounds_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24, localField: "id" },
-                childs: [
-                    {
-                        from: { db: "minigame", postfix: "_results" },
-                        to: { db: "minigame_arc", postfix: "_results_bk" },
-                        config: { foreignField: "roundId" },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_bets" },
-                        to: { db: "minigame_arc", postfix: "_bets_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                    {
-                        from: { db: "minigame", postfix: "_betlogs" },
-                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                        config: { foreignField: "roundId" },
-                        filter: '{"playerId":{"$ne":null}}',
-                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-                    },
-                ],
-                log: { field: "_rounds", value: "id" },
-            },
-            {
-                ...commonConfig,
-                id: 1,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_results" },
-                to: { db: "minigame_arc", postfix: "_results_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-            },
-            {
-                ...commonConfig,
-                id: 2,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 3,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_bets" },
-                to: { db: "minigame_arc", postfix: "_bets_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-            {
-                ...commonConfig,
-                id: 4,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8 },
-                filter: '{"playerId":{"$ne":null}}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
-            },
-            {
-                ...commonConfig,
-                id: 5,
-                gameConfigs,
-                from: { db: "minigame", postfix: "_betlogs" },
-                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
-                alias: { time: "time" },
-                config: { cutOffsetHours: -24 * 8, updateOnly: true },
-                filter: '{"playerId":null}',
-                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
-
-    /** { gameId: 99, name: "jackpots" } */
-    {
-        const gameConfigs = { gameId: 99, name: "jackpots" };
-        [
-            {
-                ...commonConfig,
-                id: 0,
-                gameConfigs,
-                from: { db: "minigame", postfix: "" },
-                to: { db: "minigame_arc", postfix: "_bk" },
-                alias: { time: "hitTime" },
-                config: { cutOffsetHours: -24 },
-            },
-        ].forEach((config) => archiveGameConfigs.push(config));
-    }
+    });
 }
 
 module.exports = { archiveGameConfigs };

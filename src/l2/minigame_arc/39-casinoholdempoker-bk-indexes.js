@@ -15,7 +15,7 @@
         [
             "casinoholdempoker_phiens_bk", //
             "casinoholdempoker_cuocs_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "casinoholdempoker_phiens_bk", [id, time]);

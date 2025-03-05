@@ -15,7 +15,7 @@
         [
             "minidragontiger_phiens_bk", //
             "minidragontiger_cuocs_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "minidragontiger_phiens_bk", [id, time]);

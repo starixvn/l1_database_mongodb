@@ -1,3 +1,4 @@
+// @ts-check
 const { getCollationSimpleName } = require("./collate.cjs");
 const { log } = require("./utils.cjs");
 
@@ -17,7 +18,9 @@ const getIndexList = async (db, collection) => {
             mapping.set(name, keyString);
             mapping.set(keyString, name);
         }
-    } catch {}
+    } catch {
+        //
+    }
 
     return mapping;
 };
@@ -122,15 +125,25 @@ const deployIndexes = async (db, collection, indexDefinitions) => {
                 continue;
             }
             if (err.codeName === "IndexOptionsConflict") {
-                log("W", "INDEX", `[${namespace}]`, "IndexOptionsConflict");
                 const name = indexList.get(JSON.stringify(indexDefinition.key));
-                if (name) {
-                    await dropIndex(db, collection, name);
-                    const indexName = await deployIndex(db, collection, indexDefinition);
-                    log("I", "INDEX", `[${namespace}]`, `Index ${indexName} created.`);
+                if (!name) {
+                    log("W", "INDEX", `[${namespace}]`, `Invalid index name [${name}] .`);
+                    continue;
+                }
+
+                if (["@"].includes(name[0])) {
+                    log("I", "INDEX", `[${namespace}]`, `Index ${name} existed.`);
                     indexList.delete(indexList.get(name) ?? "");
                     indexList.delete(name);
+                    continue;
                 }
+
+                log("W", "INDEX", `[${namespace}]`, "IndexOptionsConflict");
+                await dropIndex(db, collection, name);
+                const indexName = await deployIndex(db, collection, indexDefinition);
+                log("I", "INDEX", `[${namespace}]`, `Index ${indexName} created.`);
+                indexList.delete(indexList.get(name) ?? "");
+                indexList.delete(name);
                 continue;
             }
             log("E", "INDEX", `[${namespace}]`, e);
@@ -142,8 +155,15 @@ const deployIndexes = async (db, collection, indexDefinitions) => {
         indexList.delete(name);
     }
     for (const key of indexList.keys()) {
-        const regex = /^\{.*\}$/;
-        if (regex.test(key)) {
+        if (/^\{.*\}$/.test(key)) {
+            continue;
+        }
+        if (/^[@]/.test(key)) {
+            log("W", "INDEX", `[${namespace}]`, `Index ${key} is automated. Ignored.`);
+            continue;
+        }
+        if (/^[#]/.test(key)) {
+            log("W", "INDEX", `[${namespace}]`, `Index ${key} ignored.`);
             continue;
         }
         await dropIndex(db, collection, key);

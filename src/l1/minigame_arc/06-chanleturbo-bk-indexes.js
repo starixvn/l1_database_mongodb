@@ -16,7 +16,7 @@
             "chanleturbo_phiens_bk", //
             "chanleturbo_cuocs_bk",
             "chanleturbo_ones_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "chanleturbo_phiens_bk", [id, time]);

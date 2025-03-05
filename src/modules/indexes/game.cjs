@@ -1,5 +1,7 @@
+// @ts-check
+
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     draw: {
         key: { drawId: 1 },
         options: {},
@@ -24,6 +26,10 @@ const indexes = {
         key: { isAvailable: 1 },
         options: { unique: true, partialFilterExpression: { isAvailable: true } },
     },
+    player: {
+        key: { playerId: 1 },
+        options: {},
+    },
     player_round: {
         key: { playerId: 1, roundId: 1 },
         options: {},
@@ -31,12 +37,7 @@ const indexes = {
     player_round_F: {
         key: { playerId: 1, roundId: 1 },
         options: {
-            partialFilterExpression: {
-                $or: [
-                    { playerId: { $gt: 0 } }, //
-                    { playerId: { $gt: "" } },
-                ],
-            },
+            partialFilterExpression: { playerId: { $gt: "" } },
         },
     },
     round: {
@@ -46,6 +47,10 @@ const indexes = {
     round__id: {
         key: { roundId: 1, _id: 1 },
         options: {},
+    },
+    round_bot_U: {
+        key: { roundId: 1, botId: 1 },
+        options: { unique: true },
     },
     startTime: {
         key: { startTime: 1 },
@@ -62,6 +67,14 @@ const indexes = {
     time_TTL_2m: {
         key: { time: 1 },
         options: { expireAfterSeconds: 120 },
+    },
+    time_TTL_10m: {
+        key: { time: 1 },
+        options: { expireAfterSeconds: 600 },
+    },
+    uid: {
+        key: { uid: 1 },
+        options: {},
     },
     uid__id: {
         key: { uid: 1, _id: 1 },
@@ -83,6 +96,6 @@ const indexes = {
         key: { uid: 1, roundId: 1, freeBet: 1 },
         options: { unique: true },
     },
-};
+});
 
 module.exports = indexes;

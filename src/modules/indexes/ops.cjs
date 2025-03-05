@@ -1,5 +1,7 @@
+// @ts-check
+
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     category_type_U: {
         key: { category: 1, type: 1 },
         options: { unique: true },
@@ -8,6 +10,14 @@ const indexes = {
         key: { gameConfigs: 1, id: 1 },
         options: { unique: true },
     },
-};
+    name_id_U: {
+        key: { "gameConfigs.name": 1, id: 1 },
+        options: { unique: true },
+    },
+    ns_U: {
+        key: { ns: 1 },
+        options: { unique: true },
+    },
+});
 
 module.exports = indexes;

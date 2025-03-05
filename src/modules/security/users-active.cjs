@@ -1,126 +1,58 @@
-const {
-    archive$read,
-    bi$read,
-    clusterMonitor,
-    config$dbOwner,
-    dbOwner,
-    ldb$$monitorSystem,
-    ldb$$public,
-    ldb$$readSystem,
-    local$dbOwner,
-    log$read,
-    log$readWrite,
-    member$read,
-    member$readWrite,
-    minigame$read,
-    minigame$readWrite,
-    minigame_rm$read,
-    minigame_rm$readWrite,
-    ops_configs$read,
-    Proteus$read,
-    Proteus$readWrite,
-    root,
-    schema$read,
-    summary$read,
-    summary$readWrite,
-} = require("./roles.cjs");
+// @ts-check
+const { ldb$public, biSchema } = require("./role-base-refs.cjs");
+const { lmnArchive$active, lmnReadonly$active, lmnBackend$active, lmnSummary$active } = require("./role-active-refs.cjs");
 
 /** @satisfies { Record<string, UserDefinition> } */
-const activeUsers = {
-    billy$admin: {
-        db: "admin",
-        user: "billy.bui",
-        roles: [
-            root, //
-            dbOwner,
-            config$dbOwner,
-            local$dbOwner,
-        ],
-    },
+const activeUsers = /** @type {const} */ ({
     lmn_archive: {
         db: "admin",
         user: "lmn_archive",
         roles: [
-            ldb$$public, //
-            log$readWrite,
-            member$readWrite,
-            minigame$readWrite,
-            ops_configs$read,
-            summary$readWrite,
-            minigame_rm$readWrite,
+            ldb$public, //
+            lmnArchive$active,
         ],
     },
-    lmn_backup: {
+    lmn_backend: {
         db: "admin",
-        user: "lmn_backup",
+        user: "lmn_backend",
         roles: [
-            ldb$$readSystem, //
+            ldb$public, //
+            lmnBackend$active,
         ],
     },
     lmn_readonly: {
         db: "admin",
         user: "lmn_readonly",
         roles: [
-            ldb$$public, //
-            Proteus$read,
-            archive$read,
-            log$read,
-            member$read,
-            minigame$read,
-            ops_configs$read,
-            summary$read,
-            minigame_rm$read,
+            ldb$public, //
+            lmnReadonly$active,
         ],
     },
     lmn_summary: {
         db: "admin",
         user: "lmn_summary",
         roles: [
-            ldb$$public, //
-            Proteus$readWrite,
-            log$readWrite,
-            minigame$readWrite,
-            ops_configs$read,
-            summary$readWrite,
-        ],
-    },
-    mongodb_exporter: {
-        db: "admin",
-        user: "mongodb_exporter",
-        roles: [
-            clusterMonitor, //
-            ldb$$monitorSystem,
+            ldb$public, //
+            lmnSummary$active,
         ],
     },
     mongosqld: {
         db: "admin",
         user: "mongosqld",
         roles: [
-            ldb$$public, //
-            Proteus$read,
-            bi$read,
-            schema$read,
-            archive$read,
-            log$read,
-            member$read,
-            minigame$read,
-            ops_configs$read,
-            summary$read,
-            minigame_rm$read,
+            ldb$public, //
+            lmnReadonly$active,
+            biSchema,
         ],
     },
     svc_readonly: {
         db: "admin",
         user: "svc_readonly",
         roles: [
-            ldb$$public, //
-            log$read,
-            member$read,
-            minigame$read,
-            minigame_rm$read,
-            summary$read,
+            ldb$public, //
+            lmnReadonly$active,
         ],
     },
-};
+});
 
 module.exports = activeUsers;

@@ -1,0 +1,51 @@
+(async () => {
+    const { getIdentity } = require("../../modules/db.cjs");
+    const { log, stringifyResult } = require("../../modules/utils.cjs");
+
+    const { L, stage } = await getIdentity(db);
+    if (path.basename(path.resolve("..")) !== `l${L}`) return;
+    if (!["active", "mixed"].includes(stage)) return;
+
+    const summaryTemplates = [
+        {
+            category: "games",
+            type: 6,
+            dbs: ["hotdog_minigame"],
+            data: [
+                {
+                    coll: { round: "_rounds", bet: "_bets" },
+                    aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
+                    calc: {
+                        roundId: '"$id"',
+                        tickets: '{"$literal":1}',
+                        stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
+                        payout: '"$betwin"',
+                        refund: '{"$literal":0}',
+                    },
+                },
+            ],
+            targets: [{ db: "ops_configs", coll: "summary_configs" }],
+            __v: 3,
+        },
+    ];
+
+    /** @type { AnyBulkWriteOperation[] } */
+    const bulkWrite = summaryTemplates.map((doc) => {
+        const { category, type } = doc;
+        const data = Object.assign({}, { _id: { category, type } }, doc);
+
+        return {
+            replaceOne: {
+                filter: { category, type },
+                replacement: data,
+                upsert: true,
+            },
+        };
+    });
+
+    const opsDB = db.getSiblingDB("ops_configs");
+    if (bulkWrite.length) {
+        const res = await opsDB.getCollection("summary_templates").bulkWrite(bulkWrite, { ordered: false });
+        log("I", "DATA", `[${opsDB.getName()}.summary_templates]`, `• ${stringifyResult(res)}`);
+    }
+})();

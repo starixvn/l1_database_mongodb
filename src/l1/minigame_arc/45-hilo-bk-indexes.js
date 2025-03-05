@@ -15,7 +15,7 @@
         [
             "hilo_rounds_bk", //
             "hilo_betlogs_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "hilo_rounds_bk", [id, time]);

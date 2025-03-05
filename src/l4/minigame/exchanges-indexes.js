@@ -14,7 +14,7 @@
     await Promise.allSettled(
         [
             "exchange_rates", //
-        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(gameDB, "exchange_rates", [exId_U, time]);
 })();

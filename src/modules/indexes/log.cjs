@@ -1,5 +1,7 @@
+// @ts-check
+
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     StartDate: {
         key: { StartDate: 1 },
         options: {},
@@ -12,6 +14,6 @@ const indexes = {
         key: { "__archive.betlogs": 1, _id: 1 },
         options: {},
     },
-};
+});
 
 module.exports = indexes;

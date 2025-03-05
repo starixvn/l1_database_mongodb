@@ -1,5 +1,7 @@
+// @ts-check
+
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     game_pool_created_FU: {
         key: { gameId: 1, pool: 1, createdAt: 1 },
         options: {
@@ -35,6 +37,6 @@ const indexes = {
             },
         },
     },
-};
+});
 
 module.exports = indexes;

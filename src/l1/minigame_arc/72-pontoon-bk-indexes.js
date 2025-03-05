@@ -15,7 +15,7 @@
         [
             "pontoon_rounds_bk", //
             "pontoon_bets_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "pontoon_rounds_bk", [id, time]);

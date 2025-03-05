@@ -15,7 +15,7 @@
         [
             "vipfishprawncrab_phiens_bk", //
             "vipfishprawncrab_cuocs_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "vipfishprawncrab_phiens_bk", [id, time]);

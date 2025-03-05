@@ -7,7 +7,7 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
-    const { id_U, time, time_archive, round__id, player_round_F, time_TTL_2m, uid_round_U, uid__id, round } = require("../../modules/indexes/game.cjs");
+    const { id_U, time, time_archive, round__id, player_round_F, time_TTL_2m, uid_round_U, uid__id } = require("../../modules/indexes/game.cjs");
     const { __archive_do_summary, __archive_summarized } = require("../../modules/indexes/summary-flags.cjs");
 
     const gameDB = db.getSiblingDB("minigame");

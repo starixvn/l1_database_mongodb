@@ -1,6 +1,8 @@
+/* eslint-disable no-var */
 import * as ldbMongo from "@ldb/mongo";
 import * as serviceProviderCore from "@mongosh/service-provider-core";
 import * as shellApi from "@mongosh/shell-api";
+import ChangeStreamCursor from "@mongosh/shell-api/lib/change-stream-cursor.js";
 import * as biColumnType from "../modules/bi/data-types.cjs";
 
 type DBs = Record<string, Database>;
@@ -8,41 +10,67 @@ type DBs = Record<string, Database>;
 /** Re-export */
 declare global {
     var path: typeof import("node:path");
+    var util: typeof import("util");
+    var fs: typeof import("fs");
 
-    var local: DBs[];
-    var sit: DBs[];
-    var sit_arc: DBs[];
-    var uat: DBs[];
-    var uat_arc: DBs[];
-    var pro: DBs[];
-    var pro_arc: DBs[];
+    var [local, sit, sit_arc, uat, uat_arc, pro, pro_arc]: DBs[][];
+    var [l1, l1p, l1pp, l1ppp, l2, l2p, l2pp, l4, l5]: DBs[];
+    var [l1_sit, l1_uat, l1_pro, l2_sit, l2_uat, l2_pro, l4_sit, l4_uat, l4_pro, l5_sit, l5_uat, l5_pro]: DBs[];
+    var [l1_sit_arc, l1_uat_arc, l1_pro_arc, l2_sit_arc, l2_uat_arc, l2_pro_arc, l4_sit_arc, l4_uat_arc, l4_pro_arc, l5_sit_arc, l5_uat_arc, l5_pro_arc]: DBs[];
 
     var _auth: number;
-    var auth: (db: DBs | Database) => Promise<void>;
+    var auth: (db: DBs | Database) => void;
 
-    var db: shellApi.Database;
+    var db: globalThis.Database;
     var rs: shellApi.ReplicaSet;
     var load: shellApi.ShellApi["load"];
     var loadScript: shellApi.ShellApi["load"];
     var loadFolder: shellApi.ShellApi["load"];
     var passwordPrompt: shellApi.ShellApi["passwordPrompt"];
+
+    // https://github.com/mongodb-js/mongosh/blob/6e71cb1ca0cca895c8dd075847fa555802d4139b/packages/shell-api/src/shell-bson.ts#L168
+    var DBRef: (namespace: string, oid: unknown, db?: string, fields?: ldbMongo.Document) => typeof ldbMongo.DBRef;
+    var bsonsize: (object: unknown) => number;
+    var MaxKey: () => ldbMongo.MaxKey;
+    var MinKey: () => ldbMongo.MinKey;
     var ObjectId: (id?: string | number | ldbMongo.ObjectId | Buffer) => ldbMongo.ObjectId;
+    var Timestamp: (t?: number | typeof ldbMongo.Long | { t: number; i: number }, i?: number) => ldbMongo.Timestamp;
+    var Code: (c?: string | ((...args: unknown[]) => unknown), s?: unknown) => ldbMongo.Code;
+    var NumberDecimal: (s?: string) => ldbMongo.Decimal128;
+    var NumberInt: (v?: string) => ldbMongo.Int32;
+    var NumberLong: (s?: string | number) => ldbMongo.Long;
+    var ISODate: (input?: string) => Date;
+    var BinData: (subtype: number, b64string: string) => ldbMongo.Binary;
+    var HexData: (subtype: number, hexstr: string) => ldbMongo.Binary;
+    var UUID: (hexstr?: string) => ldbMongo.Binary;
+    var MD5: (hexstr: string) => ldbMongo.Binary;
+    var Decimal128: typeof ldbMongo.Decimal128;
+    var BSONSymbol: typeof ldbMongo.BSONSymbol;
+    var Int32: typeof ldbMongo.Int32;
+    var Long: typeof ldbMongo.Long;
+    var Binary: typeof ldbMongo.Binary;
+    var Double: typeof ldbMongo.Double;
     var EJSON: typeof ldbMongo.EJSON;
+    var BSONRegExp: typeof ldbMongo.BSONRegExp;
 
     type AnyBulkWriteOperation = ldbMongo.AnyBulkWriteOperation;
     type BsonDocument = ldbMongo.Document;
     type BulkWriteResult = shellApi.BulkWriteResult;
     type CreateCollectionOptions = ldbMongo.CreateCollectionOptions;
-    type Database = shellApi.Database;
+    type Database = shellApi.Database & { [coll: string]: shellApi.Collection };
     type IndexDescription = ldbMongo.IndexDescription;
     type IndexDefinition = {
         key: IndexDescription["key"];
         options: Omit<IndexDescription, "key">;
     };
     type IndexConfig = Record<string, IndexDefinition>;
-    type MongoServerError = shellApi.MongoServerError;
+    type IndexGroup = Record<string, IndexDefinition[]>;
+    type MongoServerError = ldbMongo.MongoServerError;
     type ReplicaSet = shellApi.ReplicaSet;
     type WriteConcern = serviceProviderCore.WriteConcern;
+    type DatabaseAggregationPipeline = ldbMongo.DatabaseAggregationPipeline;
+    type CollectionAggregationPipeline = ldbMongo.CollectionAggregationPipeline;
+    type DBNamespace = ldbMongo.ChangeStreamNameSpace;
 }
 
 /** Security */
@@ -403,4 +431,69 @@ declare global {
         pipeline?: string;
         columns: BIColumn[];
     };
+}
+
+declare module "@mongosh/shell-api" {
+    interface Database {
+        getSiblingDB(dbName: string): globalThis.Database;
+    }
+
+    interface Collection {
+        aggregate(pipeline: ldbMongo.CollectionAggregationPipeline, options: ldbMongo.Document & { explain?: never }, _: null): ldbMongo.AggregationCursor;
+        aggregate(pipeline: ldbMongo.CollectionAggregationPipeline, options: ldbMongo.Document & { explain: ldbMongo.ExplainVerbosityLike }, _: null): ldbMongo.Document;
+        aggregate(...stages: ldbMongo.CollectionAggregationPipeline): ldbMongo.AggregationCursor;
+        bulkWrite(operations: AnyBulkWriteOperation[], options?: ldbMongo.BulkWriteOptions): shellApi.BulkWriteResult;
+        countDocuments(query?: ldbMongo.Document, options?: ldbMongo.CountDocumentsOptions): number;
+        deleteMany(filter: ldbMongo.Document, options?: ldbMongo.DeleteOptions): ldbMongo.DeleteResult | ldbMongo.Document;
+        deleteOne(filter: ldbMongo.Document, options?: ldbMongo.DeleteOptions): ldbMongo.DeleteResult | ldbMongo.Document;
+        distinct(field: string): ldbMongo.Document;
+        distinct(field: string, query: ldbMongo.Document): ldbMongo.Document;
+        distinct(field: string, query: ldbMongo.Document, options: ldbMongo.DistinctOptions): ldbMongo.Document;
+        estimatedDocumentCount(options?: ldbMongo.EstimatedDocumentCountOptions): number;
+        find(query?: ldbMongo.Document, projection?: ldbMongo.Document, options?: ldbMongo.FindOptions): shellApi.Cursor;
+        findOne(query?: ldbMongo.Document, projection?: ldbMongo.Document, options?: ldbMongo.FindOptions): ldbMongo.Document | null;
+        renameCollection(newName: string, dropTarget?: boolean): ldbMongo.Document;
+        findOneAndDelete(filter: ldbMongo.Document, options?: ldbMongo.FindOneAndDeleteOptions): ldbMongo.Document | null;
+        insert(docs: ldbMongo.Document | ldbMongo.Document[], options?: ldbMongo.BulkWriteOptions): ldbMongo.InsertManyResult;
+        insertMany(docs: ldbMongo.Document[], options?: ldbMongo.BulkWriteOptions): ldbMongo.InsertManyResult;
+        insertOne(doc: ldbMongo.Document, options?: ldbMongo.InsertOneOptions): ldbMongo.InsertOneResult;
+        isCapped(): boolean;
+        replaceOne(filter: ldbMongo.Document, replacement: ldbMongo.Document, options?: ldbMongo.ReplaceOptions): ldbMongo.UpdateResult;
+        update(filter: ldbMongo.Document, update: ldbMongo.Document, options?: ldbMongo.UpdateOptions & { multi?: boolean }): ldbMongo.UpdateResult | ldbMongo.Document;
+        updateMany(filter: ldbMongo.Document, update: ldbMongo.Document, options?: ldbMongo.UpdateOptions): ldbMongo.UpdateResult | ldbMongo.Document;
+        updateOne(filter: ldbMongo.Document, update: ldbMongo.Document, options?: ldbMongo.UpdateOptions): ldbMongo.UpdateResult | ldbMongo.Document;
+        compactStructuredEncryptionData(): ldbMongo.Document;
+        convertToCapped(size: number): ldbMongo.Document;
+        createIndexes(keyPatterns: ldbMongo.Document[], options?: ldbMongo.CreateIndexesOptions, commitQuorum?: number | string): string[];
+        createIndex(keys: ldbMongo.Document, options?: ldbMongo.CreateIndexesOptions, commitQuorum?: number | string): string;
+        ensureIndex(keys: ldbMongo.Document, options?: ldbMongo.CreateIndexesOptions, commitQuorum?: number | string): ldbMongo.Document;
+        getIndexes(): ldbMongo.Document[];
+        getIndexSpecs(): ldbMongo.Document[];
+        getIndexKeys(): ldbMongo.Document[];
+        dropIndexes(indexes?: string | string[] | ldbMongo.Document | ldbMongo.Document[]): ldbMongo.Document;
+        dropIndex(index: string | ldbMongo.Document): ldbMongo.Document;
+        totalIndexSize(...args: unknown[]): number;
+        reIndex(): ldbMongo.Document;
+        getDB(): Database;
+        getMongo(): shellApi.Mongo;
+        dataSize(): number;
+        storageSize(): number;
+        totalSize(): number;
+        drop(options?: ldbMongo.DropCollectionOptions): boolean;
+        exists(): ldbMongo.Document;
+        getFullName(): string;
+        getName(): string;
+        runCommand(commandName: string | ldbMongo.Document, options?: ldbMongo.RunCommandOptions): ldbMongo.Document;
+        explain(verbosity?: ldbMongo.ExplainVerbosityLike): shellApi.Explainable;
+        stats(originalOptions?: ldbMongo.Document | number): ldbMongo.Document;
+        latencyStats(options?: ldbMongo.Document): ldbMongo.Document[];
+        validate(options?: boolean | ldbMongo.Document): ldbMongo.Document;
+        getShardVersion(): ldbMongo.Document;
+        getShardDistribution(): shellApi.CommandResult;
+        watch(pipeline?: ldbMongo.Document[] | ldbMongo.ChangeStreamOptions, options?: ldbMongo.ChangeStreamOptions): ChangeStreamCursor.default;
+        hideIndex(index: string | ldbMongo.Document): ldbMongo.Document;
+        unhideIndex(index: string | ldbMongo.Document): ldbMongo.Document;
+        analyzeShardKey(key: ldbMongo.Document, options?: ldbMongo.Document): ldbMongo.Document;
+        configureQueryAnalyzer(options: ldbMongo.Document): ldbMongo.Document;
+    }
 }

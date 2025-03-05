@@ -1,9 +1,11 @@
+// @ts-check
 const { fail } = require("assert");
 const { getCollate } = require("./collate.cjs");
 const { log, compare } = require("./utils.cjs");
 
 /** @param { Database } db */
-const getIdentity = async (db) => /** @type { Identity | null } */ (await db.getSiblingDB("admin").getCollection("identity").findOne()) ?? fail("Database instance does not have identity.");
+const getIdentity = async (db) =>
+    /** @type { Identity | null } */ (await db.getSiblingDB("admin").getCollection("identity").findOne()) ?? fail("Database instance does not have identity.");
 
 /**
  * @param { Database } db
@@ -24,24 +26,25 @@ const ensureCollection = async (db, name, options = {}) => {
     compare(
         { collation: getCollate(exists.options.collation) }, //
         { collation: getCollate(options.collation) },
-        `COLL  [${namespace}]`
+        `COLL  [${namespace}]`,
     );
     compare(
         { capped: exists.options.capped, size: exists.options.size, max: exists.options.max }, //
         { capped: options.capped, size: options.size, max: options.max },
-        `COLL  [${namespace}]`
+        `COLL  [${namespace}]`,
     );
     compare(
         { timeseries: exists.options.timeseries }, //
         { timeseries: options.timeseries },
-        `COLL  [${namespace}]`
+        `COLL  [${namespace}]`,
     );
     {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { v, name, ...clusteredIndex } = exists.options.clusteredIndex ?? {};
         compare(
             { clusteredIndex }, //
             { clusteredIndex: options.clusteredIndex ?? {} },
-            `COLL  [${namespace}]`
+            `COLL  [${namespace}]`,
         );
     }
 };
@@ -70,7 +73,7 @@ const ensureView = async (db, name, options) => {
     if (
         compare(
             { viewOn: exists.options.viewOn, pipeline: exists.options.pipeline }, //
-            { viewOn: options.viewOn, pipeline: options.pipeline }
+            { viewOn: options.viewOn, pipeline: options.pipeline },
         )
     ) {
         return;
@@ -83,7 +86,7 @@ const ensureView = async (db, name, options) => {
     compare(
         { viewOn: exists.options.viewOn, pipeline: exists.options.pipeline }, //
         { viewOn: options.viewOn, pipeline: options.pipeline },
-        `VIEW  [${namespace}]`
+        `VIEW  [${namespace}]`,
     );
 };
 
@@ -105,7 +108,7 @@ const validateColl = async (db, name, options) => {
     if (
         compare(
             { validator: exists.options.validator, validationLevel: exists.options.validationLevel, validationAction: exists.options.validationAction }, //
-            { validator: options.validator, validationLevel: options.validationLevel, validationAction: options.validationAction }
+            { validator: options.validator, validationLevel: options.validationLevel, validationAction: options.validationAction },
         )
     ) {
         return;
@@ -118,10 +121,8 @@ const validateColl = async (db, name, options) => {
     compare(
         { validator: exists.options.validator, validationLevel: exists.options.validationLevel, validationAction: exists.options.validationAction }, //
         { validator: options.validator, validationLevel: options.validationLevel, validationAction: options.validationAction },
-        `COLL  [${namespace}]`
+        `COLL  [${namespace}]`,
     );
 };
-
-
 
 module.exports = { getIdentity, ensureCollection, ensureView, validateColl };

@@ -1,3 +1,4 @@
+// @ts-check
 const commonConfig = { category: "games", type: 0, id: 0 };
 
 const summaryConfigs = [
@@ -328,7 +329,6 @@ const summaryConfigs = [
             refund: '{"$literal":0}',
         },
     },
-    // gameConfigs: { gameId: 29, name: "fourguardians" }, // auto
     {
         ...commonConfig,
         gameConfigs: { gameId: 30, name: "fishprawncrabpro" },
@@ -357,9 +357,6 @@ const summaryConfigs = [
             refund: '{"$literal":0}',
         },
     },
-    // gameConfigs: { gameId: 32, name: "baccaratdiamond" },
-    // gameConfigs: { gameId: 33, name: "baccaratsapphire" },
-    // gameConfigs: { gameId: 34, name: "baccaratruby" },
     {
         ...commonConfig,
         gameConfigs: { gameId: 35, name: "threecards" },
@@ -402,7 +399,6 @@ const summaryConfigs = [
             refund: '"$refund"',
         },
     },
-    // gameConfigs: { gameId: 38, name: "heroesslot" }, // auto
     {
         ...commonConfig,
         gameConfigs: { gameId: 39, name: "casinoholdempoker" },
@@ -473,7 +469,6 @@ const summaryConfigs = [
             refund: '"$refund"',
         },
     },
-    // gameConfigs: { gameId: 44, name: "paigowpoker" },
     {
         ...commonConfig,
         gameConfigs: { gameId: 45, name: "hilo" },
@@ -489,8 +484,6 @@ const summaryConfigs = [
             refund: '{"$literal":0}',
         },
     },
-    // gameConfigs: { gameId: 46, name: "nightclub" }, // auto
-    // gameConfigs: { gameId: 47, name: "treasureisland" }, // auto
     {
         ...commonConfig,
         gameConfigs: { gameId: 48, name: "blockchainbaccarat" },
@@ -501,35 +494,6 @@ const summaryConfigs = [
             roundId: '"$id"',
             tickets: '{"$literal":1}',
             stake: '{"$multiply":[{"$add":["$banker","$bankerPair","$player","$playerPair","$tie","$big","$small"]},{"$toInt":{"$not":"$freeBet"}}]}',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    // gameConfigs: { gameId: 49, name: "waytogoal" }, // auto
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 50, name: "unbalancedbigsmall1" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 51, name: "unbalancedbigsmall2" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
             payout: '"$betwin"',
             refund: '{"$literal":0}',
         },
@@ -558,34 +522,6 @@ const summaryConfigs = [
             roundId: '"$id"',
             tickets: '{"$literal":1}',
             stake: '{"$multiply":[{"$add":["$big","$small","$even","$odd","$gold","$wood","$fire","$water","$earth"]},{"$toInt":{"$not":"$freeBet"}}]}',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 54, name: "unbalancedbigsmall3" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 55, name: "unbalancedbigsmall4" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
             payout: '"$betwin"',
             refund: '{"$literal":0}',
         },
@@ -632,60 +568,9 @@ const summaryConfigs = [
             refund: '{"$literal":0}',
         },
     },
-    // gameConfigs: { gameId: 59, name: "fruitslot" }, // auto
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 60, name: "fantan" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 61, name: "winthreecards" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    // gameConfigs: { gameId: 62, name: "fortunecat" }, // auto
-    // gameConfigs: { gameId: 63, name: "happyfish" }, // auto
-    // gameConfigs: { gameId: 64, name: "magicforest" }, // auto
-    // gameConfigs: { gameId: 65, name: "djclub" }, // auto
-    // gameConfigs: { gameId: 66, name: "candyland" }, // auto
     {
         ...commonConfig,
         gameConfigs: { gameId: 67, name: "dragontigerfight" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    // gameConfigs: { gameId: 68, name: "missionimpossible" }, // auto
-    // gameConfigs: { gameId: 69, name: "blackpink" }, // auto
-    // gameConfigs: { gameId: 70, name: "transformers" }, // auto
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 71, name: "colorgame" },
         db: "minigame",
         coll: { round: "_rounds", bet: "_bets" },
         aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
@@ -711,22 +596,6 @@ const summaryConfigs = [
             refund: '{"$literal":0}',
         },
     },
-    // gameConfigs: { gameId: 73, name: "spaceflight" }, // auto
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 75, name: "bandarqiuqiu" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    // gameConfigs: { gameId: 76, name: "dragonball" }, // auto
     {
         ...commonConfig,
         gameConfigs: { gameId: 77, name: "chineseblackjack" },
@@ -737,77 +606,6 @@ const summaryConfigs = [
             roundId: '"$id"',
             tickets: '{"$literal":1}',
             stake: '{"$multiply":["$bet",{"$toInt":{"$not":"$freeBet"}}]}',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 78, name: "footballdice" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    // gameConfigs: { gameId: 79, name: "footballslot" }, // auto
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 80, name: "cointoss" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 81, name: "bac81" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 93, name: "footballcointoss" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
-            payout: '"$betwin"',
-            refund: '{"$literal":0}',
-        },
-    },
-    {
-        ...commonConfig,
-        gameConfigs: { gameId: 95, name: "sedie3" },
-        db: "minigame",
-        coll: { round: "_rounds", bet: "_bets" },
-        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
-        calc: {
-            roundId: '"$id"',
-            tickets: '{"$literal":1}',
-            stake: '"$totalAmount"',
             payout: '"$betwin"',
             refund: '{"$literal":0}',
         },
@@ -827,5 +625,55 @@ const summaryConfigs = [
         },
     },
 ];
+
+[
+    { gameId: 50, name: "unbalancedbigsmall1" },
+    { gameId: 51, name: "unbalancedbigsmall2" },
+    { gameId: 54, name: "unbalancedbigsmall3" },
+    { gameId: 55, name: "unbalancedbigsmall4" },
+    { gameId: 60, name: "fantan" },
+    { gameId: 61, name: "winthreecards" },
+    { gameId: 67, name: "dragontigerfight" },
+    { gameId: 71, name: "colorgame" },
+    { gameId: 75, name: "bandarqiuqiu" },
+    { gameId: 78, name: "footballdice" },
+    { gameId: 79, name: "footballslot" },
+    { gameId: 80, name: "cointoss" },
+    { gameId: 81, name: "bac81" },
+    { gameId: 82, name: "bac82" },
+    { gameId: 83, name: "bac83" },
+    { gameId: 84, name: "bac84" },
+    { gameId: 85, name: "bac85" },
+    { gameId: 86, name: "bac86" },
+    { gameId: 87, name: "bac87" },
+    { gameId: 88, name: "bac88" },
+    { gameId: 89, name: "bac89" },
+    { gameId: 90, name: "bac90" },
+    { gameId: 91, name: "bac91" },
+    { gameId: 92, name: "bac92" },
+    { gameId: 93, name: "footballcointoss" },
+    { gameId: 95, name: "sedie3" },
+    { gameId: 96, name: "karakrus" },
+    { gameId: 97, name: "bac97" },
+    { gameId: 98, name: "bac98" },
+    { gameId: 100, name: "bac100" },
+    { gameId: 101, name: "bac101" },
+    { gameId: 103, name: "sevenupdown" },
+].forEach((gameConfigs) =>
+    summaryConfigs.push({
+        ...commonConfig,
+        gameConfigs,
+        db: "minigame",
+        coll: { round: "_rounds", bet: "_bets" },
+        aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
+        calc: {
+            roundId: '"$id"',
+            tickets: '{"$literal":1}',
+            stake: '"$totalAmount"',
+            payout: '"$betwin"',
+            refund: '{"$literal":0}',
+        },
+    }),
+);
 
 module.exports = { summaryConfigs };

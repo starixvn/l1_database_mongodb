@@ -1,0 +1,44 @@
+// @ts-check
+const { monitorAllCollections, readIdentity, readSystemObjects, backupCluster, clusterChangeStream } = require("./privileges.cjs");
+const { readAnyDatabase } = require("./role-builtin.cjs");
+const { db$read } = require("./role-builtin.cjs");
+
+/** @satisfies { Record<string, RoleDefinition> } */
+const roleDefinitions = /** @type {const} */ ({
+    ldb$clusterWatcher: {
+        db: "admin",
+        role: "clusterWatcher",
+        roles: [],
+        privileges: clusterChangeStream,
+    },
+    ldb$public: {
+        db: "admin",
+        role: "public",
+        roles: [],
+        privileges: readIdentity,
+    },
+    ldb$monitorSystem: {
+        db: "admin",
+        role: "monitorSystem",
+        roles: [],
+        privileges: monitorAllCollections,
+    },
+    ldb$readSystem: {
+        db: "admin",
+        role: "readSystem",
+        roles: [readAnyDatabase],
+        privileges: [...backupCluster, ...readSystemObjects],
+    },
+
+    biSchema: {
+        db: "admin",
+        role: "biSchema",
+        roles: [
+            db$read("bi"), //
+            db$read("schema"),
+        ],
+        privileges: [],
+    },
+});
+
+module.exports = roleDefinitions;

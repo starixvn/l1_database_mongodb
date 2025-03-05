@@ -16,7 +16,7 @@
             "specialsedie_phiens_bk", //
             "specialsedie_cuocs_bk",
             "specialsedie_ones_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "specialsedie_phiens_bk", [id, time]);

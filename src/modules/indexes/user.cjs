@@ -1,7 +1,8 @@
+// @ts-check
 const { LOCALES } = require("../const.cjs");
 
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     currency_en: {
         key: { currency: 1 },
         options: { collation: LOCALES.en },
@@ -54,6 +55,6 @@ const indexes = {
         key: { "local.username": 1 },
         options: { unique: true, collation: LOCALES.en },
     },
-};
+});
 
 module.exports = indexes;

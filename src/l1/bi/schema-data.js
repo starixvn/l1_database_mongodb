@@ -11,7 +11,7 @@
     const { promotionTables } = require("../../modules/bi/schemas/promotions.cjs");
 
     const name = `L${L}-BI`;
-    const schema = `L${L}-BI-schema-v3`;
+    const schema = ObjectId(Buffer.from(`L${L}-BI-sch-v3`).toString("hex"));
 
     const biDB = db.getSiblingDB("bi");
     {
@@ -45,7 +45,7 @@
                     },
                 },
             ],
-            { ordered: false }
+            { ordered: false },
         );
         log("I", "DATA", `[${biDB.getName()}.names]`, `• ${stringifyResult(res)}`);
     }

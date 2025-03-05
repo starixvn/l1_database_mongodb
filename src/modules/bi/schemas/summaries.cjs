@@ -1,3 +1,4 @@
+// @ts-check
 const { date, filter, float, int64, str, oid, bool } = require("../data-types.cjs");
 
 /** @type { BITable[] } */
@@ -51,6 +52,7 @@ const summariesTables = [
             { mongo_name: "siteId", sql_name: "siteId", ...str },
             { mongo_name: "siteName", sql_name: "siteName", ...str },
             { mongo_name: "roundId", sql_name: "roundId", ...int64 },
+            { mongo_name: "subRoundId", sql_name: "subRoundId", ...int64 },
             { mongo_name: "playerId", sql_name: "playerId", ...str },
             { mongo_name: "tickets", sql_name: "tickets", ...int64 },
             { mongo_name: "stake", sql_name: "stake", ...float },
@@ -245,6 +247,19 @@ const summariesTables = [
             { mongo_name: "coll.group", sql_name: "coll", ...str },
             { mongo_name: "coll.group", sql_name: "baseName", ...str },
             { mongo_name: "config.jpCont", sql_name: "jpCont", ...float },
+            { mongo_name: "_MONGOFILTER", sql_name: "_MONGOFILTER", ...filter },
+        ],
+    },
+    {
+        _id: { db: "summary", table: "operator_daily_summaries" },
+        columns: [
+            { mongo_name: "time", sql_name: "time", ...date },
+            { mongo_name: "operatorId", sql_name: "operatorId", ...str },
+            { mongo_name: "siteId", sql_name: "siteId", ...str },
+            { mongo_name: "currency", sql_name: "currency", ...str },
+            { mongo_name: "tickets", sql_name: "tickets", ...int64 },
+            { mongo_name: "stake", sql_name: "stake", ...float },
+            { mongo_name: "winloss", sql_name: "winloss", ...float },
             { mongo_name: "_MONGOFILTER", sql_name: "_MONGOFILTER", ...filter },
         ],
     },

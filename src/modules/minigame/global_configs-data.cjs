@@ -1,8 +1,20 @@
+// @ts-check
+
+/**
+ * @typedef { 1 | 2 | 4 | 5 } SupportedL
+ */
+
 module.exports = {};
 
-{
+/** @param { SupportedL } L */
+module.exports.kenoMatchLiveOdds = (L) => {
     /** kenomatch_liveodds */
-    const type = "kenomatch_liveodds";
+    const type = {
+        [1]: "kenomatch_liveodds", //
+        [2]: "kenomatch_liveodds",
+        [4]: "kenosoccer_liveodds",
+        [5]: "kenosoccer_liveodds",
+    }[`${L}`];
     const time = new Date("2021-10-04T00:00:00Z");
     const _id = `${Math.floor(new Date("2021-10-04T00:00:00Z").valueOf() / 1000).toString(16)}${"liveodds"
         .split("")
@@ -637,10 +649,10 @@ module.exports = {};
         blueRed: 2,
         overUnder: 1.5,
     };
-    module.exports.kenoMatchLiveOdds = { _id, type, time, blueRed, overUnder, adjRate };
-}
+    return { _id, type, time, blueRed, overUnder, adjRate };
+};
 
-/** @param { number } L */
+/** @param { SupportedL } L */
 module.exports.exchangeCodes = (L) => {
     /** exchange_codes */
     const type = "exchange_codes";
@@ -649,53 +661,70 @@ module.exports.exchangeCodes = (L) => {
         .split("")
         .map((_) => _.charCodeAt(0).toString(16))
         .join("")}`;
-    const base = { [1]: "USD", [2]: "VND", [4]: "USD" }[L];
+    const base = { [1]: "USD", [2]: "VND", [4]: "USD", [5]: "USD" }[`${L}`];
     const configs = {
         codes: [
-            "AUD",
-            "CAD",
-            "CNY",
-            "EUR",
-            "GBP",
-            "HKD",
-            "IDR",
-            "JPY",
-            "KRW",
-            "MYR",
-            "PHP",
-            "SGD",
-            "THB",
-            "TWD",
-            "USD",
-            "VND",
-            "YNG",
+            "AED",
             "ARS",
+            "AUD",
             "BDT",
             "BND",
             "BRL",
+            "CAD",
             "CHF",
             "CLP",
+            "CNY",
+            "COP",
             "CZK",
             "DKK",
+            "DZD",
+            "EGP",
+            "ETB",
+            "EUR",
+            "GBP",
             "GHS",
+            "HKD",
+            "IDR",
             "INR",
+            "JPY",
             "KES",
             "KHR",
+            "KRW",
             "KZT",
             "LAK",
+            "LBP",
+            "MAD",
             "MMK",
+            "MNT",
             "MXN",
+            "MYR",
+            "NGN",
             "NOK",
             "NPR",
+            "NZD",
             "PEN",
+            "PGK",
+            "PHP",
             "PKR",
             "PLN",
+            "PYG",
             "RON",
             "RUB",
+            "SAR",
             "SEK",
+            "SGD",
+            "THB",
+            "TND",
             "TRY",
-            "COP",
-            "EGP",
+            "TWD",
+            "TZS",
+            "USD",
+            "UYU",
+            "VES",
+            "VND",
+            "YNG",
+            "ZAR",
+            "ZMW",
         ],
     };
     return { _id, type, time, base, configs };

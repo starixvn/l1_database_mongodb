@@ -1,7 +1,8 @@
+// @ts-check
 const { LOCALES } = require("../const.cjs");
 
 /** @satisfies { IndexConfig } */
-const indexes = {
+const indexes = /** @type {const} */ ({
     name_U: {
         key: { name: -1 },
         options: { unique: true },
@@ -22,6 +23,10 @@ const indexes = {
         key: { type: 1 },
         options: { unique: true },
     },
+    name_partner_U: {
+        key: { name: 1, partnerId: -1 },
+        options: { unique: true, collation: LOCALES.simple },
+    },
     name_partner_U_en: {
         key: { name: 1, partnerId: 1 },
         options: { unique: true, collation: LOCALES.en },
@@ -38,6 +43,6 @@ const indexes = {
         key: { gameId: 1 },
         options: { unique: true },
     },
-};
+});
 
 module.exports = indexes;

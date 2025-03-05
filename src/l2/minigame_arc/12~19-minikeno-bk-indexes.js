@@ -8,6 +8,7 @@
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
     const { time, round, id, player_round } = require("../../modules/indexes/game.cjs");
+    const { featureMD5 } = require("../../modules/indexes/md5.cjs");
 
     const gameDBArc = db.getSiblingDB("minigame_arc");
 
@@ -52,46 +53,46 @@
             "kenonorth_cuocs_bk",
             "kenonorth_ones_bk",
             "kenonorth_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "kenomax_phiens_bk", [id, time]);
     await deployIndexes(gameDBArc, "kenomax_cuocs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "kenomax_ones_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "kenomax_results_bk", [round]);
+    await deployIndexes(gameDBArc, "kenomax_results_bk", [round, ...featureMD5]);
 
     await deployIndexes(gameDBArc, "kenomax2_phiens_bk", [id, time]);
     await deployIndexes(gameDBArc, "kenomax2_cuocs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "kenomax2_ones_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "kenomax2_results_bk", [round]);
+    await deployIndexes(gameDBArc, "kenomax2_results_bk", [round, ...featureMD5]);
 
     await deployIndexes(gameDBArc, "kenomini_phiens_bk", [id, time]);
     await deployIndexes(gameDBArc, "kenomini_cuocs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "kenomini_ones_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "kenomini_results_bk", [round]);
+    await deployIndexes(gameDBArc, "kenomini_results_bk", [round, ...featureMD5]);
 
     await deployIndexes(gameDBArc, "kenomini2_phiens_bk", [id, time]);
     await deployIndexes(gameDBArc, "kenomini2_cuocs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "kenomini2_ones_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "kenomini2_results_bk", [round]);
+    await deployIndexes(gameDBArc, "kenomini2_results_bk", [round, ...featureMD5]);
 
     await deployIndexes(gameDBArc, "kenoeast_phiens_bk", [id, time]);
     await deployIndexes(gameDBArc, "kenoeast_cuocs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "kenoeast_ones_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "kenoeast_results_bk", [round]);
+    await deployIndexes(gameDBArc, "kenoeast_results_bk", [round, ...featureMD5]);
 
     await deployIndexes(gameDBArc, "kenowest_phiens_bk", [id, time]);
     await deployIndexes(gameDBArc, "kenowest_cuocs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "kenowest_ones_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "kenowest_results_bk", [round]);
+    await deployIndexes(gameDBArc, "kenowest_results_bk", [round, ...featureMD5]);
 
     await deployIndexes(gameDBArc, "kenosouth_phiens_bk", [id, time]);
     await deployIndexes(gameDBArc, "kenosouth_cuocs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "kenosouth_ones_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "kenosouth_results_bk", [round]);
+    await deployIndexes(gameDBArc, "kenosouth_results_bk", [round, ...featureMD5]);
 
     await deployIndexes(gameDBArc, "kenonorth_phiens_bk", [id, time]);
     await deployIndexes(gameDBArc, "kenonorth_cuocs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "kenonorth_ones_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "kenonorth_results_bk", [round]);
+    await deployIndexes(gameDBArc, "kenonorth_results_bk", [round, ...featureMD5]);
 })();

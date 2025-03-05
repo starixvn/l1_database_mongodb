@@ -1,32 +1,26 @@
 (async () => {
     const { getIdentity } = require("../modules/db.cjs");
 
-    const { stage } = await getIdentity(db);
+    const { L, stage } = await getIdentity(db);
+
+    if (!["active", "archive", "mixed"].includes(stage)) return;
+    if (typeof L !== "number" || L === 5) return;
 
     const adminDB = db.getSiblingDB("admin");
     const { ensureUser } = require("../modules/security/security.cjs");
 
-    if (stage === "active") {
-        const activeUsers = require("../modules/security/users-active.cjs");
-
-        for (const user of Object.values(activeUsers)) {
-            await ensureUser(adminDB, user);
-        }
+    const baseUsers = require("../modules/security/users-base.cjs");
+    for (const user of Object.values(baseUsers)) {
+        await ensureUser(adminDB, user);
     }
 
-    if (stage === "archive") {
-        const archiveUsers = require("../modules/security/users-archive.cjs");
-
-        for (const user of Object.values(archiveUsers)) {
-            await ensureUser(adminDB, user);
-        }
+    const userModulePath = `../modules/security/users-${stage}.cjs`;
+    if (!fs.existsSync(userModulePath)) {
+        throw new Error(`Path does not exists: "${userModulePath}"`);
     }
-
-    if (stage === "mixed") {
-        const mixedUsers = require("../modules/security/users-mixed.cjs");
-
-        for (const user of Object.values(mixedUsers)) {
-            await ensureUser(adminDB, user);
-        }
+    // eslint-disable-next-line security/detect-non-literal-require
+    const users = require(userModulePath);
+    for (const user of Object.values(users)) {
+        await ensureUser(adminDB, user);
     }
 })();

@@ -8,6 +8,7 @@
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
     const { time, round, id, player_round } = require("../../modules/indexes/game.cjs");
+    const { featureMD5 } = require("../../modules/indexes/md5.cjs");
 
     const gameDBArc = db.getSiblingDB("minigame_arc");
 
@@ -17,11 +18,11 @@
             "taixiu_cuocs_bk",
             "taixiu_ones_bk",
             "taixiu_results_bk",
-        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED))
+        ].map((collName) => ensureCollection(gameDBArc, collName, STORAGE_COMPRESSED)),
     );
 
     await deployIndexes(gameDBArc, "taixiu_phiens_bk", [id, time]);
     await deployIndexes(gameDBArc, "taixiu_cuocs_bk", [round, player_round]);
     await deployIndexes(gameDBArc, "taixiu_ones_bk", [round, time, player_round]);
-    await deployIndexes(gameDBArc, "taixiu_results_bk", [round]);
+    await deployIndexes(gameDBArc, "taixiu_results_bk", [round, ...featureMD5]);
 })();
