@@ -693,6 +693,7 @@ module.exports.exchangeCodes = (L) => {
             "KZT",
             "LAK",
             "LBP",
+            "LKR",
             "MAD",
             "MMK",
             "MNT",
