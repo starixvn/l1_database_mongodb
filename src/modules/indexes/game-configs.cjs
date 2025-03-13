@@ -43,6 +43,10 @@ const indexes = /** @type {const} */ ({
         key: { gameId: 1 },
         options: { unique: true },
     },
+    gameId: {
+        key: { gameId: 1 },
+        options: {},
+    },
 });
 
 module.exports = indexes;

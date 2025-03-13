@@ -661,7 +661,7 @@ module.exports.exchangeCodes = (L) => {
         .split("")
         .map((_) => _.charCodeAt(0).toString(16))
         .join("")}`;
-    const base = { [1]: "USD", [2]: "VND", [4]: "USD", [5]: "USD" }[`${L}`];
+    const base = { [1]: "USD", [2]: "USD", [4]: "USD", [5]: "USD" }[`${L}`];
     const configs = {
         codes: [
             "AED",

@@ -15,6 +15,7 @@
         partner_en,
         partner_U_en,
         name_partner_U_en,
+        gameId,
         group_game_U,
         value_U,
         name_partner_U,
@@ -35,6 +36,6 @@
     await deployIndexes(gameDB, "partners", [partner_U_en]);
     await deployIndexes(gameDB, "currency_groups", [partner_en]);
     await deployIndexes(gameDB, "currencies", [name_partner_U, name_partner_U_en]);
-    await deployIndexes(gameDB, "currency_group_games", [group_game_U]);
+    await deployIndexes(gameDB, "currency_group_games", [group_game_U, gameId]);
     await deployIndexes(gameDB, "chips", [value_U]);
 })();
