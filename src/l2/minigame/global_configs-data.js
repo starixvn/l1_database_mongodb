@@ -10,7 +10,7 @@
 
     /** @type { AnyBulkWriteOperation[] } */
     const bulkWrite = [
-        // exchangeCodes(L), // -
+        exchangeCodes(L), // -
         kenoMatchLiveOdds(L),
     ].map((doc) => {
         const { _id, type } = doc;
