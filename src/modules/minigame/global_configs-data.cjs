@@ -661,15 +661,19 @@ module.exports.exchangeCodes = (L) => {
         .split("")
         .map((_) => _.charCodeAt(0).toString(16))
         .join("")}`;
-    const base = { [1]: "USD", [2]: "VND", [4]: "USD", [5]: "USD" }[`${L}`];
+    const base = { [1]: "USD", [2]: "USD", [4]: "USD", [5]: "USD" }[`${L}`];
     const configs = {
         codes: [
             "AED",
+            "AFN",
             "ARS",
             "AUD",
+            "BBD",
             "BDT",
             "BND",
             "BRL",
+            "BTN",
+            "BWP",
             "CAD",
             "CHF",
             "CLP",
@@ -683,9 +687,12 @@ module.exports.exchangeCodes = (L) => {
             "EUR",
             "GBP",
             "GHS",
+            "GMD",
             "HKD",
+            "HTG",
             "IDR",
             "INR",
+            "JMD",
             "JPY",
             "KES",
             "KHR",
@@ -699,6 +706,7 @@ module.exports.exchangeCodes = (L) => {
             "MNT",
             "MXN",
             "MYR",
+            "NAD",
             "NGN",
             "NOK",
             "NPR",
@@ -717,6 +725,7 @@ module.exports.exchangeCodes = (L) => {
             "THB",
             "TND",
             "TRY",
+            "TTD",
             "TWD",
             "TZS",
             "USD",
@@ -728,5 +737,11 @@ module.exports.exchangeCodes = (L) => {
             "ZMW",
         ],
     };
-    return { _id, type, time, base, configs };
+    return {
+        _id,
+        type,
+        time,
+        base,
+        configs,
+    };
 };

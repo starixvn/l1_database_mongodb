@@ -9,7 +9,10 @@
     const { exchangeCodes, kenoMatchLiveOdds } = require("../../modules/minigame/global_configs-data.cjs");
 
     /** @type { AnyBulkWriteOperation[] } */
-    const bulkWrite = [exchangeCodes(L), kenoMatchLiveOdds(L)].map((doc) => {
+    const bulkWrite = [
+        exchangeCodes(L), // -
+        kenoMatchLiveOdds(L),
+    ].map((doc) => {
         const { _id, type } = doc;
         const data = Object.assign({}, doc, { _id: ObjectId(_id) });
 
