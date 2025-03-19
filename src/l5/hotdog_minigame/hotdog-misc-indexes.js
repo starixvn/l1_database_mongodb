@@ -8,7 +8,7 @@
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
     const { TTL_1h } = require("../../modules/indexes/archive-flags.cjs");
-    const { createdAt } = require("../../modules/indexes/misc.cjs");
+    const { createdAt, gameDisplay } = require("../../modules/indexes/misc.cjs");
 
     const gameDB = db.getSiblingDB("hotdog_minigame");
 
@@ -18,4 +18,5 @@
         ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(gameDB, "notification_service_events", [TTL_1h, createdAt]);
+    await deployIndexes(gameDB, "notifications", [gameDisplay]);
 })();
