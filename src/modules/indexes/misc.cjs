@@ -6,6 +6,10 @@ const indexes = /** @type {const} */ ({
         key: { createdAt: 1 },
         options: {},
     },
+    gameDisplay: {
+        key: { gameName: 1, displayKind: 1 },
+        options: {},
+    },
 });
 
 module.exports = indexes;
