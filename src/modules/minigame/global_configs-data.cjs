@@ -666,6 +666,7 @@ module.exports.exchangeCodes = (L) => {
         codes: [
             "AED",
             "AFN",
+            "AOA",
             "ARS",
             "AUD",
             "BBD",
@@ -732,6 +733,7 @@ module.exports.exchangeCodes = (L) => {
             "UYU",
             "VES",
             "VND",
+            "XAF",
             "YNG",
             "ZAR",
             "ZMW",
