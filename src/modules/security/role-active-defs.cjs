@@ -41,6 +41,7 @@ const roleDefinitions = /** @type {const} */ ({
             db$read("ops_configs"),
             db$read("Proteus"),
             db$read("summary"),
+            db$read("sync"),
         ],
         privileges: [],
     },
