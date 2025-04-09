@@ -648,6 +648,12 @@ const gameSummaryConfig = (L) => [
         name: { en: "Crypto Mining", vi: "Đào Coin", grp: "Tap Games", game: "Crypto Mining" },
         coll: { db: "minigame", group: "coinmining", round: "_rounds", postfix: "_rounds" },
     },
+    {
+        gameId: 113,
+        owGameTypeId: { [1]: 13216, [2]: 13509 }[`${L}`],
+        name: { en: "Rocket X", vi: "Tên Lửa X", grp: "Crash Games", game: "Rocket X" },
+        coll: { db: "minigame", group: "rocketx", round: "_rounds", postfix: "_bets" },
+    },
 ];
 
 module.exports = { gameSummaryConfig };
