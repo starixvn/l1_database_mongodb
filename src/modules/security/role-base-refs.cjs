@@ -1,10 +1,12 @@
 // @ts-check
 const { definitionToRef } = require("./security-utils.cjs");
 const {
-    ldb$clusterWatcher,
+    ldb$clusterWatcher, // -
     ldb$public,
     ldb$monitorSystem,
     ldb$readSystem,
+
+    ldb$tmpReadWrite,
 
     biSchema,
 } = require("./role-base-defs.cjs");
@@ -15,6 +17,8 @@ const roleReferences = /** @type {const} */ ({
     ldb$public: definitionToRef(ldb$public),
     ldb$monitorSystem: definitionToRef(ldb$monitorSystem),
     ldb$readSystem: definitionToRef(ldb$readSystem),
+
+    ldb$tmpReadWrite: definitionToRef(ldb$tmpReadWrite),
 
     biSchema: definitionToRef(biSchema),
 });
