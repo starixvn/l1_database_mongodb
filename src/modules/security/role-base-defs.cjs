@@ -30,6 +30,13 @@ const roleDefinitions = /** @type {const} */ ({
         privileges: [...backupCluster, ...readSystemObjects],
     },
 
+    ldb$tmpReadWrite: {
+        db: "admin",
+        role: "#readWriteAnyDatabase",
+        roles: [{ db: "admin", role: "readWriteAnyDatabase" }],
+        privileges: [],
+    },
+
     biSchema: {
         db: "admin",
         role: "biSchema",

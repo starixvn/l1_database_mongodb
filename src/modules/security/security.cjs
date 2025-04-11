@@ -158,6 +158,11 @@ const ensureRolesOnUser = async (db, username, needRoles, haveRoles) => {
             needStrRoles.delete(roleStr);
             haveStrRoles.delete(roleStr);
         }
+
+        if (/(^"#)|("role":"#)/.test(roleStr)) {
+            log("W", "USER", `${roleStr} ignored when revoking roles from ${username}@${db.getName()}`);
+            haveStrRoles.delete(roleStr);
+        }
     }
 
     const revokeRoles = Array.from(haveStrRoles).map(stringToRole);

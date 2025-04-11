@@ -74,7 +74,7 @@ const summaryTemplates = /** @type {const} */ ([
                 calc: {
                     roundId: '"$id"',
                     tickets: '{"$literal":1}',
-                    stake: '{"$multiply":["$amount",{"$toInt":{"$not":"$freeSpin"}}]}',
+                    stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
                     payout: '"$betwin"',
                     refund: '{"$literal":0}',
                 },
