@@ -654,6 +654,18 @@ const gameSummaryConfig = (L) => [
         name: { en: "Rocket X", vi: "Tên Lửa X", grp: "Crash Games", game: "Rocket X" },
         coll: { db: "minigame", group: "rocketx", round: "_rounds", postfix: "_bets" },
     },
+    {
+        gameId: 114,
+        owGameTypeId: { [1]: 13217, [2]: 13510 }[`${L}`],
+        name: { en: "Spinner Soccer X", vi: "Bóng Xoáy X", grp: "Marble Football", game: "Marble Football" },
+        coll: { db: "minigame", group: "marblefootball2", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 117,
+        owGameTypeId: { [1]: 13218, [2]: 13511 }[`${L}`],
+        name: { en: "God Of Fortune", vi: "Thần Tài Đến", grp: "Slots", game: "God Of Fortune" },
+        coll: { db: "minigame", group: "godoffortune", round: "_rounds", postfix: "_rounds" },
+    },
 ];
 
 module.exports = { gameSummaryConfig };
