@@ -7,6 +7,7 @@ const {
     ldb$readSystem,
 
     ldb$tmpReadWrite,
+    ldb$tmpMaintenance,
 
     biSchema,
 } = require("./role-base-defs.cjs");
@@ -19,6 +20,7 @@ const roleReferences = /** @type {const} */ ({
     ldb$readSystem: definitionToRef(ldb$readSystem),
 
     ldb$tmpReadWrite: definitionToRef(ldb$tmpReadWrite),
+    ldb$tmpMaintenance: definitionToRef(ldb$tmpMaintenance),
 
     biSchema: definitionToRef(biSchema),
 });

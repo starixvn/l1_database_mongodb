@@ -6,6 +6,7 @@ const actions = /** @type {const} */ ({
     monitor: ["collStats", "indexStats"],
     read: ["find", "listIndexes"],
     backup: ["fsync", "getCmdLineOpts", "replSetGetStatus", "unlock"],
+    index: ["createIndex", "dropIndex", "listIndexes", "indexStats"],
 });
 
 module.exports = actions;
