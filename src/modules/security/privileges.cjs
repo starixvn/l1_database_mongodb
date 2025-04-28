@@ -1,6 +1,6 @@
 // @ts-check
 
-const { monitor, read, list, backup, index } = require("./actions.cjs");
+const { monitor, read, list, backup, index, rwData } = require("./actions.cjs");
 
 /** @satisfies { Record<string, Privilege[]> } */
 const privileges = /** @type {const} */ ({
@@ -48,6 +48,17 @@ const privileges = /** @type {const} */ ({
     ],
     indexMaintenance: [
         { resource: { db: "", collection: "" }, actions: [...index] }, //
+    ],
+    writeConfigs: [
+        { resource: { db: "minigame", collection: "game_configs" }, actions: rwData }, //
+        { resource: { db: "minigame", collection: "currency_groups" }, actions: rwData },
+        { resource: { db: "minigame", collection: "currencies" }, actions: rwData },
+        { resource: { db: "minigame", collection: "currency_group_games" }, actions: rwData },
+
+        { resource: { db: "minigame_backup", collection: "backup_game_configs" }, actions: rwData },
+        { resource: { db: "minigame_backup", collection: "backup_currency_groups" }, actions: rwData },
+        { resource: { db: "minigame_backup", collection: "backup_currencies" }, actions: rwData },
+        { resource: { db: "minigame_backup", collection: "backup_currency_group_games" }, actions: rwData },
     ],
 });
 
