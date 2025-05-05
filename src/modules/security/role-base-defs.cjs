@@ -1,6 +1,6 @@
 // @ts-check
-const { monitorAllCollections, readIdentity, readSystemObjects, backupCluster, clusterChangeStream } = require("./privileges.cjs");
-const { readAnyDatabase } = require("./role-builtin.cjs");
+const { monitorAllCollections, readIdentity, readSystemObjects, backupCluster, clusterChangeStream, indexMaintenance, writeConfigs } = require("./privileges.cjs");
+const { readAnyDatabase, db$readWrite } = require("./role-builtin.cjs");
 const { db$read } = require("./role-builtin.cjs");
 
 /** @satisfies { Record<string, RoleDefinition> } */
@@ -29,12 +29,26 @@ const roleDefinitions = /** @type {const} */ ({
         roles: [readAnyDatabase],
         privileges: [...backupCluster, ...readSystemObjects],
     },
+    ldb$writeConfigs: {
+        db: "admin",
+        role: "writeConfigs",
+        roles: [
+            db$readWrite("sync"), //
+        ],
+        privileges: writeConfigs,
+    },
 
     ldb$tmpReadWrite: {
         db: "admin",
         role: "#readWriteAnyDatabase",
         roles: [{ db: "admin", role: "readWriteAnyDatabase" }],
         privileges: [],
+    },
+    ldb$tmpMaintenance: {
+        db: "admin",
+        role: "#maintenance",
+        roles: [],
+        privileges: [...indexMaintenance],
     },
 
     biSchema: {

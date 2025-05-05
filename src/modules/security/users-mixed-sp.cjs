@@ -1,6 +1,13 @@
 // @ts-check
 const { ldb$public, biSchema } = require("./role-base-refs.cjs");
-const { hotdogArchive$active, hotdogBackend$active, hotdogReadonly$active, hotdogSummary$active } = require("./role-active-refs-sp.cjs");
+const {
+    hotdogArchive$active,
+    hotdogBackend$active,
+    hotdogReadonly$active,
+    hotdogSummary$active,
+    marbleBackend$active,
+    marbleReadonly$active,
+} = require("./role-active-refs-sp.cjs");
 const { hotdogArchive$archive, hotdogBackend$archive, hotdogReadonly$archive, hotdogSummary$archive } = require("./role-archive-refs-sp.cjs");
 
 /** @satisfies { Record<string, UserDefinition> } */
@@ -67,6 +74,23 @@ const activeUsers = /** @type {const} */ ({
             ldb$public, //
             hotdogSummary$active,
             hotdogSummary$archive,
+        ],
+    },
+
+    marble_backend: {
+        db: "admin",
+        user: "marble_backend",
+        roles: [
+            ldb$public, //
+            marbleBackend$active,
+        ],
+    },
+    marble_readonly: {
+        db: "admin",
+        user: "marble_readonly",
+        roles: [
+            ldb$public, //
+            marbleReadonly$active,
         ],
     },
 });

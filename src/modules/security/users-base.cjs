@@ -1,6 +1,6 @@
 // @ts-check
 const { db$dbOwner, root, clusterMonitor, readAnyDatabase, db$readWrite } = require("./role-builtin.cjs");
-const { ldb$readSystem, ldb$monitorSystem, ldb$clusterWatcher } = require("./role-base-refs.cjs");
+const { ldb$readSystem, ldb$monitorSystem, ldb$clusterWatcher, ldb$tmpMaintenance } = require("./role-base-refs.cjs");
 
 /** @satisfies { Record<string, UserDefinition> } */
 const baseUsers = /** @type {const} */ ({
@@ -25,6 +25,7 @@ const baseUsers = /** @type {const} */ ({
             db$readWrite("minigame_test"),
             db$readWrite("log_test"),
             db$readWrite("summary_test"),
+            ldb$tmpMaintenance,
         ],
     },
     lmn_backup: {
