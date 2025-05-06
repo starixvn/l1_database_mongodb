@@ -7,6 +7,8 @@ const {
     ldb$readSystem,
     ldb$writeConfigs,
 
+    ldb$minigameReadConfigs,
+
     ldb$tmpReadWrite,
     ldb$tmpMaintenance,
 
@@ -20,6 +22,8 @@ const roleReferences = /** @type {const} */ ({
     ldb$monitorSystem: definitionToRef(ldb$monitorSystem),
     ldb$readSystem: definitionToRef(ldb$readSystem),
     ldb$writeConfigs: definitionToRef(ldb$writeConfigs),
+
+    ldb$minigameReadConfigs: definitionToRef(ldb$minigameReadConfigs),
 
     ldb$tmpReadWrite: definitionToRef(ldb$tmpReadWrite),
     ldb$tmpMaintenance: definitionToRef(ldb$tmpMaintenance),

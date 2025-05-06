@@ -1,5 +1,5 @@
 // @ts-check
-const { monitorAllCollections, readIdentity, readSystemObjects, backupCluster, clusterChangeStream, indexMaintenance, writeConfigs } = require("./privileges.cjs");
+const { monitorAllCollections, readIdentity, readSystemObjects, backupCluster, clusterChangeStream, indexMaintenance, writeConfigs, readConfigs } = require("./privileges.cjs");
 const { readAnyDatabase, db$readWrite } = require("./role-builtin.cjs");
 const { db$read } = require("./role-builtin.cjs");
 
@@ -36,6 +36,13 @@ const roleDefinitions = /** @type {const} */ ({
             db$readWrite("sync"), //
         ],
         privileges: writeConfigs,
+    },
+
+    ldb$minigameReadConfigs: {
+        db: "minigame",
+        role: "readConfigs",
+        roles: [],
+        privileges: readConfigs,
     },
 
     ldb$tmpReadWrite: {
