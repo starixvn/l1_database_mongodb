@@ -58,6 +58,7 @@ const activeUsers = /** @type {const} */ ({
         roles: [
             ldb$public, //
             hotdogReadonly$active,
+            marbleReadonly$active,
         ],
     },
     lmn_summary: {

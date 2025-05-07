@@ -3,7 +3,7 @@
 
     const { L, stage } = await getIdentity(db);
     if (path.basename(path.resolve("..")) !== `l${L}`) return;
-    if (!["active", "mixed"].includes(stage)) return;
+    if (!["archive", "mixed"].includes(stage)) return;
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");

@@ -19,7 +19,7 @@
         ].map((collName) => ensureCollection(syncDB, collName, COLLATION_EN)),
     );
     await deployIndexes(syncDB, "orig_game_configs", [name_U, name_U_en, gameId_U]);
-    await deployIndexes(syncDB, "orig_currency_groups", [partner_en]);
+    await deployIndexes(syncDB, "orig_currency_groups", [name_partner_U, name_partner_U_en, partner_en]);
     await deployIndexes(syncDB, "orig_currencies", [name_partner_U, name_partner_U_en]);
     await deployIndexes(syncDB, "orig_currency_group_games", [group_game_U, gameId]);
     await deployIndexes(syncDB, "orig_chips", [value_U]);
