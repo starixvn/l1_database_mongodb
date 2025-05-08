@@ -1,5 +1,6 @@
+// @ts-check
 (async () => {
-    const { getIdentity, ensureCollection } = require("../../modules/db.cjs");
+    const { getIdentity, ensureCollection, validateColl } = require("../../modules/db.cjs");
 
     const { L, stage } = await getIdentity(db);
     if (path.basename(path.resolve("..")) !== `l${L}`) return;
@@ -30,6 +31,24 @@
             "partners",
         ].map((collName) => ensureCollection(gameDB, collName, COLLATION_EN)),
     );
+
+    await validateColl(gameDB, "game_configs", {
+        validator: {
+            $jsonSchema: {
+                bsonType: "object",
+                title: "Game Configs Validation",
+                required: ["_id", "gameId", "name"],
+                properties: {
+                    gameId: { bsonType: "int" },
+                    name: { bsonType: "string", description: "name cannot contains special characters", pattern: "^[a-zA-Z0-9]+$" },
+                    type: { bsonType: "int" },
+                },
+            },
+        },
+        validationLevel: "strict",
+        validationAction: "error",
+    });
+
     await deployIndexes(gameDB, "archive_statuses", [name_U, name_U_en]);
     await deployIndexes(gameDB, "game_configs", [name_U, name_U_en, gameId_U]);
     await deployIndexes(gameDB, "global_configs", [type_U]);
@@ -38,6 +57,4 @@
     await deployIndexes(gameDB, "currencies", [name_partner_U, name_partner_U_en]);
     await deployIndexes(gameDB, "currency_group_games", [group_game_U, gameId]);
     await deployIndexes(gameDB, "chips", [value_U]);
-
-    await gameDB.runCommand({ collMod: "game_configs", changeStreamPreAndPostImages: { enabled: true } });
 })();
