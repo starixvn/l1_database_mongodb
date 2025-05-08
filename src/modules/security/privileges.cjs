@@ -49,16 +49,26 @@ const privileges = /** @type {const} */ ({
     indexMaintenance: [
         { resource: { db: "", collection: "" }, actions: [...index] }, //
     ],
+    readConfigs: [
+        { resource: { db: "minigame", collection: "" }, actions: ["collStats", "listCollections", "listIndexes"] },
+        { resource: { db: "minigame", collection: "game_configs" }, actions: read }, //
+        { resource: { db: "minigame", collection: "currency_groups" }, actions: read },
+        { resource: { db: "minigame", collection: "currencies" }, actions: read },
+        { resource: { db: "minigame", collection: "currency_group_games" }, actions: read },
+        { resource: { db: "minigame", collection: "chips" }, actions: read },
+    ],
     writeConfigs: [
         { resource: { db: "minigame", collection: "game_configs" }, actions: rwData }, //
         { resource: { db: "minigame", collection: "currency_groups" }, actions: rwData },
         { resource: { db: "minigame", collection: "currencies" }, actions: rwData },
         { resource: { db: "minigame", collection: "currency_group_games" }, actions: rwData },
+        { resource: { db: "minigame", collection: "chips" }, actions: rwData },
 
         { resource: { db: "minigame_backup", collection: "backup_game_configs" }, actions: rwData },
         { resource: { db: "minigame_backup", collection: "backup_currency_groups" }, actions: rwData },
         { resource: { db: "minigame_backup", collection: "backup_currencies" }, actions: rwData },
         { resource: { db: "minigame_backup", collection: "backup_currency_group_games" }, actions: rwData },
+        { resource: { db: "minigame_backup", collection: "backup_chips" }, actions: rwData },
     ],
 });
 
