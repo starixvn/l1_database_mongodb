@@ -661,10 +661,58 @@ const gameSummaryConfig = (L) => [
         coll: { db: "minigame", group: "marblefootball2", round: "_rounds", postfix: "_bets" },
     },
     {
+        gameId: 115,
+        owGameTypeId: { [1]: 13219, [2]: 13512 }[`${L}`],
+        name: { en: "Solo Blackjack", vi: "Blackjack Solo", grp: "Blackjack", game: "Blackjack" },
+        coll: { db: "minigame", group: "soloblackjack", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 116,
+        owGameTypeId: { [1]: 13220, [2]: 13513 }[`${L}`],
+        name: { en: "Solo Pontoon", vi: "Solo Pontoon", grp: "Pontoon", game: "Solo Pontoon" },
+        coll: { db: "minigame", group: "solopontoon", round: "_rounds", postfix: "_bets" },
+    },
+    {
         gameId: 117,
         owGameTypeId: { [1]: 13218, [2]: 13511 }[`${L}`],
         name: { en: "God Of Fortune", vi: "Thần Tài Đến", grp: "Slots", game: "God Of Fortune" },
         coll: { db: "minigame", group: "godoffortune", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 118,
+        owGameTypeId: { [1]: 13221, [2]: 13514 }[`${L}`],
+        name: { en: "RNG Soccer", vi: "RNG Soccer", grp: "RNG Soccer", game: "RNG Soccer" },
+        coll: { db: "minigame", group: "rngsoccer", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 119,
+        owGameTypeId: { [1]: 13222, [2]: 13515 }[`${L}`],
+        name: { en: "RNG Basketball", vi: "RNG Basketball", grp: "RNG Basketball", game: "RNG Basketball" },
+        coll: { db: "minigame", group: "rngbasketball", round: "_rounds", postfix: "_bets" },
+    },
+    {
+        gameId: 121,
+        owGameTypeId: { [1]: 13224, [2]: 13517 }[`${L}`],
+        name: { en: "Wukong's Revenge", vi: "Ngộ Không Báo Thù", grp: "Slots", game: "Wukong's Revenge" },
+        coll: { db: "minigame", group: "wukongsrevenge", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 123,
+        owGameTypeId: { [1]: 13225, [2]: 13518 }[`${L}`],
+        name: { en: "Ramses' Lost Tomb", vi: "Kho Báu Ramses", grp: "Slots", game: "Ramses' Lost Tomb" },
+        coll: { db: "minigame", group: "ramseslosttomb", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 125,
+        owGameTypeId: { [1]: 13226, [2]: 13519 }[`${L}`],
+        name: { en: "One Day In Paradise", vi: "Đảo Thiên Đường", grp: "Slots", game: "One Day In Paradise" },
+        coll: { db: "minigame", group: "onedayinparadise", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 133,
+        owGameTypeId: { [1]: 13223, [2]: 13516 }[`${L}`],
+        name: { en: "Temple Of Cai Shen", vi: "Rước Lộc Thần Tài", grp: "Slots", game: "Temple Of Cai Shen" },
+        coll: { db: "minigame", group: "templeofcaishen", round: "_rounds", postfix: "_rounds" },
     },
 ];
 
