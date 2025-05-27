@@ -697,10 +697,22 @@ const gameSummaryConfig = (L) => [
         coll: { db: "minigame", group: "wukongsrevenge", round: "_rounds", postfix: "_rounds" },
     },
     {
+        gameId: 122,
+        owGameTypeId: { [1]: 13228, [2]: 13521 }[`${L}`],
+        name: { en: "Summer Heat", vi: "Mùa Hè Nóng Bỏng", grp: "Slots", game: "Summer Heat" },
+        coll: { db: "minigame", group: "summerheat", round: "_rounds", postfix: "_rounds" },
+    },
+    {
         gameId: 123,
         owGameTypeId: { [1]: 13225, [2]: 13518 }[`${L}`],
         name: { en: "Ramses' Lost Tomb", vi: "Kho Báu Ramses", grp: "Slots", game: "Ramses' Lost Tomb" },
         coll: { db: "minigame", group: "ramseslosttomb", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 124,
+        owGameTypeId: { [1]: 13227, [2]: 13520 }[`${L}`],
+        name: { en: "Ne Zha's Rebellion", vi: "Ma Đồng Nổi Loạn", grp: "Slots", game: "Ne Zha's Rebellion" },
+        coll: { db: "minigame", group: "nezhasrebellion", round: "_rounds", postfix: "_rounds" },
     },
     {
         gameId: 125,
