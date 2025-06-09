@@ -721,6 +721,18 @@ const gameSummaryConfig = (L) => [
         coll: { db: "minigame", group: "onedayinparadise", round: "_rounds", postfix: "_rounds" },
     },
     {
+        gameId: 126,
+        owGameTypeId: { [1]: 13229, [2]: 13522 }[`${L}`],
+        name: { en: "Poseidon's Realm", vi: "Kho Báu Poseidon", grp: "Slots", game: "Poseidon's Realm" },
+        coll: { db: "minigame", group: "poseidonsrealm", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 130,
+        owGameTypeId: { [1]: 13230, [2]: 13523 }[`${L}`],
+        name: { en: "Aladdin's Wishes", vi: "Aladdin Và Cây Đèn Thần", grp: "Slots", game: "Aladdin's Wishes" },
+        coll: { db: "minigame", group: "aladdin", round: "_rounds", postfix: "_rounds" },
+    },
+    {
         gameId: 133,
         owGameTypeId: { [1]: 13223, [2]: 13516 }[`${L}`],
         name: { en: "Temple Of Cai Shen", vi: "Rước Lộc Thần Tài", grp: "Slots", game: "Temple Of Cai Shen" },
