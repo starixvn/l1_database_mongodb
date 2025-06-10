@@ -6,6 +6,10 @@ const indexes = /** @type {const} */ ({
         key: { gameId: 1, jackpotConfigId: 1 },
         options: {},
     },
+    game_jackpotConfig_U: {
+        key: { gameId: 1, jackpotConfigId: 1 },
+        options: { unique: true },
+    },
     game_jackpotConfig_hitTime: {
         key: { gameId: 1, jackpotConfigId: 1, hitTime: 1 },
         options: {},

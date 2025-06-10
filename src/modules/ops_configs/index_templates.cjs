@@ -43,6 +43,13 @@ const indexTemplates = /** @type {const} */ ([
                     __archive_do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
                 },
             },
+            {
+                ns: { db: "minigame", postfix: "_tmprounds" },
+                idxs: {
+                    timeTTL: '{"key":{"endTime":1},"expireAfterSeconds":1200}',
+                    roundId: '{"key":{"roundId":1}}',
+                },
+            },
         ],
         __v: 2,
     },
