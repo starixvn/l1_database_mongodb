@@ -4,6 +4,7 @@ import * as serviceProviderCore from "@mongosh/service-provider-core";
 import * as shellApi from "@mongosh/shell-api";
 import ChangeStreamCursor from "@mongosh/shell-api/lib/change-stream-cursor.js";
 import * as biColumnType from "../modules/bi/data-types.cjs";
+import type { SupportedL } from "../modules/minigame/global_configs-data.cjs";
 
 type DBs = Record<string, Database>;
 
@@ -260,7 +261,7 @@ declare global {
 
 /** Custom type */
 declare global {
-    type Identity = { _id: string; L: number; stage: "active" | "archive" | "mixed" };
+    type Identity = { _id: string; L: SupportedL; stage: "active" | "archive" | "mixed" };
 }
 
 /** Collation */

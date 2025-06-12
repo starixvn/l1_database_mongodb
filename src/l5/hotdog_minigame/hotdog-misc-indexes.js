@@ -1,3 +1,4 @@
+// @ts-check
 (async () => {
     const { getIdentity, ensureCollection } = require("../../modules/db.cjs");
 
