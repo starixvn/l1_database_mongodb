@@ -1,3 +1,4 @@
+// @ts-check
 (async () => {
     const { getIdentity } = require("../../modules/db.cjs");
     const { log, stringifyResult } = require("../../modules/utils.cjs");
@@ -538,8 +539,66 @@
         });
     }
 
+    /** @type { BsonDocument[] } */
+    const archiveMarbleConfigs = [];
+
+    /** Marble */
+    {
+        const commonConfig = { category: "marble", type: 0 };
+
+        [
+            {
+                ...commonConfig,
+                id: 0,
+                gameConfigs: { type: "marble_events", name: "" },
+                from: { db: "marble_odds_feed", postfix: "events" },
+                to: { db: "marble_odds_feed_arc", postfix: "events_bk" },
+                alias: { time: "scheduleEndTs" },
+                config: { cutOffsetHours: -24, localField: "eventID" },
+                childs: [
+                    {
+                        from: { db: "marble_odds_feed", postfix: "event_details" },
+                        to: { db: "marble_odds_feed_arc", postfix: "event_details_bk" },
+                        config: { foreignField: "eventID" },
+                    },
+                    {
+                        from: { db: "hotdog_minigame", postfix: "soccer_marble_rounds" },
+                        to: { db: "hotdog_minigame_arc", postfix: "soccer_marble_rounds_bk" },
+                        config: { foreignField: "eventID" },
+                    },
+                ],
+            },
+            {
+                ...commonConfig,
+                id: 1,
+                gameConfigs: { type: "marble_events", name: "" },
+                from: { db: "marble_odds_feed", postfix: "event_details" },
+                to: { db: "marble_odds_feed_arc", postfix: "event_details_bk" },
+                alias: { time: "resultsAvailableTs" },
+                config: { cutOffsetHours: -24 * 31 },
+            },
+            {
+                ...commonConfig,
+                id: 2,
+                gameConfigs: { type: "marble_events", name: "" },
+                from: { db: "marble_odds_feed", postfix: "soccer_marble_rounds" },
+                to: { db: "marble_odds_feed_arc", postfix: "soccer_marble_rounds_bk" },
+                alias: { time: "_id" },
+                config: { cutOffsetHours: -24 * 31 },
+            },
+            {
+                ...commonConfig,
+                id: 0,
+                gameConfigs: { type: "marble_log", name: "log_records" },
+                from: { db: "marble_odds_feed", postfix: "" },
+                to: { db: "marble_odds_feed_arc", postfix: "_bk" },
+                alias: { time: "timestamp" },
+            },
+        ].forEach((config) => archiveMarbleConfigs.push(config));
+    }
+
     /** @type { AnyBulkWriteOperation[] } */
-    const bulkWrite = [...archiveConfigs, ...archiveGameConfigs].map((doc) => {
+    const bulkWrite = [...archiveConfigs, ...archiveGameConfigs, ...archiveMarbleConfigs].map((doc) => {
         const { gameConfigs, id } = doc;
         const data = Object.assign({}, { _id: { gameConfigs, id } }, doc);
 
