@@ -7,8 +7,9 @@ const {
     hotdogSummary$active,
     marbleBackend$active,
     marbleReadonly$active,
+    marbleArchive$active,
 } = require("./role-active-refs-sp.cjs");
-const { hotdogArchive$archive, hotdogBackend$archive, hotdogReadonly$archive, hotdogSummary$archive } = require("./role-archive-refs-sp.cjs");
+const { hotdogArchive$archive, hotdogBackend$archive, hotdogReadonly$archive, hotdogSummary$archive, marbleArchive$archive } = require("./role-archive-refs-sp.cjs");
 
 /** @satisfies { Record<string, UserDefinition> } */
 const activeUsers = /** @type {const} */ ({
@@ -47,6 +48,17 @@ const activeUsers = /** @type {const} */ ({
             hotdogReadonly$active,
             hotdogReadonly$archive,
             biSchema,
+        ],
+    },
+    lmn_archive: {
+        db: "admin",
+        user: "lmn_archive",
+        roles: [
+            ldb$public, //
+            hotdogArchive$active,
+            hotdogArchive$archive,
+            marbleArchive$active,
+            marbleArchive$archive,
         ],
     },
     lmn_backend: {

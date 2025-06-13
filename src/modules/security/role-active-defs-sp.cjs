@@ -9,6 +9,12 @@ const roleDefinitions = /** @type {const} */ ({
     hotdogReadonly$active: operatorReadonly$active("hotdog"),
     hotdogSummary$active: operatorSummary$active("hotdog"),
 
+    marbleArchive$active: {
+        db: "admin",
+        role: "marbleArchive$active",
+        roles: [db$readWrite("marble_odds_feed"), db$read(`ops_configs`)],
+        privileges: [],
+    },
     marbleBackend$active: {
         db: "admin",
         role: "marbleBackend$active",

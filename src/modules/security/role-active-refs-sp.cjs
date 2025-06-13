@@ -8,6 +8,7 @@ const {
 
     marbleBackend$active,
     marbleReadonly$active,
+    marbleArchive$active,
 } = require("./role-active-defs-sp.cjs");
 
 /** @satisfies { Record<string, Role> } */
@@ -17,6 +18,7 @@ const roleReferences = /** @type {const} */ ({
     hotdogReadonly$active: definitionToRef(hotdogReadonly$active),
     hotdogSummary$active: definitionToRef(hotdogSummary$active),
 
+    marbleArchive$active: definitionToRef(marbleArchive$active),
     marbleBackend$active: definitionToRef(marbleBackend$active),
     marbleReadonly$active: definitionToRef(marbleReadonly$active),
 });
