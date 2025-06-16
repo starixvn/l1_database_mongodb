@@ -553,7 +553,7 @@
                 gameConfigs: { type: "marble_events", name: "" },
                 from: { db: "marble_odds_feed", postfix: "events" },
                 to: { db: "marble_odds_feed_arc", postfix: "events_bk" },
-                alias: { time: "scheduleEndTs" },
+                alias: { time: "scheduleStartTs" },
                 config: { cutOffsetHours: -24, localField: "eventID" },
                 childs: [
                     {
