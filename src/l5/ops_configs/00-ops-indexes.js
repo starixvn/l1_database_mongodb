@@ -98,6 +98,7 @@
     });
 
     await deployIndexes(opsDB, "summary_configs", [gameConfigs_id_U, name_id_U]);
+    await deployIndexes(opsDB, "hotdog_summary_configs", [gameConfigs_id_U, name_id_U]);
     await deployIndexes(opsDB, "archive_configs", [gameConfigs_id_U, name_id_U]);
 
     await deployIndexes(opsDB, "change_stream_configs", [ns_U]);
