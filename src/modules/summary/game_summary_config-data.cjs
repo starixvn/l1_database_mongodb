@@ -727,10 +727,40 @@ const gameSummaryConfig = (L) => [
         coll: { db: "minigame", group: "poseidonsrealm", round: "_rounds", postfix: "_rounds" },
     },
     {
+        gameId: 127,
+        owGameTypeId: { [1]: 13234, [2]: 13527 }[`${L}`],
+        name: { en: "Mahjong Wins", vi: "Mạt Chược Phát Tài", grp: "Slots", game: "Mahjong Wins" },
+        coll: { db: "minigame", group: "mahjongwins", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 128,
+        owGameTypeId: { [1]: 13236, [2]: 13529 }[`${L}`],
+        name: { en: "Aztec Princess", vi: "Công Chúa Aztec", grp: "Slots", game: "Aztec Princess" },
+        coll: { db: "minigame", group: "aztecprincess", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 129,
+        owGameTypeId: { [1]: 13232, [2]: 13525 }[`${L}`],
+        name: { en: "Wild West Most Wanted", vi: "Tay Súng Cừ Khôi", grp: "Slots", game: "Wild West Most Wanted" },
+        coll: { db: "minigame", group: "wildwestmostwanted", round: "_rounds", postfix: "_rounds" },
+    },
+    {
         gameId: 130,
         owGameTypeId: { [1]: 13230, [2]: 13523 }[`${L}`],
         name: { en: "Aladdin's Wishes", vi: "Aladdin Và Cây Đèn Thần", grp: "Slots", game: "Aladdin's Wishes" },
         coll: { db: "minigame", group: "aladdin", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 131,
+        owGameTypeId: { [1]: 13233, [2]: 13526 }[`${L}`],
+        name: { en: "Happy Farm", vi: "Nông Trại Vui Vẻ", grp: "Slots", game: "Happy Farm" },
+        coll: { db: "minigame", group: "happyfarm", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 132,
+        owGameTypeId: { [1]: 13235, [2]: 13528 }[`${L}`],
+        name: { en: "Fruit Samurai", vi: "Chém Hoa Quả", grp: "Slots", game: "Fruit Samurai" },
+        coll: { db: "minigame", group: "fruitsamurai", round: "_rounds", postfix: "_rounds" },
     },
     {
         gameId: 133,
