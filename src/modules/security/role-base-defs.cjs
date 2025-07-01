@@ -1,10 +1,21 @@
 // @ts-check
 const { monitorAllCollections, readIdentity, readSystemObjects, backupCluster, clusterChangeStream, indexMaintenance, writeConfigs, readConfigs } = require("./privileges.cjs");
-const { readAnyDatabase, db$readWrite } = require("./role-builtin.cjs");
+const { readAnyDatabase, db$readWrite, root, db$dbOwner } = require("./role-builtin.cjs");
 const { db$read } = require("./role-builtin.cjs");
 
 /** @satisfies { Record<string, RoleDefinition> } */
 const roleDefinitions = /** @type {const} */ ({
+    ldb$gaia: {
+        db: "admin",
+        role: "gaia",
+        roles: [
+            root, //
+            db$dbOwner("admin"),
+            db$dbOwner("config"),
+            db$dbOwner("local"),
+        ],
+        privileges: [],
+    },
     ldb$clusterWatcher: {
         db: "admin",
         role: "clusterWatcher",
@@ -36,6 +47,12 @@ const roleDefinitions = /** @type {const} */ ({
             db$readWrite("sync"), //
         ],
         privileges: writeConfigs,
+    },
+    ldb$logRotate: {
+        db: "admin",
+        role: "logRotate",
+        roles: [],
+        privileges: [{ resource: { cluster: true }, actions: ["logRotate"] }],
     },
 
     ldb$minigameReadConfigs: {
