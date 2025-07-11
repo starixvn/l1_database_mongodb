@@ -8,7 +8,7 @@
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
     const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
-    const { memberId_iP, token } = require("../../modules/indexes/member.cjs");
+    const { memberId_iP, token, iP_playerId_en } = require("../../modules/indexes/member.cjs");
 
     const memberDB = db.getSiblingDB("member");
 
@@ -17,5 +17,5 @@
             "member_auths", //
         ].map((collName) => ensureCollection(memberDB, collName, STORAGE_COMPRESSED)),
     );
-    await deployIndexes(memberDB, "member_auths", [TTL_8d, memberId_iP, token]);
+    await deployIndexes(memberDB, "member_auths", [TTL_8d, memberId_iP, iP_playerId_en, token]);
 })();
