@@ -10,11 +10,12 @@
         {
             category: "games",
             type: 2,
-            dbs: ["hotdog_minigame"],
+            targets: [{ db: "ops_configs", coll: "hotdog_summary_configs" }],
             data: [
                 {
-                    summaryDb: "hotdog_summary",
+                    db: "hotdog_minigame",
                     coll: { round: "_rounds" },
+                    filter: '{"paid":true}',
                     aliases: { playerId: "playerId", settled: "paid", time: "time", subRoundId: "id" },
                     calc: {
                         roundId: '"$id"',
@@ -25,16 +26,15 @@
                     },
                 },
             ],
-            targets: [{ db: "ops_configs", coll: "hotdog_summary_configs" }],
-            __v: 3,
+            __v: 2,
         },
         {
             category: "games",
             type: 6,
-            dbs: ["hotdog_minigame"],
+            targets: [{ db: "ops_configs", coll: "hotdog_summary_configs" }],
             data: [
                 {
-                    summaryDb: "hotdog_summary",
+                    db: "hotdog_minigame",
                     coll: { round: "_rounds", bet: "_bets" },
                     aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
                     calc: {
@@ -46,8 +46,7 @@
                     },
                 },
             ],
-            targets: [{ db: "ops_configs", coll: "hotdog_summary_configs" }],
-            __v: 3,
+            __v: 2,
         },
     ];
 
