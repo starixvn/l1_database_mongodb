@@ -1,3 +1,4 @@
+// @ts-check
 (async () => {
     const { getIdentity, ensureCollection, validateColl } = require("../../modules/db.cjs");
 
@@ -22,7 +23,7 @@
         recheckInTime,
         sessionId_U,
         ssoToken,
-        memberId_en,
+        playerId_en,
     } = require("../../modules/indexes/user.cjs");
 
     const gameDB = db.getSiblingDB("hotdog_minigame");
@@ -50,7 +51,7 @@
         validationAction: "error",
     });
 
-    await deployIndexes(gameDB, "users", [memberId_en, operatorId, playerId, username_U_en]);
+    await deployIndexes(gameDB, "users", [playerId_en, operatorId, playerId, username_U_en]);
     await deployIndexes(gameDB, "userinfos", [currency_en, id_U, id_U_en, name_U_en, type_inRoom_en, UID_U_en]);
     await deployIndexes(gameDB, "usersessions", [TTL_8d, playerId, recheckInTime, sessionId_U, ssoToken, __archive_summarized, __archive_do_summary]);
 })();
