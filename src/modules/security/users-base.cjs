@@ -1,6 +1,6 @@
 // @ts-check
-const { db$dbOwner, root, clusterMonitor, readAnyDatabase, db$readWrite } = require("./role-builtin.cjs");
-const { ldb$readSystem, ldb$monitorSystem, ldb$clusterWatcher, ldb$tmpMaintenance } = require("./role-base-refs.cjs");
+const { root, clusterMonitor } = require("./role-builtin.cjs");
+const { ldb$readSystem, ldb$monitorSystem, ldb$clusterWatcher, ldb$logRotate, ldb$gaia } = require("./role-base-refs.cjs");
 
 /** @satisfies { Record<string, UserDefinition> } */
 const baseUsers = /** @type {const} */ ({
@@ -8,46 +8,44 @@ const baseUsers = /** @type {const} */ ({
         db: "admin",
         user: "billy.bui",
         roles: [
-            root, //
-            db$dbOwner("admin"),
-            db$dbOwner("config"),
-            db$dbOwner("local"),
+            root, // -
+            ldb$gaia,
         ],
     },
     kathy$admin: {
         db: "admin",
         user: "kathy.nguyen",
         roles: [
-            readAnyDatabase, //
-            clusterMonitor,
-            ldb$monitorSystem,
-            db$readWrite("test"),
-            db$readWrite("minigame_test"),
-            db$readWrite("log_test"),
-            db$readWrite("summary_test"),
-            ldb$tmpMaintenance,
+            ldb$gaia, // -
         ],
     },
     lmn_backup: {
         db: "admin",
         user: "lmn_backup",
         roles: [
-            ldb$readSystem, //
+            ldb$readSystem, // -
         ],
     },
     lmn_watcher: {
         db: "admin",
         user: "lmn_watcher",
         roles: [
-            ldb$clusterWatcher, //
+            ldb$clusterWatcher, // -
         ],
     },
     mongodb_exporter: {
         db: "admin",
         user: "mongodb_exporter",
         roles: [
-            clusterMonitor, //
+            clusterMonitor, // -
             ldb$monitorSystem,
+        ],
+    },
+    logRotater: {
+        db: "admin",
+        user: "logRotater",
+        roles: [
+            ldb$logRotate, // -
         ],
     },
 });

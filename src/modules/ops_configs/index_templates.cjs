@@ -34,6 +34,22 @@ const indexTemplates = /** @type {const} */ ([
                     uid_roundId_U: '{"key":{"uid":1,"roundId":1},"unique":true}',
                 },
             },
+            {
+                ns: { db: "minigame", postfix: "_jackpots" },
+                idxs: {
+                    jackpot_prize_FU: '{"key":{"jackpotConfigId":1,"prize":1},"unique":true,"partialFilterExpression":{"hitAt":null,"prize":{"$gt":""}}}',
+                    jackpot_prize_created_FU: '{"key":{"jackpotConfigId":1,"prize":1,"createdAt":1},"unique":true,"partialFilterExpression":{"prize":{"$gt":""}}}',
+                    __archive_summarized: '{"key":{"__archive.summarized":1}}',
+                    __archive_do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
+                },
+            },
+            {
+                ns: { db: "minigame", postfix: "_tmprounds" },
+                idxs: {
+                    timeTTL: '{"key":{"endTime":1},"expireAfterSeconds":1200}',
+                    roundId: '{"key":{"roundId":1}}',
+                },
+            },
         ],
         __v: 2,
     },

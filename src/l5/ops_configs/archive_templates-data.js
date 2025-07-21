@@ -9,6 +9,72 @@
     const archiveTemplates = [
         {
             category: "games",
+            type: 2,
+            dbs: ["hotdog_minigame"],
+            data: [
+                {
+                    id: 0,
+                    from: { db: "", postfix: "_rounds" },
+                    to: { db: "_arc", postfix: "_rounds_bk" },
+                    alias: { time: "endTime" },
+                    config: { cutOffsetHours: -24, localField: "id" },
+                    filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
+                    childs: [
+                        {
+                            from: { db: "", postfix: "_fames" },
+                            to: { db: "_arc", postfix: "_fames_bk" },
+                            config: { foreignField: "roundId" },
+                            filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
+                        },
+                        {
+                            from: { db: "", postfix: "_freespins" },
+                            to: { db: "_arc", postfix: "_freespins_bk" },
+                            config: { foreignField: "roundId" },
+                            filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
+                            log: { field: "_freespins", value: "id" },
+                        },
+                    ],
+                    log: { field: "_rounds", value: "id" },
+                },
+                {
+                    id: 1,
+                    from: { db: "", postfix: "_freespins" },
+                    to: { db: "_arc", postfix: "_freespins_bk" },
+                    alias: { time: "time" },
+                    config: { cutOffsetHours: -8 * 24 },
+                    filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
+                    log: { field: "_freespins", value: "id" },
+                },
+                {
+                    id: 2,
+                    from: { db: "", postfix: "_freespins" },
+                    to: { db: "_arc", postfix: "_freespins_bk" },
+                    alias: { time: "time" },
+                    config: { cutOffsetHours: -8 * 24, updateOnly: true },
+                    filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
+                },
+                {
+                    id: 3,
+                    from: { db: "", postfix: "_fames" },
+                    to: { db: "_arc", postfix: "_fames_bk" },
+                    alias: { time: "time" },
+                    config: { cutOffsetHours: -8 * 24 },
+                    filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
+                },
+                {
+                    id: 4,
+                    from: { db: "", postfix: "_fames" },
+                    to: { db: "_arc", postfix: "_fames_bk" },
+                    alias: { time: "time" },
+                    config: { cutOffsetHours: -8 * 24, updateOnly: true },
+                    filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
+                },
+            ],
+            targets: [{ db: "ops_configs", coll: "archive_configs" }],
+            __v: 3,
+        },
+        {
+            category: "games",
             type: 6,
             dbs: ["hotdog_minigame"],
             data: [

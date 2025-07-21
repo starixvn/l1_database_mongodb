@@ -1,11 +1,13 @@
 // @ts-check
 const { definitionToRef } = require("./security-utils.cjs");
 const {
-    ldb$clusterWatcher, // -
+    ldb$gaia,
+    ldb$clusterWatcher,
     ldb$public,
     ldb$monitorSystem,
     ldb$readSystem,
     ldb$writeConfigs,
+    ldb$logRotate,
 
     ldb$minigameReadConfigs,
 
@@ -17,11 +19,13 @@ const {
 
 /** @satisfies { Record<string, Role> } */
 const roleReferences = /** @type {const} */ ({
+    ldb$gaia: definitionToRef(ldb$gaia),
     ldb$clusterWatcher: definitionToRef(ldb$clusterWatcher),
     ldb$public: definitionToRef(ldb$public),
     ldb$monitorSystem: definitionToRef(ldb$monitorSystem),
     ldb$readSystem: definitionToRef(ldb$readSystem),
     ldb$writeConfigs: definitionToRef(ldb$writeConfigs),
+    ldb$logRotate: definitionToRef(ldb$logRotate),
 
     ldb$minigameReadConfigs: definitionToRef(ldb$minigameReadConfigs),
 

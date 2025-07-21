@@ -9,10 +9,32 @@
     const summaryTemplates = [
         {
             category: "games",
-            type: 6,
-            dbs: ["hotdog_minigame"],
+            type: 2,
+            targets: [{ db: "ops_configs", coll: "hotdog_summary_configs" }],
             data: [
                 {
+                    db: "hotdog_minigame",
+                    coll: { round: "_rounds" },
+                    filter: '{"paid":true}',
+                    aliases: { playerId: "playerId", settled: "paid", time: "time", subRoundId: "id" },
+                    calc: {
+                        roundId: '"$id"',
+                        tickets: '{"$literal":1}',
+                        stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
+                        payout: '"$betWin"',
+                        refund: '{"$literal":0}',
+                    },
+                },
+            ],
+            __v: 2,
+        },
+        {
+            category: "games",
+            type: 6,
+            targets: [{ db: "ops_configs", coll: "hotdog_summary_configs" }],
+            data: [
+                {
+                    db: "hotdog_minigame",
                     coll: { round: "_rounds", bet: "_bets" },
                     aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
                     calc: {
@@ -24,8 +46,7 @@
                     },
                 },
             ],
-            targets: [{ db: "ops_configs", coll: "summary_configs" }],
-            __v: 3,
+            __v: 2,
         },
     ];
 

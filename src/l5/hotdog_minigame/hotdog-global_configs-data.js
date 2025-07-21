@@ -1,3 +1,4 @@
+// @ts-check
 (async () => {
     const { getIdentity } = require("../../modules/db.cjs");
     const { log, stringifyResult } = require("../../modules/utils.cjs");

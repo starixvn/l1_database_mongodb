@@ -727,16 +727,64 @@ const gameSummaryConfig = (L) => [
         coll: { db: "minigame", group: "poseidonsrealm", round: "_rounds", postfix: "_rounds" },
     },
     {
+        gameId: 127,
+        owGameTypeId: { [1]: 13234, [2]: 13527 }[`${L}`],
+        name: { en: "Mahjong Wins", vi: "Mạt Chược Phát Tài", grp: "Slots", game: "Mahjong Wins" },
+        coll: { db: "minigame", group: "mahjongwins", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 128,
+        owGameTypeId: { [1]: 13236, [2]: 13529 }[`${L}`],
+        name: { en: "Aztec Princess", vi: "Công Chúa Aztec", grp: "Slots", game: "Aztec Princess" },
+        coll: { db: "minigame", group: "aztecprincess", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 129,
+        owGameTypeId: { [1]: 13232, [2]: 13525 }[`${L}`],
+        name: { en: "Wild West Most Wanted", vi: "Tay Súng Cừ Khôi", grp: "Slots", game: "Wild West Most Wanted" },
+        coll: { db: "minigame", group: "wildwestmostwanted", round: "_rounds", postfix: "_rounds" },
+    },
+    {
         gameId: 130,
         owGameTypeId: { [1]: 13230, [2]: 13523 }[`${L}`],
         name: { en: "Aladdin's Wishes", vi: "Aladdin Và Cây Đèn Thần", grp: "Slots", game: "Aladdin's Wishes" },
         coll: { db: "minigame", group: "aladdin", round: "_rounds", postfix: "_rounds" },
     },
     {
+        gameId: 131,
+        owGameTypeId: { [1]: 13233, [2]: 13526 }[`${L}`],
+        name: { en: "Happy Farm", vi: "Nông Trại Vui Vẻ", grp: "Slots", game: "Happy Farm" },
+        coll: { db: "minigame", group: "happyfarm", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 132,
+        owGameTypeId: { [1]: 13235, [2]: 13528 }[`${L}`],
+        name: { en: "Fruit Samurai", vi: "Chém Hoa Quả", grp: "Slots", game: "Fruit Samurai" },
+        coll: { db: "minigame", group: "fruitsamurai", round: "_rounds", postfix: "_rounds" },
+    },
+    {
         gameId: 133,
         owGameTypeId: { [1]: 13223, [2]: 13516 }[`${L}`],
         name: { en: "Temple Of Cai Shen", vi: "Rước Lộc Thần Tài", grp: "Slots", game: "Temple Of Cai Shen" },
         coll: { db: "minigame", group: "templeofcaishen", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 139,
+        owGameTypeId: { [1]: 13237, [2]: 13530 }[`${L}`],
+        name: { en: "Olympub", vi: "Quán Bar Olympus", grp: "Slots", game: "Temple Of Cai Shen" },
+        coll: { db: "minigame", group: "olympub", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 140,
+        owGameTypeId: { [1]: 13238, [2]: 13531 }[`${L}`],
+        name: { en: "Viva Fiesta", vi: "Vui Hội Mexico", grp: "Slots", game: "Temple Of Cai Shen" },
+        coll: { db: "minigame", group: "vivafiesta", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 141,
+        owGameTypeId: { [1]: 13239, [2]: 13532 }[`${L}`],
+        name: { en: "Big Bass Fishing", vi: "Vua Câu Cá", grp: "Slots", game: "Temple Of Cai Shen" },
+        coll: { db: "minigame", group: "bigbassfishing", round: "_rounds", postfix: "_rounds" },
     },
 ];
 
