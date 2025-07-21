@@ -768,6 +768,24 @@ const gameSummaryConfig = (L) => [
         name: { en: "Temple Of Cai Shen", vi: "Rước Lộc Thần Tài", grp: "Slots", game: "Temple Of Cai Shen" },
         coll: { db: "minigame", group: "templeofcaishen", round: "_rounds", postfix: "_rounds" },
     },
+    {
+        gameId: 139,
+        owGameTypeId: { [1]: 13237, [2]: 13530 }[`${L}`],
+        name: { en: "Olympub", vi: "Quán Bar Olympus", grp: "Slots", game: "Temple Of Cai Shen" },
+        coll: { db: "minigame", group: "olympub", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 140,
+        owGameTypeId: { [1]: 13238, [2]: 13531 }[`${L}`],
+        name: { en: "Viva Fiesta", vi: "Vui Hội Mexico", grp: "Slots", game: "Temple Of Cai Shen" },
+        coll: { db: "minigame", group: "vivafiesta", round: "_rounds", postfix: "_rounds" },
+    },
+    {
+        gameId: 141,
+        owGameTypeId: { [1]: 13239, [2]: 13532 }[`${L}`],
+        name: { en: "Big Bass Fishing", vi: "Vua Câu Cá", grp: "Slots", game: "Temple Of Cai Shen" },
+        coll: { db: "minigame", group: "bigbassfishing", round: "_rounds", postfix: "_rounds" },
+    },
 ];
 
 module.exports = { gameSummaryConfig };
