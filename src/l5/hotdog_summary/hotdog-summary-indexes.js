@@ -1,3 +1,4 @@
+// @ts-check
 (async () => {
     const { getIdentity, ensureCollection } = require("../../modules/db.cjs");
 
@@ -22,7 +23,7 @@
         owGameTypeId_FU,
     } = require("../../modules/indexes/summary.cjs");
     const { _ids_hourlySummary, _ids_dailySummary } = require("../../modules/indexes/summary-flags.cjs");
-    const { TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
+    const { TTL_31d } = require("../../modules/indexes/archive-flags.cjs");
 
     const sumDB = db.getSiblingDB("hotdog_summary");
 
@@ -41,7 +42,7 @@
 
     await deployIndexes(sumDB, "betlog_summaries", [time_TTL_8d, time_currency_game_system_operator_U, game_system_time]);
     await deployIndexes(sumDB, "round_summaries", [
-        TTL_8d,
+        TTL_31d,
         game_currency_operator_site_round_U,
         flag_do_daily_F,
         flag_daily,
@@ -50,8 +51,8 @@
         _ids_hourlySummary,
         _ids_dailySummary,
     ]);
-    await deployIndexes(sumDB, "daily_summaries", [TTL_8d, time_currency_game_operator_site_U]);
-    await deployIndexes(sumDB, "hourly_summaries", [TTL_8d, time_currency_game_operator_site_U]);
-    await deployIndexes(sumDB, "daily_statements", [TTL_8d, time_game_operator_site_player_U]);
-    await deployIndexes(sumDB, "hourly_statements", [TTL_8d, time_game_operator_site_player_U]);
+    await deployIndexes(sumDB, "daily_summaries", [TTL_31d, time_currency_game_operator_site_U]);
+    await deployIndexes(sumDB, "hourly_summaries", [TTL_31d, time_currency_game_operator_site_U]);
+    await deployIndexes(sumDB, "daily_statements", [TTL_31d, time_game_operator_site_player_U]);
+    await deployIndexes(sumDB, "hourly_statements", [TTL_31d, time_game_operator_site_player_U]);
 })();
