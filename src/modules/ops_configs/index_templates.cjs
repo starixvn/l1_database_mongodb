@@ -307,6 +307,49 @@ const indexTemplates = /** @type {const} */ ([
         ],
         __v: 2,
     },
+    {
+        category: "games",
+        type: 9,
+        colls: [
+            {
+                ns: { db: "minigame", postfix: "_rounds" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    time: '{"key":{"time":1}}',
+                    id_U: '{"key":{"id":1},"unique":true}',
+                },
+            },
+            {
+                ns: { db: "minigame", postfix: "_betlogs" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
+                    roundId: '{"key":{"roundId":1,"_id":1}}',
+                    player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"playerId":{"$gt":""}}}',
+                    uid: '{"key":{"uid":1}}',
+                },
+            },
+            {
+                ns: { db: "minigame", postfix: "_bets" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
+                    roundId: '{"key":{"roundId":1,"_id":1}}',
+                    player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"playerId":{"$gt":""}}}',
+                    uid_roundId: '{"key":{"uid":1,"roundId":1},"unique":true}',
+                    summarized: '{"key":{"__archive.summarized":1}}',
+                    do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
+                },
+            },
+            {
+                ns: { db: "minigame", postfix: "_leaderboards" },
+                idxs: {
+                    date_operator_currency_U: '{"key":{"date":1,"operatorId":1,"currency":1},"unique":true}',
+                },
+            },
+        ],
+        __v: 2,
+    },
 ]);
 
 module.exports = { indexTemplates };
