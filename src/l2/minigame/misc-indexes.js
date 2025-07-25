@@ -1,3 +1,4 @@
+// @ts-check
 (async () => {
     const { getIdentity, ensureCollection } = require("../../modules/db.cjs");
 
@@ -8,7 +9,7 @@
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
     const { TTL_1h } = require("../../modules/indexes/archive-flags.cjs");
-    const { createdAt, gameDisplay } = require("../../modules/indexes/misc.cjs");
+    const { createdAt, displayGame } = require("../../modules/indexes/misc.cjs");
 
     const gameDB = db.getSiblingDB("minigame");
 
@@ -18,5 +19,5 @@
         ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(gameDB, "notification_service_events", [TTL_1h, createdAt]);
-    await deployIndexes(gameDB, "notifications", [gameDisplay]);
+    await deployIndexes(gameDB, "notifications", [displayGame]);
 })();
