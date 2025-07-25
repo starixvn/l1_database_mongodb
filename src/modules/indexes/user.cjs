@@ -15,10 +15,6 @@ const indexes = /** @type {const} */ ({
         key: { id: 1 },
         options: { unique: true, collation: LOCALES.en },
     },
-    memberId_en: {
-        key: { "local.memberId": 1 },
-        options: { collation: LOCALES.en },
-    },
     name_U_en: {
         key: { name: 1 },
         options: { unique: true, collation: LOCALES.en },
@@ -30,6 +26,10 @@ const indexes = /** @type {const} */ ({
     playerId: {
         key: { playerId: 1 },
         options: { collation: LOCALES.simple },
+    },
+    playerId_en: {
+        key: { playerId: 1 },
+        options: { collation: LOCALES.en },
     },
     recheckInTime: {
         key: { recheckInTime: 1 },
