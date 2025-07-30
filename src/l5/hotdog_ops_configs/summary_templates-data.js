@@ -10,7 +10,7 @@
         {
             category: "games",
             type: 2,
-            targets: [{ db: "ops_configs", coll: "hotdog_summary_configs" }],
+            targets: [{ db: "hotdog_ops_configs", coll: "summary_configs" }],
             data: [
                 {
                     db: "hotdog_minigame",
@@ -31,7 +31,7 @@
         {
             category: "games",
             type: 6,
-            targets: [{ db: "ops_configs", coll: "hotdog_summary_configs" }],
+            targets: [{ db: "hotdog_ops_configs", coll: "summary_configs" }],
             data: [
                 {
                     db: "hotdog_minigame",

@@ -69,7 +69,7 @@
                     filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
                 },
             ],
-            targets: [{ db: "ops_configs", coll: "archive_configs" }],
+            targets: [{ db: "hotdog_ops_configs", coll: "archive_configs" }],
             __v: 2,
         },
         {

@@ -98,7 +98,7 @@
 
     const opsDB = db.getSiblingDB("hotdog_ops_configs");
     if (bulkWrite.length) {
-        const res = await opsDB.getCollection("hotdog_summary_configs").bulkWrite(bulkWrite, { ordered: false });
-        log("I", "DATA", `[${opsDB.getName()}.hotdog_summary_configs]`, `• ${stringifyResult(res)}`);
+        const res = await opsDB.getCollection("summary_configs").bulkWrite(bulkWrite, { ordered: false });
+        log("I", "DATA", `[${opsDB.getName()}.summary_configs]`, `• ${stringifyResult(res)}`);
     }
 })();
