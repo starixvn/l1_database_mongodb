@@ -47,6 +47,14 @@ const indexes = /** @type {const} */ ({
         key: { type: 1, inRoom: 1, inGameRoom: 1 },
         options: { collation: LOCALES.en },
     },
+    typeTrue_red_en: {
+        key: { type: 1, red: 1 },
+        options: { collation: LOCALES.en, partialFilterExpression: { type: true } },
+    },
+    typeTrue_disabled_inRoom_en: {
+        key: { type: 1, disabled: 1, inRoom: 1 },
+        options: { collation: LOCALES.en, partialFilterExpression: { type: true } },
+    },
     UID_U_en: {
         key: { UID: 1 },
         options: { unique: true, collation: LOCALES.en },

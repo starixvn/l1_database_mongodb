@@ -18,12 +18,13 @@
         id_U,
         id_U_en,
         name_U_en,
-        type_inRoom_en,
         UID_U_en,
         recheckInTime,
         sessionId_U,
         ssoToken,
         playerId_en,
+        typeTrue_disabled_inRoom_en,
+        typeTrue_red_en,
     } = require("../../modules/indexes/user.cjs");
 
     const gameDB = db.getSiblingDB("hotdog_minigame");
@@ -52,6 +53,6 @@
     });
 
     await deployIndexes(gameDB, "users", [playerId_en, operatorId, playerId, username_U_en]);
-    await deployIndexes(gameDB, "userinfos", [currency_en, id_U, id_U_en, name_U_en, type_inRoom_en, UID_U_en]);
+    await deployIndexes(gameDB, "userinfos", [currency_en, id_U, id_U_en, name_U_en, typeTrue_red_en, typeTrue_disabled_inRoom_en, UID_U_en]);
     await deployIndexes(gameDB, "usersessions", [TTL_8d, playerId, recheckInTime, sessionId_U, ssoToken, __archive_summarized, __archive_do_summary]);
 })();

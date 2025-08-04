@@ -6,8 +6,8 @@ const indexes = /** @type {const} */ ({
         key: { createdAt: 1 },
         options: {},
     },
-    gameDisplay: {
-        key: { gameName: 1, displayKind: 1 },
+    displayGame: {
+        key: { displayKind: 1, gameName: 1 },
         options: {},
     },
 });
