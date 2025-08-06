@@ -54,33 +54,44 @@
         },
         {
             ...commonConfig,
-            gameConfigs: { gameId: 1005, name: "seball1" },
+            gameConfigs: { gameId: 26, name: "vipfishprawncrab" },
             db: "hotdog_minigame",
-            coll: { round: "_rounds", bet: "_bets" },
-            aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "drawId" },
+            coll: { round: "_phiens", bet: "_cuocs" },
+            aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
             calc: {
                 roundId: '"$id"',
                 tickets: '{"$literal":1}',
-                stake: '"$totalAmount"',
-                payout: '"$betwin"',
-                refund: '{"$literal":0}',
-            },
-        },
-        {
-            ...commonConfig,
-            gameConfigs: { gameId: 1007, name: "sicball" },
-            db: "hotdog_minigame",
-            coll: { round: "_rounds", bet: "_bets" },
-            aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "drawId" },
-            calc: {
-                roundId: '"$id"',
-                tickets: '{"$literal":1}',
-                stake: '"$totalAmount"',
+                stake: '{"$multiply":[{"$add":["$stag","$gourd","$rooster","$fish","$crab","$prawn","$mountain","$ocean","$anyTriple"]},{"$toInt":{"$not":"$freeBet"}}]}',
                 payout: '"$betwin"',
                 refund: '{"$literal":0}',
             },
         },
     ];
+
+    [
+        { gameId: 25, name: "sicbo" }, // -
+        { gameId: 55, name: "unbalancedbigsmall4" },
+        { gameId: 67, name: "dragontigerfight" },
+        { gameId: 80, name: "cointoss" },
+        { gameId: 93, name: "footballcointoss" },
+        { gameId: 1005, name: "seball1" },
+        { gameId: 1007, name: "sicball" },
+    ].forEach((gameConfigs) =>
+        summaryConfigs.push({
+            ...commonConfig,
+            gameConfigs,
+            db: "hotdog_minigame",
+            coll: { round: "_rounds", bet: "_bets" },
+            aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
+            calc: {
+                roundId: '"$id"',
+                tickets: '{"$literal":1}',
+                stake: '"$totalAmount"',
+                payout: '"$betwin"',
+                refund: '{"$literal":0}',
+            },
+        }),
+    );
 
     /** @type { AnyBulkWriteOperation[] } */
     const bulkWrite = summaryConfigs.map((doc) => {

@@ -305,7 +305,7 @@
         });
 
         [
-            // { gameId: 25, name: "sicbo" }, // -
+            { gameId: 25, name: "sicbo" }, // -
         ].forEach((gameConfigs) => {
             [
                 {
@@ -396,7 +396,7 @@
         });
 
         [
-            // { gameId: 26, name: "vipfishprawncrab" }, // -
+            { gameId: 26, name: "vipfishprawncrab" }, // -
         ].forEach((gameConfigs) => {
             [
                 {
@@ -444,9 +444,10 @@
         });
 
         [
-            // { gameId: 55, name: "unbalancedbigsmall4" },
+            { gameId: 55, name: "unbalancedbigsmall4" },
             { gameId: 67, name: "dragontigerfight" },
-            // { gameId: 80, name: "cointoss" },
+            { gameId: 80, name: "cointoss" },
+            { gameId: 93, name: "footballcointoss" },
             { gameId: 1005, name: "seball1" },
             { gameId: 1007, name: "sicball" },
         ].forEach((gameConfigs) => {
