@@ -12,7 +12,7 @@
             type: 2,
             colls: [
                 {
-                    ns: { db: "minigame", postfix: "_rounds" },
+                    ns: { db: "hotdog_minigame", postfix: "_rounds" },
                     idxs: {
                         TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
                         time: '{"key":{"time":1}}',
@@ -25,7 +25,7 @@
                     },
                 },
                 {
-                    ns: { db: "minigame", postfix: "_freespins" },
+                    ns: { db: "hotdog_minigame", postfix: "_freespins" },
                     idxs: {
                         TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
                         time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
@@ -34,7 +34,7 @@
                     },
                 },
                 {
-                    ns: { db: "minigame", postfix: "_fames" },
+                    ns: { db: "hotdog_minigame", postfix: "_fames" },
                     idxs: {
                         TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
                         time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
@@ -42,7 +42,7 @@
                     },
                 },
                 {
-                    ns: { db: "minigame", postfix: "_jackpots" },
+                    ns: { db: "hotdog_minigame", postfix: "_jackpots" },
                     idxs: {
                         jackpot_prize_FU: '{"key":{"jackpotConfigId":1,"prize":1},"unique":true,"partialFilterExpression":{"hitAt":null,"prize":{"$gt":""}}}',
                         jackpot_prize_created_FU: '{"key":{"jackpotConfigId":1,"prize":1,"createdAt":1},"unique":true,"partialFilterExpression":{"prize":{"$gt":""}}}',
@@ -51,7 +51,7 @@
                     },
                 },
                 {
-                    ns: { db: "minigame", postfix: "_tmprounds" },
+                    ns: { db: "hotdog_minigame", postfix: "_tmprounds" },
                     idxs: {
                         timeTTL: '{"key":{"endTime":1},"expireAfterSeconds":1200}',
                         roundId: '{"key":{"roundId":1}}',
