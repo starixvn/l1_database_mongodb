@@ -8,11 +8,11 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { TTL_31d } = require("../../modules/indexes/archive-flags.cjs");
-    const { game_round_U, game_event, event, game, timestamp } = require("../../modules/indexes/marble-odds-feed.cjs");
+    const { game_round_U, startTs, event, game, timestamp, event_U } = require("../../modules/indexes/marble-odds-feed.cjs");
 
     const marbleDB = db.getSiblingDB("marble_odds_feed");
 
-    await deployIndexes(marbleDB, "events", [TTL_31d, game_event]);
+    await deployIndexes(marbleDB, "events", [TTL_31d, event_U, startTs]);
     await deployIndexes(marbleDB, "event_details", [TTL_31d, event]);
     await deployIndexes(marbleDB, "operators", []);
     await deployIndexes(marbleDB, "game_integrations", [game]);

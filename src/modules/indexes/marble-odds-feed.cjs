@@ -5,12 +5,16 @@ const indexes = /** @type {const} */ ({
         key: { eventID: 1 },
         options: {},
     },
+    event_U: {
+        key: { eventID: 1 },
+        options: { unique: true },
+    },
     game: {
         key: { gameId: 1 },
         options: {},
     },
-    game_event: {
-        key: { gameId: 1, eventID: 1 },
+    startTs: {
+        key: { scheduleStartTs: 1 },
         options: {},
     },
     game_round_U: {
