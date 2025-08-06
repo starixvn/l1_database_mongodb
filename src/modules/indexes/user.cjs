@@ -15,6 +15,10 @@ const indexes = /** @type {const} */ ({
         key: { id: 1 },
         options: { unique: true, collation: LOCALES.en },
     },
+    memberId: {
+        key: { "local.memberId": 1 },
+        options: { collation: LOCALES.simple },
+    },
     name_U_en: {
         key: { name: 1 },
         options: { unique: true, collation: LOCALES.en },

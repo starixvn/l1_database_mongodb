@@ -9,7 +9,7 @@
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
     const { TTL_1h } = require("../../modules/indexes/archive-flags.cjs");
-    const { createdAt, displayGame } = require("../../modules/indexes/misc.cjs");
+    const { createdAt, displayGame, finish_isPartner } = require("../../modules/indexes/misc.cjs");
 
     const gameDB = db.getSiblingDB("minigame");
 
@@ -20,4 +20,5 @@
     );
     await deployIndexes(gameDB, "notification_service_events", [TTL_1h, createdAt]);
     await deployIndexes(gameDB, "notifications", [displayGame]);
+    await deployIndexes(gameDB, "um_info", [finish_isPartner]);
 })();

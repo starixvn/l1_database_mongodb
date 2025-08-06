@@ -52,6 +52,10 @@
         validationAction: "error",
     });
 
+    /** NOTE:
+     *    - There are queries that filters local.memberId, but not frequently.
+     *      Remove the index for better write performance.
+     */
     await deployIndexes(gameDB, "users", [playerId_en, operatorId, playerId, username_U_en]);
     await deployIndexes(gameDB, "userinfos", [currency_en, id_U, id_U_en, name_U_en, typeTrue_red_en, typeTrue_disabled_inRoom_en, UID_U_en]);
     await deployIndexes(gameDB, "usersessions", [TTL_8d, playerId, recheckInTime, sessionId_U, ssoToken, __archive_summarized, __archive_do_summary]);

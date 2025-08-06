@@ -10,6 +10,10 @@ const indexes = /** @type {const} */ ({
         key: { displayKind: 1, gameName: 1 },
         options: {},
     },
+    finish_isPartner: {
+        key: { finish: 1, isPartnerUm: 1 },
+        options: {},
+    },
 });
 
 module.exports = indexes;
