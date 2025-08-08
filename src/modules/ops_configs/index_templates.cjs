@@ -275,6 +275,7 @@ const indexTemplates = /** @type {const} */ ([
                     TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
                     time: '{"key":{"time":1}}',
                     id_U: '{"key":{"id":1},"unique":true}',
+                    uid_paidFalse_U: '{"key":{"uid":1,"paid":1},"unique":true,"partialFilterExpression":{"paid":false}}',
                     summarized: '{"key":{"__archive.summarized":1}}',
                     do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
                 },
