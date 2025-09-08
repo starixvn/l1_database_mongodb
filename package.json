@@ -1,5 +1,11 @@
 {
   "type": "module",
+  "scripts": {
+    "load:sit": "mc cp --recursive /repo/mongodb/src sit/backup-configs/mongodb/",
+    "load:ak": "mc cp --recursive /repo/mongodb/src kbt/backup-configs/mongodb/",
+    "load:kl": "mc cp --recursive /repo/mongodb/src kl/backup-configs/mongodb/",
+    "load": "pnpm load:sit && pnpm load:ak && pnpm load:kl"
+  },
   "devDependencies": {
     "@ldb/eslint-config": "^0.2.3",
     "@ldb/mongo": "^6.10.3",
