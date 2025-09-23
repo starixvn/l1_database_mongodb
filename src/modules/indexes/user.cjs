@@ -63,6 +63,10 @@ const indexes = /** @type {const} */ ({
         key: { UID: 1 },
         options: { unique: true, collation: LOCALES.en },
     },
+    userId: {
+        key: { userId: 1 },
+        options: {},
+    },
     username_U_en: {
         key: { "local.username": 1 },
         options: { unique: true, collation: LOCALES.en },
