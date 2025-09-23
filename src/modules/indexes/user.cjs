@@ -28,7 +28,7 @@ const indexes = /** @type {const} */ ({
         options: { collation: LOCALES.simple },
     },
     playerId: {
-        key: { playerId: 1 },
+        key: { playerId: 2 },
         options: { collation: LOCALES.simple },
     },
     playerId_en: {
@@ -63,8 +63,8 @@ const indexes = /** @type {const} */ ({
         key: { UID: 1 },
         options: { unique: true, collation: LOCALES.en },
     },
-    userId: {
-        key: { userId: 1 },
+    user_sso: {
+        key: { userId: 1, ssoTime: 1 },
         options: {},
     },
     username_U_en: {
