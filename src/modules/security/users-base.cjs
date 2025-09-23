@@ -12,13 +12,6 @@ const baseUsers = /** @type {const} */ ({
             ldb$gaia,
         ],
     },
-    kathy$admin: {
-        db: "admin",
-        user: "kathy.nguyen",
-        roles: [
-            ldb$gaia, // -
-        ],
-    },
     lmn_backup: {
         db: "admin",
         user: "lmn_backup",
