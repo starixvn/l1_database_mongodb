@@ -8,7 +8,15 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
-    const { promo_U, operator_player_game_round_U, dataSourceTimeStamp, promo_operator_player_U, game_status } = require("../../modules/indexes/promotion.cjs");
+    const {
+        promo_U,
+        operator_player_game_round_U,
+        dataSourceTimeStamp,
+        promo_operator_player_U,
+        game_status,
+        operator_player_promoCode_FU,
+        code_U,
+    } = require("../../modules/indexes/promotion.cjs");
 
     const gameDB = db.getSiblingDB("minigame");
 
@@ -26,4 +34,7 @@
     await deployIndexes(gameDB, "promotion_runs", [promo_U]);
     await deployIndexes(gameDB, "promotion_bets", [operator_player_game_round_U, dataSourceTimeStamp]);
     await deployIndexes(gameDB, "promotion_leaderboards", [promo_operator_player_U]);
+
+    await deployIndexes(gameDB, "game_promotions", [code_U]);
+    await deployIndexes(gameDB, "game_player_promotions", [operator_player_promoCode_FU]);
 })();
