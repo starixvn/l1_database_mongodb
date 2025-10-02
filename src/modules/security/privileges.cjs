@@ -1,6 +1,6 @@
 // @ts-check
 
-const { monitor, read, list, backup, index, rwData } = require("./actions.cjs");
+const { monitor, read, list, backup, index, readWrite } = require("./actions.cjs");
 
 /** @satisfies { Record<string, Privilege[]> } */
 const privileges = /** @type {const} */ ({
@@ -58,17 +58,17 @@ const privileges = /** @type {const} */ ({
         { resource: { db: "minigame", collection: "chips" }, actions: read },
     ],
     writeConfigs: [
-        { resource: { db: "minigame", collection: "game_configs" }, actions: rwData }, //
-        { resource: { db: "minigame", collection: "currency_groups" }, actions: rwData },
-        { resource: { db: "minigame", collection: "currencies" }, actions: rwData },
-        { resource: { db: "minigame", collection: "currency_group_games" }, actions: rwData },
-        { resource: { db: "minigame", collection: "chips" }, actions: rwData },
+        { resource: { db: "minigame", collection: "game_configs" }, actions: readWrite }, //
+        { resource: { db: "minigame", collection: "currency_groups" }, actions: readWrite },
+        { resource: { db: "minigame", collection: "currencies" }, actions: readWrite },
+        { resource: { db: "minigame", collection: "currency_group_games" }, actions: readWrite },
+        { resource: { db: "minigame", collection: "chips" }, actions: readWrite },
 
-        { resource: { db: "minigame_backup", collection: "backup_game_configs" }, actions: rwData },
-        { resource: { db: "minigame_backup", collection: "backup_currency_groups" }, actions: rwData },
-        { resource: { db: "minigame_backup", collection: "backup_currencies" }, actions: rwData },
-        { resource: { db: "minigame_backup", collection: "backup_currency_group_games" }, actions: rwData },
-        { resource: { db: "minigame_backup", collection: "backup_chips" }, actions: rwData },
+        { resource: { db: "minigame_backup", collection: "backup_game_configs" }, actions: readWrite },
+        { resource: { db: "minigame_backup", collection: "backup_currency_groups" }, actions: readWrite },
+        { resource: { db: "minigame_backup", collection: "backup_currencies" }, actions: readWrite },
+        { resource: { db: "minigame_backup", collection: "backup_currency_group_games" }, actions: readWrite },
+        { resource: { db: "minigame_backup", collection: "backup_chips" }, actions: readWrite },
     ],
 });
 
