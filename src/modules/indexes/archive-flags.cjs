@@ -2,6 +2,10 @@
 
 /** @satisfies { IndexConfig } */
 const indexes = /** @type {const} */ ({
+    TTL_6w: {
+        key: { "__archive.eventtime": 1 },
+        options: { expireAfterSeconds: 3_628_800 },
+    },
     TTL_31d: {
         key: { "__archive.eventtime": 1 },
         options: { expireAfterSeconds: 2_678_400 },

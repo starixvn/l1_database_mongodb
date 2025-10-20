@@ -7,7 +7,7 @@ const actions = /** @type {const} */ ({
     read: ["find", "listIndexes"],
     backup: ["fsync", "getCmdLineOpts", "replSetGetStatus", "unlock"],
     index: ["createIndex", "dropIndex", "listIndexes", "indexStats"],
-    rwData: ["find", "insert", "remove", "update"],
+    readWrite: ["find", "insert", "remove", "update"],
 });
 
 module.exports = actions;

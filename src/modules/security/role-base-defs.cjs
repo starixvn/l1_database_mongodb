@@ -2,6 +2,7 @@
 const { monitorAllCollections, readIdentity, readSystemObjects, backupCluster, clusterChangeStream, indexMaintenance, writeConfigs, readConfigs } = require("./privileges.cjs");
 const { readAnyDatabase, db$readWrite, root, db$dbOwner } = require("./role-builtin.cjs");
 const { db$read } = require("./role-builtin.cjs");
+const { read, readWrite } = require("./actions.cjs");
 
 /** @satisfies { Record<string, RoleDefinition> } */
 const roleDefinitions = /** @type {const} */ ({
@@ -83,6 +84,16 @@ const roleDefinitions = /** @type {const} */ ({
             db$read("schema"),
         ],
         privileges: [],
+    },
+
+    n8n$bfs: {
+        db: "admin",
+        role: "n8n$bfs",
+        roles: [],
+        privileges: [
+            { resource: { db: "minigame", collection: "" }, actions: read }, // -
+            { resource: { db: "minigame", collection: "ticket_silos" }, actions: readWrite }, // -
+        ],
     },
 });
 

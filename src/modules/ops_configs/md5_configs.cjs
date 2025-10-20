@@ -97,4 +97,19 @@ const md5Configs = [];
     });
 }
 
+{
+    const fields = [
+        "hash", //
+        "encryptedServerSeed.iv",
+        "encryptedServerSeed.content",
+        "encryptedFinalResult.iv",
+        "encryptedFinalResult.content",
+    ];
+    [
+        { db: "minigame_arc", coll: "chineseblackjack_results_bk" }, //
+    ].forEach((_id) => {
+        md5Configs.push({ _id, fields });
+    });
+}
+
 module.exports = { md5Configs };

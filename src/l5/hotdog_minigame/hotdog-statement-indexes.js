@@ -8,7 +8,7 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
-    const { TTL_31d } = require("../../modules/indexes/archive-flags.cjs");
+    const { TTL_6w } = require("../../modules/indexes/archive-flags.cjs");
     const { game_round_subRound_operator_player, game_player_time, time, time_code_U, player_operator } = require("../../modules/indexes/statement.cjs");
     const {
         __archive_daily,
@@ -32,7 +32,7 @@
         ].map((collName) => ensureCollection(gameDB, collName, STORAGE_COMPRESSED)),
     );
     await deployIndexes(gameDB, "ticket_silos", [
-        TTL_31d,
+        TTL_6w,
         game_round_subRound_operator_player,
         game_player_time,
         time,

@@ -15,6 +15,7 @@ const {
     ldb$tmpMaintenance,
 
     biSchema,
+    n8n$bfs,
 } = require("./role-base-defs.cjs");
 
 /** @satisfies { Record<string, Role> } */
@@ -33,6 +34,8 @@ const roleReferences = /** @type {const} */ ({
     ldb$tmpMaintenance: definitionToRef(ldb$tmpMaintenance),
 
     biSchema: definitionToRef(biSchema),
+
+    n8n$bfs: definitionToRef(n8n$bfs),
 });
 
 module.exports = roleReferences;
