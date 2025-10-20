@@ -36,7 +36,7 @@
                 {
                     db: "hotdog_minigame",
                     coll: { round: "_rounds", bet: "_bets" },
-                    aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
+                    aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "drawId" },
                     calc: {
                         roundId: '"$id"',
                         tickets: '{"$literal":1}',
