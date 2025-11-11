@@ -563,6 +563,36 @@ const archiveTemplates = /** @type {const} */ ([
         targets: [{ db: "ops_configs", coll: "archive_configs" }],
         __v: 2,
     },
+    {
+        category: "games",
+        type: 11,
+        data: [
+            {
+                id: 0,
+                from: { db: "minigame", postfix: "_rounds" },
+                to: { db: "minigame_arc", postfix: "_rounds_bk" },
+                alias: { time: "time" },
+                config: { cutOffsetHours: -24, localField: "id" },
+                childs: [
+                    {
+                        from: { db: "minigame", postfix: "_results" },
+                        to: { db: "minigame_arc", postfix: "_results_bk" },
+                        config: { foreignField: "roundId" },
+                    },
+                ],
+                log: { field: "_rounds", value: "id" },
+            },
+            {
+                id: 1,
+                from: { db: "minigame", postfix: "_results" },
+                to: { db: "minigame_arc", postfix: "_results_bk" },
+                alias: { time: "time" },
+                config: { cutOffsetHours: -24 * 8 },
+            },
+        ],
+        targets: [{ db: "ops_configs", coll: "archive_configs" }],
+        __v: 2,
+    },
 ]);
 
 module.exports = { archiveTemplates };
