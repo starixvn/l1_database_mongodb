@@ -1,14 +1,14 @@
 (async () => {
-    const { getIdentity, ensureCollection } = require("../../modules/db.cjs");
+    const { getIdentity, ensureCollection } = require("../../../src/modules/db.cjs");
 
     const { _id, L, stage } = await getIdentity(db);
     if (/Main$/.test(_id)) return;
     if (path.basename(path.resolve("..")) !== `l${L}`) return;
     if (!["active", "mixed"].includes(stage)) return;
 
-    const { deployIndexes } = require("../../modules/index.cjs");
-    const { COLLATION_EN } = require("../../modules/const.cjs");
-    const { name_U_en, name_U, gameId_U, partner_en, name_partner_U_en, gameId, group_game_U, value_U, name_partner_U } = require("../../modules/indexes/game-configs.cjs");
+    const { deployIndexes } = require("../../../src/modules/index.cjs");
+    const { COLLATION_EN } = require("../../../src/modules/const.cjs");
+    const { name_U_en, name_U, gameId_U, partner_en, name_partner_U_en, gameId, group_game_U, value_U, name_partner_U } = require("../../../src/modules/indexes/game-configs.cjs");
 
     const syncDB = db.getSiblingDB("sync");
 
