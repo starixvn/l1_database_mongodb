@@ -30,6 +30,26 @@
         },
         {
             category: "games",
+            type: 5,
+            targets: [{ db: "hotdog_ops_configs", coll: "summary_configs" }],
+            data: [
+                {
+                    db: "hotdog_minigame",
+                    coll: { round: "_rounds", bet: "_bets" },
+                    aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
+                    calc: {
+                        roundId: '"$id"',
+                        tickets: '{"$literal":1}',
+                        stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeSpin"}}]}',
+                        payout: '"$betwin"',
+                        refund: '{"$literal":0}',
+                    },
+                },
+            ],
+            __v: 2,
+        },
+        {
+            category: "games",
             type: 6,
             targets: [{ db: "hotdog_ops_configs", coll: "summary_configs" }],
             data: [
@@ -41,6 +61,26 @@
                         roundId: '"$id"',
                         tickets: '{"$literal":1}',
                         stake: '{"$multiply":["$totalAmount",{"$toInt":{"$not":"$freeBet"}}]}',
+                        payout: '"$betwin"',
+                        refund: '{"$literal":0}',
+                    },
+                },
+            ],
+            __v: 2,
+        },
+        {
+            category: "games",
+            type: 7,
+            targets: [{ db: "hotdog_ops_configs", coll: "summary_configs" }],
+            data: [
+                {
+                    db: "hotdog_minigame",
+                    coll: { round: "_rounds", bet: "_bets" },
+                    aliases: { foreign: "roundId", playerId: "playerId", settled: "paid", time: "time", subRoundId: "roundId" },
+                    calc: {
+                        roundId: '"$id"',
+                        tickets: '{"$literal":1}',
+                        stake: '"$totalAmount"',
                         payout: '"$betwin"',
                         refund: '{"$literal":0}',
                     },
