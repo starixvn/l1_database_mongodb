@@ -427,6 +427,41 @@ const indexTemplates = /** @type {const} */ ([
         ],
         __v: 2,
     },
+    {
+        category: "games",
+        type: 13,
+        colls: [
+            {
+                ns: { db: "minigame", postfix: "_rounds" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    time: '{"key":{"time":1}}',
+                    id_U: '{"key":{"id":1},"unique":true}',
+                    uid_paidFalse_U: '{"key":{"uid":1,"paid":1},"unique":true,"partialFilterExpression":{"paid":false}}',
+                    summarized: '{"key":{"__archive.summarized":1}}',
+                    do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
+                },
+            },
+            {
+                ns: { db: "minigame", postfix: "_results" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    roundId: '{"key":{"roundId":1}}',
+                },
+            },
+            {
+                ns: { db: "minigame", postfix: "_betlogs" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
+                    roundId: '{"key":{"roundId":1,"_id":1}}',
+                    player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"playerId":{"$gt":""}}}',
+                    uid: '{"key":{"uid":1}}',
+                },
+            },
+        ],
+        __v: 2,
+    },
 ]);
 
 module.exports = { indexTemplates };

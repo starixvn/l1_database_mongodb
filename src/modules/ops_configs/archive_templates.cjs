@@ -593,6 +593,58 @@ const archiveTemplates = /** @type {const} */ ([
         targets: [{ db: "ops_configs", coll: "archive_configs" }],
         __v: 2,
     },
+    {
+        category: "games",
+        type: 13,
+        data: [
+            {
+                id: 0,
+                from: { db: "minigame", postfix: "_rounds" },
+                to: { db: "minigame_arc", postfix: "_rounds_bk" },
+                alias: { time: "time" },
+                config: { cutOffsetHours: -24, localField: "id" },
+                childs: [
+                    {
+                        from: { db: "minigame", postfix: "_results" },
+                        to: { db: "minigame_arc", postfix: "_results_bk" },
+                        config: { foreignField: "roundId" },
+                    },
+                    {
+                        from: { db: "minigame", postfix: "_betlogs" },
+                        to: { db: "minigame_arc", postfix: "_betlogs_bk" },
+                        config: { foreignField: "roundId" },
+                        filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
+                    },
+                ],
+                log: { field: "_rounds", value: "id" },
+            },
+            {
+                id: 1,
+                from: { db: "minigame", postfix: "_results" },
+                to: { db: "minigame_arc", postfix: "_results_bk" },
+                alias: { time: "time" },
+                config: { cutOffsetHours: -24 * 8 },
+            },
+            {
+                id: 4,
+                from: { db: "minigame", postfix: "_betlogs" },
+                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
+                alias: { time: "time" },
+                config: { cutOffsetHours: -24 * 8 },
+                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":{"$ne":null}}' },
+            },
+            {
+                id: 5,
+                from: { db: "minigame", postfix: "_betlogs" },
+                to: { db: "minigame_arc", postfix: "_betlogs_bk" },
+                alias: { time: "time" },
+                config: { cutOffsetHours: -24 * 8, updateOnly: true },
+                filterConfigs: { __brand: "internal", filterExpr: '{"playerId":null}' },
+            },
+        ],
+        targets: [{ db: "ops_configs", coll: "archive_configs" }],
+        __v: 2,
+    },
 ]);
 
 module.exports = { archiveTemplates };
