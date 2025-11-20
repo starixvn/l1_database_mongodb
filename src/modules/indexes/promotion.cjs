@@ -26,6 +26,10 @@ const indexes = /** @type {const} */ ({
         key: { playerPromotionId: 1 },
         options: { unique: true },
     },
+    player_promotion_ordinal_U: {
+        key: { playerId: 1, promotionId: 1, redemptionCount: 1, operatorId: 1 },
+        options: { unique: true },
+    },
     promo_operator_player_U: {
         key: { promotionId: 1, operatorId: 1, playerId: 1 },
         options: { unique: true },
