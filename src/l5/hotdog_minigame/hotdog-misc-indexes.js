@@ -8,8 +8,8 @@
 
     const { deployIndexes } = require("../../modules/index.cjs");
     const { STORAGE_COMPRESSED } = require("../../modules/const.cjs");
-    const { TTL_1h } = require("../../modules/indexes/archive-flags.cjs");
-    const { createdAt, displayGame, finish_isPartner } = require("../../modules/indexes/misc.cjs");
+    const { TTL_1h, TTL_8d } = require("../../modules/indexes/archive-flags.cjs");
+    const { createdAt, displayGame, finish_isPartner, batchId } = require("../../modules/indexes/misc.cjs");
 
     const gameDB = db.getSiblingDB("hotdog_minigame");
 
@@ -21,4 +21,6 @@
     await deployIndexes(gameDB, "notification_service_events", [TTL_1h, createdAt]);
     await deployIndexes(gameDB, "notifications", [displayGame]);
     await deployIndexes(gameDB, "um_info", [finish_isPartner]);
+    await deployIndexes(gameDB, "ticket_importer_last_processed", [TTL_8d, batchId]);
+    await deployIndexes(gameDB, "import_requests", [TTL_8d]);
 })();
