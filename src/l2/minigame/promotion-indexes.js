@@ -16,6 +16,8 @@
         game_status,
         operator_player_promoCode_FU,
         code_U,
+        playerPromotionId_U,
+        player_promotion_ordinal_U,
     } = require("../../modules/indexes/promotion.cjs");
 
     const gameDB = db.getSiblingDB("minigame");
@@ -37,4 +39,5 @@
 
     await deployIndexes(gameDB, "game_promotions", [code_U]);
     await deployIndexes(gameDB, "game_player_promotions", [operator_player_promoCode_FU]);
+    await deployIndexes(gameDB, "game_player_finished_promotions", [playerPromotionId_U, player_promotion_ordinal_U]);
 })();

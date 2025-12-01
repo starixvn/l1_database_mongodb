@@ -230,6 +230,22 @@
                 alias: { time: "_id" },
                 config: { updateOnly: true },
             },
+            {
+                ...commonConfig,
+                id: 1,
+                gameConfigs: { type: "hotdog_misc", name: "ticket_importer_last_processed" },
+                from: { db: "hotdog_minigame", postfix: "" },
+                to: { db: "hotdog_minigame_arc", postfix: "_bk" },
+                alias: { time: "_id" },
+            },
+            {
+                ...commonConfig,
+                id: 1,
+                gameConfigs: { type: "hotdog_misc", name: "import_requests" },
+                from: { db: "hotdog_minigame", postfix: "" },
+                to: { db: "hotdog_minigame_arc", postfix: "_bk" },
+                alias: { time: "_id" },
+            },
         ].forEach((config) => archiveConfigs.push(config));
     }
 

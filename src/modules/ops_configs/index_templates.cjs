@@ -13,7 +13,6 @@ const indexTemplates = /** @type {const} */ ([
                     summarized: '{"key":{"__archive.summarized":1}}',
                     do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
                     paid_uid: '{"key":{"paid":1,"uid":1}}',
-                    currency: '{"key":{"__archive.currency":1,"currency":1,"playerId":1,"uid":1}}',
                     playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"playerId":{"$gt":""}}}',
                 },
             },
@@ -66,7 +65,6 @@ const indexTemplates = /** @type {const} */ ([
                     summarized: '{"key":{"__archive.summarized":1}}',
                     do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
                     paid_uid: '{"key":{"paid":1,"uid":1}}',
-                    currency: '{"key":{"__archive.currency":1,"currency":1,"playerId":1,"uid":1}}',
                     playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"playerId":{"$gt":""}}}',
                 },
             },
@@ -398,6 +396,67 @@ const indexTemplates = /** @type {const} */ ([
                     timeTTL: '{"key":{"time":1},"expireAfterSeconds":600}',
                     roundId: '{"key":{"roundId":1,"_id":1}}',
                     uid_round_U: '{"key":{"uid":1,"roundId":1},"unique":true}',
+                },
+            },
+        ],
+        __v: 2,
+    },
+    {
+        category: "games",
+        type: 11,
+        colls: [
+            {
+                ns: { db: "minigame", postfix: "_rounds" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    time: '{"key":{"time":1}}',
+                    id_U: '{"key":{"id":1},"unique":true}',
+                    summarized: '{"key":{"__archive.summarized":1}}',
+                    do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
+                    paid_uid: '{"key":{"paid":1,"uid":1}}',
+                    playerId_id_F: '{"key":{"playerId":1,"id":1},"partialFilterExpression":{"playerId":{"$gt":""}}}',
+                },
+            },
+            {
+                ns: { db: "minigame", postfix: "_results" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    roundId: '{"key":{"roundId":1}}',
+                },
+            },
+        ],
+        __v: 2,
+    },
+    {
+        category: "games",
+        type: 13,
+        colls: [
+            {
+                ns: { db: "minigame", postfix: "_rounds" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    time: '{"key":{"time":1}}',
+                    id_U: '{"key":{"id":1},"unique":true}',
+                    uid_paidFalse_U: '{"key":{"uid":1,"paid":1},"unique":true,"partialFilterExpression":{"paid":false}}',
+                    summarized: '{"key":{"__archive.summarized":1}}',
+                    do_summary: '{"key":{"__archive.do_summary":1},"partialFilterExpression":{"__archive.do_summary":true}}',
+                },
+            },
+            {
+                ns: { db: "minigame", postfix: "_results" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    roundId: '{"key":{"roundId":1}}',
+                },
+            },
+            {
+                ns: { db: "minigame", postfix: "_betlogs" },
+                idxs: {
+                    TTL: '{"key":{"__archive.eventtime":1},"expireAfterSeconds":691200}',
+                    time_archive: '{"key":{"time":1,"__archive.eventtime":1}}',
+                    roundId: '{"key":{"roundId":1,"_id":1}}',
+                    player_roundId: '{"key":{"playerId":1,"roundId":1},"partialFilterExpression":{"playerId":{"$gt":""}}}',
+                    uid: '{"key":{"uid":1}}',
                 },
             },
         ],

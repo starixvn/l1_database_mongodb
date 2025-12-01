@@ -2,6 +2,10 @@
 
 /** @satisfies { IndexConfig } */
 const indexes = /** @type {const} */ ({
+    batchId: {
+        key: { batchId: 1 },
+        options: {},
+    },
     createdAt: {
         key: { createdAt: 1 },
         options: {},

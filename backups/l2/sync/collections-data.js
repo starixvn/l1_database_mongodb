@@ -1,6 +1,6 @@
 (async () => {
-    const { getIdentity } = require("../../modules/db.cjs");
-    const { log, stringifyResult } = require("../../modules/utils.cjs");
+    const { getIdentity } = require("../../../src/modules/db.cjs");
+    const { log, stringifyResult } = require("../../../src/modules/utils.cjs");
 
     const { _id, L, stage } = await getIdentity(db);
     if (/Main$/.test(_id)) return;
