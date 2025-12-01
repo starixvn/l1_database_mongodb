@@ -74,6 +74,7 @@
         { gameId: 67, name: "dragontigerfight" },
         { gameId: 80, name: "cointoss" },
         { gameId: 93, name: "footballcointoss" },
+        { gameId: 103, name: "sevenupdown" },
         { gameId: 1005, name: "seball1" },
         { gameId: 1007, name: "sicball" },
     ].forEach((gameConfigs) =>
