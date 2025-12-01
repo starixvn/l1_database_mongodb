@@ -65,6 +65,7 @@
             "cointoss",
             "unbalancedbigsmall4",
             "footballcointoss",
+            "sevenupdown",
         ].map(async (name) => {
             await deployIndexes(gameDB, `${name}_rounds`, [TTL_8d, id_U, time]);
             await deployIndexes(gameDB, `${name}_betlogs`, [TTL_8d, time_archive, round__id, player_round_F, uid__id]);
